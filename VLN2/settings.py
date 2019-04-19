@@ -25,7 +25,7 @@ SECRET_KEY = 'q3z-whmpgbl8p5_$7%ve_9ug!m9$ihoybcjlouw1o_ea4vye^x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["still-stream-97107.herokuapp.com"]
+ALLOWED_HOSTS = ["still-stream-97107.herokuapp.com", "vln2.gng.is"]
 
 
 # Application definition
