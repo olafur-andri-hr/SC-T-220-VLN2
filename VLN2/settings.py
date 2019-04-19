@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
+import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,7 +28,8 @@ SECRET_KEY = 'q3z-whmpgbl8p5_$7%ve_9ug!m9$ihoybcjlouw1o_ea4vye^x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["still-stream-97107.herokuapp.com", "vln2.gng.is", "127.0.0.1"]
+ALLOWED_HOSTS = ["still-stream-97107.herokuapp.com",
+                 "vln2.gng.is", "127.0.0.1"]
 
 
 # Application definition
@@ -91,7 +93,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -132,5 +133,6 @@ STATIC_URL = '/static/'
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-print(list(os.environ.keys()))
+
 django_heroku.settings(locals())
+
