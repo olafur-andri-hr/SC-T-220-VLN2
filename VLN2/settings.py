@@ -136,3 +136,4 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 django_heroku.settings(locals())
 
+print(DATABASES['default'])
