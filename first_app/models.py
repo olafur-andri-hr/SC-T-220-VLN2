@@ -7,13 +7,10 @@ class Color(models.Model):
     color = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"str: {self.color}"
+        return str(self.color)
 
-    def __unicode__(self):
-        return f"unicode: {self.color}"
-
-    def __repr__(self):
-        return f"repr: {self.color}"
+    def save(self, *args, **kwargs):
+        self.color = str(self.color).capitalize()
 
 
 class Vehicle(models.Model):
