@@ -7,10 +7,11 @@ class Color(models.Model):
     color = models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.color)
+        return str(self.color).capitalize()
 
     def save(self, *args, **kwargs):
         self.color = str(self.color).capitalize()
+        super().save(*args, **kwargs)
 
 
 class Vehicle(models.Model):
