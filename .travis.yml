@@ -2,13 +2,9 @@ dist: xenial
 language: python
 python:
 - '3.7'
-env: SKIP_INTERPRETER=true
 services:
 - postgresql
-before_install:
-- git clone https://github.com/TravisToolbox/pycodestyle-travis.git
 install:
-- ./pycodestyle-travis/install.sh
 - pip install -r requirements.txt
 before_script:
 - psql -c "create database Django;" -U postgres
@@ -18,8 +14,8 @@ test:
   adapter: postgresql
   database: Django
 script:
-- ./pycodestyle-travis/scan.sh
 - python manage.py test
+- pycodestyle . --exclude=".svn,CVS,.bzr,.hg,.git,__pycache__,.tox,*/migrations/????_initial.py"
 deploy:
   provider: heroku
   api_key:
