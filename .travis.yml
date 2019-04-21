@@ -4,7 +4,10 @@ python:
 - '3.7'
 services:
 - postgresql
+before_install:
+- git clone https://github.com/TravisToolbox/pycodestyle-travis.git
 install:
+- ./pycodestyle-travis/install.sh
 - pip install -r requirements.txt
 before_script:
 - psql -c "create database Django;" -U postgres
@@ -14,6 +17,7 @@ test:
   adapter: postgresql
   database: Django
 script:
+- ./pycodestyle-travis/scan.sh
 - python manage.py test
 deploy:
   provider: heroku
