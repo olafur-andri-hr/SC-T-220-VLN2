@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="stylesheet" href="{% static "style.css" %}">
 </head>
 <body>
     <header>Header</header>
     <main>Main</main>
     <aside>Aside</aside>
     <footer>Footer</footer>
+    {% for car in cars %}
+      <p>{{car.license_plate}}</p>
+    {% endfor %}
 </body>
 </html>
