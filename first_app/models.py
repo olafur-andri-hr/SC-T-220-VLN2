@@ -5,7 +5,8 @@ from django.core.validators import MinLengthValidator
 
 
 class Color(models.Model):
-    color = models.CharField(max_length=20, unique=True, validators=[MinLengthValidator(3)])
+    color = models.CharField(max_length=20, unique=True,
+                             validators=[MinLengthValidator(3)])
 
     def __str__(self):
         return str(self.color).capitalize()

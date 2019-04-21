@@ -16,6 +16,7 @@ test:
 script:
 - python manage.py test
 - pycodestyle . --exclude=".svn,CVS,.bzr,.hg,.git,__pycache__,.tox,*/migrations/????_initial.py"
+- pydocstyle --ignore=D1,D212,D213,D203
 deploy:
   provider: heroku
   api_key:
