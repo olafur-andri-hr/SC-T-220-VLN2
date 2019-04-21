@@ -1,4 +1,10 @@
 {
-    "python.linting.pylintEnabled": true,
-    "python.pythonPath": "C:\\Users\\Guðni\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pep8Path": "pycodestyle",
+    "python.linting.pydocstyleArgs": [
+        "--ignore=D1,D212,D213,D203"
+    ],
 }
