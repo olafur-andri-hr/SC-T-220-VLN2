@@ -1,23 +1,24 @@
 dist: xenial
 language: python
 python:
-    - "3.7"
-
+- '3.7'
 services:
-  - postgresql
-
+- postgresql
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 before_script:
-  - psql -c 'create database Django;' -U postgres
-  - psql -c "CREATE USER django WITH PASSWORD 'django_password';" -U postgres
-  - psql -c "ALTER USER django WITH SUPERUSER;" -U postgres
-
+- psql -c "create database Django;" -U postgres
+- psql -c "CREATE USER django WITH PASSWORD 'django_password';" -U postgres
+- psql -c "ALTER USER django WITH SUPERUSER;" -U postgres
 test:
   adapter: postgresql
   database: Django
-
-# command to run tests
 script:
-  - python manage.py test
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: A9NyE84sCqlAwZhhoOiqCRUwX4cYD9fvAdltNheizTKa73PrGj0LF3zghoHWkuS5XmL6eyBWyJc09NAYvu3pCcUcR45mae5b2EVukmEJIC/RbQurchGBRY8zcqSDsfq9mAaH6rbzM1YGxFnW8/jGCvhlUQRpKrRGAMsVaaBZrXXeFOB4m2BFaNRiMfSBHy278L/xYfDaTUnsPkR66yv61TVKwdzicgvZj8aLAzKH0yqgIn/SV7ei5BiVTG2rGhvQD97opfPfbJD5E2XXjIYmY5lAi4qLQIVEvjXKKbV8X5dRkJZezmbpuVKcRNsNFcEpVGDoUQQXcK1fqPYS7PXkEL7N87xHYYMpPJTtU1pHFaUQ7o8GL+SRoBg9TMX9DtAEyvKEX51tfNA5493D/0hAFJvz3+xWzwPKTvaDMCB12o+q1Homt+eFYn/JyM0YCaqrvWwZaxHG0FCf5Fc/g1HDpAFfLw1M+OHs+cRfTmRDSZWyv4IN7AtQ4iuMnrTqcePY8/K9D7VgbN5ka6+qlpbx88DVb8K6onZBU7+f/Be7ZHDz1op0YTt3KAuVssLHVkdzSJ0P9CKtYysUEVCE8rEjDjOBw2LFEbeHdxueAgBhK8FpG+RcjW20ziDk4z6JZf60vF6Mdoch9gCGSZVyLUG4rLwt/3JwAKOkhfOFlJe3u88=
+  app: SC-T-220-VLN2
+  on:
+    repo: GudniNatan/SC-T-220-VLN2
