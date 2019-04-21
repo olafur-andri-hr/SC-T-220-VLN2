@@ -7,4 +7,18 @@
     "python.linting.pydocstyleArgs": [
         "--ignore=D1,D212,D213,D203"
     ],
+    "liveSassCompile.settings.formats":[
+        // This is Default.
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": null
+        },
+        // You can add more
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": null
+        },
+    ],
 }
