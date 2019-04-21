@@ -11,6 +11,7 @@ install:
 
 before_script:
   - psql -c 'create database Django;' -U postgres
+  - psql -c "CREATE USER django WITH PASSWORD 'django_password';" -U postgres
 
 test:
   adapter: postgresql
