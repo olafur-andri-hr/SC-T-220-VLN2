@@ -19,7 +19,7 @@ class Color(models.Model):
 class Vehicle(models.Model):
     license_plate = models.CharField(primary_key=True, max_length=5)
     wheel_count = models.IntegerField()
-    color = models.ForeignKey(Color, on_delete=models.CASCADE)
+    color = models.ForeignKey(Color, on_delete=models.DO_NOTHING)
 
 
 class Car(Vehicle):
