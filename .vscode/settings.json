@@ -11,12 +11,12 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": null
+            "savePath": "~/../static/css/"
         },
         {
             "format": "compressed",
             "extensionName": ".min.css",
-            "savePath": null
+            "savePath": "~/../static/css/"
         },
     ],
 }

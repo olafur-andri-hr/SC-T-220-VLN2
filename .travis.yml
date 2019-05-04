@@ -1,22 +1,31 @@
 dist: xenial
-language: python
-python:
-- '3.7'
-services:
-- postgresql
-install:
-- pip install -r requirements.txt
-before_script:
-- psql -c "create database Django;" -U postgres
-- psql -c "CREATE USER django WITH PASSWORD 'django_password';" -U postgres
-- psql -c "ALTER USER django WITH SUPERUSER;" -U postgres
-test:
-  adapter: postgresql
-  database: Django
-script:
-- python manage.py test
-- pycodestyle . --exclude=".svn,CVS,.bzr,.hg,.git,__pycache__,.tox,*/migrations/????_initial.py"
-- pydocstyle --ignore=D1,D212,D213,D203
+matrix:
+  include:
+    - language: python
+      python:
+      - '3.7'
+      services:
+      - postgresql
+      install:
+      - pip install -r requirements.txt
+      before_script:
+      - psql -c "create database Django;" -U postgres
+      - psql -c "CREATE USER django WITH PASSWORD 'django_password';" -U postgres
+      - psql -c "ALTER USER django WITH SUPERUSER;" -U postgres
+      test:
+        adapter: postgresql
+        database: Django
+      script:
+      - python manage.py test
+      - pycodestyle . --exclude=".svn,CVS,.bzr,.hg,.git,__pycache__,.tox,*/migrations/????_initial.py"
+      - pydocstyle --ignore=D1,D212,D213,D203
+    - language: node_js
+      node_js:
+        - "10.15.3"
+      install:
+        - npm init -y
+        - npm install eslint-config-google@latest, eslint@>=5.4.0
+      script: ./node_modules/.bin/eslint .
 deploy:
   provider: heroku
   api_key:

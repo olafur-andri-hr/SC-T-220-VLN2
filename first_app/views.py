@@ -8,4 +8,9 @@ from . import models
 def index(request):
     vehicles = models.Vehicle.objects.all()
     context = {"cars": vehicles}
+
     return render(request, "index.html", context)
+
+
+def vehicle(request):
+    return index(request)

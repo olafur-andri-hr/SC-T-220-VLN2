@@ -1,0 +1,23 @@
+{
+  "name": "sc-t-220-vln2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GudniNatan/SC-T-220-VLN2.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GudniNatan/SC-T-220-VLN2/issues"
+  },
+  "homepage": "https://github.com/GudniNatan/SC-T-220-VLN2#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0"
+  }
+}
