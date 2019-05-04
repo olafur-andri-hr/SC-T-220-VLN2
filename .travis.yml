@@ -30,6 +30,7 @@ jobs:
       script: 
         - ./node_modules/.bin/eslint .
     - stage: deploy to production
+      script: skip
       deploy:
         provider: heroku
         api_key:
