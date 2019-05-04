@@ -24,8 +24,9 @@ matrix:
         - "10.15.3"
       install:
         - npm init -y
-        - npm install eslint-config-google, eslint@>=5.4.0
-      script: ./node_modules/.bin/eslint .
+        - npm install --save-dev eslint eslint-config-google
+      script: 
+        - ./node_modules/.bin/eslint .
 deploy:
   provider: heroku
   api_key:
