@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sys
 import django_heroku
 import dj_database_url
 
@@ -83,14 +84,6 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # },
-    'postgres': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Django',
-        'USER': 'django',
-        'PASSWORD': 'django_password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    },
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'kzedlyox',
@@ -100,6 +93,16 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+if 'travis' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Django',
+        'USER': 'django',
+        'PASSWORD': 'django_password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
