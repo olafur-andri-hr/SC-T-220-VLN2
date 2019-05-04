@@ -1,7 +1,8 @@
 dist: xenial
-matrix:
+jobs:
   include:
-    - language: python
+    - stage: python testing
+      language: python
       python:
       - '3.7'
       services:
@@ -19,7 +20,8 @@ matrix:
       - python manage.py test
       - pycodestyle . --exclude=".svn,CVS,.bzr,.hg,.git,__pycache__,.tox,*/migrations/*.py"
       - pydocstyle --ignore=D1,D212,D213,D203
-    - language: node_js
+    - stage: javascript linting
+      language: node_js
       node_js:
         - "10.15.3"
       install:
@@ -27,10 +29,11 @@ matrix:
         - npm install --save-dev eslint eslint-config-google
       script: 
         - ./node_modules/.bin/eslint .
-deploy:
-  provider: heroku
-  api_key:
-    secure: c/O4Z+Wshpw48z/t1Bzi3BmhpFwGB5ap/x3Lhkbk3jEdgOHZoq8e2LkLNpYHZPeYBbVrqr+pQ/vCWfnLNjXw9gDRZGnGxeZK1QZQjI5hqWS6w+K8vkkQ33CZmQiV47qFMkZc0/NxQJpEi4uHRqwMC723oz2nzJUExGkv8v2jUzpZk0XNycVaEqFZo4BMls6dqC/HjdfPli514dQFFsagiIUpGN9v1NzyNDnMVN7ZWpQRthZzWF7ozAs+X/vZb4Ts2fMfd7vr8SS8jTcQZnHWgLYdmAb8WcCoqVHoWsNggIxP5mHXiZdZmQnrmYaJZI+Z099z4TMOsESmoWvCTJeG0OSsmg17GUCOJwamHyArQvWDDiCvI0ZaEFpsCB+DXOVU9nnvHp6yjzv9mkm1SMQxsTG8TVnsSxl0/+c3pmyH0DXrQAgaIuzzcunYNSxCIy/tcGqupE0deUzjuAePE+DHLXpx15IozrPkJBhbnbEMvvdBfp4BrzL0sGXkmke7UhSyy/OKENaDZsk/pdhvaVNuAMfatXnzzaHBt5QJMQrw6GCl3pvFiiFi3nzNkVKbXdZs/IFXBHbE8pzrvYs/7GC28lZH1UdFYskhv0CgY2zHelMrksde933LtB+8giw75Cbx57U1xG9dTb1SZsvYzcK5kQZWOb1e5JJvX7OnD/6tUQ0=
-  app: still-stream-97107
-  on:
-    repo: GudniNatan/SC-T-220-VLN2
+    - stage: deploy to production
+      deploy:
+        provider: heroku
+        api_key:
+          secure: c/O4Z+Wshpw48z/t1Bzi3BmhpFwGB5ap/x3Lhkbk3jEdgOHZoq8e2LkLNpYHZPeYBbVrqr+pQ/vCWfnLNjXw9gDRZGnGxeZK1QZQjI5hqWS6w+K8vkkQ33CZmQiV47qFMkZc0/NxQJpEi4uHRqwMC723oz2nzJUExGkv8v2jUzpZk0XNycVaEqFZo4BMls6dqC/HjdfPli514dQFFsagiIUpGN9v1NzyNDnMVN7ZWpQRthZzWF7ozAs+X/vZb4Ts2fMfd7vr8SS8jTcQZnHWgLYdmAb8WcCoqVHoWsNggIxP5mHXiZdZmQnrmYaJZI+Z099z4TMOsESmoWvCTJeG0OSsmg17GUCOJwamHyArQvWDDiCvI0ZaEFpsCB+DXOVU9nnvHp6yjzv9mkm1SMQxsTG8TVnsSxl0/+c3pmyH0DXrQAgaIuzzcunYNSxCIy/tcGqupE0deUzjuAePE+DHLXpx15IozrPkJBhbnbEMvvdBfp4BrzL0sGXkmke7UhSyy/OKENaDZsk/pdhvaVNuAMfatXnzzaHBt5QJMQrw6GCl3pvFiiFi3nzNkVKbXdZs/IFXBHbE8pzrvYs/7GC28lZH1UdFYskhv0CgY2zHelMrksde933LtB+8giw75Cbx57U1xG9dTb1SZsvYzcK5kQZWOb1e5JJvX7OnD/6tUQ0=
+        app: still-stream-97107
+        on:
+          repo: GudniNatan/SC-T-220-VLN2
