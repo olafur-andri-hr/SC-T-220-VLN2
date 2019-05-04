@@ -5,7 +5,8 @@ matrix:
       python:
       - '3.7'
       env:
-        - travis=true
+        global:
+          - travis=true
       services:
       - postgresql
       install:
