@@ -85,10 +85,10 @@ DATABASES = {
     # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Django',
-        'USER': 'django',
-        'PASSWORD': 'django_password',
-        'HOST': 'localhost',
+        'NAME': 'kzedlyox',
+        'USER': 'kzedlyox',
+        'PASSWORD': '1e8_H6CaKNrbcCYUnac5YtsZMhSmDc_k',
+        'HOST': 'manny.db.elephantsql.com',
         'PORT': '5432',
     }
 }

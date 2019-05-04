@@ -46,5 +46,15 @@
             ],
             "django": true
         },
+        {
+            "name": "Python: Install Requirements",
+            "type": "python",
+            "request": "launch",
+            "module": "pip",
+            "args": [
+                "install", "-r", "requirements.txt"
+            ]
+        },
+
     ]
 }
