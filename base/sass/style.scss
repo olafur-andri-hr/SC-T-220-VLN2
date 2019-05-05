@@ -2,8 +2,46 @@
 
 header{
     font-weight: bold;
-	display: block;
-	background-color: red;
+    display: inline-block;
+    height: 100px;
+    display: flex;
+	#logodiv {
+        height: 100px;
+        display: inline-block;
+        //background-color: blue;
+        border-style: solid;
+        border-width: 0px 2px 0px 0px;
+    }
+    #name {
+        display: inline-block;
+    }
+    #imgdiv {
+        height: 100px;
+        width: 100px;
+        background-size: cover;
+        display: inline-block;
+        border: 2px;
+    }
+    #listingdiv {
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #selldiv {
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #aboutdiv {
+        display: flex;
+        width: 300px;
+        align-items: center;
+        justify-content: center;
+        border-style: solid;
+        border-width: 0px 2px 0px 0px;
+    }
 }
 
 footer {
