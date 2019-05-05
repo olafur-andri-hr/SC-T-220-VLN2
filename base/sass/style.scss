@@ -2,7 +2,8 @@
 
 header{
     font-weight: bold;
-    display: block;
+	display: block;
+	background-color: red;
 }
 
 footer {
@@ -11,7 +12,8 @@ footer {
     font-family: 'Roboto', sans-serif;
     overflow: hidden;
     border: 2px solid black;
-    position: relative;
+	position: relative;
+	height: 70px;
 
     #footer_left_triangle {
         position: absolute;
