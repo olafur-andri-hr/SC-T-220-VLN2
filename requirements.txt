@@ -3,7 +3,9 @@ gunicorn
 django-heroku
 psycopg2-binary
 dj-database-url
+Pillow
+
+# Development
 pydocstyle>=3
 pycodestyle>=2.5
-Pillow
 autopep8
