@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 # Create your tests here.
-from .models import Color, Vehicle, Car, Scooter
+# from .models import Color, Vehicle, Car, Scooter
 
 
 # class MyTest(TestCase):
