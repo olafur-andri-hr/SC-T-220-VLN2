@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 @import url('https://fonts.googleapis.com/css?family=Reem+Kufi:400');
 
+$light-purple: #673AB7;
+$main-purple: #5503A7;
+$dark-purple: #4A0292;
+
 header{
     font-weight: bold;
 	display: block;
@@ -22,14 +26,14 @@ footer {
         left: 0;
         width: 100%;
         height: 70%;
-        background-color: #673AB7;
+        background-color: $light-purple;
 	}
 	
 	#footer_oval {
 		position: relative;
 		display: block;
 		margin: 0.1rem auto;
-		background-color: #673AB7;
+		background-color: $light-purple;
 		width: 7rem;
 		height: 60%;
 		border-radius: 100%;
