@@ -6,6 +6,11 @@ from django_countries.fields import CountryField
 
 
 class PostalCode(models.Model):
-    zip_code = models.CharField("Zip code", max_length=50)
+    class Meta:
+        unique_together = (('zip_code', 'country'),)
+    zip_code = models.CharField(
+        "Zip code", max_length=50, primary_key=True,
+        validators=[MinLengthValidator(2)]
+    )
     country = CountryField()
     town = models.CharField(("Town"), max_length=50)
