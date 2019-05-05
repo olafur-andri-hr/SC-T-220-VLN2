@@ -19,5 +19,5 @@
             "savePath": "~/../static/css/"
         },
     ],
-    "python.pythonPath": "c:\\Users\\olafu\\OneDrive\\Documents\\skóli\\2019-1\\Verklegt2\\Lokaafurð\\repo\\SC-T-220-VLN2\\.venv\\Scripts\\python.exe",
+    "python.pythonPath": ".venv\\Scripts\\python.exe",
 }

@@ -94,7 +94,7 @@ DATABASES = {
     }
 }
 
-if 'travis' in sys.argv:
+if 'test' in sys.argv:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Django',
