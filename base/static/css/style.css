@@ -72,11 +72,16 @@ header #aboutdiv {
 footer {
   display: block;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow: hidden;
-  border: 2px solid black;
   position: relative;
-  height: 120px;
+  height: 7.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    height: 6rem;
+  }
 }
 
 footer #footer_square {
@@ -86,6 +91,13 @@ footer #footer_square {
   width: 100%;
   height: 70%;
   background-color: #673AB7;
+}
+
+@media screen and (max-width: 600px) {
+  footer #footer_square {
+    height: 100%;
+    background-color: #5503A7;
+  }
 }
 
 footer #footer_oval {
@@ -98,12 +110,24 @@ footer #footer_oval {
   border-radius: 100%;
 }
 
+@media screen and (max-width: 600px) {
+  footer #footer_oval {
+    display: none;
+  }
+}
+
 footer svg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  footer svg #footer_triangle_right {
+    display: none;
+  }
 }
 
 footer #footer_content {
@@ -113,7 +137,7 @@ footer #footer_content {
   height: 90%;
   width: 100%;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -125,9 +149,34 @@ footer #footer_content {
 }
 
 footer #footer_content p {
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 400;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.8rem;
+}
+
+footer #footer_content p img {
+  margin: 0 10px 0 0;
+  padding: 0;
+  height: 1.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  footer #footer_content p img {
+    height: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  footer #footer_content p {
+    font-size: 0.75rem;
+  }
 }
 
 footer #footer_content #footer_content_left {
@@ -177,7 +226,6 @@ footer #footer_logo {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: rgba(0, 0, 0, 0.1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -194,17 +242,23 @@ footer #footer_logo {
   padding-top: 5px;
 }
 
+@media screen and (max-width: 530px) {
+  footer #footer_logo {
+    display: none;
+  }
+}
+
 footer #footer_logo img {
   height: 70%;
 }
 
 footer #footer_logo h5 {
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: "Reem Kufi", sans-serif;
   margin: 0;
   font-size: 16px;
 }
 
 footer #footer_logo h5 span {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 /*# sourceMappingURL=style.css.map */

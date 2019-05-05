@@ -16,7 +16,7 @@
 <body>
     <header>
         <div id="logodiv">
-        <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %})'></div>
+        <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
             <h1 id="name">Castle<br>Apartments</h1>
         </div>
         <div id="listingdiv">
@@ -34,13 +34,17 @@
         <div id="footer_square"></div>
         <div id="footer_oval"></div>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-            <polygon points="0,0 100,100 0, 100" style="fill: #4A0292; fill-rule: evenodd;" />
-            <polygon points="0,100 100,0 100,100" style="fill: #5503A7; fill-rule: evenodd;" />
+            <polygon    id="footer_triangle_left"
+                        points="0,0 100,100 0, 100"
+                        style="fill: #4A0292; fill-rule: evenodd;" />
+            <polygon    id ="footer_triangle_right"
+                        points="0,100 100,0 100,100"
+                        style="fill: #5503A7; fill-rule: evenodd;" />
         </svg>
         <div id="footer_content">
             <div id="footer_content_left">
-                <p>PhoneNumber: +354 123 4567</p>
-                <p>Email: castle@apartments.com</p>
+                <p><img alt="Phone number" src="{% static 'icons/phone.svg' %}" /> +354 123 4567</p>
+                <p><img alt="Email" src="{% static 'icons/email.svg' %}" /> castle@apartments.com</p>
             </div>
             <div id="footer_content_right">
                 <p>Menntavegur 1</p>
