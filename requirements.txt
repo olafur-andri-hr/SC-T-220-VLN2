@@ -6,3 +6,4 @@ dj-database-url
 pydocstyle>=3
 pycodestyle>=2.5
 Pillow
+autopep8
