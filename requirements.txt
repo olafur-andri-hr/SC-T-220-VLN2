@@ -4,6 +4,7 @@ django-heroku
 psycopg2-binary
 dj-database-url
 Pillow
+django-countries
 
 # Development
 pydocstyle>=3
