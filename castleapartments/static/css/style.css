@@ -8,8 +8,6 @@ header p {
 }
 
 footer {
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 0;
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

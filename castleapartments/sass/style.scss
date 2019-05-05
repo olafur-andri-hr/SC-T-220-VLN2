@@ -1,12 +1,9 @@
 header{
-    background-color: red;
     font-weight: bold;
-    p {
-        background-color: purple;
-    }
+    display: block;
 }
 
 footer {
-    position: sticky;
-    bottom: 0;
+    display: block;
+    
 }
