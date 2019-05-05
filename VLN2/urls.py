@@ -23,6 +23,6 @@ admin.autodiscover()
 
 urlpatterns = [
     path('location/', include('location.urls')),
-    path('', include('first_app.urls')),
+    path('', include('castleapartments.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'first_app',
     'location',
+    'castleapartments'
 ]
 
 MIDDLEWARE = [
