@@ -14,7 +14,21 @@
 </head>
 
 <body>
-    <header><p>I have no idea if I'm doing this right</p></header>
+    <header>
+        <div id="logodiv">
+        <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %})'></div>
+            <h1 id="name">Castle<br>Apartments</h1>
+        </div>
+        <div id="listingdiv">
+            <p>All Listings</p>
+        </div>
+        <div id="selldiv">
+            <p>Sell an Apartment</p>
+        </div>
+        <div id="aboutdiv">
+            <p>About us</p>
+        </div>
+    </header>
     {% block content %}{% endblock %}
     <footer>
         <div id="footer_square"></div>
