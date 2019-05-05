@@ -2,16 +2,25 @@
 @import url("https://fonts.googleapis.com/css?family=Reem+Kufi:400");
 header {
   font-weight: bold;
-  display: inline-block;
   height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-style: solid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-width: 0px 0px 5px 0px;
 }
 
 header #logodiv {
   height: 100px;
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-style: solid;
   border-width: 0px 2px 0px 0px;
 }
@@ -65,8 +74,36 @@ header #aboutdiv {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+header #lockdiv {
+  height: 60px;
+  width: 60px;
+  background-size: cover;
+  display: inline-block;
+}
+
+header #centerheaddiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   border-style: solid;
   border-width: 0px 2px 0px 0px;
+}
+
+header #accountdiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 190px;
 }
 
 footer {

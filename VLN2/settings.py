@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'location',
-    'castleapartments'
+    'castleapartments',
+    'django_countries',
 ]
 
 MIDDLEWARE = [

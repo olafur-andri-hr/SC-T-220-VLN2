@@ -9,12 +9,16 @@ $text-font: 'Roboto', sans-serif;
 
 header{
     font-weight: bold;
-    display: inline-block;
     height: 100px;
     display: flex;
+    border-style: solid;
+    justify-content: center;
+    border-width: 0px 0px 5px 0px;
 	#logodiv {
         height: 100px;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        //background-color: blue;
         border-style: solid;
         border-width: 0px 2px 0px 0px;
     }
@@ -45,8 +49,24 @@ header{
         width: 300px;
         align-items: center;
         justify-content: center;
+    }
+    #lockdiv {
+        height: 60px;
+        width: 60px;
+        background-size: cover;
+        display: inline-block;
+    }
+    #centerheaddiv {
+        display: flex;
+        flex-wrap: nowrap;
         border-style: solid;
         border-width: 0px 2px 0px 0px;
+    }
+    #accountdiv {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 190px;
     }
 }
 
