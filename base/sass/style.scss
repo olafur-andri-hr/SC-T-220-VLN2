@@ -6,22 +6,28 @@ $main-purple: #5503A7;
 $dark-purple: #4A0292;
 
 header{
-    font-weight: bold;
     height: 100px;
+    font-family: "Reem Kufi", sans-serif;
     display: flex;
     border-style: solid;
     justify-content: center;
     border-width: 0px 0px 5px 0px;
+
 	#logodiv {
         height: 100px;
         display: flex;
         align-items: center;
         //background-color: blue;
-        border-style: solid;
-        border-width: 0px 2px 0px 0px;
     }
+
     #name {
         display: inline-block;
+    }
+    #border1 {
+        height: 80px;
+        width: 1px;
+        background-color:black;
+        margin-left: 10px;
     }
     #imgdiv {
         height: 100px;
@@ -30,18 +36,21 @@ header{
         display: inline-block;
         border: 2px;
     }
+
     #listingdiv {
         width: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     #selldiv {
         width: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     #aboutdiv {
         display: flex;
         width: 300px;
@@ -54,17 +63,20 @@ header{
         background-size: cover;
         display: inline-block;
     }
+
     #centerheaddiv {
         display: flex;
         flex-wrap: nowrap;
         border-style: solid;
         border-width: 0px 2px 0px 0px;
     }
+
     #accountdiv {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 190px;
+        padding-left: 10px;
     }
 }
 
