@@ -19,10 +19,24 @@
     <footer>
         <div id="footer_square"></div>
         <div id="footer_oval"></div>
-        <div id="footer_right_triangle"></div>
-        <div id="footer_left_triangle">
-            <p>PhoneNumber: +354 123 4567</p>
-            <p>Email: castle@apartments.com</p>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,0 100,100 0, 100" style="fill: #4A0292; fill-rule: evenodd;" />
+            <polygon points="0,100 100,0 100,100" style="fill: #5503A7; fill-rule: evenodd;" />
+        </svg>
+        <div id="footer_content">
+            <div id="footer_content_left">
+                <p>PhoneNumber: +354 123 4567</p>
+                <p>Email: castle@apartments.com</p>
+            </div>
+            <div id="footer_content_right">
+                <p>Menntavegur 1</p>
+                <p>101 Reykjavík</p>
+                <p>Iceland</p>
+            </div>
+        </div>
+        <div id="footer_logo">
+            <img src="{% static 'logo_filled.png' %}" alt="Company logo" />
+            <h5>Castle Apartments <span>&trade;</span></h5>
         </div>
     </footer>
 </body>
