@@ -19,4 +19,5 @@
             "savePath": "~/../static/css/"
         },
     ],
+    "python.pythonPath": ".venv\\Scripts\\python.exe",
 }
