@@ -90,7 +90,7 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(attrs={
             "placeholder": "Your Email"
         })
-    )    
+    )
     password = forms.CharField(
         label="Password:",
         max_length=100,
@@ -109,7 +109,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(attrs={
             "placeholder": "Your First name"
         })
-    )  
+    )
 
     last_name = forms.CharField(
         label="Last name:",
@@ -163,7 +163,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(attrs={
             "placeholder": "Your country"
         })
-    )  
+    )
 
     zip_code = forms.CharField(
         label="Zip code:",
@@ -209,4 +209,3 @@ class SignUpForm(forms.Form):
             "placeholder": "Your Phone Number"
         })
     )
-    
