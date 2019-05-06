@@ -1,14 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "castleapartments/css/style.min.css" %}" />
+{% endblock styles %}
 
 {% block title %}
-<title>Index page</title>
+    <title>Index page</title>
 {% endblock title %}
 
 {% block content %}
-    <form action="#" method="post">
-        {% csrf_token %}
-        <table>
-            {{ form }}
-        </table>
-    </form>
+    <main>
+        <div id="search_banner">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ form }}
+                </table>
+            </form>
+        </div>
+    </main>
 {% endblock content %}
