@@ -5,6 +5,10 @@
 {% endblock title %}
 
 {% block content %}
-    <main>Main</main>
-    <aside>Aside</aside>
+    <form action="#" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+    </form>
 {% endblock content %}
