@@ -1,4 +1,5 @@
 {% load static %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Reem+Kufi:400" />
-    <link rel="stylesheet" href="{% static "css/style.min.css" %}">
+    <link rel="stylesheet" href="{% sass_src "sass/style.scss" %}">
     {% block styles %}{% endblock %}
     {% block title %}{% endblock %}
 </head>
