@@ -11,12 +11,12 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "~/../static/css/"
+            "savePath": "~/../css/"
         },
         {
             "format": "compressed",
             "extensionName": ".min.css",
-            "savePath": "~/../static/css/"
+            "savePath": "~/../css/"
         },
     ],
     "python.pythonPath": ".venv\\Scripts\\python.exe",
