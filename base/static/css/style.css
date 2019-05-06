@@ -138,8 +138,18 @@ header #accountdiv {
   text-align: right;
 }
 
-header #notlogged {
-  margin-top: 10px;
+header #loggeddiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header #loggeddiv #notlogged {
+  margin: 0;
+  padding: 0;
 }
 
 footer {

@@ -104,8 +104,15 @@ header{
 		text-align: right;
     }
 
-    #notlogged {
-        margin-top: 10px;
+    #loggeddiv {
+		// margin-top: 10px;
+		display: flex;
+		align-items: center;
+
+		#notlogged {
+			margin: 0;
+			padding: 0;
+		}
     }
 }
 
