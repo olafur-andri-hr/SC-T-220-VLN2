@@ -27,7 +27,26 @@ def sell(request):
 
 
 def signup(request):
+    signup = SignUpForm()
+    signup_left = [
+        signup.cleaned_data[first_name],
+        signup.last_name,
+        signup.ssn,
+        signup.dob,
+        signup.email,
+        signup.phone,
+        signup.password
+    ]
+    signup_right = [
+        signup.country,
+        signup.zip_code,
+        signup.town,
+        signup.address,
+        signup.aptN
+    ]
     context = {
-        "form": SignUpForm()
+        "form": SignUpForm(),
+        "form_left": signup_left,
+        "form-right": signup_right
     }
     return render(request, 'castleapartments/signup.html', context)

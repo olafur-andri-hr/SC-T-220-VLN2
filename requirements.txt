@@ -16,9 +16,9 @@ psycopg2==2.8.2
 psycopg2-binary==2.8.2
 pycodestyle==2.5.0
 pydocstyle==3.0.0
+rcssmin==1.0.6 --install-option="--without-c-extensions"
+rjsmin==1.0.12 --install-option="--without-c-extensions"
 pytz==2019.1
-rcssmin==1.0.6
-rjsmin==1.0.12
 six==1.12.0
 snowballstemmer==1.2.1
 sqlparse==0.3.0
