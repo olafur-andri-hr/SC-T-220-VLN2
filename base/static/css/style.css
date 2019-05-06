@@ -1,13 +1,13 @@
 header {
   width: 100%;
-  height: 100px;
+  height: 70px;
   font-family: "Reem Kufi", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: #212121;
-  -webkit-box-shadow: 0px 0px 6px #363434;
-          box-shadow: 0px 0px 6px #363434;
+  -webkit-box-shadow: 6px 0px 6px #363434;
+          box-shadow: 6px 0px 6px #363434;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -25,33 +25,28 @@ header #logodiv {
 }
 
 header #name {
-  display: inline-block;
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
 }
 
 header #border1 {
-  height: 80px;
+  height: 60px;
   width: 1px;
   background-color: #212121;
 }
 
 header #imgdiv {
-  height: 100px;
-  width: 100px;
+  height: 5rem;
+  width: 5rem;
+  margin-bottom: 15px;
   background-size: cover;
-  display: inline-block;
-  border: 2px;
 }
 
 header #listingdiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -59,20 +54,20 @@ header #listingdiv {
 
 header #listings {
   border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-top: 25px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
 
 header #sell {
   border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-top: 25px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
 
 header #about {
   border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-top: 25px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
 
 header #selldiv {
@@ -103,7 +98,6 @@ header #lockdiv {
   height: 60px;
   width: 60px;
   background-size: cover;
-  display: inline-block;
   margin-right: 10px;
 }
 
@@ -111,6 +105,9 @@ header #centerheaddiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -122,20 +119,21 @@ header #centerheaddiv {
 header #border2 {
   background-color: #212121;
   width: 1px;
-  height: 80px;
+  height: 60px;
 }
 
 header #accountdiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 220px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-left: 10px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-align: right;
 }
 
 header #notlogged {
