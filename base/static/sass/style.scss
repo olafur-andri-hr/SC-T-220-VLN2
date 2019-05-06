@@ -59,20 +59,22 @@ header{
         background-size: cover;
     }
 
-    #listingdiv {
+    .linkdiv {
         display: flex;
 		align-items: center;
-		transition: background-color 1s ease;
-    }
+		transition: background-color 0.5s ease;
+		border-radius: 5px;
+	}
+	
+	.linkdiv:hover {
+		background: rgba(85, 3, 167, 0.1);
+
+	}
 
     #listings {
         border-bottom: solid 1px;
         padding-bottom: 7px;
 		margin-top: 7px;
-	}
-	
-	#listingdiv:hover {
-		background: rgba(85, 3, 167, 0.1);
 	}
 
     #sell {
