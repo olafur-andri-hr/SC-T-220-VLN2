@@ -4,6 +4,11 @@ $dark-purple: #4A0292;
 $heading-font: 'Reem Kufi', sans-serif;
 $text-font: 'Roboto', sans-serif;
 $black: #212121;
+$text-light: #EFEFEF;
+
+.light-text {
+	color: $text-light;
+}
 
 header{
     width: 100%;
@@ -143,7 +148,7 @@ header{
 
 footer {
 	display: block;
-    color: #FFFFFF;
+    color: $text-light;
     font-family: $text-font;
     overflow: hidden;
 	position: relative;
@@ -201,7 +206,7 @@ footer {
 		left: 0;
 		height: 90%;
 		width: 100%;
-		color: #FFFFFF;
+		color: $text-light;
 		font-family: $text-font;
 		display: flex;
 		flex-direction: row;
@@ -223,6 +228,10 @@ footer {
 				@media screen and (max-width: 800px) {
 					height: 1.3rem;
 				}
+			}
+
+			a {
+				color: $text-light;
 			}
 
 			@media screen and (max-width: 800px) {
