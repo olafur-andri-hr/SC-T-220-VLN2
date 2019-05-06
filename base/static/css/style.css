@@ -163,14 +163,16 @@ header #loggeddiv #notlogged {
   padding: 0;
 }
 
+header #hamburger {
+  background-color: red;
+  display: block;
+}
+
 @media screen and (max-width: 700px) {
-  header #listings {
+  header #centerheaddiv {
     display: none;
   }
-  header #sells {
-    display: none;
-  }
-  header #about {
+  header #accountdiv {
     display: none;
   }
 }
