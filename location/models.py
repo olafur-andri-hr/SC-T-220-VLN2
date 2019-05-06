@@ -9,7 +9,7 @@ class PostalCode(models.Model):
     class Meta:
         unique_together = (('zip_code', 'country'),)
     zip_code = models.CharField(
-        "Zip code", max_length=50, primary_key=True,
+        "Postal code", max_length=50, primary_key=True,
         validators=[MinLengthValidator(2)]
     )
     country = CountryField()
