@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
 @import url("https://fonts.googleapis.com/css?family=Reem+Kufi:400");
 header {
-  font-weight: bold;
   height: 100px;
+  font-family: "Reem Kufi", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,12 +21,17 @@ header #logodiv {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-style: solid;
-  border-width: 0px 2px 0px 0px;
 }
 
 header #name {
   display: inline-block;
+}
+
+header #border1 {
+  height: 80px;
+  width: 1px;
+  background-color: black;
+  margin-left: 10px;
 }
 
 header #imgdiv {
@@ -104,6 +109,7 @@ header #accountdiv {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 190px;
+  padding-left: 10px;
 }
 
 footer {
