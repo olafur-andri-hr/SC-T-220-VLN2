@@ -15,11 +15,13 @@ footer{
     align-items: center;
 
     #about_text {
+        height: 300px;
         flex: 1;
         display: inline-block;
         position: relative;
         justify-content: center;
         align-items: center;
+        font-size: 20px;
     }
 
     #about_image {
