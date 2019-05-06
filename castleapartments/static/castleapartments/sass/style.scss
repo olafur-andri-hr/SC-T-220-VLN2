@@ -1,3 +1,5 @@
+
+
 $light-purple: #673AB7;
 $main-purple: #5503A7;
 $dark-purple: #4A0292;
@@ -5,8 +7,29 @@ $heading-font: 'Reem Kufi', sans-serif;
 $text-font: 'Roboto', sans-serif;
 
 #search_banner {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #673AB7;
+    color: #FFFFFF;
+    font-family: $text-font;
+
+    table {
+        position: relative;
+    }
+
+    label {
+        font-weight: 400;
+        text-align: right;
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
 }
