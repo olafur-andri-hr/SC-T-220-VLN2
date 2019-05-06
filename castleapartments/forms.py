@@ -98,7 +98,7 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(forms.Form):
-    firstName = forms.CharField(
+    first_name = forms.CharField(
         label="First name:",
         max_length=100,
         required=True,
@@ -107,7 +107,7 @@ class SignUpForm(forms.Form):
         })
     )  
 
-    lastName = forms.CharField(
+    last_name = forms.CharField(
         label="Last name:",
         max_length=100,
         required=True,
@@ -152,4 +152,57 @@ class SignUpForm(forms.Form):
         })
     )
 
+    country = forms.CharField(
+        label="Country:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your country"
+        })
+    )  
+
+    zip_code = forms.CharField(
+        label="Zip code:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your ZipCode"
+        })
+    )
+
+    town = forms.CharField(
+        label="Town:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Town"
+        })
+    )
+
+    address = forms.CharField(
+        label="Address:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Address"
+        })
+    )
+
+    aptN = forms.CharField(
+        label="Apt. Number:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Apt. Number"
+        })
+    )
+
+    phone = forms.CharField(
+        label="Phone:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Phone Number"
+        })
+    )
     
