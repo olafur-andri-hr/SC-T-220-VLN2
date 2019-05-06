@@ -4,6 +4,11 @@ $dark-purple: #4A0292;
 $heading-font: 'Reem Kufi', sans-serif;
 $text-font: 'Roboto', sans-serif;
 $black: #212121;
+$text-light: #EFEFEF;
+
+.light-text {
+	color: $text-light;
+}
 
 header{
     width: 100%;
@@ -11,7 +16,7 @@ header{
     font-family: "Reem Kufi", sans-serif;
     display: flex;
     color: $black;
-    box-shadow: 6px 0px 6px #363434;
+	box-shadow: 6px 0px 6px #363434;
 	justify-content: space-between;
 	position: relative;
 	z-index: 10;
@@ -109,7 +114,7 @@ header{
 
     #accountdiv {
 		display: flex;
-		width: 220px;
+		width: 210px;
         align-items: center;
 		justify-content: space-evenly;
 		text-align: right;
@@ -127,8 +132,7 @@ header{
 	}
 
 	#hamburger {
-		background-color: red;
-		display: block;
+		display: none;
 	}
 	@media screen and (max-width: 700px) {
 		#centerheaddiv {
@@ -138,12 +142,23 @@ header{
 		#accountdiv {
 			display: none;
 		}
+		#hamburger {
+			width: 2rem;
+			height: 2rem;
+			z-index: 11;
+			display: flex;
+			color: $main-purple;
+			background-size: cover;
+			flex-wrap: wrap;
+			margin-top: 1rem;
+			margin-right: 2rem;
+		}
 	}
 }
 
 footer {
 	display: block;
-    color: #FFFFFF;
+    color: $text-light;
     font-family: $text-font;
     overflow: hidden;
 	position: relative;
@@ -201,7 +216,7 @@ footer {
 		left: 0;
 		height: 90%;
 		width: 100%;
-		color: #FFFFFF;
+		color: $text-light;
 		font-family: $text-font;
 		display: flex;
 		flex-direction: row;
@@ -223,6 +238,10 @@ footer {
 				@media screen and (max-width: 800px) {
 					height: 1.3rem;
 				}
+			}
+
+			a {
+				color: $text-light;
 			}
 
 			@media screen and (max-width: 800px) {
