@@ -1,5 +1,7 @@
 #search_banner {
   padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   position: relative;
   width: 100%;
   background-color: #673AB7;

@@ -12,7 +12,6 @@
             "args": [
                 "runserver",
                 "--noreload",
-                "--nothreading"
             ],
             "django": true
         },
@@ -55,6 +54,17 @@
                 "install", "-r", "requirements.txt"
             ]
         },
+        {
+            "name": "Django collectstatic",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "collectstatic",
+            ],
+            "django": true
+        },
+
 
     ]
 }
