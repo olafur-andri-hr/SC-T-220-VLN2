@@ -19,7 +19,9 @@
 <body>
     <header>
         <div id="logodiv">
+        <a href="/">
         <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
+        </a>
             <h1 id="name">Castle<br>Apartments</h1>
         </div>
     <div id="centerheaddiv">
@@ -31,7 +33,7 @@
             <a href="base.html" id="sell">Sell an Apartment</a>
         </div>
         <div id="aboutdiv">
-            <a href="about" id="about">About us</a>
+            <a href="{% url 'about' %}" id="about">About us</a>
         </div>
         <div id="border2"></div>
     </div>
