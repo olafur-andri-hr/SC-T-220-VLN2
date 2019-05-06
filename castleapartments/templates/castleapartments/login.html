@@ -7,7 +7,7 @@
 {% endblock styles %}
 
 {% block title %}
-    <title> Sell </title>
+    <title> Login </title>
 {% endblock title %}
 
 {% block content %}
@@ -25,15 +25,12 @@
             </svg>
 
             <div id="search_banner_content">
-                <h1>Buy and sell properties. Online.</h1>
-                <h5>
-                    Use the form below to search for your dreamhouse or
-                    <a href="#">sell an apartment</a> now!
-                </h5>
+                <h1>Enter your credentials.</h1>
+        
                 <form action="#" method="post">
                     {% csrf_token %}
                     <table>
-                        
+                        {{ form }}
                     </table>
                 </form>
             </div>

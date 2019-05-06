@@ -76,3 +76,80 @@ class SearchForm(forms.Form):
             "class": ""
         })
     )
+
+
+class LoginForm(forms.Form):
+    email = forms.CharField(
+        label="Email:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Email"
+        })
+    )    
+    password = forms.CharField(
+        label="Password:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Password"
+        })
+    )
+
+
+class SignUpForm(forms.Form):
+    firstName = forms.CharField(
+        label="First name:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your First name"
+        })
+    )  
+
+    lastName = forms.CharField(
+        label="Last name:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Last name"
+        })
+    )
+
+    ssn = forms.CharField(
+        label="SSN:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your SSN"
+        })
+    )
+
+    dob = forms.CharField(
+        label="Date of Birth:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Date of birth"
+        })
+    )
+
+    email = forms.CharField(
+        label="Email:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Email"
+        })
+    )
+
+    password = forms.CharField(
+        label="Password:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Password"
+        })
+    )
+
+    

@@ -21,16 +21,16 @@
         <div id="logodiv">
         <a href="/">
         <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
-        </a>
             <h1 id="name">Castle<br>Apartments</h1>
         </div>
+        </a>
     <div id="centerheaddiv">
         <div id="border1"></div>
         <div id="listingdiv">
-            <a href="base.html" id="listings">All Listings</a>
+            <a href="/" id="listings">All Listings</a>
         </div>
         <div id="selldiv">
-            <a href="base.html" id="sell">Sell an Apartment</a>
+            <a href="{% url 'sell' %}" id="sell">Sell an Apartment</a>
         </div>
         <div id="aboutdiv">
             <a href="{% url 'about' %}" id="about">About us</a>
@@ -41,8 +41,9 @@
         <div id="loggeddiv">
         <p id="notlogged">Not logged in</p>
         </div>
-        <div id="lockdiv" style='background-image: url({% static "lock.svg" %})'></div>
+        <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'></div>
     </div>
+    <div id="hamburger" onclick="myFunction(this)" style='background-image: url({% static "icons/hamburger.svg" %});'></div>
     </header>
     {% block content %}{% endblock %}
     <footer>
@@ -56,17 +57,30 @@
                         points="0,100 100,0 100,100"
                         style="fill: #5503A7; fill-rule: evenodd;" />
         </svg>
+        <div id="footer_logo">
+                <img src="{% static 'logo_filled.png' %}" alt="CA logo" />
+                <h5>Castle Apartments <span>&trade;</span></h5>
+        </div>    
         <div id="footer_content">
             <div id="footer_content_left">
-                <p><img alt="Phone number" src="{% static 'icons/phone.svg' %}" /> +354 123 4567</p>
-                <p><img alt="Email" src="{% static 'icons/email.svg' %}" /> castle@apartments.com</p>
+                <p>
+                    <img alt="Phone number" src="{% static 'icons/phone.svg' %}" />
+                    <a class="tel" href="tel:+3541234567">+354 123 4567</a>
+                </p>
+                <p>
+                    <img alt="Email" src="{% static 'icons/email.svg' %}" />
+                    <a href="mailto:castle@apartments.com">castle@apartments.com</a>
+                </p>
             </div>
             <div id="footer_content_right">
-                <p>Menntavegur 1</p>
-                <p>101 Reykjavík</p>
-                <p>Iceland</p>
+                <p>
+                    Menntavegur 1<br>
+                    101 Reykjavík<br>
+                    Iceland
+                </p>
             </div>
         </div>
+        
         <div id="footer_logo">
             <img src="{% static 'logo_filled.png' %}" alt="Company logo" />
             <h5>Castle Apartments <span>&trade;</span></h5>

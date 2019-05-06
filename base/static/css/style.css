@@ -1,6 +1,10 @@
+.light-text {
+  color: #EFEFEF;
+}
+
 header {
   width: 100%;
-  height: 70px;
+  height: 4rem;
   font-family: "Reem Kufi", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18,11 +22,14 @@ header {
 
 header a:hover {
   text-decoration: none;
-  color: hotpink;
+  color: #212121;
 }
 
 header a {
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   color: #212121;
   z-index: 10;
 }
@@ -36,6 +43,8 @@ header #logodiv {
       -ms-flex-align: center;
           align-items: center;
   color: #212121;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 header #name {
@@ -45,7 +54,7 @@ header #name {
 }
 
 header #border1 {
-  height: 60px;
+  height: 50px;
   width: 1px;
   background-color: #212121;
 }
@@ -64,12 +73,18 @@ header #listingdiv {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: background-color 1s ease;
+  transition: background-color 1s ease;
 }
 
 header #listings {
   border-bottom: solid 1px;
   padding-bottom: 7px;
   margin-top: 7px;
+}
+
+header #listingdiv:hover {
+  background: rgba(85, 3, 167, 0.1);
 }
 
 header #sell {
@@ -133,14 +148,14 @@ header #centerheaddiv {
 header #border2 {
   background-color: #212121;
   width: 1px;
-  height: 60px;
+  height: 50px;
 }
 
 header #accountdiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 220px;
+  width: 210px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -164,9 +179,36 @@ header #loggeddiv #notlogged {
   padding: 0;
 }
 
+header #hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  header #centerheaddiv {
+    display: none;
+  }
+  header #accountdiv {
+    display: none;
+  }
+  header #hamburger {
+    width: 2rem;
+    height: 2rem;
+    z-index: 11;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #5503A7;
+    background-size: cover;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-top: 1rem;
+    margin-right: 2rem;
+  }
+}
+
 footer {
   display: block;
-  color: #FFFFFF;
+  color: #EFEFEF;
   font-family: "Roboto", sans-serif;
   overflow: hidden;
   position: relative;
@@ -231,7 +273,7 @@ footer #footer_content {
   left: 0;
   height: 90%;
   width: 100%;
-  color: #FFFFFF;
+  color: #EFEFEF;
   font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -266,6 +308,10 @@ footer #footer_content p img {
   footer #footer_content p img {
     height: 1.3rem;
   }
+}
+
+footer #footer_content p a {
+  color: #EFEFEF;
 }
 
 @media screen and (max-width: 800px) {
