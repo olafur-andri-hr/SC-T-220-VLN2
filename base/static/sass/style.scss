@@ -12,7 +12,9 @@ header{
     display: flex;
     color: $black;
     box-shadow: 6px 0px 6px #363434;
-    justify-content: space-between;
+	justify-content: space-between;
+	position: relative;
+	z-index: 10;
 
 	#logodiv {
         height: 100px;
