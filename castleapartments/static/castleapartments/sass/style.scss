@@ -60,7 +60,9 @@ $text-font: 'Roboto', sans-serif;
         }
 
         li.inline-second label {
-            display: none;
+            display: inline;
+            margin: 0;
+            padding: 0;
         }
 
         li.inline-first input, li.inline-second input {
@@ -71,7 +73,7 @@ $text-font: 'Roboto', sans-serif;
             font-weight: 400;
             text-align: right;
             font-size: 1.2rem;
-            width: 10rem;
+            width: 5.2rem;
             font-family: $heading-font;
             margin-right: 2rem;
             // background-color: rgba(0, 0, 0, 0.3);
