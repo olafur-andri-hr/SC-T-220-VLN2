@@ -22,13 +22,13 @@
         <div id="logodiv">
         <a href="/">
         <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
-        </a>
             <h1 id="name">Castle<br>Apartments</h1>
         </div>
+        </a>
     <div id="centerheaddiv">
         <div id="border1"></div>
         <div id="listingdiv">
-            <a href="base.html" id="listings">All Listings</a>
+            <a href="/" id="listings">All Listings</a>
         </div>
         <div id="selldiv">
             <a href="{% url 'sell' %}" id="sell">Sell an Apartment</a>
@@ -42,13 +42,9 @@
         <div id="loggeddiv">
         <p id="notlogged">Not logged in</p>
         </div>
-        <div id="lockdiv" style='background-image: url({% static "lock.svg" %})'></div>
+        <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'></div>
     </div>
-    <div id="hamburger" onclick="myFunction(this)">
-            <div id="bar1"></div>
-            <div id="bar2"></div>
-            <div id="bar3"></div>
-    </div>
+    <div id="hamburger" onclick="myFunction(this)" style='background-image: url({% static "icons/hamburger.svg" %});'></div>
     </header>
     {% block content %}{% endblock %}
     <footer>
@@ -84,6 +80,11 @@
                     Iceland
                 </p>
             </div>
+        </div>
+        
+        <div id="footer_logo">
+            <img src="{% static 'logo_filled.png' %}" alt="Company logo" />
+            <h5>Castle Apartments <span>&trade;</span></h5>
         </div>
     </footer>
 </body>

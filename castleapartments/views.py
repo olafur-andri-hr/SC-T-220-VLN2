@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from castleapartments.forms import SearchForm
+from castleapartments.forms import LoginForm
+from castleapartments.forms import SignUpForm
 
 
 def index(request):
@@ -14,7 +16,10 @@ def about(request):
 
 
 def login(request):
-    return render(request, 'castleapartments/login.html')
+    context = {
+        "form": LoginForm()
+    }
+    return render(request, 'castleapartments/login.html', context)
 
 
 def sell(request):
@@ -22,4 +27,7 @@ def sell(request):
 
 
 def signup(request):
-    return render(request, 'castleapartments/signup.html')
+    context = {
+        "form": SignUpForm()
+    }
+    return render(request, 'castleapartments/signup.html', context)

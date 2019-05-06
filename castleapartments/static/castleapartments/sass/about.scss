@@ -21,6 +21,8 @@ footer{
     @media screen and (max-width: 800px) {
         position: relative;
         flex-direction: column;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     #about_text {

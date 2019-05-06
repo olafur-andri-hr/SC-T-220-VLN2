@@ -7,7 +7,8 @@ class SearchForm(forms.Form):
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
-            "placeholder": "The property's address"
+            "placeholder": "The property's address",
+            "class": ""
         })
     )
     zip_code = forms.CharField(
@@ -15,7 +16,8 @@ class SearchForm(forms.Form):
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
-            "placeholder": "The property's zip code"
+            "placeholder": "The property's zip code",
+            "class": ""
         })
     )
     country = forms.ChoiceField(
@@ -23,7 +25,8 @@ class SearchForm(forms.Form):
         required=False,
         choices=['Insert Django country dropdown here'],
         widget=forms.TextInput(attrs={
-            "placeholder": "Select property's country"
+            "placeholder": "Select property's country",
+            "class": ""
         })
     )
     town = forms.CharField(
@@ -31,17 +34,24 @@ class SearchForm(forms.Form):
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
-            "placeholder": "The property's town"
+            "placeholder": "The property's town",
+            "class": ""
         })
     )
-    rooms = forms.IntegerField(
-        label="Num. of rooms:",
+    min_rooms = forms.IntegerField(
+        label="Rooms (min, max):",
         required=False,
         widget=forms.NumberInput(attrs={
-            "type": "range",
-            "min": "1",
-            "max": "20",
-            "step": "1"
+            "placeholder": "Min rooms",
+            "class": "inline-first"
+        })
+    )
+    max_rooms = forms.IntegerField(
+        required=False,
+        label="",
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Max rooms",
+            "class": "inline-second"
         })
     )
     price = forms.IntegerField(
@@ -51,7 +61,8 @@ class SearchForm(forms.Form):
             "type": "range",
             "min": "1000000",
             "max": "100000000",
-            "step": "1"
+            "step": "1",
+            "class": ""
         })
     )
     size = forms.IntegerField(
@@ -61,6 +72,84 @@ class SearchForm(forms.Form):
             "type": "range",
             "min": "20",
             "max": "1000",
-            "step": "1"
+            "step": "1",
+            "class": ""
         })
     )
+
+
+class LoginForm(forms.Form):
+    email = forms.CharField(
+        label="Email:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Email"
+        })
+    )    
+    password = forms.CharField(
+        label="Password:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Password"
+        })
+    )
+
+
+class SignUpForm(forms.Form):
+    firstName = forms.CharField(
+        label="First name:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your First name"
+        })
+    )  
+
+    lastName = forms.CharField(
+        label="Last name:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Last name"
+        })
+    )
+
+    ssn = forms.CharField(
+        label="SSN:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your SSN"
+        })
+    )
+
+    dob = forms.CharField(
+        label="Date of Birth:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Date of birth"
+        })
+    )
+
+    email = forms.CharField(
+        label="Email:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Email"
+        })
+    )
+
+    password = forms.CharField(
+        label="Password:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Password"
+        })
+    )
+
+    
