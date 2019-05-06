@@ -10,11 +10,11 @@ $black: #212121;
 
 header{
     width: 100%;
-    height: 80px;
+    height: 70px;
     font-family: "Reem Kufi", sans-serif;
     display: flex;
     color: $black;
-    box-shadow: 4px 0px 6px #363434;
+    box-shadow: 6px 0px 6px #363434;
     justify-content: space-between;
 
 	#logodiv {
@@ -27,6 +27,7 @@ header{
 
     #name {
 		margin-right: 5px;
+		margin-bottom: 30px;
 		font-size: 1.5rem;
     }
     #border1 {
@@ -36,7 +37,8 @@ header{
     }
     #imgdiv {
         height: 5rem;
-        width: 5rem;
+		width: 5rem;
+		margin-bottom: 15px;
         background-size: cover;
     }
 
@@ -47,20 +49,20 @@ header{
 
     #listings {
         border-bottom: solid 1px;
-        padding-bottom: 15px;
-        margin-top: 25px;
+        padding-bottom: 10px;
+        margin-top: 20px;
     }
 
     #sell {
         border-bottom: solid 1px;
-        padding-bottom: 15px;
-        margin-top: 25px;
+        padding-bottom: 10px;
+        margin-top: 20px;
     }
 
     #about {
         border-bottom: solid 1px;
-        padding-bottom: 15px;
-        margin-top: 25px;
+        padding-bottom: 10px;
+        margin-top: 20px;
     }
 
     #selldiv {
