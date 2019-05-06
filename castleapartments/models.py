@@ -12,6 +12,4 @@ class UserInfo(models.Model):
     postal_code = models.ForeignKey(
         PostalCode, verbose_name=("Postal Code"), on_delete=models.CASCADE
     )
-    SSN = models.CharField(
-        ("SSN"), max_length=15, validators=[SSNValidator(postal_code.country)]
-    )
+    SSN = models.CharField(("SSN"), max_length=15)
