@@ -13,6 +13,7 @@ $text-font: 'Roboto', sans-serif;
     background-color: #673AB7;
     color: #FFFFFF;
     font-family: $text-font;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
     #search_banner_background {
         position: absolute;
@@ -46,9 +47,124 @@ $text-font: 'Roboto', sans-serif;
             color: #FFFFFF;
         }
 
+        ul {
+            margin-top: 2rem;
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        li.inline-first, li.inline-second {
+            display: inline;
+            margin: 0;
+        }
+
+        li.inline-second label {
+            display: none;
+        }
+
+        li.inline-first input, li.inline-second input {
+            width: 7rem;
+        }
+
         label {
             font-weight: 400;
             text-align: right;
+            font-size: 1.2rem;
+            width: 10rem;
+            font-family: $heading-font;
+            margin-right: 2rem;
+            // background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        input {
+            width: 20rem;
+            padding-left: 10px;
+        }
+
+        input::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 0.9rem;
+            font-family: $text-font;
+            font-weight: 400;
+        }
+
+        input[type="text"], input[type="number"] {
+            border: none;
+            border-radius: 0.1rem;
+            color: #212121;
+            font-family: $text-font;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="range"] {
+            appearance: none;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        // RANGE TRACK
+        input[type="range"]::-ms-track {
+            width: 100%;
+            cursor: pointer;
+            background: transparent; 
+            border-color: transparent;
+            color: transparent;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 0.2rem;
+            border-radius: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-track {
+            height: 0.2rem;
+            border-radius: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+        }
+
+        input[type="range"]::-ms-track {
+            height: 0.2rem;
+            border-radius: 1rem;
+            width: 100%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+        }
+        
+        // RANGE THUMB
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            border-radius: 50%;
+            background-color: $light-purple;
+            border: 0.15rem solid #FFFFFF;
+            height: 1.5rem;
+            width: 1.5rem;
+            margin-top: -0.7rem;
+            cursor: pointer;
+            transition: background-color 200ms ease;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+            outline: hidden;
         }
     }
+}
+
+#background_image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    filter: blur(0.5rem);
 }

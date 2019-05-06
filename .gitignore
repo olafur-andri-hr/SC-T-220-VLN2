@@ -118,3 +118,7 @@ node_modules
 
 # Django staticfiles
 staticfiles
+
+# CSS Files
+*.css
+*.css.map
