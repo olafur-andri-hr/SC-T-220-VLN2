@@ -66,25 +66,26 @@ header #imgdiv {
   background-size: cover;
 }
 
-header #listingdiv {
+header .linkdiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: background-color 1s ease;
-  transition: background-color 1s ease;
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  border-radius: 5px;
+}
+
+header .linkdiv:hover {
+  background: rgba(85, 3, 167, 0.1);
 }
 
 header #listings {
   border-bottom: solid 1px;
   padding-bottom: 7px;
   margin-top: 7px;
-}
-
-header #listingdiv:hover {
-  background: rgba(85, 3, 167, 0.1);
 }
 
 header #sell {
