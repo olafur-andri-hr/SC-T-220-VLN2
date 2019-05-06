@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_countries',
     'phonenumber_field',
+    'sass_processor',
     'location',
     'castleapartments',
 ]
@@ -143,5 +144,17 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "base/static"),
 ]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PROCESSOR_ROOT = STATIC_ROOT
+
+SASS_PRECISION = 8
+
+SASS_OUTPUT_STYLE = 'compressed'
 
 django_heroku.settings(locals())

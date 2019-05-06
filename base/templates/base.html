@@ -1,4 +1,5 @@
 {% load static %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Reem+Kufi:400" />
-    <link rel="stylesheet" href="{% static "css/style.min.css" %}">
+    <link rel="stylesheet" href="{% sass_src "sass/style.scss" %}">
     {% block styles %}{% endblock %}
     {% block title %}{% endblock %}
 </head>
@@ -21,18 +22,18 @@
         <div id="logodiv">
         <a href="/">
         <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
-        </a>
             <h1 id="name">Castle<br>Apartments</h1>
         </div>
+        </a>
     <div id="centerheaddiv">
         <div id="border1"></div>
-        <div id="listingdiv">
-            <a href="base.html" id="listings">All Listings</a>
+        <div id="listingdiv" class="linkdiv">
+            <a href="/" id="listings">All Listings</a>
         </div>
-        <div id="selldiv">
+        <div id="selldiv" class="linkdiv">
             <a href="{% url 'sell' %}" id="sell">Sell an Apartment</a>
         </div>
-        <div id="aboutdiv">
+        <div id="aboutdiv" class="linkdiv">
             <a href="{% url 'about' %}" id="about">About us</a>
         </div>
         <div id="border2"></div>
@@ -79,11 +80,6 @@
                     Iceland
                 </p>
             </div>
-        </div>
-        
-        <div id="footer_logo">
-            <img src="{% static 'logo_filled.png' %}" alt="Company logo" />
-            <h5>Castle Apartments <span>&trade;</span></h5>
         </div>
     </footer>
 </body>

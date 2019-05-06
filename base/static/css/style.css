@@ -17,15 +17,19 @@ header {
           justify-content: space-between;
   position: relative;
   z-index: 10;
+  background-color: #FFFFFF;
 }
 
 header a:hover {
   text-decoration: none;
-  color: hotpink;
+  color: #212121;
 }
 
 header a {
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   color: #212121;
   z-index: 10;
 }
@@ -39,6 +43,8 @@ header #logodiv {
       -ms-flex-align: center;
           align-items: center;
   color: #212121;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 header #name {
@@ -60,13 +66,20 @@ header #imgdiv {
   background-size: cover;
 }
 
-header #listingdiv {
+header .linkdiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  border-radius: 5px;
+}
+
+header .linkdiv:hover {
+  background: rgba(85, 3, 167, 0.1);
 }
 
 header #listings {
