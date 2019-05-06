@@ -21,11 +21,14 @@ header {
 
 header a:hover {
   text-decoration: none;
-  color: hotpink;
+  color: #212121;
 }
 
 header a {
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   color: #212121;
   z-index: 10;
 }
@@ -39,6 +42,8 @@ header #logodiv {
       -ms-flex-align: center;
           align-items: center;
   color: #212121;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 header #name {
@@ -67,12 +72,18 @@ header #listingdiv {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: background-color 1s ease;
+  transition: background-color 1s ease;
 }
 
 header #listings {
   border-bottom: solid 1px;
   padding-bottom: 7px;
   margin-top: 7px;
+}
+
+header #listingdiv:hover {
+  background: rgba(85, 3, 167, 0.1);
 }
 
 header #sell {

@@ -23,11 +23,12 @@ header{
 
 	a:hover {
 		text-decoration: none;
-		color: hotpink;
+		color: $black;
 	}
 
 	a {
 		text-decoration: none;
+		display: flex;
 		color: $black;
 		z-index: 10;
 	}
@@ -36,7 +37,8 @@ header{
         height: 100px;
         display: flex;
         align-items: center;
-        color: $black;
+		color: $black;
+		flex-wrap: nowrap;
         //background-color: blue;
     }
 
@@ -60,13 +62,18 @@ header{
     #listingdiv {
         display: flex;
 		align-items: center;
+		transition: background-color 1s ease;
     }
 
     #listings {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
-    }
+		margin-top: 7px;
+	}
+	
+	#listingdiv:hover {
+		background: rgba(85, 3, 167, 0.1);
+	}
 
     #sell {
         border-bottom: solid 1px;
