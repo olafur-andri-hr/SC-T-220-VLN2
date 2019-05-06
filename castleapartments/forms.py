@@ -1,7 +1,9 @@
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.forms import ModelForm, DateInput, Textarea
 
-from .models import UserInfo
+from .models import UserInfo, User
+from location.models import PostalCode
 
 
 class SearchForm(forms.Form):
@@ -103,92 +105,102 @@ class LoginForm(forms.Form):
     )
 
 
-class SignUpForm(forms.Form):
+class PostalCodeForm(ModelForm):
     class Meta:
-        model = UserInfo
-        managed = True
+        model = PostalCode
         exclude = []
 
-    first_name = forms.CharField(
-        label="First name:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your First name"
-        })
-    )
 
-    last_name = forms.CharField(
-        label="Last name:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Last name"
-        })
-    )
+class UserInfoForm(ModelForm):
+    class Meta:
+        model = UserInfo
+        exclude = ('user', 'postal_code',)
+        # fields = ('profile_img', 'phone_number', 'SSN', 'DoB',
+        #           'postal_code', 'address', 'apt_number', 'bio',)
+        widgets = {
+            'DoB': forms.DateInput(attrs={'placeholder': 'dd/mm/YYYY'}),
+        }
 
-    ssn = forms.CharField(
-        label="SSN:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your SSN"
-        })
-    )
+    # first_name = forms.CharField(
+    #     label="First name:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your First name"
+    #     })
+    # )
 
-    dob = forms.CharField(
-        label="Date of Birth:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Date of birth"
-        })
-    )
+    # last_name = forms.CharField(
+    #     label="Last name:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Last name"
+    #     })
+    # )
 
-    email = forms.CharField(
-        label="Email:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Email"
-        })
-    )
+    # ssn = forms.CharField(
+    #     label="SSN:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your SSN"
+    #     })
+    # )
 
-    password = forms.CharField(
-        label="Password:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Password"
-        })
-    )
+    # dob = forms.CharField(
+    #     label="Date of Birth:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Date of birth"
+    #     })
+    # )
 
-    country = forms.CharField(
-        label="Country:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your country"
-        })
-    )
+    # email = forms.EmailField(
+    #     label="Email:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Email"
+    #     })
+    # )
 
-    zip_code = forms.CharField(
-        label="Zip code:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your ZipCode"
-        })
-    )
+    # password = forms.CharField(
+    #     label="Password:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Password"
+    #     })
+    # )
 
-    town = forms.CharField(
-        label="Town:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Town"
-        })
-    )
+    # country = forms.CharField(
+    #     label="Country:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your country"
+    #     })
+    # )
+
+    # zip_code = forms.CharField(
+    #     label="Zip code:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your ZipCode"
+    #     })
+    # )
+
+    # town = forms.CharField(
+    #     label="Town:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Town"
+    #     })
+    # )
 
     address = forms.CharField(
         label="Address:",
@@ -199,20 +211,20 @@ class SignUpForm(forms.Form):
         })
     )
 
-    aptN = forms.CharField(
-        label="Apt. Number:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Apt. Number"
-        })
-    )
+    # aptN = forms.CharField(
+    #     label="Apt. Number:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Apt. Number"
+    #     })
+    # )
 
-    phone = forms.CharField(
-        label="Phone:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Phone Number"
-        })
-    )
+    # phone = forms.CharField(
+    #     label="Phone:",
+    #     max_length=100,
+    #     required=True,
+    #     widget=forms.TextInput(attrs={
+    #         "placeholder": "Your Phone Number"
+    #     })
+    # )

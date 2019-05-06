@@ -1,21 +1,14 @@
-$light-purple: #673AB7;
-$main-purple: #5503A7;
-$dark-purple: #4A0292;
-$heading-font: 'Reem Kufi', sans-serif;
-$text-font: 'Roboto', sans-serif;
-$black: #212121;
-$text-light: #EFEFEF;
+@import "definitions";
+@import "../bootstrap/scss/bootstrap";
+
 
 .light-text {
 	color: $text-light;
 }
 
-@media only screen and (max-height: 90vh) {
-	footer {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-	}
+.container-full {
+	margin: 0 auto;
+	width: 100%;
 }
 
 header{

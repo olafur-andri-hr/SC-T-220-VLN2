@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import DateInput
 from django.contrib.auth.models import User
 from location.models import PostalCode
 from phonenumber_field.modelfields import PhoneNumberField
@@ -7,7 +8,10 @@ from .validators import SSNValidator
 
 class UserInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_img = models.ImageField()
+    first_name = models.CharField(("First name"), max_length=20)
+    last_name = models.CharField(("Last name"), max_length=20)
+    email = models.EmailField(("Email"), max_length=254)
+    profile_img = models.ImageField(("Profile Image"))
     phone_number = PhoneNumberField(("Phone number"))
     SSN = models.CharField(("SSN"), max_length=15)
     DoB = models.DateField(
@@ -17,5 +21,7 @@ class UserInfo(models.Model):
         PostalCode, verbose_name=("Postal Code"), on_delete=models.CASCADE
     )
     address = models.CharField(("Home address"), max_length=50)
-    apartment_num = models.CharField(("Apt. number"), max_length=50)
-    bio = models.TextField(("Your bio"))
+    apt_number = models.CharField(
+        ("Apt. number"), max_length=50, null=True, blank=True
+    )
+    bio = models.TextField(("Your bio"), max_length=300)
