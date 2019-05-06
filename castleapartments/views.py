@@ -11,3 +11,15 @@ def index(request):
 
 def about(request):
     return render(request, 'castleapartments/about.html')
+
+
+def login(request):
+    return render(request, 'castleapartments/login.html')
+
+
+def sell(request):
+    return render(request, 'castleapartments/sell.html')
+
+
+def signup(request):
+    return render(request, 'castleapartments/signup.html')
