@@ -7,3 +7,7 @@ def index(request):
         "form": SearchForm()
     }
     return render(request, 'castleapartments/index.html', context)
+
+
+def about(request):
+    return render(request, 'castleapartments/about.html')
