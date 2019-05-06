@@ -11,7 +11,7 @@ header{
     font-family: "Reem Kufi", sans-serif;
     display: flex;
     color: $black;
-    box-shadow: 6px 0px 6px #363434;
+	box-shadow: 6px 0px 6px #363434;
 	justify-content: space-between;
 	position: relative;
 	z-index: 10;
@@ -109,7 +109,7 @@ header{
 
     #accountdiv {
 		display: flex;
-		width: 220px;
+		width: 210px;
         align-items: center;
 		justify-content: space-evenly;
 		text-align: right;
@@ -127,8 +127,7 @@ header{
 	}
 
 	#hamburger {
-		background-color: red;
-		display: block;
+		display: none;
 	}
 	@media screen and (max-width: 700px) {
 		#centerheaddiv {
@@ -137,6 +136,17 @@ header{
 		
 		#accountdiv {
 			display: none;
+		}
+		#hamburger {
+			width: 2rem;
+			height: 2rem;
+			z-index: 11;
+			display: flex;
+			color: $main-purple;
+			background-size: cover;
+			flex-wrap: wrap;
+			margin-top: 1rem;
+			margin-right: 2rem;
 		}
 	}
 }
