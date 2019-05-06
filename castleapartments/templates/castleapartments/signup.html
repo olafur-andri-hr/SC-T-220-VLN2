@@ -7,7 +7,7 @@
 {% endblock styles %}
 
 {% block title %}
-    <title> Login </title>
+    <title> Sign Up </title>
 {% endblock title %}
 
 {% block content %}
@@ -30,7 +30,19 @@
                 <form action="#" method="post">
                     {% csrf_token %}
                     <table>
-                        {{ form }}
+                        <thead>Hallo</thead>
+                        <tbody>
+                            <div id="form_left">
+                            {% for field in form_left %}
+                                {{field}}
+                            {% endfor %}
+                            </div>
+                            <div id="from_right">
+                            {% for field in form_right %}
+                                {{field}}
+                            {% endfor %}
+                            </div>
+                        </tbody>
                     </table>
                 </form>
             </div>
