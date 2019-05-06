@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class SearchForm(forms.Form):
@@ -39,18 +40,21 @@ class SearchForm(forms.Form):
         })
     )
     min_rooms = forms.IntegerField(
-        label="Rooms (min, max):",
+        label="Bedrooms",
         required=False,
+        validators=[MinValueValidator(1), MaxValueValidator(20)],
         widget=forms.NumberInput(attrs={
-            "placeholder": "Min rooms",
+            "placeholder": "Min",
             "class": "inline-first"
         })
     )
     max_rooms = forms.IntegerField(
         required=False,
-        label="",
+        label="to",
+        label_suffix="",
+        validators=[MinValueValidator(1), MaxValueValidator(20)],
         widget=forms.NumberInput(attrs={
-            "placeholder": "Max rooms",
+            "placeholder": "Max",
             "class": "inline-second"
         })
     )
