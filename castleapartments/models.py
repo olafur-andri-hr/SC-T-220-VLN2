@@ -11,7 +11,10 @@ class UserInfo(models.Model):
     first_name = models.CharField(("First name"), max_length=20)
     last_name = models.CharField(("Last name"), max_length=20)
     email = models.EmailField(("Email"), max_length=254)
-    profile_img = models.ImageField(("Profile Image"))
+    profile_img = models.ImageField(
+        ("Profile image"), upload_to='images/', height_field=None,
+        width_field=None, max_length=None
+    )
     phone_number = PhoneNumberField(("Phone number"))
     SSN = models.CharField(("SSN"), max_length=15)
     DoB = models.DateField(

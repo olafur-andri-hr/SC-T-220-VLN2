@@ -32,15 +32,19 @@
                         <tbody>
                             <tr>
                                 <th>{{user_info_form.first_name.label_tag}}</th>
-                                <td>{{user_info_form.first_name}}</td>
+                                <td>{{user_info_form.first_name}}{{user_info_form.first_name.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.last_name.label_tag}}</th>
-                                <td>{{user_info_form.last_name}}</td>
+                                <td>{{user_info_form.last_name}}{{user_info_form.last_name.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.email.label_tag}}</th>
-                                <td>{{user_info_form.email}}</td>
+                                <td>{{user_info_form.email}}{{user_info_form.email.errors}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.phone_number.label_tag}}</th>
+                                <td>{{user_info_form.phone_number}}{{user_info_form.phone_number.errors}}</td>
                             </tr>
                             {{user_form}}
 
@@ -54,27 +58,27 @@
                         <tbody>
                             <tr>
                                 <th>{{user_info_form.SSN.label_tag}}</th>
-                                <td>{{user_info_form.SSN}}</td>
+                                <td>{{user_info_form.SSN}}{{user_info_form.SSN.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.DoB.label_tag}}</th>
-                                <td>{{user_info_form.DoB}}</td>
+                                <td>{{user_info_form.DoB}}{{user_info_form.DoB.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.profile_img.label_tag}}</th>
-                                <td>{{user_info_form.profile_img}}</td>
+                                <td>{{user_info_form.profile_img}}{{user_info_form.profile_img.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.bio.label_tag}}</th>
-                                <td>{{user_info_form.bio}}</td>
+                                <td>{{user_info_form.bio}}{{user_info_form.bio.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.address.label_tag}}</th>
-                                <td>{{user_info_form.address}}</td>
+                                <td>{{user_info_form.address}}{{user_info_form.address.errors}}</td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.apt_number.label_tag}}</th>
-                                <td>{{user_info_form.apt_number}}</td>
+                                <td>{{user_info_form.apt_number}}{{user_info_form.apt_number.errors}}</td>
                             </tr>
                             {{postal_code_form}}
 

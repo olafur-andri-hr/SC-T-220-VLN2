@@ -1,0 +1,39 @@
+@import '../../../../base/static/sass/definitions';
+
+#listing-hint {
+    align-self: flex-end;
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-align: center;
+    p {
+        text-align: center;
+        background-color: $translucent;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    svg {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+#search_banner {
+    margin-top: 4rem;
+    align-self: flex-start;
+}
+
+
+#search-results {
+    top: 100vh;
+}
+
+#header-filler {
+    display: none;
+}
+
+#frontpage-div {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}

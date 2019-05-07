@@ -1,6 +1,7 @@
 @import "definitions";
 @import "../bootstrap/scss/bootstrap";
 
+$header-height: 4rem;
 
 .light-text {
 	color: $text-light;
@@ -11,15 +12,20 @@
 	width: 100%;
 }
 
+#header-filler {
+	margin: 0 auto;
+	height: $header-height;
+}
+
 header{
     width: 100%;
-    height: 4rem;
+    height: $header-height;
     font-family: "Reem Kufi", sans-serif;
     display: flex;
     color: $black;
 	box-shadow: 6px 0px 6px #363434;
 	justify-content: space-between;
-	position: relative;
+	position: fixed;
 	z-index: 10;
 	background-color: #FFFFFF;
 
