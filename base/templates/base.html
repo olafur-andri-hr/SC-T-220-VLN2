@@ -17,6 +17,19 @@
 
 <body>
     <header>
+        <div id="header_background"></div>
+        <div id="dropdownnav">
+            <div id="listingdropdown" class="dropdown-link">
+                <a href="/" id="listingsdropdown">All Listings</a>
+            </div>
+            <div id="selldropdown" class="dropdown-link">
+                <a href="{% url 'sell' %}" id="sellsdropdown">Sell an Apartment</a>
+            </div>
+            <div id="aboutdropdown" class="dropdown-link">
+                <a href="{% url 'about' %}" id="abouttextdropdown">About us</a>
+            </div>
+        </div>
+        <a id="dropdown_obfuscator" href="#"></a>
         <div id="logodiv">
             <a href="/">
                 <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
@@ -46,20 +59,9 @@
                     <p>No</p>
                 </div>
             </div>
-
         </div>
-<<<<<<< HEAD
-        <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'></div>
-    </div>
-    <button id="hamburger" style='background-image: url({% static "icons/hamburger.svg" %});'>
-        <div id="sidebar">
-            
-        </div>
-    </button>
-=======
-        <div id="hamburger" onclick="myFunction(this)"
-            style='background-image: url({% static "icons/hamburger.svg" %});'></div>
->>>>>>> 6f17357899283c857ca7b965d62a2add28cd9b72
+        <a href="#dropdownnav" id="hamburger"
+            style='background-image: url({% static "icons/hamburger.svg" %});'></a>
     </header>
     {% block content %}{% endblock %}
     <footer>

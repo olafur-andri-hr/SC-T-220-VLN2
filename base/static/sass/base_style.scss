@@ -23,6 +23,16 @@ header{
 	z-index: 10;
 	background-color: #FFFFFF;
 
+	#header_background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: #FFFFFF;
+		z-index: 10;
+	}
+
 	a:hover {
 		text-decoration: none;
 		color: $black;
@@ -61,18 +71,6 @@ header{
         background-size: cover;
     }
 
-    .linkdiv {
-        display: flex;
-		align-items: center;
-		transition: background-color 0.5s ease;
-		border-radius: 5px;
-	}
-	
-	.linkdiv:hover {
-		background: rgba(85, 3, 167, 0.1);
-
-	}
-
     #listings {
         border-bottom: solid 1px;
         padding-bottom: 7px;
@@ -108,6 +106,10 @@ header{
         width: 50px;
         background-size: cover;
 		margin-right: 10px;
+	}
+
+	#dropdownnav, #dropdown_obfuscator {
+		display: none;
 	}
 	
 	#lockdown-content {
@@ -168,10 +170,10 @@ header{
 	}
 
 	#hamburger:hover {
-		background-color: rgb(163, 159, 163);
+		background-color: rgb(197, 191, 197);
 		color: white;
-	} 
-
+	}
+	
 	@media screen and (max-width: 700px) {
 		#centerheaddiv {
 			display: none;
@@ -188,7 +190,6 @@ header{
 			height: 2rem;
 			z-index: 11;
 			display: flex;
-			color: $main-purple;
 			background-size: cover;
 			flex-wrap: wrap;
 			margin-top: 1rem;
@@ -199,15 +200,72 @@ header{
 			cursor:pointer;
 			outline:none;
 		}
-		#hamburger:focus {
 
-			#sidebar {
-				height: 20rem;
-				width: 200px;
-				overflow: auto;
-				position: fixed;
-				background-color: blue;
-				display: inline-block;
+		#dropdownnav {
+			width: 100%;
+			position: fixed;
+			display: flex;
+			flex-wrap: wrap;
+			position: fixed;
+			align-items: center;
+			flex-direction: column;
+			background-color: white;
+			left: 0;
+			top: 0;
+			transform: translateY(-100%);
+			transition: transform 200ms ease;
+			z-index: 10;
+			padding-top: 2rem;
+		}
+
+		#dropdown_obfuscator {
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.2);
+			transition: opacity 200ms ease;
+			opacity: 0;
+			z-index: 9;
+			pointer-events: none;
+		}
+
+		#dropdownnav:target ~ #dropdown_obfuscator {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+
+		#dropdownnav.active {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			transform: translateY(3rem);
+			box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2);
+
+			.dropdown-link {
+				margin-bottom: 1rem;
+				display: flex;
+				transition: background-color 0.5s ease;
+				border-radius: 5px;
+			}
+
+			.dropdown-link:hover {
+				background: rgba(85, 3, 167, 0.1);
+			}
+
+			#listingdropdown {
+				display: flex;
+			}
+
+			#selldropdown {
+				display: flex;
+			}
+
+			#aboutdropdown {
+				display: flex;
 			}
 		}
 	}
