@@ -164,7 +164,7 @@ header{
 		opacity: 0;
 		transition: all .1s ease;
 		flex-direction: column;
-		padding: 20px 20px 20px 20px;
+		padding: 10px 10px 10px 10px;
 		justify-content: flex-start;
 		align-items: center;
 		text-align: center;
@@ -172,8 +172,15 @@ header{
 		will-change: transform;
 	}
 
+	#sidebar.active {
+		display: block;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
 	#sidebar a {
-		margin: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 		display: block;
 		width: 100%;
 		font-weight: bold;
@@ -182,12 +189,6 @@ header{
 
 	#sidebar a:hover {
 		color: $white;
-	}
-
-	.active {
-		display: flex;
-		opacity: 1;
-		transform: translateY(0);
 	}
 
 	#closetag {
