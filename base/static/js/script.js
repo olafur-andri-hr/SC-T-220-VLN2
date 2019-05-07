@@ -5,9 +5,9 @@ document.getElementById('hamburger').addEventListener('click', hamburger);
 /**
  * function for sliding the sidebar nav menu
  */
-function sidebardropdown() {
-  document.getElementById('sidebar').classList.toggle('active');
-}
+// function sidebardropdown() {
+//   document.getElementById('sidebar').classList.toggle('active');
+// }
 
 /**
  * function for the hamburger menu
