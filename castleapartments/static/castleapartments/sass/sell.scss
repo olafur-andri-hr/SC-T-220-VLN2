@@ -1,0 +1,71 @@
+@import '../../../../base/static/sass/definitions';
+
+$gray: #ddd8d8;
+
+main {
+    background-color: $gray;
+    padding: 0;
+    margin: 0;
+}
+
+#navdiv {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrowdiv {
+    background: cover;
+    height: 1.3rem;
+    width: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigationdivs {
+    display: flex;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    font-family: "Reem Kufi", sans-serif;
+}
+
+.navigationdivs:hover {
+    background: rgba(85, 3, 167, 0.1);
+}
+
+.textindiv {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-family: "Reem Kufi", sans-serif;
+    margin: 0 auto;
+}
+#infoform {
+    left: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 55rem;
+    align-items: center;
+    margin: 0 auto;
+    //justify-content: space-between;
+    height: 40rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+#infotable {
+    display: flex;
+}
+
+footer {
+    background-color: $gray;
+}
