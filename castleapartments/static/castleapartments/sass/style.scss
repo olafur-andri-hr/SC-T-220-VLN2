@@ -66,8 +66,8 @@ form {
 #search_banner,
 #main_banner {
     padding-top: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     position: relative;
     width: 100%;
     background-color: #673AB7;
@@ -233,6 +233,14 @@ form {
         overflow: hidden;
         border-radius: 0.2rem;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: background-color 200ms ease,
+                    transform 100ms ease,
+                    box-shadow 100ms ease;
+
+        * {
+            pointer-events: none;
+        }
 
         img {
             margin: 0 0 0 0;
@@ -253,6 +261,15 @@ form {
             height: 100%;
             width: 100%;
         }
+    }
+
+    #search_button:hover {
+        background-color: #F5F5F5;
+    }
+
+    #search_button:active {
+        transform: translateY(0.2rem);
+        box-shadow: none;
     }
 
     #search_button:focus {
