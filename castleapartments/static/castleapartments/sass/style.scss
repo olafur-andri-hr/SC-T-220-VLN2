@@ -281,14 +281,12 @@ form {
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
         url(https://i.imgur.com/bTsEFfv.jpg);
     z-index: -1;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-
     filter: blur(0.5rem);
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
