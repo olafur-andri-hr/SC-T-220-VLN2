@@ -11,6 +11,10 @@
 <title>Index page</title>
 {% endblock title %}
 
+{% block scripts %}
+    <script src="{% static 'castleapartments/js/script.js' %}" defer></script>
+{% endblock scripts %}
+
 {% block content %}
 <div id="background_image"
     style='background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("{% static "background.jpg" %}")'>
@@ -40,9 +44,16 @@
                         </li>
                         {% endfor %}
                     </ul>
-                    <div class="container-fluid text-center">
-                        <input type="submit" value="Search 🔎" class="btn btn-outline-primary">
-                    </div>
+
+                    <button id="search_button" type="button">
+                        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <polygon
+                                points="0,100 100,100 100,0"
+                                style="fill: #F5F5F5">
+                        </svg>
+                        <img src="{% static 'icons/search.svg' %}" alt="Search" />
+                        <p>Search</p>
+                    </button>
                 </form>
             </div>
         </div>

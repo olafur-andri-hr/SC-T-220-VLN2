@@ -13,10 +13,24 @@
     <link rel="stylesheet" href="{% sass_src "sass/base_style.scss" %}">
     {% block styles %}{% endblock %}
     {% block title %}{% endblock %}
+    {% block scripts %}{% endblock %}
 </head>
 
 <body>
     <header>
+        <div id="header_background"></div>
+        <div id="dropdownnav">
+            <div id="listingdropdown" class="dropdown-link">
+                <a href="/" id="listingsdropdown">All Listings</a>
+            </div>
+            <div id="selldropdown" class="dropdown-link">
+                <a href="{% url 'sell' %}" id="sellsdropdown">Sell an Apartment</a>
+            </div>
+            <div id="aboutdropdown" class="dropdown-link">
+                <a href="{% url 'about' %}" id="abouttextdropdown">About us</a>
+            </div>
+        </div>
+        <a id="dropdown_obfuscator" href="#"></a>
         <div id="logodiv">
             <a href="/">
                 <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>

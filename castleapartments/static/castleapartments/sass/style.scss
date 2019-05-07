@@ -130,8 +130,12 @@ form {
             padding: 0;
         }
 
-        li.inline-first input,
-        li.inline-second input {
+        li.inline-second::after {
+            content: "\A";
+            white-space: pre;
+        }
+
+        li.inline-first input, li.inline-second input {
             width: 7rem;
         }
 
@@ -211,6 +215,48 @@ form {
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
             outline: hidden;
         }
+    }
+
+    #search_button {
+        appearance: none;
+        border: none;
+        background-color: #FFFFFF;
+        color: #212121;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-family: $heading-font;
+        margin: auto;
+        padding: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.2rem;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+
+        img {
+            margin: 0 0 0 0;
+            position: relative;
+        }
+
+        p {
+            margin: 0.1rem 0.5rem 0 0.5rem;
+            font-size: 1.1rem;
+            color: #212121;
+            position: relative;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    #search_button:focus {
+        outline: none;
     }
 }
 
