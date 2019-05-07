@@ -62,26 +62,42 @@ class SearchForm(forms.Form):
             "class": "inline-second"
         })
     )
-    price = forms.IntegerField(
-        label="Price:",
+    min_price = forms.IntegerField(
+        label="Price (mil):",
         required=False,
+        validators=[MinValueValidator(1), MaxValueValidator(200)],
         widget=forms.NumberInput(attrs={
-            "type": "range",
-            "min": "1000000",
-            "max": "100000000",
-            "step": "1",
-            "class": ""
+            "placeholder": "Min",
+            "class": "inline-first"
         })
     )
-    size = forms.IntegerField(
-        label="Size:",
+    max_price = forms.IntegerField(
         required=False,
+        label="to",
+        label_suffix="",
+        validators=[MinValueValidator(1), MaxValueValidator(200)],
         widget=forms.NumberInput(attrs={
-            "type": "range",
-            "min": "20",
-            "max": "1000",
-            "step": "1",
-            "class": ""
+            "placeholder": "Max",
+            "class": "inline-second"
+        })
+    )
+    min_size = forms.IntegerField(
+        label="Size (m²):",
+        required=False,
+        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Min",
+            "class": "inline-first"
+        })
+    )
+    max_size = forms.IntegerField(
+        required=False,
+        label="to",
+        label_suffix="",
+        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Max",
+            "class": "inline-second"
         })
     )
 

@@ -13,10 +13,24 @@
     <link rel="stylesheet" href="{% sass_src "sass/base_style.scss" %}">
     {% block styles %}{% endblock %}
     {% block title %}{% endblock %}
+    {% block scripts %}{% endblock %}
 </head>
 
 <body>
     <header>
+        <div id="header_background"></div>
+        <div id="dropdownnav">
+            <div id="listingdropdown" class="dropdown-link">
+                <a href="/" id="listingsdropdown">All Listings</a>
+            </div>
+            <div id="selldropdown" class="dropdown-link">
+                <a href="{% url 'sell' %}" id="sellsdropdown">Sell an Apartment</a>
+            </div>
+            <div id="aboutdropdown" class="dropdown-link">
+                <a href="{% url 'about' %}" id="abouttextdropdown">About us</a>
+            </div>
+        </div>
+        <a id="dropdown_obfuscator" href="#"></a>
         <div id="logodiv">
             <a href="/">
                 <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
@@ -36,18 +50,20 @@
             </div>
             <div id="border2"></div>
         </div>
-        <div id="accountdiv">
-            <div id="loggeddiv">
-                <p id="notlogged">Not logged in</p>
-            </div>
-            <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'>
-                <div id="lockdown-content">
-                    <p>Hello</p>
-                    <p>No</p>
+            <div onclick="" id="accountdiv">
+                <div id="loggeddiv">
+                    <p id="notlogged">Not logged in</p>
+                </div>
+                <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'>
+
                 </div>
             </div>
-
+        <div id="sidebar" class="">
+            <a class="btn btn-outline-primary box-shadow"> Log in</a>
+            <a class="btn btn-outline-primary box-shadow"> Sign Up</a>
         </div>
+        <div id="closetag" onclick=""></div>
+
         <div id="hamburger" onclick="myFunction(this)"
             style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>

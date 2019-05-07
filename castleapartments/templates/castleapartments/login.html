@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% load sass_tags %}
 
 {% block styles %}
-<link rel="stylesheet" type="text/css" href="{% static "castleapartments/css/style.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
 {% endblock styles %}
 
 {% block title %}
@@ -18,16 +19,20 @@
             />
         </svg>
 
-        <div id="main_banner_content">
+        <div id="main_banner_content" class="container-full"></div>
+        <div class="container text-center">
             <h1>Enter your credentials.</h1>
-
-            <form action="#" method="post">
-                {% csrf_token %}
+        </div>
+        <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full">
+            {% csrf_token %}
+            <section>
                 <table>
                     {{ form }}
                 </table>
-            </form>
-        </div>
+            </section>
+            <input type="submit" value="Login" class="btn btn-outline-primary box-shadow">
+        </form>
+    </div>
     </div>
 </main>
 {% endblock content %}
