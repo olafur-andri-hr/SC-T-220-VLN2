@@ -21,8 +21,8 @@
             <a href="/">
                 <div id="imgdiv" style='background-image: url({% static "logo_filled.png" %});'></div>
                 <h1 id="name">Castle<br>Apartments</h1>
+            </a>
         </div>
-        </a>
         <div id="centerheaddiv">
             <div id="border1"></div>
             <div id="listingdiv" class="linkdiv">
@@ -51,8 +51,9 @@
         <div id="closetag" onclick=""></div>
 
         <div id="hamburger" onclick="myFunction(this)"
-            style='background-image: url({% static "icons/hamburger.svg" %});'></div>
+            style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>
+    <div id="header-filler"></div>
     {% block content %}{% endblock %}
     <footer>
         <div id="footer_square"></div>

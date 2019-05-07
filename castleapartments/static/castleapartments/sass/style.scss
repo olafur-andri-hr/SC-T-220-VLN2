@@ -19,7 +19,7 @@ form {
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
         background-color: $white;
     }
-    
+
     tr {
         max-width: 100%;
         overflow: hidden;
@@ -29,7 +29,8 @@ form {
         text-align: right;
     }
 
-    th, td {
+    th,
+    td {
         padding-bottom: 0.3rem;
     }
 
@@ -52,7 +53,7 @@ form {
         font-family: $text-font;
         margin-right: 2rem;
     }
-    
+
     .errorlist {
         color: $error-light;
     }
@@ -214,11 +215,18 @@ form {
 }
 
 #background_image {
-    position: fixed;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url(https://i.imgur.com/bTsEFfv.jpg);
+    z-index: -1;
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
-    height: 100%;
+    height: 100vh;
     width: 100%;
+
     filter: blur(0.5rem);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

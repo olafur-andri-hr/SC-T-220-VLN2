@@ -1,6 +1,7 @@
 @import "definitions";
 @import "../bootstrap/scss/bootstrap";
 
+$header-height: 4rem;
 
 .light-text {
 	color: $text-light;
@@ -11,15 +12,20 @@
 	width: 100%;
 }
 
+#header-filler {
+	margin: 0 auto;
+	height: $header-height;
+}
+
 header{
     width: 100%;
-    height: 4rem;
+    height: $header-height;
     font-family: "Reem Kufi", sans-serif;
     display: flex;
     color: $black;
 	box-shadow: 6px 0px 6px #363434;
 	justify-content: space-between;
-	position: relative;
+	position: fixed;
 	z-index: 10;
 	background-color: #FFFFFF;
 
@@ -215,13 +221,24 @@ header{
 
 	#hamburger {
 		display: none;
+		transition: background-color 0.5s ease;
+		border-radius: 5px;
 	}
+
+	#hamburger:hover {
+		background-color: rgb(163, 159, 163);
+		color: white;
+	} 
+
 	@media screen and (max-width: 700px) {
 		#centerheaddiv {
 			display: none;
 		}
 		
 		#accountdiv {
+			display: none;
+		}
+		#sidebar {
 			display: none;
 		}
 		#hamburger {
@@ -234,6 +251,22 @@ header{
 			flex-wrap: wrap;
 			margin-top: 1rem;
 			margin-right: 2rem;
+			background-color: Transparent;
+			background-repeat:no-repeat;
+			border: none;
+			cursor:pointer;
+			outline:none;
+		}
+		#hamburger:focus {
+
+			#sidebar {
+				height: 20rem;
+				width: 200px;
+				overflow: auto;
+				position: fixed;
+				background-color: blue;
+				display: inline-block;
+			}
 		}
 	}
 }
