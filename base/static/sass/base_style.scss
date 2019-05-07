@@ -31,7 +31,13 @@ header{
 	background-color: #FFFFFF;
 
 	.linkdiv {
+		transition: background-color 0.5s ease;
 		z-index: 11;
+		border-radius: 5px;
+	}
+
+	.linkdiv:hover {
+		background: rgba(85, 3, 167, 0.1);
 	}
 	#header_background {
 		position: absolute;
