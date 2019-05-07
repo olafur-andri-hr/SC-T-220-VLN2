@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
-from django.db.models.Model import DoesNotExist
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
@@ -54,7 +53,7 @@ def signup(request):
                 postal_code = PostalCode.objects.get(
                     postal_code=zip_code, country=country
                 )
-            except DoesNotExist:
+            except PostalCode.DoesNotExist:
                 postal_code = postal_code_form.save(commit=False)
             user_info_form.initial['postal_code'] = new_postal_code
 
