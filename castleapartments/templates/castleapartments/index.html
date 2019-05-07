@@ -32,7 +32,7 @@
             </svg>
 
             <div id="search_banner_content">
-                <h1>Buy and sell properties. Online!!</h1>
+                <h1>Buy and sell properties. Online.</h1>
                 <h5>
                     Use the form below to search for your dreamhouse or
                     <a href="{% url 'sell' %}">sell an apartment</a> now!
@@ -103,16 +103,16 @@
         </div>
     </div>
     <div id="search-results">
-        <div class="header">
+        <div class="header" id="search_results_header">
             <ul>
-                
+                <li></li>
             </ul>
             <p><span id="listing-count">0</span> Listings</p>
             <p>Order by:</p>
             <select>
                 <option>Newest first</option>
             </select>
-            <a href="#frontpage-div">
+            <a id="edit_search" href="#frontpage-div">
                 <img src="{% static 'icons/edit.svg' %}">
                 <p>Edit search</p>
             </a>
