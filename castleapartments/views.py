@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login as django_login
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
@@ -38,33 +39,26 @@ def listing(request):
 
 def signup(request):
     if request.method == "POST":
-        user_info_form = UserInfoForm(request.POST)
+        user_info_form = UserInfoForm(request.POST, request.FILES)
         postal_code_form = PostalCodeForm(request.POST)
         user_form = UserCreationForm(request.POST)
-        postal_code_form.clean()
+        # print(user_info_form.is_valid())
 
-        if user_form.is_valid():
-            new_user = user_form.save(commit=False)
-            user_info_form.initial['user'] = new_user
+        if (user_form.is_valid() and postal_code_form.is_valid() and
+                user_info_form.is_valid()):
+            new_user = user_form.save()
 
-        if postal_code_form.is_valid():
-            zip_code = postal_code_form.cleaned_data["postal_code"]
-            country = postal_code_form.cleaned_data["country"]
-            try:
-                postal_code = PostalCode.objects.get(
-                    postal_code=zip_code, country=country
-                )
-            except PostalCode.DoesNotExist:
-                postal_code = postal_code_form.save(commit=False)
-            user_info_form.initial['postal_code'] = new_postal_code
+            postal_code = postal_code_form.get_postal_code()
+            postal_code.save()
 
-        if user_info_form.is_valid():
             new_user_info = user_info_form.save(commit=False)
-            print("IT WORKERD!!!!")
-        else:
-            for item in user_info_form.errors:
-                print(item)
-
+            new_user_info.postal_code = postal_code
+            new_user_info.user = new_user
+            new_user_info.save()
+            if new_user.is_active:
+                request.session.set_expiry(86400)  # time to session expiry
+                django_login(request, new_user)
+            redirect(index)
     else:
         user_form = UserCreationForm()
         user_info_form = UserInfoForm()
