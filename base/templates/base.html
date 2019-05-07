@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="site_header">
         <div id="header_background"></div>
         <div id="dropdownnav">
             <div id="listingdropdown" class="dropdown-link">
@@ -65,14 +65,14 @@
             <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'>
 
             </div>
-        </div>
-        <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
-        <div id="sidebar">
-            <div id="content-notloggedin" class="dropdown-content">
-                <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
-                <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
+            <div id="sidebar">
+                <div id="content-notloggedin" class="dropdown-content">
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
+                </div>
             </div>
         </div>
+        <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>
     <div id="header-filler"></div>
     {% block content %}{% endblock %}
