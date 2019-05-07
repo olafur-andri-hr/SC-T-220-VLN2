@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load sass_tags %}
 
 {% block styles %}
-<link rel="stylesheet" type="text/css" href="{% static "castleapartments/css/style.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/account.scss" %}">
 {% endblock styles %}
 
 {% block title %}
@@ -13,15 +15,41 @@
 <main>
     <div id="main_content" class="container-full">
         <div id="my_info">
+            <div id="me">
+                <div id="image">
 
+                </div>
+                <div id="name">
+                    Pálmi C Rúnarsson
+                </div>
+            </div>
+            <div id=bio>
+                <p>
+                    dkdspmdpoadokasdkaoskdoakodkasokdoaskd
+                    oaskdoakdsoaksdoakdoaskdoaksdoakdoaksd
+                    oasdoadnfosfoaisjfdoiesjofdpaijfpiajf
+                    aofspoijfpaosjfposakepf
+                </p>
+            </div>
+            <div id=info>
+                <p>
+                    dasdkandaskdnkasndkansdkandkansdai
+                    dmaosmdoasdoamsdmepfnpsfmpaoemfa
+                    apmdpoaempifnaksmoawkdmom
+                </p>
+            </div>
         </div>
 
         <div id="my_sell">
-
+            <div class="headtitle">
+                <p>Selling</p>
+            </div>
         </div>
 
         <div id="my_sold">
-
+            <div class="headtitle">
+                <p>Sold</p>
+            </div>
         </div>
     </div>
 </main>
