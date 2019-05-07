@@ -168,6 +168,7 @@ header{
 		justify-content: flex-start;
 		align-items: center;
 		text-align: center;
+		transition: all .5s ease-in-out; 
 		box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.2);
 		will-change: transform;
 	}
@@ -176,6 +177,10 @@ header{
 		display: block;
 		opacity: 1;
 		transform: translateY(0);
+
+		@media screen and (max-width: 700px) {
+			display: none;
+		}
 	}
 
 	#sidebar a {
