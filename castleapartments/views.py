@@ -27,6 +27,14 @@ def sell(request):
     return render(request, 'castleapartments/sell.html')
 
 
+def account(request):
+    return render(request, 'castleapartments/account.html')
+
+
+def listing(request):
+    return render(request, 'castleapartments/listing.html')
+
+
 def signup(request):
     if request.method == "POST":
         user_info_form = UserInfoForm(request.POST)
