@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 
 class PostalCode(models.Model):
     zip_code = models.CharField(
-        "Postal code", max_length=50, primary_key=True,
+        "Postal code", max_length=50,
         validators=[MinLengthValidator(2)]
     )
     country = CountryField()
