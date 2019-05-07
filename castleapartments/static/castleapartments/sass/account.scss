@@ -1,0 +1,69 @@
+#main_content {
+    border: 2x solid purple;
+    position: relative;
+    width: 100%;
+    display: flex;
+
+    @media screen and (max-width: 700px) {
+        position: relative;
+        flex-direction: column;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+}
+
+#my_info {
+    margin: 1rem;
+    flex: 1;
+    display: flex;
+    border: 2px solid green;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+#me,#bio,#info {
+    display: inline-block;
+    border: 2px solid orange;
+    height: auto;
+    text-align: center;
+
+    #image { 
+        margin: 1rem;
+        display: block;
+        width: 250px;
+        height: 250px;
+        border: 2px solid red;
+        border-radius: 1000rem;
+    }
+
+    #name {
+        margin-bottom: 1rem;
+        display: inline-block;
+        border: 2px solid blue;
+    }
+}
+
+#bio {
+    padding: 1rem;
+}
+
+
+#my_sell, #my_sold {
+    margin: 1rem;
+    display: flex;
+    flex: 1;
+    border-style: solid;
+    height: auto;
+}
+
+.headtitle{
+    border-style: solid;
+    width: 100%;
+    height: 4rem;
+    align-items: center;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

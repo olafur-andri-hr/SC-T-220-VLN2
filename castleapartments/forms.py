@@ -1,6 +1,8 @@
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinLengthValidator
 from django.forms import ModelForm, DateInput, Textarea
+from django_countries.fields import CountryField
 
 from .models import User, UserInfo
 from location.models import PostalCode
@@ -121,10 +123,28 @@ class LoginForm(forms.Form):
     )
 
 
-class PostalCodeForm(ModelForm):
-    class Meta:
-        model = PostalCode
-        exclude = []
+class PostalCodeForm(forms.Form):
+    zip_code = forms.CharField(
+        label="Postal code", max_length=50, validators=[MinLengthValidator(2)]
+    )
+    country = CountryField().formfield()
+    town = forms.CharField(label=("Town"), max_length=50)
+
+    def get_postal_code(self):
+        self.clean()
+        zip_code = self.cleaned_data["zip_code"]
+        country = self.cleaned_data["country"]
+        town = self.cleaned_data["town"]
+        try:
+            postal_code = PostalCode.objects.get(
+                zip_code=zip_code, country=country
+            )
+        except PostalCode.DoesNotExist:
+            postal_code = PostalCode.objects.create(
+                zip_code=zip_code, country=country, town=town
+            )
+            postal_code.save(commit=False)
+        return postal_code
 
 
 class UserInfoForm(ModelForm):
@@ -134,7 +154,7 @@ class UserInfoForm(ModelForm):
         # fields = ('profile_img', 'phone_number', 'SSN', 'DoB',
         #           'postal_code', 'address', 'apt_number', 'bio',)
         widgets = {
-            'DoB': forms.DateInput(attrs={'placeholder': 'dd/mm/YYYY'}),
+            'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
         }
 
     # first_name = forms.CharField(

@@ -11,6 +11,13 @@
 {% endblock title %}
 
 {% block content %}
+
+<div id="background_image"
+    style='
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
+                    rgba(255, 255, 255, 0.4)),
+                    url("{% static "background.jpg" %}")'>
+</div>
 <main>
     <div id="main_banner">
         <svg id="main_banner_background" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -23,7 +30,8 @@
             <div class="container text-center">
                 <h1>Sign up.</h1>
             </div>
-            <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full">
+            <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full"
+                enctype="multipart/form-data">
                 {% csrf_token %}
                 <section>
                     <h2 class="text-center">Who are you?</h2>

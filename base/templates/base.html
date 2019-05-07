@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="site_header">
         <div id="header_background"></div>
         <div id="dropdownnav">
             <div id="listingdropdown" class="dropdown-link">
@@ -32,10 +32,10 @@
                 <a href="{% url 'about' %}" id="abouttextdropdown" class="dropdowntext">About us</a>
             </div>
             <div id="logindropdown" class="dropdown-link">
-                <a href="{% url 'about' %}" id="logintextdropdown" class="dropdowntext">Log in</a>
+                <a href="{% url 'login' %}" id="logintextdropdown" class="dropdowntext">Log in</a>
             </div>
             <div id="signupdropdown" class="dropdown-link">
-                <a href="{% url 'about' %}" id="signuptextdropdown" class="dropdowntext">Sign up</a>
+                <a href="{% url 'signup' %}" id="signuptextdropdown" class="dropdowntext">Sign up</a>
             </div>
         </div>
         <a id="dropdown_obfuscator" href="#"></a>
@@ -58,22 +58,21 @@
             </div>
             <div id="border2"></div>
         </div>
-            <div id="accountdiv" class="dropbtn">
-                <div id="loggeddiv">
-                    <p id="notlogged">Not logged in</p>
-                </div>
-                <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'>
+        <div id="accountdiv" class="dropbtn">
+            <div id="loggeddiv">
+                <p id="notlogged">Not logged in</p>
+            </div>
+            <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'>
 
+            </div>
+            <div id="sidebar">
+                <div id="content-notloggedin" class="dropdown-content">
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
                 </div>
             </div>
-        <div id="hamburger"
-        style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
-        <div id="sidebar" >
-            <div id="content-notloggedin" class="dropdown-content">
-            <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
-            <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
-            <div>
         </div>
+        <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>
     <div id="header-filler"></div>
     {% block content %}{% endblock %}
@@ -83,7 +82,7 @@
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
             <polygon id="footer_triangle_left" points="0,0 100,100 0, 100" style="fill: #4A0292; fill-rule: evenodd;" />
             <polygon id="footer_triangle_right" points="0,100 100,0 100,100"
-                style="fill: #5503A7; fill-rule: evenodd;"/>
+                style="fill: #5503A7; fill-rule: evenodd;" />
         </svg>
         <div id="footer_logo">
             <img src="{% static 'logo_filled.png' %}" alt="CA logo" />
