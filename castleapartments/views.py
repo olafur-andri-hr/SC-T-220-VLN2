@@ -35,15 +35,18 @@ def signup(request):
 
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
-            user_info_form.user = new_user
+            user_info_form.initial['user'] = new_user
 
         if postal_code_form.is_valid():
             new_postal_code = postal_code_form.save(commit=False)
-            user_info_form.postal_code = new_postal_code
+            user_info_form.initial['postal_code'] = new_postal_code
 
         if user_info_form.is_valid():
             new_user_info = user_info_form.save(commit=False)
             print("IT WORKERD!!!!")
+        else:
+            for item in user_info_form.errors:
+                print(item)
 
     else:
         user_form = UserCreationForm()

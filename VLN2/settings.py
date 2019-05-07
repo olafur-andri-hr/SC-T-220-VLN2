@@ -140,6 +140,7 @@ STATIC_URL = '/static/'
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "base/static"),
@@ -151,6 +152,7 @@ STATICFILES_FINDERS = [
     'sass_processor.finders.CssFinder',
 ]
 
+
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 
 SASS_PRECISION = 8
@@ -160,5 +162,8 @@ SASS_OUTPUT_STYLE = 'compressed'
 SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(PROJECT_DIR, 'base/static/sass'),
 ]
+
+PHONENUMBER_DB_FORMAT = 'E164'
+PHONENUMBER_DEFAULT_REGION = 'US'
 
 django_heroku.settings(locals())
