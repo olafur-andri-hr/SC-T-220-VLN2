@@ -157,4 +157,8 @@ SASS_PRECISION = 8
 
 SASS_OUTPUT_STYLE = 'compressed'
 
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(PROJECT_DIR, 'base/static/sass'),
+]
+
 django_heroku.settings(locals())

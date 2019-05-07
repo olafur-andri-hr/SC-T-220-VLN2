@@ -1,39 +1,89 @@
 {% extends "base.html" %}
 {% load static %}
+{% load sass_tags %}
 
 {% block styles %}
-    <link rel="stylesheet" type="text/css"
-        href="{% static "castleapartments/css/style.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
 {% endblock styles %}
 
 {% block title %}
-    <title> Login </title>
+<title> Sign Up </title>
 {% endblock title %}
 
 {% block content %}
-    <main>
-        <div id="search_banner">
-            <svg id="search_banner_background" viewBox="0 0 100 100"
-                preserveAspectRatio="none">
-                <polygon
-                    points="0,80 100,100 0,100"
-                    style="fill: #7E57C2; fill-rule: evenodd" />
-                <polygon
-                    points="0,0 100,0 100,50"
-                    style="fill: #5E35B1; fill-rule: evenodd" />
-                    />
-            </svg>
+<main>
+    <div id="main_banner">
+        <svg id="main_banner_background" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,80 100,100 0,100" style="fill: #7E57C2; fill-rule: evenodd" />
+            <polygon points="0,0 100,0 100,50" style="fill: #5E35B1; fill-rule: evenodd" />
+            />
+        </svg>
 
-            <div id="search_banner_content">
-                <h1>Your Information.</h1>
-        
-                <form action="#" method="post">
-                    {% csrf_token %}
-                    <table>
-                        {{ form }}
-                    </table>
-                </form>
+        <div id="main_banner_content" class="container-full">
+            <div class="container text-center">
+                <h1>Sign up.</h1>
             </div>
+            <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full">
+                {% csrf_token %}
+                <section>
+                    <h2 class="text-center">Who are you?</h2>
+                    <table>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <th>{{user_info_form.first_name.label_tag}}</th>
+                                <td>{{user_info_form.first_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.last_name.label_tag}}</th>
+                                <td>{{user_info_form.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.email.label_tag}}</th>
+                                <td>{{user_info_form.email}}</td>
+                            </tr>
+                            {{user_form}}
+
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h2 class="text-center">Tell us more</h2>
+                    <table class="m-sm-3">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <th>{{user_info_form.SSN.label_tag}}</th>
+                                <td>{{user_info_form.SSN}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.DoB.label_tag}}</th>
+                                <td>{{user_info_form.DoB}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.profile_img.label_tag}}</th>
+                                <td>{{user_info_form.profile_img}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.bio.label_tag}}</th>
+                                <td>{{user_info_form.bio}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.address.label_tag}}</th>
+                                <td>{{user_info_form.address}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.apt_number.label_tag}}</th>
+                                <td>{{user_info_form.apt_number}}</td>
+                            </tr>
+                            {{postal_code_form}}
+
+
+                    </table>
+                </section>
+                <input type="submit" value="Sign up" class="btn btn-outline-primary box-shadow">
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 {% endblock content %}
