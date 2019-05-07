@@ -2,6 +2,7 @@
 @import "../bootstrap/scss/bootstrap";
 
 $header-height: 4rem;
+$black: #212121;
 
 .light-text {
 	color: $text-light;
@@ -23,12 +24,21 @@ header{
     font-family: "Reem Kufi", sans-serif;
     display: flex;
     color: $black;
-	box-shadow: 6px 0px 6px #363434;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 	justify-content: space-between;
 	position: fixed;
 	z-index: 10;
 	background-color: #FFFFFF;
 
+	.linkdiv {
+		transition: background-color 0.5s ease;
+		z-index: 11;
+		border-radius: 5px;
+	}
+
+	.linkdiv:hover {
+		background: rgba(85, 3, 167, 0.1);
+	}
 	#header_background {
 		position: absolute;
 		top: 0;
@@ -36,7 +46,7 @@ header{
 		height: 100%;
 		width: 100%;
 		background-color: #FFFFFF;
-		z-index: 10;
+		z-index: 9;
 	}
 
 	a:hover {
@@ -68,7 +78,8 @@ header{
     #border1 {
         height: 50px;
         width: 1px;
-        background-color:$black;
+		background-color:$black;
+		z-index: 11;
     }
     #imgdiv {
         height: 5rem;
@@ -81,18 +92,21 @@ header{
         border-bottom: solid 1px;
         padding-bottom: 7px;
 		margin-top: 7px;
+		z-index: 11;
 	}
 
     #sell {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
+		margin-top: 7px;
+		z-index: 11;
     }
 
     #about {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
+		margin-top: 7px;
+		z-index: 11
     }
 
     #selldiv {
@@ -146,19 +160,32 @@ header{
 		right: 0;
 		height: auto;
 		width: 210px;
+		display: none;
 		opacity: 0;
 		transition: all .1s ease;
 		flex-direction: column;
-		padding: 20px 20px 20px 20px;
+		padding: 10px 10px 10px 10px;
 		justify-content: flex-start;
 		align-items: center;
 		text-align: center;
+		transition: all .5s ease-in-out; 
 		box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.2);
 		will-change: transform;
 	}
 
+	#sidebar.active {
+		display: block;
+		opacity: 1;
+		transform: translateY(0);
+
+		@media screen and (max-width: 700px) {
+			display: none;
+		}
+	}
+
 	#sidebar a {
-		margin: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 		display: block;
 		width: 100%;
 		font-weight: bold;
@@ -167,12 +194,6 @@ header{
 
 	#sidebar a:hover {
 		color: $white;
-	}
-
-	#sidebar.active {
-		display: flex;
-		opacity: 1;
-		transform: translateY(0);
 	}
 
 	#closetag {
@@ -199,7 +220,8 @@ header{
     #border2 {
         background-color: $black;
         width: 1px;
-        height: 50px;
+		height: 50px;
+		z-index: 11;
     }
 
     #accountdiv {
@@ -208,6 +230,7 @@ header{
         align-items: center;
 		justify-content: space-evenly;
 		text-align: right;
+		z-index: 11;
     }
 
     #loggeddiv {
@@ -225,6 +248,7 @@ header{
 		display: none;
 		transition: background-color 0.5s ease;
 		border-radius: 5px;
+		z-index: 11;
 	}
 
 	#hamburger:hover {
@@ -295,6 +319,9 @@ header{
 			pointer-events: auto;
 		}
 
+		#listingdiv {
+			z-index: 11;
+		}
 
 		#dropdownnav.active {
 			display: flex;

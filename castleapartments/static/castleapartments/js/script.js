@@ -2,7 +2,8 @@
  * The main function for the file
  */
 function main() {
-  console.log('test');
+  const message = 'testing';
+  console.log(message);
 }
 
 main();
