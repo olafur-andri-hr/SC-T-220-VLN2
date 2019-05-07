@@ -21,7 +21,10 @@ function addEventListeners() {
  * @param {Event} e The object that represents the scroll event
  */
 function onScroll(e) {
-  if (window.pageYOffset > 10) {
+  const height = window.innerHeight;
+  const bottom = listingHint.getBoundingClientRect().bottom;
+  const toBottom = height - bottom;
+  if (toBottom > 40) {
     if (hintIsHidden) {
       return;
     }
