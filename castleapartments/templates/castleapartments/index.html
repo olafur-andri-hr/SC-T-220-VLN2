@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% load sass_tags %}
 
 {% block styles %}
-    <link rel="stylesheet" type="text/css"
-        href="{% static "castleapartments/css/style.min.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
 {% endblock styles %}
 
 {% block title %}
