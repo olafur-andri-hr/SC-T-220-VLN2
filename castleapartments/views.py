@@ -41,6 +41,7 @@ def signup(request):
         user_info_form = UserInfoForm(request.POST)
         postal_code_form = PostalCodeForm(request.POST)
         user_form = UserCreationForm(request.POST)
+        postal_code_form.clean()
 
         if user_form.is_valid():
             new_user = user_form.save(commit=False)

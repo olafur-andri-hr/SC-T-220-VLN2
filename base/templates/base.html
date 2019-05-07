@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Reem+Kufi:400" />
     <link rel="stylesheet" href="{% sass_src "sass/base_style.scss" %}">
@@ -22,13 +23,19 @@
         <div id="header_background"></div>
         <div id="dropdownnav">
             <div id="listingdropdown" class="dropdown-link">
-                <a href="/" id="listingsdropdown">All Listings</a>
+                <a href="/" id="listingsdropdown" class="dropdowntext">All Listings</a>
             </div>
             <div id="selldropdown" class="dropdown-link">
-                <a href="{% url 'sell' %}" id="sellsdropdown">Sell an Apartment</a>
+                <a href="{% url 'sell' %}" id="sellsdropdown" class="dropdowntext">Sell an Apartment</a>
             </div>
             <div id="aboutdropdown" class="dropdown-link">
-                <a href="{% url 'about' %}" id="abouttextdropdown">About us</a>
+                <a href="{% url 'about' %}" id="abouttextdropdown" class="dropdowntext">About us</a>
+            </div>
+            <div id="logindropdown" class="dropdown-link">
+                <a href="{% url 'about' %}" id="logintextdropdown" class="dropdowntext">Log in</a>
+            </div>
+            <div id="signupdropdown" class="dropdown-link">
+                <a href="{% url 'about' %}" id="signuptextdropdown" class="dropdowntext">Sign up</a>
             </div>
         </div>
         <a id="dropdown_obfuscator" href="#"></a>
@@ -76,7 +83,7 @@
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
             <polygon id="footer_triangle_left" points="0,0 100,100 0, 100" style="fill: #4A0292; fill-rule: evenodd;" />
             <polygon id="footer_triangle_right" points="0,100 100,0 100,100"
-                style="fill: #5503A7; fill-rule: evenodd;" />
+                style="fill: #5503A7; fill-rule: evenodd;"/>
         </svg>
         <div id="footer_logo">
             <img src="{% static 'logo_filled.png' %}" alt="CA logo" />
