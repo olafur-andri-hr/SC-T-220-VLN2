@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
+from .models import PostalCode
 
 
 def index(request):
@@ -40,13 +41,21 @@ def signup(request):
         user_info_form = UserInfoForm(request.POST)
         postal_code_form = PostalCodeForm(request.POST)
         user_form = UserCreationForm(request.POST)
+        postal_code_form.clean()
 
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
             user_info_form.initial['user'] = new_user
 
         if postal_code_form.is_valid():
-            new_postal_code = postal_code_form.save(commit=False)
+            zip_code = postal_code_form.cleaned_data["postal_code"]
+            country = postal_code_form.cleaned_data["country"]
+            try:
+                postal_code = PostalCode.objects.get(
+                    postal_code=zip_code, country=country
+                )
+            except PostalCode.DoesNotExist:
+                postal_code = postal_code_form.save(commit=False)
             user_info_form.initial['postal_code'] = new_postal_code
 
         if user_info_form.is_valid():

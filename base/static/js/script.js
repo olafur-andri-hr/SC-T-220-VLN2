@@ -1,5 +1,22 @@
+document.getElementById('hamburger').addEventListener('click', hamburger);
+document.getElementById('accountdiv')
+    .addEventListener('click', sidebardropdown);
+
+/**
+ * function for sliding the sidebar nav menu
+ */
 function sidebardropdown() {
-  document.getElementById("sidebar").classList.toggle("active");
-  console.log("Hi");
+  document.getElementById('sidebar').classList.toggle('active');
 }
 
+/**
+ * function for the hamburger menu
+ */
+function hamburger() {
+  navbar = document.getElementById('dropdownnav');
+  if (navbar.className === 'active') {
+    navbar.className = 'notActive';
+  } else {
+    navbar.className = 'active';
+  }
+}

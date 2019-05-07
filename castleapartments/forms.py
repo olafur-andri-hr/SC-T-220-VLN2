@@ -2,7 +2,7 @@ from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.forms import ModelForm, DateInput, Textarea
 
-from .models import UserInfo, User
+from .models import User, UserInfo
 from location.models import PostalCode
 
 
