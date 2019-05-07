@@ -51,7 +51,7 @@
             </div>
             <div id="border2"></div>
         </div>
-            <div id="accountdiv" onclick="sidebardropdown()" class="dropbtn">
+            <div id="accountdiv" class="dropbtn">
                 <div id="loggeddiv">
                     <p id="notlogged">Not logged in</p>
                 </div>
@@ -59,15 +59,14 @@
 
                 </div>
             </div>
+        <div id="hamburger"
+        style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
         <div id="sidebar" >
             <div id="content-notloggedin" class="dropdown-content">
             <a class="btn btn-outline-primary box-shadow"> Log in</a>
             <a class="btn btn-outline-primary box-shadow"> Sign Up</a>
             <div>
         </div>
-
-        <div id="hamburger" onclick="myFunction(this)"
-            style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>
     <div id="header-filler"></div>
     {% block content %}{% endblock %}
