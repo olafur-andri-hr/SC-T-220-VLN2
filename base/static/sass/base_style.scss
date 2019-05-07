@@ -159,7 +159,6 @@ header{
 		top: 4rem;
 		right: 0;
 		height: auto;
-		opacity: 0;
 		width: 210px;
 		display: flex;
 		flex-direction: column;
@@ -175,7 +174,6 @@ header{
 	}
 
 	#sidebar.active {
-		opacity: 1;
 		display: block;
 		transform: translateY(0);
 		@media screen and (max-width: 700px) {
