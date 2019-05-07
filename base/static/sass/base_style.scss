@@ -2,6 +2,7 @@
 @import "../bootstrap/scss/bootstrap";
 
 $header-height: 4rem;
+$black: #212121;
 
 .light-text {
 	color: $text-light;
@@ -28,6 +29,25 @@ header{
 	position: fixed;
 	z-index: 10;
 	background-color: #FFFFFF;
+
+	.linkdiv {
+		transition: background-color 0.5s ease;
+		z-index: 11;
+		border-radius: 5px;
+	}
+
+	.linkdiv:hover {
+		background: rgba(85, 3, 167, 0.1);
+	}
+	#header_background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: #FFFFFF;
+		z-index: 9;
+	}
 
 	a:hover {
 		text-decoration: none;
@@ -58,7 +78,8 @@ header{
     #border1 {
         height: 50px;
         width: 1px;
-        background-color:$black;
+		background-color:$black;
+		z-index: 11;
     }
     #imgdiv {
         height: 5rem;
@@ -67,34 +88,25 @@ header{
         background-size: cover;
     }
 
-    .linkdiv {
-        display: flex;
-		align-items: center;
-		transition: background-color 0.5s ease;
-		border-radius: 5px;
-	}
-	
-	.linkdiv:hover {
-		background: rgba(85, 3, 167, 0.1);
-
-	}
-
     #listings {
         border-bottom: solid 1px;
         padding-bottom: 7px;
 		margin-top: 7px;
+		z-index: 11;
 	}
 
     #sell {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
+		margin-top: 7px;
+		z-index: 11;
     }
 
     #about {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
+		margin-top: 7px;
+		z-index: 11
     }
 
     #selldiv {
@@ -114,6 +126,10 @@ header{
         width: 50px;
         background-size: cover;
 		margin-right: 10px;
+	}
+
+	#dropdownnav, #dropdown_obfuscator {
+		display: none;
 	}
 	
 	#lockdown-content {
@@ -144,6 +160,7 @@ header{
 		right: 0;
 		height: auto;
 		width: 210px;
+		display: none;
 		opacity: 0;
 		transition: all .1s ease;
 		flex-direction: column;
@@ -167,7 +184,7 @@ header{
 		color: $white;
 	}
 
-	#sidebar.active {
+	.active {
 		display: flex;
 		opacity: 1;
 		transform: translateY(0);
@@ -197,7 +214,8 @@ header{
     #border2 {
         background-color: $black;
         width: 1px;
-        height: 50px;
+		height: 50px;
+		z-index: 11;
     }
 
     #accountdiv {
@@ -206,6 +224,7 @@ header{
         align-items: center;
 		justify-content: space-evenly;
 		text-align: right;
+		z-index: 11;
     }
 
     #loggeddiv {
@@ -226,10 +245,10 @@ header{
 	}
 
 	#hamburger:hover {
-		background-color: rgb(163, 159, 163);
+		background-color: rgb(197, 191, 197);
 		color: white;
-	} 
-
+	}
+	
 	@media screen and (max-width: 700px) {
 		#centerheaddiv {
 			display: none;
@@ -246,7 +265,6 @@ header{
 			height: 2rem;
 			z-index: 11;
 			display: flex;
-			color: $main-purple;
 			background-size: cover;
 			flex-wrap: wrap;
 			margin-top: 1rem;
@@ -257,15 +275,75 @@ header{
 			cursor:pointer;
 			outline:none;
 		}
-		#hamburger:focus {
 
-			#sidebar {
-				height: 20rem;
-				width: 200px;
-				overflow: auto;
-				position: fixed;
-				background-color: blue;
-				display: inline-block;
+		#dropdownnav {
+			width: 100%;
+			position: fixed;
+			display: flex;
+			flex-wrap: wrap;
+			position: fixed;
+			align-items: center;
+			flex-direction: column;
+			background-color: white;
+			left: 0;
+			top: 0;
+			transform: translateY(-100%);
+			transition: transform 200ms ease;
+			z-index: 10;
+			padding-top: 2rem;
+		}
+
+		#dropdown_obfuscator {
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.2);
+			transition: opacity 200ms ease;
+			opacity: 0;
+			z-index: 9;
+			pointer-events: none;
+		}
+
+		#dropdownnav:target ~ #dropdown_obfuscator {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		#listingdiv {
+			z-index: 11;
+		}
+
+		#dropdownnav.active {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			transform: translateY(3rem);
+			box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2);
+
+			.dropdown-link {
+				margin-bottom: 1rem;
+				display: flex;
+				transition: background-color 0.5s ease;
+				border-radius: 5px;
+			}
+
+			.dropdown-link:hover {
+				background: rgba(85, 3, 167, 0.1);
+			}
+
+			#listingdropdown {
+				display: flex;
+			}
+
+			#selldropdown {
+				display: flex;
+			}
+
+			#aboutdropdown {
+				display: flex;
 			}
 		}
 	}
