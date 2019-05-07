@@ -2,6 +2,7 @@
 @import "../bootstrap/scss/bootstrap";
 
 $header-height: 4rem;
+$black: #212121;
 
 .light-text {
 	color: $text-light;
@@ -29,6 +30,9 @@ header{
 	z-index: 10;
 	background-color: #FFFFFF;
 
+	.linkdiv {
+		z-index: 11;
+	}
 	#header_background {
 		position: absolute;
 		top: 0;
@@ -36,7 +40,7 @@ header{
 		height: 100%;
 		width: 100%;
 		background-color: #FFFFFF;
-		z-index: 10;
+		z-index: 9;
 	}
 
 	a:hover {
@@ -68,7 +72,8 @@ header{
     #border1 {
         height: 50px;
         width: 1px;
-        background-color:$black;
+		background-color:$black;
+		z-index: 11;
     }
     #imgdiv {
         height: 5rem;
@@ -81,18 +86,21 @@ header{
         border-bottom: solid 1px;
         padding-bottom: 7px;
 		margin-top: 7px;
+		z-index: 11;
 	}
 
     #sell {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
+		margin-top: 7px;
+		z-index: 11;
     }
 
     #about {
         border-bottom: solid 1px;
         padding-bottom: 7px;
-        margin-top: 7px;
+		margin-top: 7px;
+		z-index: 11
     }
 
     #selldiv {
@@ -200,7 +208,8 @@ header{
     #border2 {
         background-color: $black;
         width: 1px;
-        height: 50px;
+		height: 50px;
+		z-index: 11;
     }
 
     #accountdiv {
@@ -209,6 +218,7 @@ header{
         align-items: center;
 		justify-content: space-evenly;
 		text-align: right;
+		z-index: 11;
     }
 
     #loggeddiv {
@@ -296,6 +306,9 @@ header{
 			pointer-events: auto;
 		}
 
+		#listingdiv {
+			z-index: 11;
+		}
 
 		#dropdownnav.active {
 			display: flex;
