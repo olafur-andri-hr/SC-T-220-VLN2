@@ -2,50 +2,44 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" type="text/css"
-        href="{% static "castleapartments/css/style.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "castleapartments/css/style.min.css" %}" />
 {% endblock styles %}
 
 {% block title %}
-    <title> Sign Up </title>
+<title> Sign Up </title>
 {% endblock title %}
 
 {% block content %}
-    <main>
-        <div id="search_banner">
-            <svg id="search_banner_background" viewBox="0 0 100 100"
-                preserveAspectRatio="none">
-                <polygon
-                    points="0,80 100,100 0,100"
-                    style="fill: #7E57C2; fill-rule: evenodd" />
-                <polygon
-                    points="0,0 100,0 100,50"
-                    style="fill: #5E35B1; fill-rule: evenodd" />
-                    />
-            </svg>
+<main>
+    <div id="search_banner">
+        <svg id="search_banner_background" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,80 100,100 0,100" style="fill: #7E57C2; fill-rule: evenodd" />
+            <polygon points="0,0 100,0 100,50" style="fill: #5E35B1; fill-rule: evenodd" />
+            />
+        </svg>
 
-            <div id="search_banner_content">
-                <h1>Your Information.</h1>
-        
-                <form action="#" method="post">
-                    {% csrf_token %}
-                    <table>
-                        <thead>Hallo</thead>
-                        <tbody>
-                            <div id="form_left">
+        <div id="search_banner_content">
+            <h1>Your Information.</h1>
+
+            <form action="#" method="post">
+                {% csrf_token %}
+                <table>
+                    <thead>Hallo</thead>
+                    <tbody>
+                        <div id="form_left">
                             {% for field in form_left %}
-                                {{field}}
+                            {{field}}
                             {% endfor %}
-                            </div>
-                            <div id="from_right">
+                        </div>
+                        <div id="from_right">
                             {% for field in form_right %}
-                                {{field}}
+                            {{field}}
                             {% endfor %}
-                            </div>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
+                        </div>
+                    </tbody>
+                </table>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 {% endblock content %}
