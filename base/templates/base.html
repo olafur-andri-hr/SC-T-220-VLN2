@@ -44,7 +44,11 @@
         </div>
         <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'></div>
     </div>
-    <div id="hamburger" onclick="myFunction(this)" style='background-image: url({% static "icons/hamburger.svg" %});'></div>
+    <button id="hamburger" style='background-image: url({% static "icons/hamburger.svg" %});'>
+        <div id="sidebar">
+            
+        </div>
+    </button>
     </header>
     {% block content %}{% endblock %}
     <footer>
