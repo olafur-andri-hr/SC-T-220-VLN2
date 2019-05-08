@@ -43,48 +43,136 @@
             <p class="textindiv">Confirm</p>
         </div>
     </div>
-    <form action="#" method="post" id="infoform">
+    <div id="infoform" class="forms">
         {% csrf_token %}
         <h1>Sell an apartment</h1>
         <h3>Your personal information</h3>
         <table id="infotable">
             <tr>
-                <th>Name:</th> <td>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</td>
+                <th class="tablelabel">Name:</th> <td>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</td>
             </tr>
             <tr>
-                <th>Email address:</th>
+                <th class="tablelabel">Email address:</th> <td>{{user.userinfo.email}}</td>
             </tr>
             <tr>
-                <th>Birthday:</th>
+                <th class="tablelabel">Birthday:</th> <td>{{user.userinfo.DoB}}</td>
             </tr>
             <tr>
-                <th>Phone:</th>
+                <th class="tablelabel">Phone:</th> <td>{{user.userinfo.phone_number}}</td>
             </tr>
             <tr>
-                <th>SSN:</th>
+                <th class="tablelabel">SSN:</th> <td>{{user.userinfo.SSN}}</td>
             </tr>
             <tr>
-                <th>Country:</th>
+                <th class="tablelabel">Country:</th> <td>{{user.userinfo.postal_code.country}}</td>
             </tr>
             <tr>
-                <th>Zip code:</th>
+                <th class="tablelabel">Zip code:</th> <td>{{user.userinfo.postal_code.zip_code}}</td>
             </tr>
             <tr>
-                <th>Town:</th>
+                <th class="tablelabel">Town:</th> <td></td>
             </tr>
             <tr>
-                <th>Address:</th>
+                <th class="tablelabel">Address:</th> <td>{{user.userinfo.address}}</td>
             </tr>
             <tr>
-                <th>Apt. number:</th>
+                <th class="tablelabel">Apt. number:</th> <td>{{user.userinfo.apt_number}}</td>
             </tr>
         </table>
-        <div class="prevstep">
-            <input type="submit" value="Previous Step" class="btn">
+        <div id="buttonsdiv">
+            <div class="prevstep">
+                <input type="submit" value="Update information" class="btn">
+            </div>
+            <div class="nextstep">
+                <input type="submit" value="Next Step" class="btn">
+            </div>
         </div>
-        <div class="nextstep">
-            <input type="submit" value="Next Step" class="btn">
-        </div>
+    </div>
+    <form id="basicform">
+        <div id="basicdiv" class="forms">
+                {% csrf_token %}
+                <h1>Sell an apartment</h1>
+                <h3>Location</h3>
+                <table id="basictable1">
+                    <tr>
+                        <th class="tablelabel">Country:</th><td><input type="select" name="country"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">*Zip Code:</th> <td><input type="text" name="zipcode"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">*Town:</th> <td><input type="text" name="town"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">*Address:</th>
+                        <td><input type="text" name="address"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Apt. number:</th>
+                        <td><input type="text" name="aptnumber"></td>
+                    </tr>
+                </table>
+                <h3>Appraisal</h3>
+                <table id="basictable2">
+                        <tr>
+                            <th class="tablelabel">*Real Estate appraisal amount:</th>
+                            <td><input type="number" name="appraisal"></td>
+                        </tr>
+                    </table>
+                <div id="buttonsdiv">
+                    <div class="prevstep">
+                        <input type="submit" value="Update information" class="btn">
+                    </div>
+                    <div class="nextstep">
+                        <input type="submit" value="Next Step" class="btn">
+                    </div>
+                </div>
+            </div>
+    </form>
+    <form id="detailform">
+        <div id="detaildiv" class="forms">
+                {% csrf_token %}
+                <h1>Sell an apartment</h1>
+                <h3>Property info</h3>
+                <table id="detailtable1">
+                    <tr>
+                        <th class="tablelabel">Number of rooms:</th><td><input type="number" 
+                            name="numrooms"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Number of toilets:</th> 
+                        <td><input type="number" name="numtoilets"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Size (in m2)</th>
+                        <td><input type="number" name="size"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Type:</th>
+                        <td><input type="select" name="type"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Pictures:</th>
+                        <td><input type="file" value= "Choose pictures" name="pictures"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Detailed description:</th>
+                        <td><input type="number" name="description"></td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Detailed description:</th>
+                        <td><textarea></textarea></td>
+                    </tr>
+                </table>
+                <div id="buttonsdiv">
+                    <div class="prevstep">
+                        <input type="submit" value="Update information" class="btn">
+                    </div>
+                    <div class="nextstep">
+                        <input type="submit" value="Next Step" class="btn">
+                    </div>
+                </div>
+            </div>
     </form>
 </main>
 {% endblock content %}
