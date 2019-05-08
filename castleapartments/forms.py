@@ -63,7 +63,7 @@ class SearchForm(forms.Form):
     min_price = forms.ChoiceField(
         label="Price:",
         required=False,
-        choices=[(str(i), str(i) + " million") for i in range(1, 201, 1)],
+        choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
         initial="10",
         widget=forms.Select(attrs={
             "placeholder": "Min",
@@ -74,7 +74,7 @@ class SearchForm(forms.Form):
         required=False,
         label="to",
         label_suffix="",
-        choices=[(str(i), str(i) + " million") for i in range(1, 201, 1)],
+        choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
         initial="100",
         widget=forms.Select(attrs={
             "placeholder": "Max",

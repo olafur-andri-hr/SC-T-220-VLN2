@@ -7,17 +7,19 @@ from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
-from .models import PostalCode, Listing
+from .models import PostalCode, Listing, ApartmentType
 from django.urls import reverse
 
 
 def index(request):
     listings = Listing.objects.all()
+    apartment_types = ApartmentType.objects.all()
     context = {
         "listings": listings,
         "form": SearchForm(),
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "apartment_types": apartment_types
     }
     return render(request, 'castleapartments/index.html', context)
 

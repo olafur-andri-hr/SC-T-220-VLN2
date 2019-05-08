@@ -1,6 +1,8 @@
 // Global variables
 const listingHint = document.getElementById('listing-hint');
 const siteHeader = document.getElementById('site_header');
+const checkboxButton = document.getElementById('checkbox_button');
+const checkboxes = document.getElementById('checkboxes');
 let hintIsHidden = false;
 
 /**
@@ -19,6 +21,7 @@ function addEventListeners() {
   window.addEventListener('scroll', onScroll);
   editSearchLink.addEventListener('click', scrollToTop);
   listingHint.addEventListener('click', scrollToListings);
+  checkboxButton.addEventListener('click', showCheckboxes);
 }
 
 /**
@@ -81,6 +84,33 @@ function scrollToListings(e) {
   } catch (_) {
     // Do nothing
   }
+}
+
+/**
+ * The event handler a click event on the checkbox button
+ * @param {Event} e The event object for this function
+ */
+function showCheckboxes(e) {
+  checkboxButton.firstElementChild.innerText = 'Click away to close';
+  checkboxes.className = 'active';
+  checkboxButton.removeEventListener('click', showCheckboxes);
+  setTimeout(() => {
+    window.addEventListener('click', hideCheckboxes);
+  }, 0);
+}
+
+/**
+ * Hides the 'apartment type' checkboxes if user clicks away
+ * @param {Event} e The event object for this function
+ */
+function hideCheckboxes(e) {
+  if (checkboxes.contains(e.target)) {
+    return;
+  }
+  checkboxButton.firstElementChild.innerText = 'Choose Type(s)';
+  checkboxes.className = '';
+  checkboxButton.addEventListener('click', showCheckboxes);
+  window.removeEventListener('click', hideCheckboxes);
 }
 
 main();
