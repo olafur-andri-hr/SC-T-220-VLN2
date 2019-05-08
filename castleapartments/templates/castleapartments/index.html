@@ -40,12 +40,60 @@
                 <form id="search_banner_form" action="#" method="post" class="">
                     {% csrf_token %}
                     <ul>
-                        {% for field in form %}
-                        {{ field.errors }}
-                        <li class="{{ field.field.widget.attrs.class }}">
-                            {{ field.label_tag }} {{ field }}
+                        {{ form.address.errors }}
+                        <li>
+                            {{ form.address.label_tag }}
+                            {{ form.address }}
                         </li>
-                        {% endfor %}
+
+                        {{ form.zip_code.errors }}
+                        <li>
+                            {{ form.zip_code.label_tag }}
+                            {{ form.zip_code }}
+                        </li>
+
+                        {{ form.country.errors }}
+                        <li>
+                            {{ form.country.label_tag }}
+                            {{ form.country }}
+                        </li>
+
+                        {{ form.town.errors }}
+                        <li>
+                            {{ form.town.label_tag }}
+                            {{ form.town }}
+                        </li>
+
+                        {{ form.min_rooms.errors }}
+                        {{ form.max_rooms.errors }}
+                        <li class="multiple-inputs">
+                            {{ form.min_rooms.label_tag }}
+                            {{ form.min_rooms }}
+                            {{ form.max_rooms.label_tag }}
+                            {{ form.max_rooms }}
+                        </li>
+
+                        {{ form.min_price.errors }}
+                        {{ form.max_price.errors }}
+                        <li class="multiple-inputs">
+                            {{ form.min_price.label_tag }}
+                            {{ form.min_price }}
+                            {{ form.max_price.label_tag }}
+                            {{ form.max_price }}
+                        </li>
+
+                        {{ form.min_size.errors }}
+                        {{ form.max_size.errors }}
+                        <li class="multiple-inputs">
+                            {{ form.min_size.label_tag }}
+                            {{ form.min_size }}
+                            {{ form.max_size.label_tag }}
+                            {{ form.max_size }}
+                        </li>
+
+                        <li>
+                            
+                        </li>
                     </ul>
 
                     <button id="search_button" type="button">
