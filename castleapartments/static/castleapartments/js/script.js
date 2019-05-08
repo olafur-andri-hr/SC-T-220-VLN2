@@ -77,6 +77,7 @@ function scrollToListings(e) {
       left: 0,
       behavior: 'smooth',
     });
+    e.preventDefault();
   } catch (_) {
     // Do nothing
   }
