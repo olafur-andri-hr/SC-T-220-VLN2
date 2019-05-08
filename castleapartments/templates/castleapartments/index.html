@@ -80,7 +80,7 @@
                     </filter>
                 </defs>
             </svg>
-            <p>Scroll down to view our listings</p>
+            <a href="#search-results">Scroll down to view our listings</a>
             <svg width="59" height="49" viewBox="0 0 59 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter=""> <!-- url(#filter0_d) -->
                     <path d="M12 8L29.5 33L47 8" stroke="#212121" stroke-width="8" stroke-linecap="round"
@@ -104,18 +104,36 @@
     </div>
     <div id="search-results">
         <div class="header" id="search_results_header">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon
+                    points="0,0 100,0 0,100"
+                    style="fill: #FFFFFF;fill-rule: evenodd;" />
+                <polygon
+                    points="100,0 100,100 0,100"
+                    style="fill: #F5F5F5;fill-rule: evenodd" />
+            </svg>
             <ul>
-                <li></li>
+                <li>
+                    <p><span id="listing-count">0</span> Listings</p>
+                </li>
+                <li>
+                    <p>Order by:</p>
+                    <select >
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                        <option>Least expensive</option>
+                        <option>Most expensive</option>
+                        <option>Postal code</option>
+                        <option>Address</option>
+                    </select>
+                </li>
+                <li>
+                    <a id="edit_search" href="#frontpage-div">
+                        <img src="{% static 'icons/edit.svg' %}">
+                        <p>Edit search</p>
+                    </a>
+                </li>
             </ul>
-            <p><span id="listing-count">0</span> Listings</p>
-            <p>Order by:</p>
-            <select>
-                <option>Newest first</option>
-            </select>
-            <a id="edit_search" href="#frontpage-div">
-                <img src="{% static 'icons/edit.svg' %}">
-                <p>Edit search</p>
-            </a>
         </div>
         <p>Search results</p>
         <p>Search results</p>

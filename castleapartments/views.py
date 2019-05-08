@@ -1,15 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
-from .models import PostalCode
+from .models import PostalCode, Listing
 
 
 def index(request):
+    listings = Listing.objects.all()
     context = {
-        "form": SearchForm()
+        "listings": listings,
+        "form": SearchForm(),
     }
     return render(request, 'castleapartments/index.html', context)
 
@@ -19,8 +23,17 @@ def about(request):
 
 
 def login(request):
+    if request.method == "POST":
+        authentication_form = AuthenticationForm(request, data=request.POST)
+        if authentication_form.is_valid():
+            username = authentication_form.cleaned_data["username"]
+            password = authentication_form.cleaned_data["password"]
+            user = User.objects.get(username=username)
+            django_login(request, user)
+    else:
+        authentication_form = AuthenticationForm()
     context = {
-        "form": LoginForm()
+        "form": authentication_form
     }
     return render(request, 'castleapartments/login.html', context)
 

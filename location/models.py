@@ -15,3 +15,6 @@ class PostalCode(models.Model):
 
     class Meta:
         unique_together = (('zip_code', 'country'),)
+
+    def __str__(self):
+        return f"{self.zip_code}, {self.country}"
