@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'location',
     'castleapartments',
+    'apartments',
 ]
 
 MIDDLEWARE = [

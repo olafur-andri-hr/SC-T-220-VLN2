@@ -63,23 +63,26 @@
             <div id="loggeddiv">
                 <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
             </div>
-            <div id="profilediv" style='background-image: url({% static "lock.svg" %});'></div>
+            <div id="profilepic" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
             {% else %}
             <div id="loggeddiv">
                 <p id="notlogged">Not logged in</p>
             </div>
-            <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'></div>
+            <div id="profilepic" style='background-image: url({% static "lock.svg" %});'></div>
             {% endif %}
         </div>
         <div id="sidebar">
+            {% if authenticated  %}
+            <div id="content-loggedin" class="dropdown-content">
+                <a class="btn btn-outline-primary box-shadow" href="{% url 'account' %}"> My Account</a>
+                <a class="btn btn-outline-primary box-shadow" href="{% url 'logout' %}"> Log out</a>
+            </div>
+            {% else %}
             <div id="content-notloggedin" class="dropdown-content">
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
             </div>
-            <div id="content-loggedin" class="dropdown-content">
-                    <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> My Account</a>
-                    <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Log out</a>
-                </div>
+            {% endif %}
         </div>
         <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>

@@ -38,7 +38,7 @@ def login(request):
         form_class=LoginForm,
         template_name='castleapartments/login.html',
         extra_context={
-            "authenticated": False,
+            "authenticated": request.user.is_authenticated,
             "user": request.user,
         }
     )(request)
@@ -84,7 +84,6 @@ def signup(request):
             new_user = user_form.save()
 
             postal_code = postal_code_form.get_postal_code()
-            postal_code.save()
 
             new_user_info = user_info_form.save(commit=False)
             new_user_info.postal_code = postal_code
