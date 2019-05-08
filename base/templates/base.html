@@ -60,10 +60,10 @@
         </div>
         <div id="accountdiv" class="dropbtn">
             {% if authenticated %}
-                <div id="loggeddiv">
-                    <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
-                </div>
-                <div id="profilediv" style='background-image: url({% static "lock.svg" %});'></div>
+            <div id="loggeddiv">
+                <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+            </div>
+            <div id="profilediv" style='background-image: url({% static "lock.svg" %});'></div>
             {% else %}
             <div id="loggeddiv">
                 <p id="notlogged">Not logged in</p>
@@ -76,6 +76,10 @@
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
             </div>
+            <div id="content-loggedin" class="dropdown-content">
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> My Account</a>
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Log out</a>
+                </div>
         </div>
         <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>

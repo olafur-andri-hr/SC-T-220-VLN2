@@ -26,31 +26,48 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'castleapartments/about.html')
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/about.html', context)
 
 
 def login(request):
     return LoginView.as_view(
         form_class=LoginForm,
         template_name='castleapartments/login.html',
-        extra_context={"authenticated": False}
+        extra_context={
+            "authenticated": False,
+            "user": request.user,
+        }
     )(request)
 
 
 @login_required
 def sell(request):
-    context = {"authenticated": request.user.is_authenticated,
-               "user": request.user}
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
     return render(request, 'castleapartments/sell.html', context)
 
 
 @login_required
 def account(request):
-    return render(request, 'castleapartments/account.html')
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/account.html', context)
 
 
 def listing(request):
-    return render(request, 'castleapartments/listing.html')
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/listing.html', context)
 
 
 def signup(request):
@@ -86,6 +103,8 @@ def signup(request):
         "user_form": user_form,
         "user_info_form": user_info_form,
         "postal_code_form": postal_code_form,
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
     }
     return render(request, 'castleapartments/signup.html', context)
 
