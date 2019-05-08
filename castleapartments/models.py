@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from location.models import PostalCode
 from phonenumber_field.modelfields import PhoneNumberField
 from .validators import SSNValidator, credit_card_validator
+from apartments.models import Apartment, ApartmentType, ApartmentImage
+from apartments.models import Listing
 
 
 class UserInfo(models.Model):
@@ -30,59 +32,6 @@ class UserInfo(models.Model):
     bio = models.TextField(("Your bio"), max_length=300)
 
 
-class ApartmentType(models.Model):
-    name = models.CharField(max_length=20, unique=True)
-    description = models.TextField(max_length=300)
-
-    def __str__(self):
-        return str(self.name)
-
-
-class Apartment(models.Model):
-    postal_code = models.ForeignKey(
-        PostalCode, verbose_name=("Postal code"), on_delete=models.CASCADE
-    )
-    address = models.CharField(("Address"), max_length=50)
-    apt_number = models.CharField(
-        ("Apt. number"), max_length=50, null=True, blank=True
-    )
-    appraisal = models.BigIntegerField(("Appraisal"))
-    num_rooms = models.IntegerField(("Bedrooms"))
-    num_bathrooms = models.IntegerField(("Bathrooms"))
-    size = models.FloatField(("Size (m²)"))
-    apartment_type = models.ForeignKey(
-        ApartmentType, verbose_name=("Apartment type"),
-        on_delete=models.CASCADE
-    )
-    description = models.TextField(("Description"))
-
-
-class ApartmentImage(models.Model):
-    image = models.ImageField(
-        ("Image"), upload_to="apartments/", height_field=None,
-        width_field=None, max_length=None
-    )
-    apartment = models.ForeignKey(
-        Apartment, verbose_name=(""), on_delete=models.CASCADE
-    )
-
-
-class Listing(models.Model):
-    apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE)
-    seller = models.ForeignKey(
-        User, verbose_name=("Seller"), on_delete=models.DO_NOTHING,
-        null=True, blank=True
-    )
-    listing_date = models.DateTimeField(
-        ("Listing date"), auto_now=True, auto_now_add=False
-    )
-    sold_date = models.DateField(
-        ("Date sold"), auto_now=False, auto_now_add=False,
-        null=True, blank=True
-    )
-    processed = models.BooleanField(("Processed by staff"), default=False)
-
-
 class CreditCard(models.Model):
     credit_card_number = models.CharField(
         max_length=22, validators=[credit_card_validator],
@@ -99,7 +48,7 @@ class Offer(models.Model):
         null=True, blank=True
     )
     listing = models.ForeignKey(
-        Listing, verbose_name=("Listing"),
+        "apartments.Listing", verbose_name=("Listing"),
         on_delete=models.CASCADE
     )
     request_date = models.DateTimeField(
