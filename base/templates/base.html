@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Reem+Kufi:400" />
     <link rel="stylesheet" href="{% sass_src "sass/base_style.scss" %}">
     <script src="{% static 'js/script.js' %}" defer></script>
@@ -59,23 +59,36 @@
             <div id="border2"></div>
         </div>
         <div id="accountdiv" class="dropbtn">
+            {% if authenticated %}
+                <div id="loggeddiv">
+                    <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+                </div>
+                <div id="profilediv" style='background-image: url({% static "lock.svg" %});'></div>
+            {% else %}
             <div id="loggeddiv">
                 <p id="notlogged">Not logged in</p>
             </div>
-            <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'>
-
-            </div>
-            <div id="sidebar">
-                <div id="content-notloggedin" class="dropdown-content">
-                    <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
-                    <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
-                </div>
+            <div id="lockdiv" style='background-image: url({% static "lock.svg" %});'></div>
+            {% endif %}
+        </div>
+        <div id="sidebar">
+            <div id="content-notloggedin" class="dropdown-content">
+                <a class="btn btn-outline-primary box-shadow" href="{% url 'login' %}"> Log in</a>
+                <a class="btn btn-outline-primary box-shadow" href="{% url 'signup' %}"> Sign Up</a>
             </div>
         </div>
         <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
     </header>
     <div id="header-filler"></div>
     {% block content %}{% endblock %}
+    <noscript>
+        <div id="noscript_message">
+            <p>
+                You have JavaScript disabled. Some functionality of this site
+                will be unavailable.
+            </p>
+        </div>
+    </noscript>
     <footer>
         <div id="footer_square"></div>
         <div id="footer_oval"></div>

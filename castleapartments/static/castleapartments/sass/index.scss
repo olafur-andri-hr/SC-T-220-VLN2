@@ -21,11 +21,7 @@
         display: none;
     }
 
-    * {
-        pointer-events: none;
-    }
-
-    p {
+    a {
         font-family: $heading-font;
         color: #212121;
         text-align: center;
@@ -33,10 +29,12 @@
         font-weight: 400;
         margin-bottom: 0;
     }
+
     svg {
         display: inline-block;
         margin: 0 auto;
         height: 1.1rem;
+        pointer-events: none;
     }
 }
 
@@ -57,6 +55,8 @@
 
     #search_banner_content {
         form {
+            padding-top: 0;
+
             @media screen and (max-width: 600px) {
                 padding-left: 0;
                 padding-right: 0;
@@ -69,7 +69,7 @@
                     margin-bottom: 0;
                 }
     
-                input {
+                input, select {
                     max-width: none;
                     margin-bottom: 1rem;
                     width: 100%;
@@ -99,33 +99,74 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        background-color: #EFEFEF;
+        background-color: #FFFFFF;
         width: 100%;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
         position: sticky;
         position: -webkit-sticky;
         top: 4rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+        padding: 0.5rem 0;
+        color: #212121;
 
         ul {
+            position: relative;
+            z-index: 2;
             list-style-type: none;
-        }
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
 
-        p {
-            border-right: 1px solid #212121;
-            margin-right: 1rem;
-            padding-right: 1rem;
-        }
-
-        img {
-            height: 2rem;
-        }
-
-        a {
             p {
-                display: inline;
+                display: inline-block;
+                margin: 0;
+                padding: 0;
             }
+
+            li {
+                display: inline-block;
+                border-right: 1px solid #212121;
+                width: 20%;
+                text-align: center;
+                font-family: $heading-font;
+                margin-bottom: -0.1rem;
+        
+                img {
+                    height: 1.5rem;
+                    margin-right: 0.5rem;
+                }
+        
+                a {
+                    p {
+                        display: inline;
+                        color: #212121;
+                    }
+                }
+
+                select {
+                    border: 0;
+                    font-family: $text-font;
+                    font-weight: 500;
+                    font-size: 0.9em;
+                    cursor: pointer;
+                    background-color: #FFFFFF;
+                    border-radius: 0.2rem;
+                    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+                    padding: 0.2rem;
+                    color: #212121;
+                }
+            }
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
         }
     }
 

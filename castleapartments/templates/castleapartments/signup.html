@@ -12,8 +12,7 @@
 
 {% block content %}
 
-<div id="background_image"
-    style='
+<div id="background_image" style='
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
                     url("{% static "background.jpg" %}")'>
@@ -47,14 +46,29 @@
                                 <td>{{user_info_form.last_name.errors}}{{user_info_form.last_name}}</td>
                             </tr>
                             <tr>
+                                <th>{{user_info_form.phone_number.label_tag}}</th>
+                                <td>{{user_info_form.phone_number.errors}}{{user_info_form.phone_number}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.SSN.label_tag}}</th>
+                                <td>{{user_info_form.SSN.errors}}{{user_info_form.SSN}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{user_info_form.DoB.label_tag}}</th>
+                                <td>{{user_info_form.DoB.errors}}{{user_info_form.DoB}}</td>
+                            </tr>
+                            <tr>
                                 <th>{{user_info_form.email.label_tag}}</th>
                                 <td>{{user_info_form.email.errors}}{{user_info_form.email}}</td>
                             </tr>
                             <tr>
-                                <th>{{user_info_form.phone_number.label_tag}}</th>
-                                <td>{{user_info_form.phone_number.errors}}{{user_info_form.phone_number}}</td>
+                                <th>{{user_form.password1.label_tag}}</th>
+                                <td>{{user_form.password1.errors}}{{user_form.password1}}</td>
                             </tr>
-                            {{user_form}}
+                            <tr>
+                                <th>{{user_form.password2.label_tag}}</th>
+                                <td>{{user_form.password2.errors}}{{user_form.password2}}</td>
+                            </tr>
 
                         </tbody>
                     </table>
@@ -64,14 +78,6 @@
                     <table class="m-sm-3">
                         <thead></thead>
                         <tbody>
-                            <tr>
-                                <th>{{user_info_form.SSN.label_tag}}</th>
-                                <td>{{user_info_form.SSN.errors}}{{user_info_form.SSN}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{user_info_form.DoB.label_tag}}</th>
-                                <td>{{user_info_form.DoB.errors}}{{user_info_form.DoB}}</td>
-                            </tr>
                             <tr>
                                 <th>{{user_info_form.profile_img.label_tag}}</th>
                                 <td>{{user_info_form.profile_img.errors}}{{user_info_form.profile_img}}</td>
@@ -93,7 +99,9 @@
 
                     </table>
                 </section>
-                <input type="submit" value="Sign up" class="btn btn-outline-primary box-shadow">
+                <div class="container-full text-center">
+                    <input type="submit" value="Sign up" class="btn btn-outline-primary box-shadow">
+                </div>
             </form>
         </div>
     </div>

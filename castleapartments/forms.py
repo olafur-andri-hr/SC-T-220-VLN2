@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import MinLengthValidator
 from django.forms import ModelForm, DateInput, Textarea
 from django_countries.fields import CountryField
+from django.contrib.auth.forms import AuthenticationForm
 
 from .models import User, UserInfo
 from location.models import PostalCode
@@ -27,14 +28,9 @@ class SearchForm(forms.Form):
             "class": ""
         })
     )
-    country = forms.ChoiceField(
+    country = CountryField().formfield(
         label="Country:",
-        required=False,
-        choices=['Insert Django country dropdown here'],
-        widget=forms.TextInput(attrs={
-            "placeholder": "Select property's country",
-            "class": ""
-        })
+        required=False
     )
     town = forms.CharField(
         label="Town:",
@@ -64,21 +60,23 @@ class SearchForm(forms.Form):
             "class": "inline-second"
         })
     )
-    min_price = forms.IntegerField(
-        label="Price (mil):",
+    min_price = forms.ChoiceField(
+        label="Price:",
         required=False,
-        validators=[MinValueValidator(1), MaxValueValidator(200)],
-        widget=forms.NumberInput(attrs={
+        choices=[(str(i), str(i) + " million") for i in range(1, 201, 1)],
+        initial="10",
+        widget=forms.Select(attrs={
             "placeholder": "Min",
             "class": "inline-first"
         })
     )
-    max_price = forms.IntegerField(
+    max_price = forms.ChoiceField(
         required=False,
         label="to",
         label_suffix="",
-        validators=[MinValueValidator(1), MaxValueValidator(200)],
-        widget=forms.NumberInput(attrs={
+        choices=[(str(i), str(i) + " million") for i in range(1, 201, 1)],
+        initial="100",
+        widget=forms.Select(attrs={
             "placeholder": "Max",
             "class": "inline-second"
         })
@@ -104,23 +102,8 @@ class SearchForm(forms.Form):
     )
 
 
-class LoginForm(forms.Form):
-    email = forms.CharField(
-        label="Email:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Email"
-        })
-    )
-    password = forms.CharField(
-        label="Password:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Password"
-        })
-    )
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label=("Email"), max_length=30)
 
 
 class PostalCodeForm(forms.Form):

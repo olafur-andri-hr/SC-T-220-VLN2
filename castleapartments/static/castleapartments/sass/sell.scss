@@ -1,0 +1,90 @@
+@import '../../../../base/static/sass/definitions';
+
+$gray: #ddd8d8;
+
+main {
+    background-color: $gray;
+    padding: 0;
+    margin: 0;
+}
+
+#navdiv {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6rem;
+
+    @media screen and (max-width: 700px) {
+        display: none;
+    }
+}
+
+.arrowdiv {
+    background: cover;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+}
+
+#sellapartmentdiv {
+    background-color: $primary;
+    color: white;
+}
+
+#yourinfodiv {
+    border: solid 2px $primary;
+}
+
+.navigationdivs {
+    display: flex;
+    margin-right: 2%;
+    margin-left: 2%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    //height: 40%;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    font-family: "Reem Kufi", sans-serif;
+}
+
+.navigationdivs:hover {
+    background: rgba(85, 3, 167, 0.1);
+}
+
+.textindiv {
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Reem Kufi", sans-serif;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+#infoform {
+    left: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+    align-items: center;
+    margin: 0 auto;
+    //justify-content: space-between;
+    height: 40rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+#infotable {
+    display: flex;
+}
+
+footer {
+    //background-color: $gray;
+}
