@@ -8,6 +8,7 @@ from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing
+from django.urls import reverse
 
 
 def index(request):
@@ -45,7 +46,7 @@ def sell(request):
     context = {"authenticated": request.user.is_authenticated,
                "user": request.user}
     if not request.user.is_authenticated:
-        redirect_to_login(sell)
+        return redirect_to_login(reverse(sell))
     return render(request, 'castleapartments/sell.html', context)
 
 
