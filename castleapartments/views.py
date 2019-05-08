@@ -30,7 +30,7 @@ def login(request):
     return LoginView.as_view(
         form_class=LoginForm,
         template_name='castleapartments/login.html',
-        extra_content={"authenticated": False}
+        extra_context={"authenticated": False}
     )(request)
 
 
