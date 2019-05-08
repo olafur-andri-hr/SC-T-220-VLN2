@@ -2,60 +2,72 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
-from django.contrib.auth.views import redirect_to_login
+from django.contrib.auth.views import redirect_to_login, LoginView
 from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
-from .models import PostalCode, Listing
+from .models import PostalCode, Listing, ApartmentType
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     listings = Listing.objects.all()
+    apartment_types = ApartmentType.objects.all()
     context = {
         "listings": listings,
         "form": SearchForm(),
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "apartment_types": apartment_types
     }
     return render(request, 'castleapartments/index.html', context)
 
 
 def about(request):
-    return render(request, 'castleapartments/about.html')
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/about.html', context)
 
 
 def login(request):
-    if request.method == "POST":
-        authentication_form = LoginForm(request, data=request.POST)
-        if authentication_form.is_valid():
-            username = authentication_form.cleaned_data["username"]
-            password = authentication_form.cleaned_data["password"]
-            user = User.objects.get(username=username)
-            django_login(request, user)
-    else:
-        authentication_form = LoginForm()
-    context = {
-        "form": authentication_form
-    }
-    return render(request, 'castleapartments/login.html', context)
+    return LoginView.as_view(
+        form_class=LoginForm,
+        template_name='castleapartments/login.html',
+        extra_context={
+            "authenticated": request.user.is_authenticated,
+            "user": request.user,
+        }
+    )(request)
 
 
+@login_required
 def sell(request):
-    context = {"authenticated": request.user.is_authenticated,
-               "user": request.user}
-    if not request.user.is_authenticated:
-        return redirect_to_login(reverse(sell))
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
     return render(request, 'castleapartments/sell.html', context)
 
 
+@login_required
 def account(request):
-    return render(request, 'castleapartments/account.html')
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/account.html', context)
 
 
 def listing(request):
-    return render(request, 'castleapartments/listing.html')
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/listing.html', context)
 
 
 def signup(request):
@@ -72,7 +84,6 @@ def signup(request):
             new_user = user_form.save()
 
             postal_code = postal_code_form.get_postal_code()
-            postal_code.save()
 
             new_user_info = user_info_form.save(commit=False)
             new_user_info.postal_code = postal_code
@@ -91,6 +102,8 @@ def signup(request):
         "user_form": user_form,
         "user_info_form": user_info_form,
         "postal_code_form": postal_code_form,
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
     }
     return render(request, 'castleapartments/signup.html', context)
 

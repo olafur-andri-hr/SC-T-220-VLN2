@@ -49,7 +49,7 @@ class Apartment(models.Model):
     appraisal = models.BigIntegerField(("Appraisal"))
     num_rooms = models.IntegerField(("Bedrooms"))
     num_bathrooms = models.IntegerField(("Bathrooms"))
-    size = models.IntegerField(("Size (m²)"))
+    size = models.FloatField(("Size (m²)"))
     apartment_type = models.ForeignKey(
         ApartmentType, verbose_name=("Apartment type"),
         on_delete=models.CASCADE
