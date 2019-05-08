@@ -49,7 +49,7 @@
         <h3>Your personal information</h3>
         <table id="infotable">
             <tr>
-                <th>Name:</th>
+                <th>Name:</th> <td>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</td>
             </tr>
             <tr>
                 <th>Email address:</th>
@@ -79,6 +79,12 @@
                 <th>Apt. number:</th>
             </tr>
         </table>
+        <div class="prevstep">
+            <input type="submit" value="Previous Step" class="btn">
+        </div>
+        <div class="nextstep">
+            <input type="submit" value="Next Step" class="btn">
+        </div>
     </form>
 </main>
 {% endblock content %}

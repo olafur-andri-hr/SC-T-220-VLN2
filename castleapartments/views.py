@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
+from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
@@ -41,7 +42,11 @@ def login(request):
 
 
 def sell(request):
-    return render(request, 'castleapartments/sell.html')
+    context = {"authenticated": request.user.is_authenticated,
+               "user": request.user}
+    if not request.user.is_authenticated:
+        redirect_to_login(sell)
+    return render(request, 'castleapartments/sell.html', context)
 
 
 def account(request):
