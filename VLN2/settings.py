@@ -30,7 +30,7 @@ SECRET_KEY = 'q3z-whmpgbl8p5_$7%ve_9ug!m9$ihoybcjlouw1o_ea4vye^x'
 DEBUG = True
 
 ALLOWED_HOSTS = ["still-stream-97107.herokuapp.com",
-                 "vln2.gng.is", "127.0.0.1"]
+                 "vln2.gng.is", "127.0.0.1", "localhost", "*"]
 
 
 # Application definition
@@ -170,6 +170,35 @@ PHONENUMBER_DEFAULT_REGION = 'IS'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'filters': {
+#         'require_debug_false': {
+#             '()': 'django.utils.log.RequireDebugFalse'
+#         }
+#     },
+
+#     'handlers': {
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'filters': ['require_debug_false'],
+#             'class': 'django.utils.log.AdminEmailHandler'
+#         },
+#      'console':{
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django.request': {
+#             'handlers': ['mail_admins'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#     }
+# }
 
 
 django_heroku.settings(locals())

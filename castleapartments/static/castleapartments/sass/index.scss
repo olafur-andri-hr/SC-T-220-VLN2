@@ -159,7 +159,7 @@
 }
 
 #search-results {
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
 
     .header {
@@ -263,8 +263,20 @@
     p {
         margin-bottom: 0;
     }
+
+    #listings {
+        padding-top: 1rem;
+    }
 }
 
 footer {
     background-color: #FFFFFF;
+    z-index: 1;
+}
+
+.card {
+    width: 18rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
 }
