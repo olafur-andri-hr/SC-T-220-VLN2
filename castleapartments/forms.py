@@ -126,7 +126,7 @@ class PostalCodeForm(forms.Form):
             postal_code = PostalCode.objects.create(
                 zip_code=zip_code, country=country, town=town
             )
-            postal_code.save(commit=False)
+            postal_code.save()
         return postal_code
 
 
