@@ -13,24 +13,35 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 6rem;
 }
 
 .arrowdiv {
     background: cover;
-    height: 1.3rem;
-    width: 1.3rem;
-    display: flex;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
     align-items: center;
     justify-content: center;
 }
 
+#sellapartmentdiv {
+    background-color: $primary;
+    color: white;
+}
+
+#yourinfodiv {
+    border: solid 2px $primary;
+}
+
 .navigationdivs {
     display: flex;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    margin-right: 2%;
+    margin-left: 2%;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    //height: 40%;
     transition: background-color 0.5s ease;
     cursor: pointer;
     font-family: "Reem Kufi", sans-serif;
@@ -41,8 +52,10 @@ main {
 }
 
 .textindiv {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 h1 {
@@ -54,7 +67,7 @@ h1 {
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 55rem;
+    width: 68%;
     align-items: center;
     margin: 0 auto;
     //justify-content: space-between;
