@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
-from django.contrib.auth.views import redirect_to_login
+from django.contrib.auth.views import redirect_to_login, LoginView
 from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
@@ -27,19 +27,11 @@ def about(request):
 
 
 def login(request):
-    if request.method == "POST":
-        authentication_form = LoginForm(request, data=request.POST)
-        if authentication_form.is_valid():
-            username = authentication_form.cleaned_data["username"]
-            password = authentication_form.cleaned_data["password"]
-            user = User.objects.get(username=username)
-            django_login(request, user)
-    else:
-        authentication_form = LoginForm()
-    context = {
-        "form": authentication_form
-    }
-    return render(request, 'castleapartments/login.html', context)
+    return LoginView.as_view(
+        form_class=LoginForm,
+        template_name='castleapartments/login.html',
+        extra_content={"authenticated": False}
+    )(request)
 
 
 def sell(request):
