@@ -10,7 +10,7 @@ from .models import PostalCode, Listing
 
 
 def index(request):
-    listings = Listing.object.all()
+    listings = Listing.objects.all()
     context = {
         "listings": listings,
         "form": SearchForm(),
