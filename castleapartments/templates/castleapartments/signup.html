@@ -12,8 +12,7 @@
 
 {% block content %}
 
-<div id="background_image"
-    style='
+<div id="background_image" style='
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
                     url("{% static "background.jpg" %}")'>
@@ -93,7 +92,9 @@
 
                     </table>
                 </section>
-                <input type="submit" value="Sign up" class="btn btn-outline-primary box-shadow">
+                <div class="container-full text-center">
+                    <input type="submit" value="Sign up" class="btn btn-outline-primary box-shadow">
+                </div>
             </form>
         </div>
     </div>

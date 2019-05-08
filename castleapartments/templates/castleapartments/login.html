@@ -4,6 +4,7 @@
 
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/login.scss" %}">
 {% endblock styles %}
 
 {% block title %}
@@ -11,8 +12,7 @@
 {% endblock title %}
 
 {% block content %}
-<div id="background_image"
-    style='
+<div id="background_image" style='
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
                     url("{% static "background.jpg" %}")'>
@@ -25,19 +25,22 @@
             />
         </svg>
 
-        <div id="main_banner_content" class="container-full"></div>
-        <div class="container text-center">
-            <h1>Enter your credentials.</h1>
+        <div id="main_banner_content" class="container-full">
+            <div class="container text-center">
+                <h1>Enter your credentials.</h1>
+            </div>
+            <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full">
+                {% csrf_token %}
+                <section>
+                    <table>
+                        {{ form }}
+                    </table>
+                </section>
+                <div class="container-full text-center">
+                    <input type="submit" value="Login" class="btn btn-outline-primary box-shadow">
+                </div>
+            </form>
         </div>
-        <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full">
-            {% csrf_token %}
-            <section>
-                <table>
-                    {{ form }}
-                </table>
-            </section>
-            <input type="submit" value="Login" class="btn btn-outline-primary box-shadow">
-        </form>
     </div>
     </div>
 </main>
