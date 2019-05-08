@@ -196,10 +196,10 @@
             li {
                 display: inline-block;
                 border-right: 1px solid #212121;
-                width: 20%;
                 text-align: center;
                 font-family: $heading-font;
                 margin-bottom: -0.1rem;
+                padding: 0 3rem;
         
                 img {
                     height: 1.5rem;
@@ -225,6 +225,28 @@
                     padding: 0.2rem;
                     color: #212121;
                 }
+            }
+
+            @media screen and (max-width: 700px) {
+                li:first-child {
+                    display: none;
+                }
+            }
+
+            @media screen and (max-width: 550px) and (min-width: 391px) {
+                li {
+                    padding: 0 1rem;
+                }
+            }
+
+            @media screen and (max-width: 391px) {
+                li {
+                    padding: 0 0.5rem;
+                }
+            }
+
+            li:last-child {
+                border-right: none;
             }
         }
 
