@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
@@ -13,6 +14,8 @@ def index(request):
     context = {
         "listings": listings,
         "form": SearchForm(),
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
     }
     return render(request, 'castleapartments/index.html', context)
 
@@ -84,3 +87,8 @@ def signup(request):
         "postal_code_form": postal_code_form,
     }
     return render(request, 'castleapartments/signup.html', context)
+
+
+def logout(request):
+    django_logout(request)
+    return redirect(index)
