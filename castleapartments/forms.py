@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import MinLengthValidator
 from django.forms import ModelForm, DateInput, Textarea
 from django_countries.fields import CountryField
+from django.contrib.auth.forms import AuthenticationForm
 
 from .models import User, UserInfo
 from location.models import PostalCode
@@ -101,23 +102,8 @@ class SearchForm(forms.Form):
     )
 
 
-class LoginForm(forms.Form):
-    email = forms.CharField(
-        label="Email:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Email"
-        })
-    )
-    password = forms.CharField(
-        label="Password:",
-        max_length=100,
-        required=True,
-        widget=forms.TextInput(attrs={
-            "placeholder": "Your Password"
-        })
-    )
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label=("Email"), max_length=30)
 
 
 class PostalCodeForm(forms.Form):

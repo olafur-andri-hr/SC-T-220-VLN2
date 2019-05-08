@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
@@ -14,6 +14,8 @@ def index(request):
     context = {
         "listings": listings,
         "form": SearchForm(),
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
     }
     return render(request, 'castleapartments/index.html', context)
 
@@ -24,14 +26,14 @@ def about(request):
 
 def login(request):
     if request.method == "POST":
-        authentication_form = AuthenticationForm(request, data=request.POST)
+        authentication_form = LoginForm(request, data=request.POST)
         if authentication_form.is_valid():
             username = authentication_form.cleaned_data["username"]
             password = authentication_form.cleaned_data["password"]
             user = User.objects.get(username=username)
             django_login(request, user)
     else:
-        authentication_form = AuthenticationForm()
+        authentication_form = LoginForm()
     context = {
         "form": authentication_form
     }
@@ -54,10 +56,12 @@ def signup(request):
     if request.method == "POST":
         user_info_form = UserInfoForm(request.POST, request.FILES)
         postal_code_form = PostalCodeForm(request.POST)
-        user_form = UserCreationForm(request.POST)
-        # print(user_info_form.is_valid())
+        if user_info_form.is_valid():
+            changed_data = dict(request.POST)
+            changed_data['username'] = user_info_form.cleaned_data["email"]
+            user_form = UserCreationForm(data=changed_data)
 
-        if (user_form.is_valid() and postal_code_form.is_valid() and
+        if (postal_code_form.is_valid() and user_form.is_valid() and
                 user_info_form.is_valid()):
             new_user = user_form.save()
 
@@ -71,7 +75,7 @@ def signup(request):
             if new_user.is_active:
                 request.session.set_expiry(86400)  # time to session expiry
                 django_login(request, new_user)
-            redirect(index)
+            return redirect(index)
     else:
         user_form = UserCreationForm()
         user_info_form = UserInfoForm()
@@ -83,3 +87,8 @@ def signup(request):
         "postal_code_form": postal_code_form,
     }
     return render(request, 'castleapartments/signup.html', context)
+
+
+def logout(request):
+    django_logout(request)
+    return redirect(index)
