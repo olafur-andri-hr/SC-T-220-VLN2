@@ -44,7 +44,7 @@
         </div>
     </div>
     <form id="sellform">
-    <div id="infodiv" class="forms">
+    <div id="infoform" class="forms">
         {% csrf_token %}
         <h1>Sell an apartment</h1>
         <h3>Your personal information</h3>
@@ -82,7 +82,7 @@
         </table>
         <div id="buttonsdiv">
             <div class="prevstep">
-                <input type="submit" value="Update information" class="btn">
+                <p>Update information</p>
             </div>
             <div class="nextstep">
                 <input type="submit" value="Next Step" class="btn">
@@ -229,7 +229,13 @@
         <div id="confirmform" class="forms">
                 {% csrf_token %}
                 <h1>Your new sale listing is now complete!</h1>
-                <h2 id="temph2">Here will come pictures</h2>
+                <p>However, it will not be visible to other users unitl it's validity is confirmed
+                    by our staff.</p>
+                <p>You will recieve a confirmation email once the listing is verified.</p>
+                <p>Thank you for choosing Castle Apartments!</p>
+                <a href="/" class="selllinks">
+                    <div id="returndiv"><p>Return to listing</p></div>
+                </a>
         </div>
     </form>
 </main>
