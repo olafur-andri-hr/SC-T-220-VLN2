@@ -22,6 +22,11 @@
     <header id="site_header">
         <div id="header_background"></div>
         <div id="dropdownnav">
+            {% if authenticated %}
+            <div id="user_name">
+                <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+            </div>
+            {% endif %}
             <div id="listingdropdown" class="dropdown-link">
                 <a href="/" id="listingsdropdown" class="dropdowntext">All Listings</a>
             </div>
@@ -31,12 +36,21 @@
             <div id="aboutdropdown" class="dropdown-link">
                 <a href="{% url 'about' %}" id="abouttextdropdown" class="dropdowntext">About us</a>
             </div>
+            {% if authenticated %}
+            <div id="logindropdown" class="dropdown-link">
+                <a href="{% url 'account' %}" id="logintextdropdown" class="dropdowntext">My Account</a>
+            </div>
+            <div id="signupdropdown" class="dropdown-link">
+                <a href="{% url 'logout' %}" id="signuptextdropdown" class="dropdowntext">Log out</a>
+            </div>
+            {% else %}
             <div id="logindropdown" class="dropdown-link">
                 <a href="{% url 'login' %}" id="logintextdropdown" class="dropdowntext">Log in</a>
             </div>
             <div id="signupdropdown" class="dropdown-link">
                 <a href="{% url 'signup' %}" id="signuptextdropdown" class="dropdowntext">Sign up</a>
             </div>
+            {% endif %}
         </div>
         <a id="dropdown_obfuscator" href="#"></a>
         <div id="logodiv">
@@ -74,6 +88,7 @@
         <div id="sidebar">
             {% if authenticated  %}
             <div id="content-loggedin" class="dropdown-content">
+                <div id="profilepic_big" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'account' %}"> My Account</a>
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'logout' %}"> Log out</a>
             </div>

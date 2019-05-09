@@ -129,6 +129,14 @@ header{
 		border-radius: 50%;
 	}
 
+	#profilepic_big {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+		margin-right: 10px;
+		border-radius: 50%;
+	}
+
 	#dropdownnav, #dropdown_obfuscator {
 		display: none;
 	}

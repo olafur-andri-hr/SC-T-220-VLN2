@@ -1,15 +1,7 @@
-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 7.7rem;
+@import '../../../../base/static/sass/definitions';
 
-    @media screen and (max-width: 800px) {
-        position: relative;
-    }
-}
 #about_containor {
-    position: absolute;
+    position: relative;
     padding-left: 5rem;
     padding-right: 5rem;
     padding-top: 4rem;
@@ -17,6 +9,7 @@ footer{
     width: 100%;
     display: flex;
     align-items: center;
+    font-family: $text-font;
 
     @media screen and (max-width: 800px) {
         position: relative;

@@ -76,7 +76,7 @@ main {
     padding-right: 2rem;
 }
 
-#infoform {
+#infodiv {
     display: none;
 
     h1 {
@@ -109,6 +109,10 @@ main {
     align-items: center;
     width: 70%;
     justify-content: space-between;
+}
+
+#basicform {
+    display: none;
 }
 
 #basictable2 {
