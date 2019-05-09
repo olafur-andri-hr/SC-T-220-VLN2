@@ -31,6 +31,9 @@ class UserInfo(models.Model):
     )
     bio = models.TextField(("Your bio"), max_length=300)
 
+    def __str__(self):
+        return str(self.user.username)
+
 
 class CreditCard(models.Model):
     credit_card_number = models.CharField(
