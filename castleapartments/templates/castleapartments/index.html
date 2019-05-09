@@ -14,12 +14,12 @@
 {% endblock title %}
 
 {% block scripts %}
-    <script src="{% static 'castleapartments/js/script.js' %}" defer></script>
+<script src="{% static 'castleapartments/js/script.js' %}" defer></script>
+<script src="{% static 'castleapartments/js/search.js' %}" defer></script>
 {% endblock scripts %}
 
 {% block content %}
-<div id="background_image"
-    style='
+<div id="background_image" style='
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
                     url("{% static "background.jpg" %}")'>
@@ -42,6 +42,11 @@
                 <form id="search_banner_form" action="#" method="post" class="">
                     {% csrf_token %}
                     <ul>
+                        {% for field in form %}
+                        {% if field.is_hidden %}
+                        {{ field}}
+                        {% endif %}
+                        {% endfor %}
                         {{ form.address.errors }}
                         <li>
                             {{ form.address.label_tag }}
@@ -95,9 +100,7 @@
 
                         <li id="checkboxes_container">
                             <label for="">Type:</label>
-                            <button type="button"
-                                    id="checkbox_button"
-                                    class="btn btn-primary">
+                            <button type="button" id="checkbox_button" class="btn btn-primary">
                                 <span>Choose type(s)</span>
 
                                 <div id="checkboxes">
@@ -123,9 +126,7 @@
 
                     <button id="search_button" type="button">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <polygon
-                                points="0,100 100,100 100,0"
-                                style="fill: #F5F5F5">
+                            <polygon points="0,100 100,100 100,0" style="fill: #F5F5F5">
                         </svg>
                         <img src="{% static 'icons/search.svg' %}" alt="Search" />
                         <p>Search</p>
@@ -135,7 +136,8 @@
         </div>
         <div id="listing-hint">
             <svg width="59" height="49" viewBox="0 0 59 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter=""> <!-- url(#filter0_d) -->
+                <g filter="">
+                    <!-- url(#filter0_d) -->
                     <path d="M12 8L29.5 33L47 8" stroke="#212121" stroke-width="8" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </g>
@@ -155,7 +157,8 @@
             </svg>
             <a href="#search-results">Scroll down to view our listings</a>
             <svg width="59" height="49" viewBox="0 0 59 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter=""> <!-- url(#filter0_d) -->
+                <g filter="">
+                    <!-- url(#filter0_d) -->
                     <path d="M12 8L29.5 33L47 8" stroke="#212121" stroke-width="8" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </g>
@@ -178,12 +181,8 @@
     <div id="search-results">
         <div class="header" id="search_results_header">
             <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                <polygon
-                    points="0,0 100,0 0,100"
-                    style="fill: #FFFFFF;fill-rule: evenodd;" />
-                <polygon
-                    points="100,0 100,100 0,100"
-                    style="fill: #F5F5F5;fill-rule: evenodd" />
+                <polygon points="0,0 100,0 0,100" style="fill: #FFFFFF;fill-rule: evenodd;" />
+                <polygon points="100,0 100,100 0,100" style="fill: #F5F5F5;fill-rule: evenodd" />
             </svg>
             <ul>
                 <li>
@@ -191,7 +190,7 @@
                 </li>
                 <li>
                     <p>Order by:</p>
-                    <select >
+                    <select>
                         <option>Newest</option>
                         <option>Oldest</option>
                         <option>Least expensive</option>
@@ -216,11 +215,10 @@
             <p>View search history</p>
         </button>
         <div id="listings" class="container-fluid">
-        {% for listing in listings %}
-        {% if listing.processed == True %}
+            {% for listing in listings %}
+            {% if listing.processed == True %}
             <div class="card">
-                <div 
-                    class="card-img-top"
+                <div class="card-img-top"
                     style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});">
                     <p class="card-listing-date">
                         {{ listing.listing_date|date:"F" }}
@@ -250,10 +248,10 @@
                     </p>
                     <hr />
                     <h5 class="card-price">
-                    {% localize on %}
+                        {% localize on %}
                         <span>ISK</span>
                         {{ listing.apartment.appraisal|intcomma }}
-                    {% endlocalize %}
+                        {% endlocalize %}
                     </h5>
                     <hr />
                     <p class="card-text card-description">
@@ -262,8 +260,8 @@
                 </div>
                 <a href="/listing/{{listing.uuid}}" class="card-link"></a>
             </div>
-        {% endif %}
-        {% endfor %}
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </main>
