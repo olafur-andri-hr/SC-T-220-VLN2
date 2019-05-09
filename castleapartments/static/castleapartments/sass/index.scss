@@ -279,6 +279,17 @@ footer {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
+    position: relative;
+    transition: transform 150ms ease;
+
+    .card-img-top {
+        height: 11rem;
+        width: 100%;
+        background-color: rgba(33, 33, 33, 0.1);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 
     .no-margin {
         margin-top: 0;
@@ -313,4 +324,21 @@ footer {
         margin-bottom: 0.3rem;
         border-top: 1px solid rgba(33, 33, 33, 0.2);
     }
+
+    b {
+        font-weight: 500;
+    }
+
+    .card-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 5;
+    }
+}
+
+.card:hover {
+    transform: scale(1.05);
 }

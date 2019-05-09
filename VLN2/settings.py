@@ -187,4 +187,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
+
+# Heroku
+SECURE_SSL_REDIRECT = True
 django_heroku.settings(locals())
