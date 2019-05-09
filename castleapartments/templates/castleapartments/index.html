@@ -10,7 +10,7 @@
 {% endblock styles %}
 
 {% block title %}
-<title>Index page</title>
+<title>All listings - Castle Apartments</title>
 {% endblock title %}
 
 {% block scripts %}
@@ -206,16 +206,19 @@
                 </li>
             </ul>
         </div>
-        <div id="listings" class="container">
+        <div id="listings" class="container-fluid">
         {% for listing in listings %}
+        {% if listing.processed == True %}
             <div class="card">
-                <!-- <img
-                    class="card-img-top"
-                    src="{{listing.apartment.apartmentimage_set.first.image.url}}"
-                    alt="" /> -->
                 <div 
                     class="card-img-top"
-                    style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});"></div>
+                    style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});">
+                    <p class="card-listing-date">
+                        {{ listing.listing_date|date:"F" }}
+                        {{ listing.listing_date.day }},
+                        {{ listing.listing_date.year }}
+                    </p>
+                </div>
                 <div class="card-body">
                     <h5 class="card-title no-margin">
                         {{ listing.apartment.address }}
@@ -244,6 +247,7 @@
                 </div>
                 <a href="/listing/{{listing.uuid}}" class="card-link"></a>
             </div>
+        {% endif %}
         {% endfor %}
         </div>
     </div>
