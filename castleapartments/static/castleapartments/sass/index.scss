@@ -279,4 +279,15 @@ footer {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
+
+    .no-margin {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .card-price {
+        font-family: $heading-font;
+        text-align: center;
+        margin-top: 0.2rem;
+    }
 }

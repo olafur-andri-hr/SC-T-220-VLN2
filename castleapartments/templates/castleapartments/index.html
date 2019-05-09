@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
 
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
@@ -212,12 +214,26 @@
                     src="{{ listing.apartment.apartmentimage_set.first.image.url }}"
                     alt="" />
                 <div class="card-body">
-                    <h5 class="card-title">{{ listing.apartment.address }}</h5>
-                    {% if listing.apartment.apt_number != None %}
+                    <h5 class="card-title no-margin">{{ listing.apartment.address }}</h5>
                     <p class="card-text no-margin">
-                        {{ listing.apartment.apt_number }}
+                        {% if listing.apartment.apt_number != None %}
+                            Apartment {{ listing.apartment.apt_number }}
+                        {% else %}
+                            &nbsp;
+                        {% endif %}
                     </p>
-                    {% endif %}
+                    <p class="card-text no-margin">
+                        {{ listing.apartment.postal_code.zip_code }},
+                        {{ listing.apartment.postal_code.town }}
+                    </p>
+                    <p class="card-text no-margin">
+                        {{ listing.apartment.postal_code.country.name }}
+                    </p>
+                    <h5 class="card-price">
+                    {% localize on %}
+                        {{ listing.apartment.appraisal|intcomma|localize }}
+                    {% endlocalize %}
+                    </h5>
                     <p class="card-text">
                         {{ listing.apartment.description|truncatechars:70 }}
                     </p>
