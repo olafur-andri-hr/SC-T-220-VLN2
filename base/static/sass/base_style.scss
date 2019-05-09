@@ -77,10 +77,6 @@ header{
 		flex-wrap: nowrap;
         //background-color: blue;
 	}
-	
-	#logodiv:hover {
-		background: rgba(85, 3, 167, 0.1);
-	}
 
     #name {
 		margin-right: 5px;
@@ -98,7 +94,14 @@ header{
 		width: 5rem;
 		margin-bottom: 15px;
 		background-size: cover;
-    }
+	}
+	#imgdiv:hover {
+		transform: translateY(3%);
+	}
+
+	#imgdiv:active {
+		transform: scale(.95);
+	}
 
     #listings {
         border-bottom: solid 1px;
