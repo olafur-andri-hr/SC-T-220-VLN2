@@ -266,6 +266,16 @@ header{
 		}
 	}
 
+	#user_name {
+		p {
+			padding: 0 1rem;
+			width: 100%;
+			border-left: 1px solid #212121;
+			border-right: 1px solid #212121;
+			border-radius: 5px;
+		}
+	}
+
 	#hamburger {
 		display: none;
 		transition: background-color 0.5s ease;
