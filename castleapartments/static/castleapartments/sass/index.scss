@@ -275,14 +275,24 @@ footer {
     z-index: 1;
 }
 
-#listings {
+#listings_container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    margin: auto;
+    margin: 1rem auto 0 auto;
     max-width: 1000px;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+
+#listings_container.hide {
+    transform: translateX(-2rem);
+    opacity: 0;
+}
+
+#listings_container.remove {
+    display: none;
 }
 
 #history_button {
@@ -405,4 +415,11 @@ footer {
 
 .card:hover {
     transform: scale(1.05);
+}
+
+#search_history {
+    transition: transform 200ms ease, opacity 200ms ease;
+    transform: translateX(-2rem);
+    opacity: 0;
+    display: none;
 }

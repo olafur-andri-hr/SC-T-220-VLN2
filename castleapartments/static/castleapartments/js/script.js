@@ -3,6 +3,7 @@ const listingHint = document.getElementById('listing-hint');
 const siteHeader = document.getElementById('site_header');
 const checkboxButton = document.getElementById('checkbox_button');
 const checkboxes = document.getElementById('checkboxes');
+const historyButton = document.getElementById('history_button');
 let hintIsHidden = false;
 
 /**
@@ -22,6 +23,7 @@ function addEventListeners() {
   editSearchLink.addEventListener('click', scrollToTop);
   listingHint.addEventListener('click', scrollToListings);
   checkboxButton.addEventListener('click', showCheckboxes);
+  historyButton.addEventListener('click', showHistory);
 }
 
 /**
@@ -111,6 +113,24 @@ function hideCheckboxes(e) {
   checkboxes.className = '';
   checkboxButton.addEventListener('click', showCheckboxes);
   window.removeEventListener('click', hideCheckboxes);
+}
+
+/**
+ * An event handler for when the user wants to view his/her search history
+ * @param {Event} e The event object for this click event handler
+ */
+function showHistory(e) {
+  const listings = document.getElementById('listings_container');
+  const searchHistory = document.getElementById('search_history');
+
+  historyButton.lastElementChild.innerText = 'Go back to listings';
+  listings.classList.add('hide');
+  searchHistory.classList.add('show');
+  historyButton.removeEventListener('click', showHistory);
+
+  setTimeout(() => {
+    listings.classList.add('remove');
+  }, 200);
 }
 
 main();

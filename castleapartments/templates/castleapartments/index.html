@@ -186,7 +186,12 @@
             </svg>
             <ul>
                 <li>
-                    <p><span id="listing-count">0</span> Listings</p>
+                    <p>
+                        <span id="listing-count">
+                            {{ len_listings }}
+                        </span>
+                        Listings
+                    </p>
                 </li>
                 <li>
                     <p>Order by:</p>
@@ -214,7 +219,7 @@
                 class="icon" />
             <p>View search history</p>
         </button>
-        <div id="listings" class="container-fluid">
+        <div id="listings_container" class="container-fluid">
             {% for listing in listings %}
             {% if listing.processed == True %}
             <div class="card">
@@ -262,6 +267,9 @@
             </div>
             {% endif %}
             {% endfor %}
+        </div>
+        <div id="search_history" class="container-fluid">
+            <p>This is your search history...</p>
         </div>
     </div>
 </main>
