@@ -3,3 +3,11 @@ footer {
     bottom: 0;
     left: 0;
 }
+
+#signup_btn {
+    margin: 1rem;
+
+    input[type=submit] {
+        background-color: white;
+    }
+}
