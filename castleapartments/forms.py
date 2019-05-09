@@ -100,6 +100,16 @@ class SearchForm(forms.Form):
             "class": "inline-second"
         })
     )
+    per_page = forms.IntegerField(
+        initial=24,
+        validators=[MinValueValidator(1), MaxValueValidator(50)],
+        widget=forms.HiddenInput(),
+    )
+    page_number = forms.IntegerField(
+        initial=0,
+        validators=[MinValueValidator(0)],
+        widget=forms.HiddenInput(),
+    )
 
 
 class LoginForm(AuthenticationForm):
