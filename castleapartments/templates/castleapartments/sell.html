@@ -171,7 +171,7 @@
                 </div>
             </div>
         </div>
-        <div id="reviewdiv" class="forms">
+        <div id="reviewform" class="forms">
             {% csrf_token %}
             <h1>Sell an apartment</h1>
             <h2 id="temph2">Here will come pictures</h2>
@@ -221,13 +221,15 @@
             </div>
         </div>
             <div id="buttonsdiv">
-                <div class="prevstep">
-                    <input type="submit" value="Update information" class="btn">
-                </div>
-                <div class="nextstep">
-                    <input type="submit" value="Next Step" class="btn">
-                </div>
+                <button>Previous step</button>
+                <button>Next step</button>
             </div>
+            <p>Detailed description:</p>
+        </div>
+        <div id="confirmform" class="forms">
+                {% csrf_token %}
+                <h1>Your new sale listing is now complete!</h1>
+                <h2 id="temph2">Here will come pictures</h2>
         </div>
     </form>
 </main>
