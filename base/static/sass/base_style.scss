@@ -124,7 +124,9 @@ header{
     #profilepic {
         height: 50px;
         width: 50px;
-        background-size: cover;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		margin-right: 10px;
 		border-radius: 50%;
 	}
