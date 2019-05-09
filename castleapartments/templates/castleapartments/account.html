@@ -22,7 +22,7 @@
         <div id="profile">
             <div id="account_profile">
                 <div id="edit_button">
-                    <button class="btn btn-primary box-shadow">Edit profile </button>
+                    <a href="#" class="btn btn-primary box-shadow">Edit profile </a>
                     <img src="{% static 'icons/edit.svg' %}">
                 </div>
                 <div id="profile_image">
@@ -46,7 +46,9 @@
                 <p>Selling</p>
             </div>
             <div class="container-full text-center">
-                <input type="submit" value="Sell a new apartment..." id="btn_new_apparment" class="btn btn-primary box-shadow">
+                <a href="{% url 'sell' %}" id="btn_new_apparment" class="btn btn-primary box-shadow">
+                    Sell a new apartment...
+                </a>
             </div>
             <div class="content">
                 
