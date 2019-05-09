@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/account.scss" %}">
+{% endblock styles %}
+
+{% block title %}
+<title> {{user.userinfo.first_name}} {{user.userinfo.last_name}} </title>
+{% endblock title %}
+
+{% block content %}
+<div id="background_image" style='
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
+                    rgba(255, 255, 255, 0.4)),
+                    url("{% static "background.jpg" %}")'>
+</div>
+<main>
+    <div id="main_content" class="container-full">
+        <div id="profile">
+            <div id="account_profile">
+                <div id="profile_image">
+                    <div id="profileimg" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
+                </div>
+                <div id="profile_name">
+                    <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+                </div>
+            </div>
+            <div id="profile_bio">
+                <p>{{user.userinfo.bio}}</p>
+            </div>
+            <div id="profile_info">
+                <p> {{user.userinfo.email}} </p>
+                <p> {{user.userinfo.phone_number}} </p>
+            </div>
+        </div>
+
+        <div id="profile_sell">
+            <div class="headtitle">
+                <p>Selling</p>
+            </div>
+            <div class="content">
+                
+            </div>
+        </div>
+
+        <div id="profile_sold">
+            <div class="headtitle">
+                <p>Sold</p>
+            </div>
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
