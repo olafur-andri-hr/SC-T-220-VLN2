@@ -213,16 +213,6 @@ header{
 		color: $white;
 	}
 
-	#closetag {
-		opacity: 0;
-		position: fixed;
-		display: none;
-		width: 100%;
-		height: 100%;
-		z-index: 11;
-		background-color: #363434;
-	}
-
 	#sidebar:target ~ #closetag {
 		display: block;
 	}
@@ -252,7 +242,7 @@ header{
 	}
 	
 	#accountdiv:hover {
-		transform: scale(1.05);
+		transform: scale(1.025);
 		cursor: pointer;
 	}
 	
