@@ -174,33 +174,52 @@
         <div id="reviewdiv" class="forms">
             {% csrf_token %}
             <h1>Sell an apartment</h1>
+            <h2 id="temph2">Here will come pictures</h2>
+            <div id="tablesdiv">
+            <div id="table1div">
             <h3>Location</h3>
-            <table id="basictable1">
+            <table id="reviewtable1">
                 <tr>
-                    <th class="tablelabel">Country:</th><td><input type="select" name="country"></td>
+                    <th class="tablelabel">Country:</th><td>Iceland</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Zip Code:</th> <td><input type="text" name="zipcode"></td>
+                    <th class="tablelabel">*Zip Code:</th> <td>221</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Town:</th> <td><input type="text" name="town"></td>
+                    <th class="tablelabel">*Town:</th> <td>Hafnarfjörður</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Address:</th>
-                    <td><input type="text" name="address"></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel">Apt. number:</th>
-                    <td><input type="text" name="aptnumber"></td>
+                    <th class="tablelabel">*Apt. number:</th> <td>-</td>
                 </tr>
             </table>
-            <h3>Appraisal</h3>
-            <table id="basictable2">
+        </div>
+        <div id="table2div">
+            <h3>Property info</h3>
+            <table id="reviewtable2">
                     <tr>
-                        <th class="tablelabel">*Real Estate appraisal amount:</th>
-                        <td><input type="number" name="appraisal"></td>
+                        <th class="tablelabel"># of rooms:</th> <td>3</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel"># of toilets:</th> <td>2</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Size:</th> <td>109m^2</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Type:</th> <td>-</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Year built:</th> <td>1999</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Garage:</th> <td>No</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">Appraisal:</th> <td>75 000 000</td>
                     </tr>
                 </table>
+            </div>
+        </div>
             <div id="buttonsdiv">
                 <div class="prevstep">
                     <input type="submit" value="Update information" class="btn">
