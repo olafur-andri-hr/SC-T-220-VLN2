@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from .models import User, UserInfo
 from location.models import PostalCode
+from apartments.models import ApartmentType
 
 
 class SearchForm(forms.Form):
@@ -60,7 +61,7 @@ class SearchForm(forms.Form):
             "class": "inline-second"
         })
     )
-    min_price = forms.ChoiceField(
+    min_price = forms.TypedChoiceField(
         label="Price:",
         required=False,
         choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
@@ -68,9 +69,10 @@ class SearchForm(forms.Form):
         widget=forms.Select(attrs={
             "placeholder": "Min",
             "class": "inline-first"
-        })
+        }),
+        coerce=int,
     )
-    max_price = forms.ChoiceField(
+    max_price = forms.TypedChoiceField(
         required=False,
         label="to",
         label_suffix="",
@@ -79,7 +81,8 @@ class SearchForm(forms.Form):
         widget=forms.Select(attrs={
             "placeholder": "Max",
             "class": "inline-second"
-        })
+        }),
+        coerce=int,
     )
     min_size = forms.IntegerField(
         label="Size (m²):",
@@ -109,6 +112,10 @@ class SearchForm(forms.Form):
         initial=0,
         validators=[MinValueValidator(0)],
         widget=forms.HiddenInput(),
+    )
+    type = forms.ModelMultipleChoiceField(
+        queryset=ApartmentType.objects.all(),
+        required=False,
     )
 
 
