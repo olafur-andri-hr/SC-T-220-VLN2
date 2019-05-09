@@ -209,25 +209,27 @@
         <div id="listings" class="container">
         {% for listing in listings %}
             <div class="card">
-                <img
+                <!-- <img
                     class="card-img-top"
-                    src="{{ listing.apartment.apartmentimage_set.first.image.url }}"
-                    alt="" />
+                    src="{{listing.apartment.apartmentimage_set.first.image.url}}"
+                    alt="" /> -->
+                <div 
+                    class="card-img-top"
+                    style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});"></div>
                 <div class="card-body">
-                    <h5 class="card-title no-margin">{{ listing.apartment.address }}</h5>
-                    <p class="card-text no-margin">
-                        {% if listing.apartment.apt_number != None %}
-                            Apartment {{ listing.apartment.apt_number }}
-                        {% else %}
-                            &nbsp;
-                        {% endif %}
-                    </p>
+                    <h5 class="card-title no-margin">
+                        {{ listing.apartment.address }}
+                    </h5>
                     <p class="card-text no-margin">
                         {{ listing.apartment.postal_code.zip_code }},
                         {{ listing.apartment.postal_code.town }}
                     </p>
                     <p class="card-text no-margin">
                         {{ listing.apartment.postal_code.country.name }}
+                    </p>
+                    <p class="card-text no-margin">
+                        <b>{{ listing.apartment.apartment_type.name }}</b>,
+                        {{ listing.apartment.num_rooms }} bedrooms
                     </p>
                     <h5 class="card-price">
                     {% localize on %}
@@ -240,6 +242,7 @@
                         {{ listing.apartment.description|truncatechars:100 }}
                     </p>
                 </div>
+                <a href="/listing/{{listing.uuid}}" class="card-link"></a>
             </div>
         {% endfor %}
         </div>
