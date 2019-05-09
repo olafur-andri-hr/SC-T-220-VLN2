@@ -107,7 +107,12 @@
                                     <ul>
                                         {% for type in apartment_types %}
                                         <li>
-                                            <input type="checkbox" value="{{ type.id }}" id="checkbox_{{ type.id }}" />
+                                            <input
+                                                type="checkbox"
+                                                checked="true"
+                                                name="type"
+                                                value="{{ type.id }}"
+                                                id="checkbox_{{ type.id }}" />
                                             <label for="checkbox_{{ type.id}}">
                                                 {{ type.name }}
                                             </label>
