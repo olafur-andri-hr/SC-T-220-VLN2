@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_countries',
     'phonenumber_field',
     'sass_processor',
+    'imagekit',
     'storages',
     'location',
     'castleapartments',
@@ -180,7 +181,8 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = "AKIAQ73SZLIINOA3WKUG"
 AWS_SECRET_ACCESS_KEY = "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"
 AWS_AUTO_CREATE_BUCKET = True
-AWS_STORAGE_BUCKET_NAME = "castleapartments"
+AWS_STORAGE_BUCKET_NAME = "castleapartments2"
+AWS_S3_REGION_NAME = "eu-west-1"
 # AWS_DEFAULT_ACL = "public-read"
 AWS_BUCKET_ACL = None
 AWS_S3_OBJECT_PARAMETERS = {

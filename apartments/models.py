@@ -1,6 +1,8 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFit
 
 
 # Create your models here.
@@ -38,13 +40,23 @@ class Apartment(models.Model):
 
 
 class ApartmentImage(models.Model):
-    image = models.ImageField(
-        ("Image"), upload_to="apartments/", height_field=None,
-        width_field=None, max_length=None
+    # image = models.ImageField(
+    #     ("Image"), upload_to="apartments/", height_field=None,
+    #     width_field=None, max_length=None
+    # )
+    image = ProcessedImageField(
+        verbose_name=("Image"),
+        upload_to='apartments/',
+        processors=[ResizeToFit(1024, 1024)],
+        format='JPEG',
+        options={'quality': 60}
     )
     apartment = models.ForeignKey(
         Apartment, verbose_name=(""), on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return str(self.image.url)
 
 
 class Listing(models.Model):
