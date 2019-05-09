@@ -15,8 +15,13 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     listings = Listing.objects.all()
     apartment_types = ApartmentType.objects.all()
+    len_listings = 0
+    for listing in listings:
+        if listing.processed:
+            len_listings += 1
     context = {
         "listings": listings,
+        "len_listings": len_listings,
         "form": SearchForm(),
         "authenticated": request.user.is_authenticated,
         "user": request.user,
