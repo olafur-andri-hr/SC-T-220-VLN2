@@ -371,6 +371,12 @@ header{
 
 			.dropdown-link:hover {
 				background: rgba(85, 3, 167, 0.1);
+				transform: scale(1.05);
+			}
+		
+			.dropdown-link:active {
+				background: rgba(74, 2, 146,0.5);
+				transform: scale(.99);
 			}
 
 			#listingdropdown {
