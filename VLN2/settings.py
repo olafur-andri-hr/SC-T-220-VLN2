@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'django_countries',
     'phonenumber_field',
     'sass_processor',
+    'storages',
     'location',
     'castleapartments',
     'apartments',
-    'storages',
 ]
 
 MIDDLEWARE = [
@@ -189,5 +189,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 
 # Heroku
-SECURE_SSL_REDIRECT = True
+if 'ON_HEROKU' in os.environ:
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 django_heroku.settings(locals())
