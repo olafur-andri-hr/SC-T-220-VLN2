@@ -206,6 +206,13 @@
                 </li>
             </ul>
         </div>
+        <button type="button" class="btn" id="history_button">
+            <img 
+                src="{% static 'icons/history.svg' %}"
+                alt="View search history"
+                class="icon" />
+            <p>View search history</p>
+        </button>
         <div id="listings" class="container-fluid">
         {% for listing in listings %}
         {% if listing.processed == True %}
@@ -223,17 +230,23 @@
                     <h5 class="card-title no-margin">
                         {{ listing.apartment.address }}
                     </h5>
-                    <p class="card-text no-margin">
+                    <p class="card-text no-margin text-sm">
                         {{ listing.apartment.postal_code.zip_code }},
                         {{ listing.apartment.postal_code.town }}
                     </p>
-                    <p class="card-text no-margin">
+                    <p class="card-text no-margin text-sm">
                         {{ listing.apartment.postal_code.country.name }}
                     </p>
-                    <p class="card-text no-margin">
+                    <p class="card-text no-margin text-sm">
+                        {% if listing.apartment.apt_number != None %}
+                            Apartment {{ listing.apartment.apt_number }}
+                        {% endif %}
+                    </p>
+                    <p class="card-text card-apt-type">
                         <b>{{ listing.apartment.apartment_type.name }}</b>,
                         {{ listing.apartment.num_rooms }} bedrooms
                     </p>
+                    <hr />
                     <h5 class="card-price">
                     {% localize on %}
                         <span>ISK</span>

@@ -281,6 +281,35 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
+    margin: auto;
+    max-width: 1000px;
+}
+
+#history_button {
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+
+    p {
+        display: inline-block;
+        margin: 0 0 0 0.5rem;
+        padding: 0;
+        color: #000000;
+        opacity: 0.6;
+    }
+
+    img {
+        opacity: 0.5;
+    }
+}
+
+#history_button:hover {
+    background-color: rgba(33, 33, 33, 0.075);
 }
 
 .card {
@@ -290,8 +319,7 @@ footer {
     position: relative;
     transition: transform 150ms ease;
     display: inline-block;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+    margin: 0 1rem 2rem 1rem;
 
     .card-img-top {
         height: 11rem;
@@ -333,6 +361,8 @@ footer {
         display: block;
         width: 100%;
         color: $main-purple;
+        margin: 0;
+        padding: 0.5rem 0;
 
         span {
             font-size: 1rem;
@@ -362,6 +392,14 @@ footer {
         height: 100%;
         width: 100%;
         z-index: 5;
+    }
+
+    .text-sm {
+        font-size: 0.7rem;
+    }
+
+    .card-apt-type {
+        margin-top: 0.4rem;
     }
 }
 
