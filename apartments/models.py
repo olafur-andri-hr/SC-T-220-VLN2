@@ -33,6 +33,9 @@ class Apartment(models.Model):
     )
     description = models.TextField(("Description"))
 
+    def __str__(self):
+        return (f"{self.address}, {self.postal_code}")
+
 
 class ApartmentImage(models.Model):
     image = models.ImageField(
@@ -61,3 +64,6 @@ class Listing(models.Model):
         null=True, blank=True
     )
     processed = models.BooleanField(("Processed by staff"), default=False)
+
+    def __str__(self):
+        return f"{self.seller}: {self.apartment}"

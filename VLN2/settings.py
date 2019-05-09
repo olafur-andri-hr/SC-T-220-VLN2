@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'django_countries',
     'phonenumber_field',
     'sass_processor',
     'location',
     'castleapartments',
     'apartments',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -172,34 +174,17 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'filters': {
-#         'require_debug_false': {
-#             '()': 'django.utils.log.RequireDebugFalse'
-#         }
-#     },
-
-#     'handlers': {
-#         'mail_admins': {
-#             'level': 'ERROR',
-#             'filters': ['require_debug_false'],
-#             'class': 'django.utils.log.AdminEmailHandler'
-#         },
-#      'console':{
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#         },
-#     },
-#     'loggers': {
-#         'django.request': {
-#             'handlers': ['mail_admins'],
-#             'level': 'ERROR',
-#             'propagate': True,
-#         },
-#     }
-# }
-
+# AWS - django-storages
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = "AKIAQ73SZLIINOA3WKUG"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_AUTO_CREATE_BUCKET = True
+AWS_STORAGE_BUCKET_NAME = "castleapartments"
+# AWS_DEFAULT_ACL = "public-read"
+AWS_BUCKET_ACL = None
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
 
 django_heroku.settings(locals())
