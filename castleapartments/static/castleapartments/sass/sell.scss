@@ -115,6 +115,35 @@ main {
     display: none;
 }
 
+#detaildiv {
+    display: none;
+}
+
+#tablesdiv {
+    display: flex;
+}
+
+#reviewdiv {
+    h1 {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+#temph2 {
+    margin-bottom: 1rem;
+}
+
+#table1div {
+    display: flex;
+    flex-direction: column;
+}
+
+#table2div {
+    display: flex;
+    flex-direction: column;
+}
+
 #basictable2 {
     //margin: 0;
     font-size: 1rem;
