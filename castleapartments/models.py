@@ -6,6 +6,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 from .validators import SSNValidator, credit_card_validator
 from apartments.models import Apartment, ApartmentType, ApartmentImage
 from apartments.models import Listing
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFit
 
 
 class UserInfo(models.Model):
@@ -13,9 +15,12 @@ class UserInfo(models.Model):
     first_name = models.CharField(("First name"), max_length=20)
     last_name = models.CharField(("Last name"), max_length=20)
     email = models.EmailField(("Email"), max_length=254)
-    profile_img = models.ImageField(
-        ("Profile image"), upload_to='images/', height_field=None,
-        width_field=None, max_length=None
+    profile_img = ProcessedImageField(
+        verbose_name=("Image"),
+        upload_to='images/',
+        processors=[ResizeToFit(1024, 1024)],
+        format='JPEG',
+        options={'quality': 80}
     )
     phone_number = PhoneNumberField(("Phone number"))
     SSN = models.CharField(("SSN"), max_length=15)
