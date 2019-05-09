@@ -122,8 +122,8 @@ header{
     }
 
     #profilepic {
-        height: 50px;
-        width: 50px;
+        height: 3rem;
+        width: 3rem;
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -243,9 +243,11 @@ header{
     }
 
     #loggeddiv {
-		// margin-top: 10px;
+		margin-top: 1rem;
+		margin-right: 1rem;
 		display: flex;
 		align-items: center;
+		flex: 1;
 
 		#notlogged {
 			margin: 0;
