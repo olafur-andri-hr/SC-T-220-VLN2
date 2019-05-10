@@ -2,7 +2,7 @@
   document.getElementById('search_button')
       .addEventListener('click', fetchListings);
   /**
-   * Clear old listings from the result
+   * Clear old listings from the result.
    */
   function clearListings() {}
   /**
