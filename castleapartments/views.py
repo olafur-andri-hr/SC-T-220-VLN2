@@ -61,6 +61,7 @@ def sell(request):
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "form": SellForm()
     }
     return render(request, 'castleapartments/sell.html', context)
 

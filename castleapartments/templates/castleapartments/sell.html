@@ -11,9 +11,10 @@
 <title> Sell </title>
 {% endblock title %}
 
+
 {% block content %}
 <main>
-    <form id="sellform">
+    <form id="sellform" method="POST" class="">
     <div id="basicform" class="forms">
             {% csrf_token %}
         <div class="navdiv">
@@ -50,7 +51,8 @@
             <h3>Location</h3>
             <table id="basictable1">
                 <tr>
-                    <th class="tablelabel">Country:</th><td><input type="select" name="country"></td>
+                    <th class="tablelabel">{{ form.country.label_tag }}</th>
+                    <td>{{ form.country }}</td>
                 </tr>
                 <tr>
                     <th class="tablelabel">*Zip Code:</th> <td><input type="text" name="zipcode"></td>
