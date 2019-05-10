@@ -22,11 +22,10 @@
     }).catch(() => {
       return;
     }).then((obj) => {
-      obj = JSON.parse(obj);
       console.log(obj);
       clearListings();
       for (const listing of obj.listings) {
-        createListing(listingsDiv, listing);
+        createCard(listingsDiv, listing);
       }
     });
   }
@@ -36,7 +35,7 @@
    * @param {HTMLDivElement} listingsDiv DOM node containing listings
    * @param {Object} listing Listing object
    */
-  function createListing(listingsDiv, listing) {
+  function createCard(listingsDiv, listing) {
     const cardImgTop = document.createElement('div');
     cardImgTop.classList.add('card-img-top');
     const imgURI = listing.apartment.apartmentimage_set[0].image;
