@@ -27,7 +27,7 @@ urlpatterns = [
     path('location/', include('location.urls')),
     path('', include('castleapartments.urls')),
     path('admin/', admin.site.urls),
-    path('listing/', include('apartments.urls')),
+    path('listings/', include('apartments.urls')),
 ]
 
 if settings.DEBUG:

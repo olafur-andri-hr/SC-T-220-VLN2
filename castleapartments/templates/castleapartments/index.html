@@ -240,6 +240,7 @@
                         {{ listing.apartment.postal_code.town }}
                     </p>
                     <p class="card-text no-margin text-sm">
+                        <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"> 
                         {{ listing.apartment.postal_code.country.name }}
                     </p>
                     <p class="card-text no-margin text-sm">
@@ -260,7 +261,7 @@
                     </h5>
                     <hr />
                     <p class="card-text card-description">
-                        {{ listing.apartment.description|truncatechars:100 }}
+                        {{ listing.apartment.description|truncatechars:listing.apartment.description_truncation_length }}
                     </p>
                 </div>
                 <a href="/listing/{{listing.uuid}}" class="card-link"></a>
