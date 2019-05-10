@@ -67,9 +67,11 @@ def sell(request):
 
 @login_required
 def account(request):
+    listings = Listing.objects.all()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "listings": listings,
     }
     return render(request, 'castleapartments/account.html', context)
 
