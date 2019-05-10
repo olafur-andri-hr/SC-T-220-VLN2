@@ -38,12 +38,13 @@ main {
     border: solid 2px $primary;
 }
 
-#buttonsdiv {
+.buttonsdiv {
     width: 35%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 3rem;
+   // padding-top: 1rem;
 }
 
 .navigationdivs {
@@ -53,14 +54,30 @@ main {
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    //height: 40%;
     transition: background-color 0.5s ease;
+    cursor: pointer;
+    font-family: "Reem Kufi", sans-serif;
+}
+
+.current {
+    display: flex;
+    margin-right: 2%;
+    margin-left: 2%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: solid 2px $primary;
     cursor: pointer;
     font-family: "Reem Kufi", sans-serif;
 }
 
 .navigationdivs:hover {
     background: rgba(85, 3, 167, 0.1);
+}
+
+#editimg {
+    width: 10%;
+    height: 10%;
 }
 
 .textindiv {
@@ -77,7 +94,7 @@ main {
 }
 
 #infoform {
-    //display: none;
+    display: flex;
 
     h1 {
         font-family: "Reem Kufi", sans-serif;
@@ -85,6 +102,23 @@ main {
         margin-bottom: 1rem;
         margin-top: 2rem;
     }
+}
+
+.finished {
+    display: flex;
+    margin-right: 2%;
+    margin-left: 2%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: $primary;
+    color: white;
+    border-radius: 5px;
+    font-family: "Reem Kufi", sans-serif;
+}
+
+.forms:target ~ #infoform {
+    display: none;
 }
 
 .forms {
@@ -115,8 +149,16 @@ main {
     display: none;
 }
 
-#detaildiv {
+#basicform:target {
+    display: flex;
+}
+
+#detailform {
     display: none;
+}
+
+#detailform:target {
+    display: flex;
 }
 
 #tablesdiv {
@@ -131,6 +173,10 @@ main {
     display: flex;
     align-items: center;
     display: none;
+}
+
+#reviewform:target {
+    display: flex;
 }
 
 #temph2 {
@@ -179,6 +225,10 @@ main {
     display: none;
 }
 
+#confirmform:target {
+    display: flex;
+}
+
 #basictable2 {
     //margin: 0;
     font-size: 1rem;
@@ -187,10 +237,6 @@ main {
     color: #212529;
     text-align: left;
     margin-right: 8rem;
-}
-
-#basicform {
-    display: none;
 }
 
 h3 {
