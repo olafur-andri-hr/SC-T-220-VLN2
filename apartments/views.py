@@ -11,7 +11,10 @@ from .serializers import ListingSerializer
 
 def listing(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
-    return HttpResponse(f"This is the listing for {listing.apartment.address}")
+    context = {
+        "listing": listing
+    }
+    return render(request, 'castleapartments/apartmentinfo.html', context)
 
 
 def search(request):
