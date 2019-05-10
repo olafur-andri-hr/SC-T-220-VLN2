@@ -195,7 +195,7 @@
                     </p>
                 </li>
                 <li>
-                    <p>Order by:</p>
+                    <p id="order_by_text">Order by:</p>
                     <select>
                         <option>Newest</option>
                         <option>Oldest</option>
@@ -207,7 +207,9 @@
                 </li>
                 <li>
                     <a id="edit_search" href="#frontpage-div">
-                        <img src="{% static 'icons/edit.svg' %}">
+                        <img 
+                            id="edit_search_icon"
+                            src="{% static 'icons/edit.svg' %}">
                         <p>Edit search</p>
                     </a>
                 </li>
