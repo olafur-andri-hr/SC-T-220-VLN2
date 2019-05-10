@@ -54,7 +54,6 @@
             </div>
             <div class="content">
                 {% for listing in listings %}
-                {% if listing.seller == user.userinfo.email %}
                 <div class="selling_card">
                     <div class="selling_offers">
                         Offers
@@ -75,7 +74,6 @@
                         </h5>
                     </div>
                 </div>
-                {% endif %}
                 {% endfor %}
             </div>
         </div>
