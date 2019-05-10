@@ -67,18 +67,4 @@ def get_many_by_id(request, listing_ids):
                 context={'request': request}
             ).data
         )
-        # data.append({
-        #     "image": listing.apartment.apartmentimage_set.first().image.url,
-        #     "listing_date": listing.listing_date,
-        #     "address": listing.apartment.address,
-        #     "zip_code": listing.apartment.postal_code.zip_code,
-        #     "town": listing.apartment.postal_code.town,
-        #     "country": listing.apartment.postal_code.country.name,
-        #     "apt_number": listing.apartment.apt_number,
-        #     "type": listing.apartment.apartment_type.name,
-        #     "num_rooms": listing.apartment.num_rooms,
-        #     "price": listing.apartment.appraisal,
-        #     "description": listing.apartment.description,
-        #     "uuid": listing_id,
-        # })
     return JsonResponse(data, safe=False)
