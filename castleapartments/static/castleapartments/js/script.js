@@ -204,17 +204,10 @@ function populateHistory() {
       return;
     }
     if (xhr.status === 200) {
-      console.log(xhr.responseText);
       const response = JSON.parse(xhr.responseText);
-      const cards = [];
-      loadingMessage.firstElementChild.innerText = 'Creating cards...';
-      for (let i = 0; i < response.length; i++) {
-        const card = createApartmentCard(response[i]);
-        cards.push(card);
-      }
       loadingMessage.classList.add('remove');
-      for (let i = 0; i < cards.length; i++) {
-        searchHistory.appendChild(cards[i]);
+      for (let i = 0; i < response.length; i++) {
+        createCard(searchHistory, response[i]);
       }
       historyIsLoaded = true;
     }

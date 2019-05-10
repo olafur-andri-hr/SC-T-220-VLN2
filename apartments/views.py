@@ -61,7 +61,12 @@ def get_many_by_id(request, listing_ids):
     data = []
     for listing_id in id_list:
         listing = Listing.objects.get(uuid=listing_id)
-        data.append(ListingSerializer(listing, context={'request': request}))
+        data.append(
+            ListingSerializer(
+                listing,
+                context={'request': request}
+            ).data
+        )
         # data.append({
         #     "image": listing.apartment.apartmentimage_set.first().image.url,
         #     "listing_date": listing.listing_date,
