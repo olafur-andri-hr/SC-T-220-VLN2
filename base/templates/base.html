@@ -76,7 +76,7 @@
             {% if authenticated %}
             <div id="loggeddiv">
             <p>
-                {{ user_full_name|truncatechars:15 }}
+                {{ user.userinfo|truncatechars:15 }}
             </p>
             </div>
             <div id="profilepic" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
