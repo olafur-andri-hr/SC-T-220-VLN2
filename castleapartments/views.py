@@ -69,7 +69,7 @@ def sell(request):
 
 @login_required
 def account(request):
-    listings = Listing.objects.filter(seller=request.user)
+    listings = Listing.objects.filter(seller=request.user).reverse()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,

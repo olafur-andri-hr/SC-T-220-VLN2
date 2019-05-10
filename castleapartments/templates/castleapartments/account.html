@@ -54,7 +54,7 @@
             </div>
             <div class="content">
                 {% for listing in listings %}
-                <div class="selling_card">
+                <div class="selling_card" data-id="{{ listing.uuid }}">
                     <div class="selling_offers">
                         Offers
                     </div>
@@ -62,17 +62,22 @@
                         style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
                     </div>
                     <div class="selling_body">
-                        <p> {{ listing.apartment.address }}<br>
-                            {{ listing.apartment.postal_code.zip_code }}<br>
-                            {{ listing.apartment.postal_code.country.name }}<br>
+                        <h5 class="card-title no-margin">
+                            {{ listing.apartment.address }}
+                        </h5>
+                        <p class="card-text no-margin text-sm">
+                        {{ listing.apartment.postal_code.zip_code }}
+                        <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                        {{ listing.apartment.postal_code.country.name }}<br>
                         </p>
-                        <h5>
+                        <h5 class="card-price">
                             {% localize on %}
                             <span>ISK</span>
                             {{ listing.apartment.appraisal|intcomma }}
                             {% endlocalize %}
                         </h5>
                     </div>
+                    <a href="/listings/{{listing.uuid}}" class="card-link"></a>
                 </div>
                 {% endfor %}
             </div>
