@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from .models import User, UserInfo
 from location.models import PostalCode
+from apartments.models import ApartmentType
 
 
 class SearchForm(forms.Form):
@@ -60,7 +61,7 @@ class SearchForm(forms.Form):
             "class": "inline-second"
         })
     )
-    min_price = forms.ChoiceField(
+    min_price = forms.TypedChoiceField(
         label="Price:",
         required=False,
         choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
@@ -68,9 +69,10 @@ class SearchForm(forms.Form):
         widget=forms.Select(attrs={
             "placeholder": "Min",
             "class": "inline-first"
-        })
+        }),
+        coerce=int,
     )
-    max_price = forms.ChoiceField(
+    max_price = forms.TypedChoiceField(
         required=False,
         label="to",
         label_suffix="",
@@ -79,7 +81,8 @@ class SearchForm(forms.Form):
         widget=forms.Select(attrs={
             "placeholder": "Max",
             "class": "inline-second"
-        })
+        }),
+        coerce=int,
     )
     min_size = forms.IntegerField(
         label="Size (m²):",
@@ -99,6 +102,20 @@ class SearchForm(forms.Form):
             "placeholder": "Max",
             "class": "inline-second"
         })
+    )
+    per_page = forms.IntegerField(
+        initial=24,
+        validators=[MinValueValidator(1), MaxValueValidator(50)],
+        widget=forms.HiddenInput(),
+    )
+    page_number = forms.IntegerField(
+        initial=1,
+        validators=[MinValueValidator(1)],
+        widget=forms.HiddenInput(),
+    )
+    type = forms.ModelMultipleChoiceField(
+        queryset=ApartmentType.objects.all(),
+        required=False,
     )
 
 
@@ -134,92 +151,9 @@ class UserInfoForm(ModelForm):
     class Meta:
         model = UserInfo
         exclude = ('user', 'postal_code',)
-        # fields = ('profile_img', 'phone_number', 'SSN', 'DoB',
-        #           'postal_code', 'address', 'apt_number', 'bio',)
         widgets = {
             'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
         }
-
-    # first_name = forms.CharField(
-    #     label="First name:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your First name"
-    #     })
-    # )
-
-    # last_name = forms.CharField(
-    #     label="Last name:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Last name"
-    #     })
-    # )
-
-    # ssn = forms.CharField(
-    #     label="SSN:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your SSN"
-    #     })
-    # )
-
-    # dob = forms.CharField(
-    #     label="Date of Birth:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Date of birth"
-    #     })
-    # )
-
-    # email = forms.EmailField(
-    #     label="Email:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Email"
-    #     })
-    # )
-
-    # password = forms.CharField(
-    #     label="Password:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Password"
-    #     })
-    # )
-
-    # country = forms.CharField(
-    #     label="Country:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your country"
-    #     })
-    # )
-
-    # zip_code = forms.CharField(
-    #     label="Zip code:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your ZipCode"
-    #     })
-    # )
-
-    # town = forms.CharField(
-    #     label="Town:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Town"
-    #     })
-    # )
 
     address = forms.CharField(
         label="Address:",
@@ -229,21 +163,3 @@ class UserInfoForm(ModelForm):
             "placeholder": "Your Address"
         })
     )
-
-    # aptN = forms.CharField(
-    #     label="Apt. Number:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Apt. Number"
-    #     })
-    # )
-
-    # phone = forms.CharField(
-    #     label="Phone:",
-    #     max_length=100,
-    #     required=True,
-    #     widget=forms.TextInput(attrs={
-    #         "placeholder": "Your Phone Number"
-    #     })
-    # )

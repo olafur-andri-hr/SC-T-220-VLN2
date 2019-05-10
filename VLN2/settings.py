@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'imagekit',
     'storages',
+    'rest_framework',
     'location',
     'castleapartments',
     'apartments',
@@ -183,7 +184,7 @@ AWS_SECRET_ACCESS_KEY = "rB9CcDA8odWznRzZMuK7MJRh8QMJt1EKL0grwR12"
 AWS_AUTO_CREATE_BUCKET = True
 AWS_STORAGE_BUCKET_NAME = "castleapartments2"
 AWS_S3_REGION_NAME = "eu-west-1"
-# AWS_DEFAULT_ACL = "public-read"
+AWS_DEFAULT_ACL = "public-read"
 AWS_BUCKET_ACL = None
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
