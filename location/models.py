@@ -11,7 +11,7 @@ class PostalCode(models.Model):
         validators=[MinLengthValidator(2)]
     )
     country = CountryField()
-    town = models.CharField(("Town"), max_length=50)
+    town = models.CharField(("City"), max_length=50)
 
     class Meta:
         unique_together = (('zip_code', 'country'),)

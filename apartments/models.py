@@ -34,6 +34,7 @@ class Apartment(models.Model):
         on_delete=models.CASCADE
     )
     description = models.TextField(("Description"))
+    description_truncation_length = models.IntegerField(default=100)
 
     def __str__(self):
         return (f"{self.address}, {self.postal_code}")
@@ -52,7 +53,8 @@ class ApartmentImage(models.Model):
         options={'quality': 60}
     )
     apartment = models.ForeignKey(
-        Apartment, verbose_name=(""), on_delete=models.CASCADE
+        Apartment, verbose_name=("Apartment Image"),
+        on_delete=models.CASCADE
     )
 
     def __str__(self):

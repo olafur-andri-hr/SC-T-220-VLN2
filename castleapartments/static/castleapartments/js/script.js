@@ -197,7 +197,7 @@ function populateHistory() {
   const arr = JSON.parse(window.localStorage.viewed);
   emptyMessage.classList.remove('create');
   loadingMessage.classList.remove('remove');
-  loadingMessage.firstElementChild.innerText = 'Sending a request...';
+  loadingMessage.firstElementChild.innerText = 'Fetching your history...';
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState !== 4) {
@@ -219,7 +219,7 @@ function populateHistory() {
     }
   };
   const IDString = arr.join(',');
-  xhr.open('GET', '/listing/api/search/' + IDString);
+  xhr.open('GET', '/listings/api/search/' + IDString);
   xhr.send();
 }
 
@@ -273,6 +273,8 @@ function createApartmentCard(data) {
   p2.classList.add('no-margin');
   p2.classList.add('text-sm');
   p2.innerText = data.country;
+
+  // create flag icon here!!!
 
   // .card-text.no-margin.text-sm <p></p>
   const p3 = document.createElement('p');

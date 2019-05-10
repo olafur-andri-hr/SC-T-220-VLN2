@@ -59,17 +59,19 @@
                             </tr>
                             <tr>
                                 <th>{{user_info_form.email.label_tag}}</th>
-                                <td>{{user_info_form.email.errors}}{{user_info_form.email}}</td>
+                                <td>{{user_info_form.email.errors}}{{user_info_form.email}}<br/>
+                                    {{ user_form.username.help_text }}</td>
                             </tr>
                             <tr>
                                 <th>{{user_form.password1.label_tag}}</th>
-                                <td>{{user_form.password1.errors}}{{user_form.password1}}</td>
+                                <td>{{user_form.password1.errors}}{{user_form.password1}}<br/>
+                                    {{ user_form.password1.help_text }}</td>
                             </tr>
                             <tr>
                                 <th>{{user_form.password2.label_tag}}</th>
-                                <td>{{user_form.password2.errors}}{{user_form.password2}}</td>
+                                <td>{{user_form.password2.errors}}{{user_form.password2}}<br/>
+                                    {{ user_form.password2.help_text }}</td>
                             </tr>
-
                         </tbody>
                     </table>
                 </section>
