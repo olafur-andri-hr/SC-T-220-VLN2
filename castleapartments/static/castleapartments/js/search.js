@@ -49,7 +49,7 @@
 
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
-    
+
     const cardTitle = document.createElement('h5');
     cardTitle.textContent = listing.apartment.address;
     cardTitle.classList.add('card-title', 'no-margin');

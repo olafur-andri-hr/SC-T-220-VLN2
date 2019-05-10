@@ -204,6 +204,7 @@ function populateHistory() {
       return;
     }
     if (xhr.status === 200) {
+      console.log(xhr.responseText);
       const response = JSON.parse(xhr.responseText);
       const cards = [];
       loadingMessage.firstElementChild.innerText = 'Creating cards...';
