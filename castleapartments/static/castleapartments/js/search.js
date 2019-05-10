@@ -22,7 +22,6 @@
     }).catch(() => {
       return;
     }).then((obj) => {
-      obj = JSON.parse(obj);
       console.log(obj);
       clearListings();
       for (const listing of obj.listings) {
