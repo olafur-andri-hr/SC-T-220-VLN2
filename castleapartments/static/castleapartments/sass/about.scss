@@ -1,6 +1,20 @@
 @import '../../../../base/static/sass/definitions';
 
-#about_containor {
+main {
+    padding-bottom: 0;
+}
+
+#about_page_wrapper {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 7.5rem);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#about_container {
     position: relative;
     padding-left: 5rem;
     padding-right: 5rem;
@@ -24,7 +38,9 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        font-size: 30px;
+        font-size: 1.2;
+        font-family: $heading-font;
+        text-align: center;
 
         @media screen and (max-width: 800px) {
             position: relative;
@@ -38,5 +54,18 @@
         justify-content: center;
         align-items: center;
         position: relative;
+        height: 100%;
+        
+
+        @media screen and (max-width: 800px) {
+            order: 1;
+        }
+
+        img {
+            max-width: 20rem;
+            width: 100%;
+            background-color: #EEEEEE;
+            border-radius: 50%;
+        }
     }
 }

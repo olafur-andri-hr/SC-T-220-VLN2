@@ -6,8 +6,9 @@ from django.contrib.auth.views import redirect_to_login, LoginView
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from castleapartments.forms import SearchForm
+from .forms import SearchForm
 from castleapartments.forms import LoginForm
+from .forms import SellForm
 from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
 from apartments.utils import get_listing_results, get_page_info
@@ -80,15 +81,18 @@ def sell(request):
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "form": SellForm()
     }
     return render(request, 'castleapartments/sell.html', context)
 
 
 @login_required
 def account(request):
+    listings = Listing.objects.filter(seller=request.user).reverse()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "listings": listings,
     }
     return render(request, 'castleapartments/account.html', context)
 

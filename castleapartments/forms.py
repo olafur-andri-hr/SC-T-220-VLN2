@@ -140,6 +140,77 @@ class SearchForm(forms.Form):
     )
 
 
+class SellForm(forms.Form):
+    country = CountryField().formfield()
+    zip_code = forms.CharField(
+        label="Postal code", max_length=50, validators=[MinLengthValidator(2)]
+    )
+    town = forms.CharField(label=("Town"), max_length=50)
+    address = forms.CharField(
+        label="Address:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Address"
+        })
+    )
+    apt_number = forms.CharField(
+        label="Apt. Number:",
+        max_length=20,
+        required=False,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Apt. Number"
+        })
+    )
+    num_of_rooms = forms.IntegerField(
+        label="Number of rooms:",
+        required=True,
+        validators=[MinValueValidator(1), MaxValueValidator(20)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "# of rooms",
+            "class": ""
+        })
+    )
+    num_of_toilets = forms.IntegerField(
+        label="Number of toilets:",
+        required=True,
+        validators=[MinValueValidator(1), MaxValueValidator(20)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "# of toilets",
+            "class": ""
+        })
+    )
+    size = forms.IntegerField(
+        label="Size (m²):",
+        required=True,
+        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Size",
+            "class": ""
+        })
+    )
+    type = forms.ModelMultipleChoiceField(
+        queryset=ApartmentType.objects.all(),
+        required=True,
+    )
+    description = forms.CharField(
+        label="Detailed description:",
+        required=True,
+        widget=forms.Textarea(attrs={
+            "placeholder": "myballs",
+            "class": ""
+        })
+    )
+    appraisal = forms.IntegerField(
+        label="Real estate appraisal amount:",
+        required=True,
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Appraisal",
+            "class": ""
+        })
+    )
+
+
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label=("Email"), max_length=30)
 
