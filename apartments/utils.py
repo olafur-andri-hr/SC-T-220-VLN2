@@ -29,7 +29,7 @@ def get_listing_results(search_form: SearchForm):
             del query[key]
     results = Listing.objects.filter(**query).order_by(
         parameters["order_by"])
-    meta = get_page_info(search_form)
+    meta = get_page_info(search_form, results)
     return results[meta["offset"]:meta["end"]], meta
 
 

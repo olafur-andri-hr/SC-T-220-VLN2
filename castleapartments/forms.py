@@ -64,7 +64,11 @@ class SearchForm(forms.Form):
     min_price = forms.TypedChoiceField(
         label="Price:",
         required=False,
-        choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
+        choices=(
+            [(i, str(i) + " million") for i in range(0, 101, 5)] +
+            [(i, str(i) + " million") for i in range(110, 201, 10)] +
+            [(j, str(j) + " million") for j in range(300, 1001, 100)]
+        ),
         initial=0,
         widget=forms.Select(attrs={
             "placeholder": "Min",
@@ -76,8 +80,12 @@ class SearchForm(forms.Form):
         required=False,
         label="to",
         label_suffix="",
-        choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
-        initial=200,
+        choices=(
+            [(i, str(i) + " million") for i in range(0, 101, 5)] +
+            [(i, str(i) + " million") for i in range(110, 201, 10)] +
+            [(j, str(j) + " million") for j in range(300, 1001, 100)]
+        ),
+        initial=1000,
         widget=forms.Select(attrs={
             "placeholder": "Max",
             "class": "inline-second"
