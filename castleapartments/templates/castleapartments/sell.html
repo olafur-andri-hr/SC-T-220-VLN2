@@ -74,8 +74,8 @@
             <h3>Appraisal</h3>
             <table id="basictable2">
                     <tr>
-                        <th class="tablelabel">{{ forms.appraisal.label_tag }}</th>
-                        <td>{{ forms.appraisal }}</td>
+                        <th class="tablelabel">{{ form.appraisal.label_tag }}</th>
+                        <td>{{ form.appraisal }}</td>
                     </tr>
                 </table>
             <div class="buttonsdiv">
@@ -127,32 +127,28 @@
             <h3>Property info</h3>
             <table id="detailtable1">
                 <tr>
-                    <th class="tablelabel">Number of rooms:</th><td><input type="number" 
-                        name="numrooms"></td>
+                    <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th>
+                    <td>{{ form.num_of_rooms }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Number of toilets:</th> 
-                    <td><input type="number" name="numtoilets"></td>
+                    <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th> 
+                    <td>{{ form.num_of_toilets }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Size (in m2)</th>
-                    <td><input type="number" name="size"></td>
+                    <th class="tablelabel">{{ form.size.label_tag }}</th>
+                    <td>{{ form.size }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Type:</th>
-                    <td><input type="select" name="type"></td>
+                    <th class="tablelabel">{{ form.type.label_tag}}</th>
+                    <td>{{ form.type }}</td>
                 </tr>
                 <tr>
                     <th class="tablelabel">Pictures:</th>
                     <td><input type="file" value= "Choose pictures" name="pictures"></td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Detailed description:</th>
-                    <td><input type="number" name="description"></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel">Detailed description:</th>
-                    <td><textarea></textarea></td>
+                    <th class="tablelabel">{{ form.description.label_tag }}</th>
+                    <td>{{ form.description}}</td>
                 </tr>
             </table>
             <div class="buttonsdiv">
