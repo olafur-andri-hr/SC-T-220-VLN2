@@ -40,7 +40,7 @@
                     Use the form below to search for your dreamhouse or
                     <a href="{% url 'sell' %}">sell an apartment</a> now!
                 </h5>
-                <form id="search_banner_form" action="#" method="post" class="">
+                <form id="search_banner_form" action="#search-results" method="post" class="">
                     {% csrf_token %}
                     <ul>
                         {% for field in form %}
@@ -195,15 +195,18 @@
                     </p>
                 </li>
                 <li>
-                    <p>Order by:</p>
-                    <select>
-                        <option>Newest</option>
-                        <option>Oldest</option>
-                        <option>Least expensive</option>
-                        <option>Most expensive</option>
-                        <option>Postal code</option>
-                        <option>Address</option>
+                    <p>Order by: </p>
+                    {{form.order_by}}
+                    {% comment %}
+                    <select form="search_banner_form">
+                        <option value="-listing-date">Newest</option>
+                        <option value="listing-date">Oldest</option>
+                        <option value="apartment__appraisal">Least expensive</option>
+                        <option value="-apartment__appraisal">Most expensive</option>
+                        <option value="apartment__postal_code__zip_code">Postal code</option>
+                        <option value="apartment__address">Address</option>
                     </select>
+                    {% endcomment %}
                 </li>
                 <li>
                     <a id="edit_search" href="#frontpage-div">
@@ -274,6 +277,30 @@
             </div>
             {% endif %}
             {% endfor %}
+        </div>
+        <div id='page-selection-div' class="container-fluid text-center">
+            <nav aria-label="...">
+                <ul class="pagination d-flex justify-content-center p-4 m-0">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div id="recently_viewed" class="container-fluid">
             <div id="recently_viewed_empty_message">

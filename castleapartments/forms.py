@@ -117,6 +117,18 @@ class SearchForm(forms.Form):
         queryset=ApartmentType.objects.all(),
         required=False,
     )
+    order_by = forms.ChoiceField(
+        label="Order by: ",
+        choices=[("-listing_date", "Newest first"),
+                 ("listing_date", "Oldest"),
+                 ("apartment__appraisal", "Least expensive"),
+                 ("-apartment__appraisal", "Most expensive"),
+                 ("apartment__postal_code__zip_code", "Postal code"),
+                 ("apartment__address", "Address"),
+                 ],
+        required=True,
+        widget=forms.Select(attrs={"form": "search_banner_form"}),
+    )
 
 
 class LoginForm(AuthenticationForm):
