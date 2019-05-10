@@ -1,6 +1,5 @@
 from math import ceil
 from django.shortcuts import render
-from django.core import serializers
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from rest_framework.renderers import JSONRenderer
 from .models import Listing, Apartment, ApartmentImage, ApartmentType
@@ -52,7 +51,19 @@ def search(request):
                 'page_count': page_count,
                 'page_number': parameters['page_number'],
             }}
-            print(response)
-            json = JSONRenderer().render(response).decode('UTF-8')
-            return JsonResponse(json, safe=False)
+            return JsonResponse(response, safe=False)
     return HttpResponseBadRequest()
+
+
+def get_many_by_id(request, listing_ids):
+    id_list = listing_ids.split(",")
+    data = []
+    for listing_id in id_list:
+        listing = Listing.objects.get(uuid=listing_id)
+        data.append(
+            ListingSerializer(
+                listing,
+                context={'request': request}
+            ).data
+        )
+    return JsonResponse(data, safe=False)

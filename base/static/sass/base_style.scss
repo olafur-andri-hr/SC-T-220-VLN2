@@ -144,6 +144,8 @@ header{
 		background-repeat: no-repeat;
 		margin-right: 10px;
 		border-radius: 50%;
+		border: 1px solid #EEEEEE;
+		box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
 	}
 
 	#profilepic_big {
@@ -241,7 +243,8 @@ header{
 		justify-content: space-evenly;
 		text-align: right;
 		z-index: 11;
-		transform: scale(1)
+		transform: scale(1);
+		padding-left: 1.5rem;
 	}
 	
 	#accountdiv:hover {
@@ -254,15 +257,27 @@ header{
 	}
 
     #loggeddiv {
-		padding-top: 1rem;
-		margin: 1rem;
+		margin: 1rem 0.2rem 1rem 0;
 		display: flex;
 		align-items: center;
+		justify-content: flex-start;
 		flex: 1;
+		overflow: hidden;
 
 		#notlogged {
 			margin: 0;
 			padding: 0;
+		}
+
+		p {
+			margin: 0;
+			padding: 0;
+			white-space: nowrap;
+			text-align: left; 
+			text-overflow: ellipsis;
+			font-family: $text-font;
+			color: #424242;
+			font-weight: 500;
 		}
 	}
 

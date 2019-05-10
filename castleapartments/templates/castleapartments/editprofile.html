@@ -30,7 +30,7 @@
             <div class="container text-center">
                 <h1>Edit profile.</h1>
             </div>
-            <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full"
+            <form action="#" method="patch" class="d-flex flex-wrap justify-content-around container-full"
                 enctype="multipart/form-data">
                 {% csrf_token %}
                 <section>
@@ -97,7 +97,7 @@
                     </table>
                 </section>
                 <div class="container-full text-center">
-                    <input type="submit" value="Sign up" class="btn btn-outline-primary box-shadow">
+                    <input type="submit" value="Update" class="btn btn-outline-primary box-shadow">
                 </div>
             </form>
         </div>

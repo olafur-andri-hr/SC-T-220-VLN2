@@ -16,6 +16,12 @@ def index(request):
     listings = Listing.objects.all()
     apartment_types = ApartmentType.objects.all()
     len_listings = 0
+    user_full_name = ""
+    try:
+        user_full_name = request.user.userinfo.first_name + " " + \
+            request.user.userinfo.last_name
+    except AttributeError:
+        user_full_name = ""
     for listing in listings:
         if listing.processed:
             len_listings += 1
@@ -25,6 +31,7 @@ def index(request):
         "form": SearchForm(),
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "user_full_name": user_full_name,
         "apartment_types": apartment_types
     }
     return render(request, 'castleapartments/index.html', context)

@@ -173,9 +173,14 @@
         position: sticky;
         position: -webkit-sticky;
         top: 4rem;
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         color: #212121;
         z-index: 3;
+
+        @media screen and (max-width: 391px) {
+            position: relative;
+            top: 0;
+        }
 
         ul {
             position: relative;
@@ -275,7 +280,7 @@ footer {
     z-index: 1;
 }
 
-#listings_container {
+#listings_container, #recently_viewed.create {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -417,9 +422,72 @@ footer {
     transform: scale(1.05);
 }
 
-#search_history {
+#recently_viewed {
     transition: transform 200ms ease, opacity 200ms ease;
     transform: translateX(-2rem);
     opacity: 0;
     display: none;
+
+    #recently_viewed_empty_message {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 2rem auto;
+
+        #empty_icon {
+            height: 10rem;
+            width: 10rem;
+            margin: 0;
+            box-sizing: content-box;
+            padding: 1rem;
+            background-color: #EEEEEE;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                height: 90%;
+            }
+        }
+
+        p {
+            margin-top: 1rem;
+            max-width: 20rem;
+            text-align: center;
+            color: #9E9E9E;
+        }
+    }
+
+    #recently_viewed_empty_message.create {
+        display: flex;
+    }
+
+    #recently_viewed_loading_message {
+        display: block;
+        text-align: center;
+        width: 100%;
+
+        p {
+            color: #9E9E9E;
+            text-align: center;
+            font-style: italic;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    #recently_viewed_loading_message.remove {
+        display: none;
+    }
+}
+
+#recently_viewed.create {
+    display: flex;
+}
+
+#recently_viewed.show {
+    transform: translateX(0);
+    opacity: 1;
 }
