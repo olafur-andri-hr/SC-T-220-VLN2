@@ -4,16 +4,34 @@ from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.views import redirect_to_login, LoginView
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from castleapartments.forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
-from django.urls import reverse
-from django.contrib.auth.decorators import login_required
+from apartments.utils import get_listing_results, get_page_info
+from .utils import get_form_defaults
 
 
 def index(request):
-    listings = Listing.objects.all()
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            listings, meta = get_listing_results(search_form)
+        else:
+            listings = Listing.objects.all()
+            meta = get_page_info(search_form, listings)
+            listings = listings[meta["offset"]:meta["end"]]
+    else:
+        defaults = get_form_defaults(SearchForm)
+        search_form = SearchForm(defaults)
+        search_form.full_clean()
+        listings = Listing.objects.all().order_by(
+            search_form.cleaned_data['order_by']
+        )
+        meta = get_page_info(search_form, listings)
+        listings = listings[meta["offset"]:meta["end"]]
     apartment_types = ApartmentType.objects.all()
     len_listings = 0
     user_full_name = ""
@@ -28,11 +46,12 @@ def index(request):
     context = {
         "listings": listings,
         "len_listings": len_listings,
-        "form": SearchForm(),
+        "form": search_form,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "user_full_name": user_full_name,
-        "apartment_types": apartment_types
+        "apartment_types": apartment_types,
+        "search_meta": meta
     }
     return render(request, 'castleapartments/index.html', context)
 

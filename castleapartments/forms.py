@@ -65,7 +65,7 @@ class SearchForm(forms.Form):
         label="Price:",
         required=False,
         choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
-        initial="10",
+        initial=0,
         widget=forms.Select(attrs={
             "placeholder": "Min",
             "class": "inline-first"
@@ -77,7 +77,7 @@ class SearchForm(forms.Form):
         label="to",
         label_suffix="",
         choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
-        initial="100",
+        initial=200,
         widget=forms.Select(attrs={
             "placeholder": "Max",
             "class": "inline-second"
@@ -118,6 +118,7 @@ class SearchForm(forms.Form):
         required=False,
     )
     order_by = forms.ChoiceField(
+        initial="-listing_date",
         label="Order by: ",
         choices=[("-listing_date", "Newest first"),
                  ("listing_date", "Oldest"),
