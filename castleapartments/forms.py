@@ -147,7 +147,7 @@ class SellForm(forms.Form):
     )
     apt_number = forms.CharField(
         label="Apt. Number:",
-        max-length=20,
+        max_length=20,
         required=False,
         widget=forms.TextInput(attrs={
             "placeholder": "Your Apt. Number"
@@ -189,6 +189,14 @@ class SellForm(forms.Form):
         required=True,
         widget=forms.Textarea(attrs={
             "placeholder": "myballs",
+            "class": ""
+        })
+    )
+    appraisal = forms.IntegerField(
+        label="Real estate appraisal amount:",
+        required=True,
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Appraisal",
             "class": ""
         })
     )

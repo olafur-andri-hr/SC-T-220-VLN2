@@ -55,25 +55,27 @@
                     <td>{{ form.country }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Zip Code:</th> <td><input type="text" name="zipcode"></td>
+                    <th class="tablelabel">{{ form.zip_code.label_tag }}</th> 
+                        <td>{{ form.zip_code }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Town:</th> <td><input type="text" name="town"></td>
+                    <th class="tablelabel">{{ form.town.label_tag }}</th> 
+                    <td>{{ form.town }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Address:</th>
-                    <td><input type="text" name="address"></td>
+                    <th class="tablelabel">{{ form.address.label_tag }}</th>
+                    <td>{{ form.address }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Apt. number:</th>
-                    <td><input type="text" name="aptnumber"></td>
+                    <th class="tablelabel">{{ form.apt_number.label_tag }}</th>
+                    <td>{{ form.apt_number }}</td>
                 </tr>
             </table>
             <h3>Appraisal</h3>
             <table id="basictable2">
                     <tr>
-                        <th class="tablelabel">*Real Estate appraisal amount:</th>
-                        <td><input type="number" name="appraisal"></td>
+                        <th class="tablelabel">{{ forms.appraisal.label_tag }}</th>
+                        <td>{{ forms.appraisal }}</td>
                     </tr>
                 </table>
             <div class="buttonsdiv">
