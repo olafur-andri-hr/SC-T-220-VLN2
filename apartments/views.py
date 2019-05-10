@@ -51,7 +51,6 @@ def search(request):
                 'page_count': page_count,
                 'page_number': parameters['page_number'],
             }}
-            print(response)
             return JsonResponse(response, safe=False)
     return HttpResponseBadRequest()
 
