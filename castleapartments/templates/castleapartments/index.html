@@ -195,22 +195,14 @@
                     </p>
                 </li>
                 <li>
-                    <p>Order by: </p>
+                    <p id="order_by_text">Order by:</p>
                     {{form.order_by}}
-                    {% comment %}
-                    <select form="search_banner_form">
-                        <option value="-listing-date">Newest</option>
-                        <option value="listing-date">Oldest</option>
-                        <option value="apartment__appraisal">Least expensive</option>
-                        <option value="-apartment__appraisal">Most expensive</option>
-                        <option value="apartment__postal_code__zip_code">Postal code</option>
-                        <option value="apartment__address">Address</option>
-                    </select>
-                    {% endcomment %}
                 </li>
                 <li>
                     <a id="edit_search" href="#frontpage-div">
-                        <img src="{% static 'icons/edit.svg' %}">
+                        <img 
+                            id="edit_search_icon"
+                            src="{% static 'icons/edit.svg' %}">
                         <p>Edit search</p>
                     </a>
                 </li>
@@ -273,7 +265,7 @@
                         {{ listing.apartment.description|truncatechars:listing.apartment.description_truncation_length }}
                     </p>
                 </div>
-                <a href="/listing/{{listing.uuid}}" class="card-link"></a>
+                <a href="/listings/{{listing.uuid}}" class="card-link"></a>
             </div>
             {% endif %}
             {% endfor %}

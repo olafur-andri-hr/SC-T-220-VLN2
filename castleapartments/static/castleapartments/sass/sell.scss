@@ -8,12 +8,16 @@ main {
     margin: 0;
 }
 
-#navdiv {
+.navdiv {
+    position: absolute;
+    margin-bottom: 6rem;
+    top: 4rem;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 6rem;
+    height: 4rem;
+    width: 100%;
 
     @media screen and (max-width: 700px) {
         display: none;
@@ -22,6 +26,10 @@ main {
 
 .arrowdiv {
     background: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+    margin-right: 2%;
+    margin-left: 2%;
     height: 20px;
     width: 20px;
     display: inline-block;
@@ -49,30 +57,10 @@ main {
 
 .navigationdivs {
     display: flex;
-    margin-right: 2%;
-    margin-left: 2%;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    transition: background-color 0.5s ease;
-    cursor: pointer;
     font-family: "Reem Kufi", sans-serif;
-}
-
-.current {
-    display: flex;
-    margin-right: 2%;
-    margin-left: 2%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: solid 2px $primary;
-    cursor: pointer;
-    font-family: "Reem Kufi", sans-serif;
-}
-
-.navigationdivs:hover {
-    background: rgba(85, 3, 167, 0.1);
 }
 
 #editimg {
@@ -95,7 +83,6 @@ main {
 
 #infoform {
     display: flex;
-
     h1 {
         font-family: "Reem Kufi", sans-serif;
         margin: 0 auto;
@@ -106,14 +93,20 @@ main {
 
 .finished {
     display: flex;
-    margin-right: 2%;
-    margin-left: 2%;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     background-color: $primary;
     color: white;
     border-radius: 5px;
+    font-family: "Reem Kufi", sans-serif;
+}
+
+.current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: solid 2px $primary;
     font-family: "Reem Kufi", sans-serif;
 }
 
@@ -132,6 +125,7 @@ main {
     width: 68%;
     align-items: center;
     margin: 0 auto;
+    margin-top: 4rem;
     //justify-content: space-between;
     height: 40rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -230,7 +224,6 @@ main {
 }
 
 #basictable2 {
-    //margin: 0;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -241,7 +234,4 @@ main {
 
 h3 {
     text-align: center;
-}
-footer {
-    //background-color: $gray;
 }

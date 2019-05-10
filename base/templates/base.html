@@ -75,7 +75,9 @@
         <div id="accountdiv" class="dropbtn">
             {% if authenticated %}
             <div id="loggeddiv">
-                <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+            <p>
+                {{ user.userinfo|truncatechars:15 }}
+            </p>
             </div>
             <div id="profilepic" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
             {% else %}

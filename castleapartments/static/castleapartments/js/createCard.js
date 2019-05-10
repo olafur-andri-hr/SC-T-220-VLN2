@@ -63,7 +63,7 @@ function createCard(listingsDiv, listing) {
 
   listingLink = document.createElement('a');
   listingLink.classList = 'card-link';
-  listingLink.href = '/listing/' + listing.uuid;
+  listingLink.href = '/listings/' + listing.uuid;
   cardBody.appendChild(listingLink);
 
 
