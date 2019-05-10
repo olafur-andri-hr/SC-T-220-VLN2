@@ -51,9 +51,7 @@ def search(request):
                 'page_count': page_count,
                 'page_number': parameters['page_number'],
             }}
-            print(response)
-            json = JSONRenderer().render(response).decode('UTF-8')
-            return JsonResponse(json, safe=False)
+            return JsonResponse(response, safe=False)
     return HttpResponseBadRequest()
 
 
@@ -62,18 +60,10 @@ def get_many_by_id(request, listing_ids):
     data = []
     for listing_id in id_list:
         listing = Listing.objects.get(uuid=listing_id)
-        data.append({
-            "image": listing.apartment.apartmentimage_set.first().image.url,
-            "listing_date": listing.listing_date,
-            "address": listing.apartment.address,
-            "zip_code": listing.apartment.postal_code.zip_code,
-            "town": listing.apartment.postal_code.town,
-            "country": listing.apartment.postal_code.country.name,
-            "apt_number": listing.apartment.apt_number,
-            "type": listing.apartment.apartment_type.name,
-            "num_rooms": listing.apartment.num_rooms,
-            "price": listing.apartment.appraisal,
-            "description": listing.apartment.description,
-            "uuid": listing_id,
-        })
+        data.append(
+            ListingSerializer(
+                listing,
+                context={'request': request}
+            ).data
+        )
     return JsonResponse(data, safe=False)

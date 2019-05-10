@@ -1,10 +1,13 @@
 document.getElementById('infonextlink').addEventListener('click', finishInfo);
 document.getElementById('basicnextlink').addEventListener('click', finishBasic);
-document.getElementById('detailnextlink').addEventListener('click', finishDetail);
-document.getElementById('reviewnextlink').addEventListener('click', finishReview);
+document.getElementById('detailnextlink')
+    .addEventListener('click', finishDetail);
+document.getElementById('reviewnextlink')
+    .addEventListener('click', finishReview);
 document.getElementById('basicprevlink').addEventListener('click', backToInfo);
 document.getElementById('detailprevlink').addEventListener('click', finishInfo);
-document.getElementById('reviewprevlink').addEventListener('click', finishBasic);
+document.getElementById('reviewprevlink')
+    .addEventListener('click', finishBasic);
 
 const infoDiv = document.getElementById('yourinfodiv');
 const basicDiv = document.getElementById('basicdiv');

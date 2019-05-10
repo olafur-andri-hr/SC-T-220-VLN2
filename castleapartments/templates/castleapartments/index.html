@@ -14,6 +14,7 @@
 {% endblock title %}
 
 {% block scripts %}
+<script src="{% static 'castleapartments/js/createCard.js' %}" defer></script>
 <script src="{% static 'castleapartments/js/script.js' %}" defer></script>
 <script src="{% static 'castleapartments/js/search.js' %}" defer></script>
 {% endblock scripts %}
@@ -194,7 +195,7 @@
                     </p>
                 </li>
                 <li>
-                    <p>Order by:</p>
+                    <p id="order_by_text">Order by:</p>
                     <select>
                         <option>Newest</option>
                         <option>Oldest</option>
@@ -206,7 +207,9 @@
                 </li>
                 <li>
                     <a id="edit_search" href="#frontpage-div">
-                        <img src="{% static 'icons/edit.svg' %}">
+                        <img 
+                            id="edit_search_icon"
+                            src="{% static 'icons/edit.svg' %}">
                         <p>Edit search</p>
                     </a>
                 </li>
@@ -269,7 +272,7 @@
                         {{ listing.apartment.description|truncatechars:listing.apartment.description_truncation_length }}
                     </p>
                 </div>
-                <a href="/listing/{{listing.uuid}}" class="card-link"></a>
+                <a href="/listings/{{listing.uuid}}" class="card-link"></a>
             </div>
             {% endif %}
             {% endfor %}
