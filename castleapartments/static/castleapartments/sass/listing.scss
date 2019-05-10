@@ -1,0 +1,60 @@
+#main_listing {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid black;
+    min-height: 100vh;
+    margin: 2rem;
+
+    #listing-head {
+        display: flex;
+        flex-direction: row;
+        border: 2px solid red;
+        background-color: red;
+    
+        #listing-images {
+            flex: 1;
+            border: 2px solid pink;
+            background-color: pink;
+            height: 10rem;;
+        }
+
+        #listing-info-card {
+            flex: 1;
+            border: 2px solid orange;
+            background-color: orange;
+            height: 10rem;
+        }
+
+        #listing-main-info {
+            flex: 1;
+            border: 2px solid blue;
+            background-color: blue;
+            height: 10rem;
+        }
+    }
+
+    #listing-destription {
+        border: 2px solid white;
+        background-color: white;
+
+        #listing-text {
+            border: 2px solid green;
+            background-color: green;
+            height: 10rem;
+        }
+
+        #listing-map {
+            border: 2px solid purple;
+            background-color: purple;
+            height: 10rem;
+        }
+    }
+
+    #listings-offers {
+        border: 2px solid brown;
+        background-color: brown;
+        height: 10rem;
+    }
+
+}
