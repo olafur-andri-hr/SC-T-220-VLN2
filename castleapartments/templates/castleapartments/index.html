@@ -212,20 +212,25 @@
                 </li>
             </ul>
         </div>
-        <button type="button" class="btn" id="history_button">
+        <button 
+            type="button"
+            class="btn"
+            id="history_button"
+            data-original-text="Recently viewed"
+            data-new-text="Back to listings">
             <img 
                 src="{% static 'icons/history.svg' %}"
                 alt="View search history"
                 class="icon" />
-            <p>View search history</p>
+            <p>Recently viewed</p>
         </button>
         <div id="listings_container" class="container-fluid">
             {% for listing in listings %}
             {% if listing.processed == True %}
-            <div class="card">
+            <div class="card" data-id="{{ listing.uuid }}">
                 <div class="card-img-top"
                     style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});">
-                    <p class="card-listing-date">
+                    <p class="card-listing-date">Added: 
                         {{ listing.listing_date|date:"F" }}
                         {{ listing.listing_date.day }},
                         {{ listing.listing_date.year }}
@@ -269,8 +274,21 @@
             {% endif %}
             {% endfor %}
         </div>
-        <div id="search_history" class="container-fluid">
-            <p>This is your search history...</p>
+        <div id="recently_viewed" class="container-fluid">
+            <div id="recently_viewed_empty_message">
+                <div id="empty_icon">
+                    <img 
+                        alt="History is empty"
+                        src="{% static 'icons/empty.svg' %}" />
+                </div>
+                <p>
+                    Seems like you have no recently viewed properties. Check out
+                    some apartments to populate it!
+                <p>
+            </div>
+            <div id="recently_viewed_loading_message">
+                <p></p>
+            </div>
         </div>
     </div>
 </main>
