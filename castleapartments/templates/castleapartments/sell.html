@@ -11,6 +11,10 @@
 <title> Sell </title>
 {% endblock title %}
 
+{% block scripts %}
+    <script src="{% static 'castleapartments/js/sell.js' %}" defer></script>
+{% endblock scripts %}
+
 {% block content %}
 <main>
     <div id="navdiv">
@@ -29,7 +33,7 @@
         </div>
         <div class="arrowdiv"
         style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-        <div id="detaileddiv" class="navigationdivs">
+        <div id="detaildiv" class="navigationdivs">
             <p class="textindiv">Detailed</p>
         </div>
         <div class="arrowdiv"
@@ -44,51 +48,6 @@
         </div>
     </div>
     <form id="sellform">
-    <div id="infoform" class="forms">
-        {% csrf_token %}
-        <h1>Sell an apartment</h1>
-        <h3>Your personal information</h3>
-        <table id="infotable">
-            <tr>
-                <th class="tablelabel">Name:</th> <td>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Email address:</th> <td>{{user.userinfo.email}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Birthday:</th> <td>{{user.userinfo.DoB}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Phone:</th> <td>{{user.userinfo.phone_number}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">SSN:</th> <td>{{user.userinfo.SSN}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Country:</th> <td>{{user.userinfo.postal_code.country}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Zip code:</th> <td>{{user.userinfo.postal_code.zip_code}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Town:</th> <td></td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Address:</th> <td>{{user.userinfo.address}}</td>
-            </tr>
-            <tr>
-                <th class="tablelabel">Apt. number:</th> <td>{{user.userinfo.apt_number}}</td>
-            </tr>
-        </table>
-        <div id="buttonsdiv">
-            <div class="prevstep">
-                <p>Update information</p>
-            </div>
-            <div class="nextstep">
-                <input type="submit" value="Next Step" class="btn">
-            </div>
-        </div>
-    </div>
     <div id="basicform" class="forms">
             {% csrf_token %}
             <h1>Sell an apartment</h1>
@@ -119,16 +78,20 @@
                         <td><input type="number" name="appraisal"></td>
                     </tr>
                 </table>
-            <div id="buttonsdiv">
-                <div class="prevstep">
-                    <input type="submit" value="Update information" class="btn">
-                </div>
-                <div class="nextstep">
-                    <input type="submit" value="Next Step" class="btn">
-                </div>
+            <div class="buttonsdiv">
+                <a href="#" id="basicprevlink">
+                    <div class="prevstep">
+                        <button class="btn btn-outline-primary box-shadow" type="button">Previous step</button>
+                    </div>
+                </a>
+                <a href='#detailform' id="basicnextlink">
+                    <div class="next_button">
+                        <button class="btn btn-outline-primary box-shadow" id="button2" type="button">Next step</button>
+                    </div>
+                </a>
             </div>
         </div>
-        <div id="detaildiv" class="forms">
+        <div id="detailform" class="forms">
             {% csrf_token %}
             <h1>Sell an apartment</h1>
             <h3>Property info</h3>
@@ -162,13 +125,17 @@
                     <td><textarea></textarea></td>
                 </tr>
             </table>
-            <div id="buttonsdiv">
-                <div class="prevstep">
-                    <input type="submit" value="Update information" class="btn">
-                </div>
-                <div class="nextstep">
-                    <input type="submit" value="Next Step" class="btn">
-                </div>
+            <div class="buttonsdiv">
+                <a href="#basicform" id="detailprevlink">
+                    <div class="prevstep">
+                        <button class="btn btn-outline-primary box-shadow" type="button">Previous step</button>
+                    </div>
+                </a>
+                <a href='#reviewform' id="detailnextlink">
+                    <div class="next_button">
+                        <button class="btn btn-outline-primary box-shadow" id="button2" type="button">Next step</button>
+                    </div>
+                </a>
             </div>
         </div>
         <div id="reviewform" class="forms">
@@ -220,10 +187,20 @@
                 </table>
             </div>
         </div>
-            <div id="buttonsdiv">
-                <button>Previous step</button>
-                <button>Next step</button>
-            </div>
+        <div class="buttonsdiv">
+            <a href="#detailform" id="reviewprevlink">
+                <div class="prevstep">
+                    <button class="btn btn-outline-primary box-shadow" type="button">
+                        Previous step</button>
+                </div>
+            </a>
+            <a href='#confirmform' id="reviewnextlink">
+                <div class="next_button">
+                    <button class="btn btn-outline-primary box-shadow" id="button2" type="button">
+                        Next step</button>
+                </div>
+            </a>
+        </div>
             <p>Detailed description:</p>
         </div>
         <div id="confirmform" class="forms">
@@ -236,6 +213,56 @@
                 <a href="/" class="selllinks">
                     <div id="returndiv"><p>Return to listing</p></div>
                 </a>
+        </div>
+
+        <div id="infoform" class="forms">
+            {% csrf_token %}
+            <h1>Sell an apartment</h1>
+            <h3>Your personal information</h3>
+            <table id="infotable">
+                <tr>
+                    <th class="tablelabel">Name:</th> <td>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Email address:</th> <td>{{user.userinfo.email}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Birthday:</th> <td>{{user.userinfo.DoB}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Phone:</th> <td>{{user.userinfo.phone_number}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">SSN:</th> <td>{{user.userinfo.SSN}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Country:</th> <td>{{user.userinfo.postal_code.country}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Zip code:</th> <td>{{user.userinfo.postal_code.zip_code}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Town:</th> <td></td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Address:</th> <td>{{user.userinfo.address}}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">Apt. number:</th> <td>{{user.userinfo.apt_number}}</td>
+                </tr>
+            </table>
+            <div class="buttonsdiv">
+                    <div id="edit_button">
+                        <button class="btn btn-outline-primary box-shadow" type="button">Edit profile </button>
+                        <img src="{% static 'icons/edit.svg' %}" id="editimg">
+                    </div>
+                        <a href="#basicform" id="infonextlink">
+                        <div class="next_button">
+                            <button class="btn btn-outline-primary box-shadow" id="button2" type="button">
+                                Next Step</button>
+                        </div>
+                </a>
+            </div>
         </div>
     </form>
 </main>
