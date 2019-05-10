@@ -1,3 +1,4 @@
+from math import ceil
 from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
@@ -38,22 +39,20 @@ def search(request):
                 if value is None or value == '':
                     del query[key]
             results = Listing.objects.filter(**query)
-            # apartments = [res.apartment for res in results]
-            # a = apartments[0]
-            # apartment_types = [apt.apartment_type for apt in apartments]
-            # apartment_images = list()
-            # for apt in apartments:
-            #     for image in apt.apartmentimage_set.all():
-            #         apartment_images.append(image)
-            # stuff = [
-            #     *results, *apartments, *apartment_types, *apartment_images
-            # ]
-            # json_results = serializers.serialize(
-            #     'json', stuff, ensure_ascii=False
-            # )
+            result_count = len(results)
+            page_count = ceil(result_count / parameters["per_page"])
+            page_number = parameters['page_number']
+            parameters["per_page"]
+            # results = results
             serializer = ListingSerializer(
                 results, many=True,  context={'request': request}
             )
-            json = JSONRenderer().render(serializer.data).decode('UTF-8')
+            response = {"listings": serializer.data, 'meta': {
+                'result_count': result_count,
+                'page_count': page_count,
+                'page_number': parameters['page_number'],
+            }}
+            print(response)
+            json = JSONRenderer().render(response).decode('UTF-8')
             return JsonResponse(json, safe=False)
     return HttpResponseBadRequest()
