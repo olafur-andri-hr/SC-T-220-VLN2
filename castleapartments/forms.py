@@ -64,8 +64,12 @@ class SearchForm(forms.Form):
     min_price = forms.TypedChoiceField(
         label="Price:",
         required=False,
-        choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
-        initial="10",
+        choices=(
+            [(i, str(i) + " million") for i in range(0, 101, 5)] +
+            [(i, str(i) + " million") for i in range(110, 201, 10)] +
+            [(j, str(j) + " million") for j in range(300, 1001, 100)]
+        ),
+        initial=0,
         widget=forms.Select(attrs={
             "placeholder": "Min",
             "class": "inline-first"
@@ -76,8 +80,12 @@ class SearchForm(forms.Form):
         required=False,
         label="to",
         label_suffix="",
-        choices=[(str(i), str(i) + " million") for i in range(0, 201, 5)],
-        initial="100",
+        choices=(
+            [(i, str(i) + " million") for i in range(0, 101, 5)] +
+            [(i, str(i) + " million") for i in range(110, 201, 10)] +
+            [(j, str(j) + " million") for j in range(300, 1001, 100)]
+        ),
+        initial=1000,
         widget=forms.Select(attrs={
             "placeholder": "Max",
             "class": "inline-second"
@@ -118,6 +126,7 @@ class SearchForm(forms.Form):
         required=False,
     )
     order_by = forms.ChoiceField(
+        initial="-listing_date",
         label="Order by: ",
         choices=[("-listing_date", "Newest first"),
                  ("listing_date", "Oldest"),
@@ -128,6 +137,77 @@ class SearchForm(forms.Form):
                  ],
         required=True,
         widget=forms.Select(attrs={"form": "search_banner_form"}),
+    )
+
+
+class SellForm(forms.Form):
+    country = CountryField().formfield()
+    zip_code = forms.CharField(
+        label="Postal code", max_length=50, validators=[MinLengthValidator(2)]
+    )
+    town = forms.CharField(label=("Town"), max_length=50)
+    address = forms.CharField(
+        label="Address:",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Address"
+        })
+    )
+    apt_number = forms.CharField(
+        label="Apt. Number:",
+        max_length=20,
+        required=False,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Your Apt. Number"
+        })
+    )
+    num_of_rooms = forms.IntegerField(
+        label="Number of rooms:",
+        required=True,
+        validators=[MinValueValidator(1), MaxValueValidator(20)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "# of rooms",
+            "class": ""
+        })
+    )
+    num_of_toilets = forms.IntegerField(
+        label="Number of toilets:",
+        required=True,
+        validators=[MinValueValidator(1), MaxValueValidator(20)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "# of toilets",
+            "class": ""
+        })
+    )
+    size = forms.IntegerField(
+        label="Size (m²):",
+        required=True,
+        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Size",
+            "class": ""
+        })
+    )
+    type = forms.ModelMultipleChoiceField(
+        queryset=ApartmentType.objects.all(),
+        required=True,
+    )
+    description = forms.CharField(
+        label="Detailed description:",
+        required=True,
+        widget=forms.Textarea(attrs={
+            "placeholder": "myballs",
+            "class": ""
+        })
+    )
+    appraisal = forms.IntegerField(
+        label="Real estate appraisal amount:",
+        required=True,
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Appraisal",
+            "class": ""
+        })
     )
 
 
