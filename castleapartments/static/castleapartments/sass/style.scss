@@ -128,7 +128,15 @@ form {
 
         li.multiple-inputs {
             input, select {
-                width: 7rem;
+                width: 9rem;
+
+                @media screen and (max-width: 400px) and (min-width: 340px) {
+                    width: 7rem;
+                }
+
+                @media screen and (max-width: 340px) {
+                    width: 6rem;
+                }
             }
 
             label:not(:first-child) {

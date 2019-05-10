@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/apartment_info.scss" %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Apartment Info - Castle Apartments</title>
+{% endblock title %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+{% block content %}
+<main>
+    <div class="carousel-container">
+        <div class="carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-slides">
+                {% for image in listing.apartment.apartmentimage_set.all %}
+                <div 
+                    class="carousel-slide"
+                    style="background-image: url({{ image.image.url }})">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-left-control">
+                    <img src="{% static 'icons/carousel_left.svg' %}" />
+                </button>
+                <button class="carousel-right-control">
+                    <img src="{% static 'icons/carousel_right.svg' %}" />
+                </button>
+            </div>
+            <div class="carousel-indicators">
+                {% for image in listing.apartment.apartmentimage_set.all %}
+                    <div
+                        class="carousel-indicator"
+                        data-slide-to="{{ forloop.counter }}"
+                        style="background-image: url({{ image.image.url }});"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <ul style="padding-bottom: 100px;">
+        <li>Bæta við close-up look (JS-líka)</li>
+    </ul>
+</main>
+{% endblock content %}
