@@ -37,12 +37,14 @@ def search(request):
             for key, value in list(query.items()):
                 if value is None or value == '':
                     del query[key]
-            results = Listing.objects.filter(**query)
+            results = Listing.objects.filter(**query).order_by(
+                parameters["order_by"])
             result_count = len(results)
             page_count = ceil(result_count / parameters["per_page"])
             page_number = parameters['page_number']
-            parameters["per_page"]
-            # results = results
+            offset = (page_number * page_count) - 1
+            end = offset + parameters["per_page"]
+            results = results[offset:end]
             serializer = ListingSerializer(
                 results, many=True,  context={'request': request}
             )
