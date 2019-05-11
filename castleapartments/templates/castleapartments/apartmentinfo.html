@@ -11,14 +11,14 @@
 {% endblock title %}
 
 {% block scripts %}
-
+<script src="{% static 'castleapartments/js/apartmentInfo.js' %}" defer></script>
 {% endblock scripts %}
 
 {% block content %}
 <main>
     <div class="carousel-container">
         <div class="carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-slides">
+            <div class="carousel-slides" data-active-slide="0">
                 {% for image in listing.apartment.apartmentimage_set.all %}
                 <div 
                     class="carousel-slide"
@@ -27,10 +27,10 @@
                 {% endfor %}
             </div>
             <div class="carousel-controls">
-                <button class="carousel-left-control">
+                <button class="carousel-left-control" disabled>
                     <img src="{% static 'icons/carousel_left.svg' %}" />
                 </button>
-                <button class="carousel-right-control">
+                <button class="carousel-right-control" disabled>
                     <img src="{% static 'icons/carousel_right.svg' %}" />
                 </button>
             </div>
