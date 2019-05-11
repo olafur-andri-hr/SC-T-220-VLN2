@@ -1,5 +1,32 @@
-$carousel-height: 20rem;
-$carousel-width: 28rem;
+@import '../../../../base/static/sass/definitions';
+
+$carousel-height: 30rem;
+$carousel-width: 42rem;
+$carousel-i-height: 4rem;
+$carousel-i-width: 5.6rem;
+
+#flex_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    width: 100%;
+}
+
+.carousel-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    @media screen and (max-width: 1190px) {
+        width: 100%;
+        align-items: center;
+    }
+}
 
 .carousel {
     height: $carousel-height;
@@ -7,6 +34,11 @@ $carousel-width: 28rem;
     background-color: rgba(0, 0, 0, 0.33);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
     
     .carousel-slides {
         height: 100%;
@@ -22,6 +54,30 @@ $carousel-width: 28rem;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            position: relative;
+
+            @media screen and (max-width: 800px) {
+                width: 100%;
+            }
+
+            .carousel-slide-label {
+                position: absolute;
+                bottom: 0.5rem;
+                left: 0.5rem;
+                padding: 0.2rem 0.5rem;
+                background-color: rgba(255, 255, 255, 0.6);
+                border-radius: 100rem;
+                color: #121212;
+                font-family: 'Reem Kufi', sans-serif;
+                font-size: 0.8rem;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+                z-index: 3;
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
         }
     }
 
@@ -36,6 +92,7 @@ $carousel-width: 28rem;
         align-items: center;
         justify-content: space-between;
         padding: 0 1rem;
+        pointer-events: none;
 
         button {
             background-color: rgba(255, 255, 255, 0.6);
@@ -46,8 +103,9 @@ $carousel-width: 28rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            pointer-events: auto;
             cursor: pointer;
-            transition: opacity 200ms ease;
+            transition: opacity 200ms ease, background-color 200ms ease;
 
             img {
                 height: 100%;
@@ -65,4 +123,89 @@ $carousel-width: 28rem;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
         }
     }
+
+    .carousel-no-js {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 8;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding-right: 1rem;
+        padding-left: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-weight: 300;
+            line-height: 1.5rem;
+            max-width: 25rem;
+        }
+    }
+}
+
+.carousel-indicators {
+    background-color: rgba(33, 33, 33, 0.1);
+    position: relative;
+    margin: 0.5rem 0 0 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0.2rem 0.2rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: $carousel-width;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
+
+    .carousel-indicator {
+        height: $carousel-i-height;
+        width: $carousel-i-width;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: 0.3rem;
+        position: relative;
+        transition: opacity 200ms ease;
+        flex-shrink: 0;
+        border-radius: 0.1rem;
+        transition: transform 200ms ease;
+
+        a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .carousel-indicator:last-child {
+        margin-right: 0;
+    }
+
+    .carousel-indicator.active {
+        opacity: 0.4;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-indicator.hover {
+        transform: scale(1.07);
+    }
+}
+
+#offers_container {
+    background-color: rgba(0, 0, 0, 0.3);
 }
