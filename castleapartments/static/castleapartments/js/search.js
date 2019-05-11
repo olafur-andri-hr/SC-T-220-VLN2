@@ -23,6 +23,9 @@
       const data = new FormData(form);
       let query = '?' + new URLSearchParams(data).toString();
       query += '&page_number=' + target.value;
+      history.pushState(
+          {}, 'Search', query
+      );
       const url = '/listings/api/search/';
       const listingsDiv = document.getElementById('listings_container');
       fetchListings(url + query, listingsDiv);

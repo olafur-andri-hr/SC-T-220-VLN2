@@ -295,7 +295,7 @@
                         </li>
                         {% endif %}
                     {% endfor %}
-                    <li class="page-item {% if page_number == page_count %}diabled{% endif %}">
+                    <li class="page-item {% if page_number == page_count %}disabled{% endif %}">
                         <button class="page-link"href="#search-results" type="submit" form="search_banner_form"
                             value="{{page_number|add:"1"}}" name="page_number" aria-label="Next"
                             {% if page_number == page_count %}diabled=""{% endif %}>
