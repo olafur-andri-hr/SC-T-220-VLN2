@@ -14,6 +14,8 @@ from castleapartments.utils import get_form_defaults
 def listing(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
     context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
         "listing": listing
     }
     return render(request, 'castleapartments/apartmentinfo.html', context)
