@@ -5,7 +5,7 @@ from django.forms import ModelForm, DateInput, Textarea
 from django_countries.fields import CountryField
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import User, UserInfo
+from .models import User, UserInfo, CreditCard
 from location.models import PostalCode
 from apartments.models import ApartmentType
 
@@ -88,7 +88,7 @@ class SearchForm(forms.Form):
         initial=1000,
         widget=forms.Select(attrs={
             "placeholder": "Max",
-            "class": "inline-second"
+            "class": "inline-second",
         }),
         coerce=int,
     )
@@ -138,6 +138,26 @@ class SearchForm(forms.Form):
         required=True,
         widget=forms.Select(attrs={"form": "search_banner_form"}),
     )
+
+
+class OfferForm(forms.Form):
+    offer_amount = forms.IntegerField(
+        label="Offer amount:",
+        required=True,
+        widget=forms.NumberInput(attrs={
+            "placeholder": "Appraisal",
+            "class": ""
+        })
+    )
+    conveyance_date = forms.DateField(
+        label="Date of conveyance:",
+        required=True,
+        widget=forms.DateInput(attrs={
+            "placeholder": "",
+            "class": ""
+        })
+    )
+    credit_card = CreditCard()
 
 
 class SellForm(forms.Form):
