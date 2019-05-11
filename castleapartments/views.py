@@ -13,17 +13,13 @@ from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults
+from django.forms.models import model_to_dict
 
 
 def index(request):
-    if request.method == "POST":
-        search_form = SearchForm(request.POST)
-        if search_form.is_valid():
-            listings, meta = get_listing_results(search_form)
-        else:
-            listings = Listing.objects.all()
-            meta = get_page_info(search_form, listings)
-            listings = listings[meta["offset"]:meta["end"]]
+    search_form = SearchForm(request.GET)
+    if search_form.is_valid():
+        listings, meta = get_listing_results(search_form)
     else:
         defaults = get_form_defaults(SearchForm)
         search_form = SearchForm(defaults)
@@ -52,7 +48,8 @@ def index(request):
         "user": request.user,
         "user_full_name": user_full_name,
         "apartment_types": apartment_types,
-        "search_meta": meta
+        **meta,
+        "pages": range(1, meta["page_count"] + 1),
     }
     return render(request, 'castleapartments/index.html', context)
 
@@ -79,6 +76,7 @@ def login(request):
 @login_required
 def sell(request):
     context = {
+        "isAdmin": request.user.is_superuser,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "form": SellForm()
@@ -88,11 +86,14 @@ def sell(request):
 
 @login_required
 def account(request):
-    listings = Listing.objects.filter(seller=request.user).reverse()
+    listings = Listing.objects.filter(
+        seller=request.user).reverse().exclude(sold_date__isnull=False)
+    sold_listings = Listing.objects.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "listings": listings,
+        "soldlistings": sold_listings
     }
     return render(request, 'castleapartments/account.html', context)
 
@@ -109,6 +110,8 @@ def signup(request):
     if request.method == "POST":
         user_info_form = UserInfoForm(request.POST, request.FILES)
         postal_code_form = PostalCodeForm(request.POST)
+        user_form = UserCreationForm(request.POST)
+
         if user_info_form.is_valid():
             changed_data = dict(request.POST)
             changed_data['username'] = user_info_form.cleaned_data["email"]
@@ -145,9 +148,10 @@ def signup(request):
 
 @login_required
 def editprofile(request):
-    if request.method == "PUT":
+    if request.method == "POST":
         user_info_form = UserInfoForm(request.POST, request.FILES)
         postal_code_form = PostalCodeForm(request.POST)
+        user_form = UserCreationForm(request.POST)
         if user_info_form.is_valid():
             changed_data = dict(request.POST)
             changed_data['username'] = user_info_form.cleaned_data["email"]
@@ -165,9 +169,10 @@ def editprofile(request):
             new_user_info.save()
             return redirect(account)
     else:
+        user_info_form = UserInfoForm(instance=request.user.userinfo)
         user_form = UserCreationForm()
-        user_info_form = UserInfoForm()
-        postal_code_form = PostalCodeForm()
+        postal_code_form = PostalCodeForm(
+            data=model_to_dict(request.user.userinfo.postal_code))
 
     context = {
         "user_form": user_form,

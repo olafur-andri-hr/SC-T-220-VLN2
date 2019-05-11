@@ -27,6 +27,8 @@ def get_listing_results(search_form: SearchForm):
     for key, value in list(query.items()):
         if value is None or value == '':
             del query[key]
+    if not types.exists():
+        del query["apartment__apartment_type__id__in"]
     results = Listing.objects.filter(**query).order_by(
         parameters["order_by"])
     meta = get_page_info(search_form, results)

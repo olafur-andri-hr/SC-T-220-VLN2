@@ -151,8 +151,18 @@ main {
     display: none;
 }
 
+#detailbuttons {
+    margin-bottom: 2rem;
+}
+
+#id_garage {
+    box-shadow: none;
+    width: auto;
+}
+
 #detailform:target {
     display: flex;
+    height: auto;
 }
 
 #tablesdiv {
