@@ -35,6 +35,9 @@ class Apartment(models.Model):
     )
     description = models.TextField(("Description"))
     description_truncation_length = models.IntegerField(default=100)
+    garage_parking_space = models.BooleanField(
+        ("Garage parking space"), default=False
+    )
 
     def __str__(self):
         return (f"{self.address}, {self.postal_code}")
