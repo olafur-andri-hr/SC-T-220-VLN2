@@ -50,7 +50,7 @@ class CreditCard(models.Model):
     credit_card_cvv = models.CharField(("CVV"), max_length=4)
 
     def __str__(self):
-        return str(credit_card_number)
+        return str(self.credit_card_number)
 
 
 class Offer(models.Model):
