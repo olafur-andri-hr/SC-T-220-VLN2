@@ -91,6 +91,7 @@ def account(request):
     sold_listings = Listing.objects.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
+        "isAdmin": request.user.is_superuser,
         "user": request.user,
         "listings": listings,
         "soldlistings": sold_listings
