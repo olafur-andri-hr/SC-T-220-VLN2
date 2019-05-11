@@ -24,7 +24,7 @@
         <div id="profile">
             <div id="account_profile">
                 <div id="edit_button">
-                    <a href="#" class="btn btn-primary box-shadow">Edit profile </a>
+                    <a href="{% url 'editprofile' %}" class="btn btn-primary box-shadow">Edit profile </a>
                     <img src="{% static 'icons/edit.svg' %}">
                 </div>
                 <div id="profile_image">
@@ -88,14 +88,23 @@
                 <p>Sold</p>
             </div>
             <div class="content">
+                {% for listing in soldlistings %}
                 <div class="sold_card">
-                    <div class="sold_img" style='background-image: url("{% static "sonic.jpg" %}")'></div>
+                    <div class="sold_img" 
+                        style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
+                    </div>
                     <div class="sold_body">
-                        <p>Address<br>
-                            Zip code<br>
-                            Country<br>
+                        <h5 class="card-title no-margin">
+                            {{ listing.apartment.address }}
+                        </h5>
+                        <p class="card-text no-margin text-sm">
+                            {{ listing.apartment.postal_code.zip_code }}
+                            <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                            {{ listing.apartment.postal_code.country.name }}<br>
+                        </p>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
