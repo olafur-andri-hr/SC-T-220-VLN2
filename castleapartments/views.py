@@ -89,10 +89,12 @@ def sell(request):
 @login_required
 def account(request):
     listings = Listing.objects.filter(seller=request.user).reverse()
+    sold_listings = Listing.objects.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "listings": listings,
+        "soldlistings": sold_listings
     }
     return render(request, 'castleapartments/account.html', context)
 
