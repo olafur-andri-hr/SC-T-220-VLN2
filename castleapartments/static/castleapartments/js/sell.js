@@ -45,4 +45,10 @@ function showReview() {
   description.textContent = descriptionInput.value;
   addressHeader.textContent = addressInput.value;
   garagetd.textContent = garageInput.value;
+
+  if (garageInput.checked === true) {
+    garagetd.textContent = 'Yes';
+  } else {
+    garagetd.textContent = 'No';
+  }
 }
