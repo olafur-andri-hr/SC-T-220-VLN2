@@ -145,9 +145,9 @@ def signup(request):
 
 @login_required
 def editprofile(request):
-    if request.method == "PUT":
-        user_info_form = UserInfoForm(request.POST, request.FILES)
-        postal_code_form = PostalCodeForm(request.POST)
+    if request.method == "POST":
+        user_info_form = UserInfoForm(request.POST, request.FILES, initial=request.user.userinfo)
+        postal_code_form = PostalCodeForm(request.POST, initial=request.user.postal_code)
         if user_info_form.is_valid():
             changed_data = dict(request.POST)
             changed_data['username'] = user_info_form.cleaned_data["email"]
