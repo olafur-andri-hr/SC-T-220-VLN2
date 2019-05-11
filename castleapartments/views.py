@@ -76,7 +76,7 @@ def login(request):
 @login_required
 def sell(request):
     context = {
-        "isAdmin": request.user.is_superuser, 
+        "isAdmin": request.user.is_superuser,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "form": SellForm()
@@ -86,7 +86,8 @@ def sell(request):
 
 @login_required
 def account(request):
-    listings = Listing.objects.filter(seller=request.user).reverse()
+    listings = Listing.objects.filter(
+        seller=request.user).reverse().exclude(sold_date__isnull=False)
     sold_listings = Listing.objects.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
@@ -170,7 +171,8 @@ def editprofile(request):
     else:
         user_info_form = UserInfoForm(instance=request.user.userinfo)
         user_form = UserCreationForm()
-        postal_code_form = PostalCodeForm(data=model_to_dict(request.user.userinfo.postal_code))
+        postal_code_form = PostalCodeForm(
+            data=model_to_dict(request.user.userinfo.postal_code))
 
     context = {
         "user_form": user_form,
