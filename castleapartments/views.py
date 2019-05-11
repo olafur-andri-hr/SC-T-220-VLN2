@@ -17,14 +17,9 @@ from django.forms.models import model_to_dict
 
 
 def index(request):
-    if request.method == "POST":
-        search_form = SearchForm(request.POST)
-        if search_form.is_valid():
-            listings, meta = get_listing_results(search_form)
-        else:
-            listings = Listing.objects.all()
-            meta = get_page_info(search_form, listings)
-            listings = listings[meta["offset"]:meta["end"]]
+    search_form = SearchForm(request.GET)
+    if search_form.is_valid():
+        listings, meta = get_listing_results(search_form)
     else:
         defaults = get_form_defaults(SearchForm)
         search_form = SearchForm(defaults)
@@ -53,7 +48,8 @@ def index(request):
         "user": request.user,
         "user_full_name": user_full_name,
         "apartment_types": apartment_types,
-        "search_meta": meta
+        **meta,
+        "pages": range(1, meta["page_count"] + 1),
     }
     return render(request, 'castleapartments/index.html', context)
 
@@ -113,6 +109,8 @@ def signup(request):
     if request.method == "POST":
         user_info_form = UserInfoForm(request.POST, request.FILES)
         postal_code_form = PostalCodeForm(request.POST)
+        user_form = UserCreationForm(request.POST)
+
         if user_info_form.is_valid():
             changed_data = dict(request.POST)
             changed_data['username'] = user_info_form.cleaned_data["email"]
