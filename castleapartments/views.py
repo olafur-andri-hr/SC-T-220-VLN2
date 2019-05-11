@@ -13,6 +13,7 @@ from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults
+from django.forms.models import model_to_dict
 
 
 def index(request):
@@ -148,8 +149,9 @@ def signup(request):
 @login_required
 def editprofile(request):
     if request.method == "POST":
-        user_info_form = UserInfoForm(request.POST, request.FILES, initial=request.user.userinfo)
-        postal_code_form = PostalCodeForm(request.POST, initial=request.user.postal_code)
+        user_info_form = UserInfoForm(request.POST, request.FILES)
+        postal_code_form = PostalCodeForm(request.POST)
+        user_form = UserCreationForm(request.POST)
         if user_info_form.is_valid():
             changed_data = dict(request.POST)
             changed_data['username'] = user_info_form.cleaned_data["email"]
@@ -167,9 +169,9 @@ def editprofile(request):
             new_user_info.save()
             return redirect(account)
     else:
+        user_info_form = UserInfoForm(instance=request.user.userinfo)
         user_form = UserCreationForm()
-        user_info_form = UserInfoForm()
-        postal_code_form = PostalCodeForm()
+        postal_code_form = PostalCodeForm(data=model_to_dict(request.user.userinfo.postal_code))
 
     context = {
         "user_form": user_form,
