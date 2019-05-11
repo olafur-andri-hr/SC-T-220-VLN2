@@ -7,6 +7,7 @@ from castleapartments.models import PostalCode
 from castleapartments.forms import SearchForm
 from .serializers import ListingSerializer
 from .utils import get_listing_results
+from castleapartments.utils import get_form_defaults
 # Create your views here.
 
 
@@ -19,15 +20,18 @@ def listing(request, listing_id):
 
 
 def search(request):
-    if request.method == "POST":
-        search_form = SearchForm(request.POST)
+    if request.method == "GET":
+        search_form = SearchForm(request.GET)
         if search_form.is_valid():
             results, meta = get_listing_results(search_form)
-            serializer = ListingSerializer(
-                results, many=True,  context={'request': request}
-            )
-            response = {"listings": serializer.data, 'meta': meta}
-            return JsonResponse(response, safe=False)
+        else:
+            search_form = SearchForm(get_form_defaults(SearchForm))
+            results, meta = get_listing_results(search_form)
+        serializer = ListingSerializer(
+            results, many=True,  context={'request': request}
+        )
+        response = {"listings": serializer.data, 'meta': meta}
+        return JsonResponse(response, safe=False)
     return HttpResponseBadRequest()
 
 
