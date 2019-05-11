@@ -218,7 +218,7 @@ class SellForm(forms.Form):
     year_built = forms.IntegerField(
         label="Year built:",
         required=True,
-        widget=forms.numberInput(attrs={
+        widget=forms.NumberInput(attrs={
             "placeholder": "year",
             "class": ""
         })
