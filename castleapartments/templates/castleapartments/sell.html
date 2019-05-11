@@ -95,22 +95,23 @@
                     </div>
                 </div>
             <h1>Sell an apartment</h1>
+            <h4 id="addressheader"></h4>
             <h2 id="temph2">Here will come pictures</h2>
             <div id="tablesdiv">
             <div id="table1div">
             <h3>Location</h3>
             <table id="reviewtable1">
                 <tr>
-                    <th class="tablelabel">Country:</th><td id="countrytd"></td>
+                    <th class="tablelabel">{{ form.country.label_tag }}</th><td id="countrytd"></td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Zip Code:</th> <td>221</td>
+                    <th class="tablelabel">{{ form.zip_code.label_tag }}</th> <td id="zipcodetd"></td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Town:</th> <td>Hafnarfjörður</td>
+                    <th class="tablelabel">{{ form.town.label_tag }}</th> <td id="towntd"></td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">*Apt. number:</th> <td id="aptNumbertd"></td>
+                    <th class="tablelabel">{{ form.apt_number.label_tag }}</th> <td id="aptnumbertd"></td>
                 </tr>
             </table>
         </div>
@@ -118,28 +119,32 @@
             <h3>Property info</h3>
             <table id="reviewtable2">
                     <tr>
-                        <th class="tablelabel"># of rooms:</th> <td>3</td>
+                        <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th> <td id="numofroomstd"></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel"># of toilets:</th> <td>2</td>
+                        <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th> <td id="numoftoiletstd"></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Size:</th> <td>109m^2</td>
+                        <th class="tablelabel">{{ form.size.label_tag }}</th> <td id="sizetd"></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Type:</th> <td>-</td>
+                        <th class="tablelabel">{{ form.type.label_tag }}</th> <td id="typetd"></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Year built:</th> <td>1999</td>
+                        <th class="tablelabel">{{ form.year_built.label_tag }}</th> <td id="yearbuilttd"></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Garage:</th> <td>No</td>
+                        <th class="tablelabel">{{ form.garage.label_tag }}</th> <td id="garagetd"></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Appraisal:</th> <td>75 000 000</td>
+                        <th class="tablelabel">{{ form.appraisal.label_tag }}</th> <td id="appraisaltd"></td>
                     </tr>
                 </table>
             </div>
+        </div>
+        <div>
+        <h4>Description:</h4>
+        <p id="descriptiontext"></p>
         </div>
         <div class="buttonsdiv">
             <a href="#detailform" id="reviewprevlink">
@@ -155,7 +160,6 @@
                 </div>
             </a>
         </div>
-            <p>Detailed description:</p>
         </div>
         <div id="detailform" class="forms">
             {% csrf_token %}
@@ -212,16 +216,16 @@
                     <th class="tablelabel">Pictures:</th>
                     <td><input type="file" value= "Choose pictures" name="pictures"></td>
                 </tr>
-                <tr>
-                    <th class="tablelabel">{{ form.description.label_tag }}</th>
-                    <td>{{ form.description }}</td>
-                </tr>
                 <tr><th class="tablelabel">{{ form.year_built.label_tag }}</th>
                     <td>{{ form.year_built }}</td>
                 </tr>
                 <tr>
                     <th class="tablelabel">{{ form.garage.label_tag }}</th>
                     <td>{{ form.garage }}</td>
+                </tr>
+                <tr>
+                    <th class="tablelabel">{{ form.description.label_tag }}</th>
+                    <td>{{ form.description }}</td>
                 </tr>
             </table>
             <div class="buttonsdiv" id="detailbuttons">
