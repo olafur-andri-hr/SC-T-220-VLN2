@@ -193,7 +193,7 @@ class SellForm(forms.Form):
             "class": ""
         })
     )
-    type = forms.ModelMultipleChoiceField(
+    type = forms.ModelChoiceField(
         queryset=ApartmentType.objects.all(),
         required=True,
     )

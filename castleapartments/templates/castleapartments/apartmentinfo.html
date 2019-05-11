@@ -16,13 +16,22 @@
 
 {% block content %}
 <main>
+<div id="flex_container">
     <div class="carousel-container">
-        <div class="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel" class="carousel slide">
             <div class="carousel-slides" data-active-slide="0">
                 {% for image in listing.apartment.apartmentimage_set.all %}
                 <div 
                     class="carousel-slide"
                     style="background-image: url({{ image.image.url }})">
+                    <div class="carousel-slide-label">
+                        <p>
+                            Image
+                            {{ forloop.counter }}
+                            of
+                            {{ listing.apartment.apartmentimage_set.all|length }}
+                        </p>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
@@ -34,19 +43,30 @@
                     <img src="{% static 'icons/carousel_right.svg' %}" />
                 </button>
             </div>
-            <div class="carousel-indicators">
-                {% for image in listing.apartment.apartmentimage_set.all %}
-                    <div
-                        class="carousel-indicator"
-                        data-slide-to="{{ forloop.counter }}"
-                        style="background-image: url({{ image.image.url }});"></div>
-                {% endfor %}
+            <noscript>
+            <div class="carousel-no-js">
+                <p>
+                    This carousel is unoperable because JavaScript is disabled.
+                    You can enable JavaScript to view it or click on the
+                    images below to view each individual image.
+                </p>
             </div>
+            </noscript>
+        </div>
+        <div class="carousel-indicators">
+            {% for image in listing.apartment.apartmentimage_set.all %}
+                <div
+                    class="carousel-indicator"
+                    data-indicator-num="{{ forloop.counter }}"
+                    style="background-image: url({{ image.image.url }});">
+                    <a href="{{ image.image.url }}" target="_blank"></a>
+                </div>
+            {% endfor %}
         </div>
     </div>
-
-    <ul style="padding-bottom: 100px;">
-        <li>Bæta við close-up look (JS-líka)</li>
-    </ul>
+    <div id="offers_container">
+        <strong>YOUR OFFERS</strong>
+    </div>
+</div>
 </main>
 {% endblock content %}

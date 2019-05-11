@@ -16,7 +16,7 @@ function showReview() {
   const garageInput = document.getElementById('id_garage');
   const appraisalInput = document.getElementById('id_appraisal');
   const descriptionInput = document.getElementById('descriptionInput');
-  const addressInput = document.getElementById('addressInput')
+  const addressInput = document.getElementById('addressInput');
 
   const countrytd = document.getElementById('countrytd');
   const zipCodetd = document.getElementById('zipcodetd');
@@ -39,10 +39,10 @@ function showReview() {
   numOfRoomstd.textContent = numOfRoomsInput.value;
   numOfToiletstd.textContent = numOfToiletsInput.value;
   sizetd.textContent = sizeInput.value;
-  typetd.textContent = typeInput.value;
+  typetd.textContent = typeInput.options[typeInput.selectedIndex].text;
   yearBuilttd.textContent = yearBuiltInput.value;
-  garagetd.textContent = garageInput.value;
   appraisaltd.textContent = appraisalInput.value;
   description.textContent = descriptionInput.value;
   addressHeader.textContent = addressInput.value;
+  garagetd.textContent = garageInput.value;
 }
