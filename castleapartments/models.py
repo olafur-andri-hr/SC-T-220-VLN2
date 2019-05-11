@@ -42,12 +42,15 @@ class UserInfo(models.Model):
 
 class CreditCard(models.Model):
     credit_card_number = models.CharField(
-        max_length=22, validators=[credit_card_validator],
+        max_length=22, validators=[credit_card_validator]
     )
     credit_card_expiration_date = models.DateField(
         ("Expiration date"), auto_now=False, auto_now_add=False
     )
     credit_card_cvv = models.CharField(("CVV"), max_length=4)
+
+    def __str__(self):
+        return str(credit_card_number)
 
 
 class Offer(models.Model):
@@ -64,8 +67,11 @@ class Offer(models.Model):
     )
     request_amount = models.IntegerField(("Offer request amount"))
     credit_card = models.OneToOneField(
-        CreditCard, verbose_name=(""), on_delete=models.DO_NOTHING,
+        CreditCard, verbose_name=("Credit card"), on_delete=models.DO_NOTHING,
         null=True, blank=True
     )
     accepted = models.BooleanField(("Accepted"), default=False)
     processed = models.BooleanField(("Processed by staff"), default=False)
+
+    def __str__(self):
+        return f'{self.buyer} offers {self.listing}'
