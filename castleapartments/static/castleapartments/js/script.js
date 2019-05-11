@@ -89,9 +89,9 @@ function scrollToTop(e) {
  */
 function scrollToListings(e) {
   try {
-    const header = document.getElementById('search_results_header');
+    const header = document.getElementById('frontpage-div');
     const headerHeight = siteHeader.getBoundingClientRect().height;
-    const headerOffsetTop = header.getBoundingClientRect().top;
+    const headerOffsetTop = header.getBoundingClientRect().height;
     const offsetTop = headerOffsetTop - headerHeight;
 
     window.scroll({
