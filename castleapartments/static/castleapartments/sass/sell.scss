@@ -151,8 +151,13 @@ main {
     display: none;
 }
 
+#detailbuttons {
+    margin-bottom: 2rem;
+}
+
 #detailform:target {
     display: flex;
+    height: auto;
 }
 
 #tablesdiv {
