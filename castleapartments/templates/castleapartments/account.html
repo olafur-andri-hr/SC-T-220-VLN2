@@ -24,7 +24,7 @@
         <div id="profile">
             <div id="account_profile">
                 <div id="edit_button">
-                    <a href="#" class="btn btn-primary box-shadow">Edit profile </a>
+                    <a href="{% url 'editprofile' %}" class="btn btn-primary box-shadow">Edit profile </a>
                     <img src="{% static 'icons/edit.svg' %}">
                 </div>
                 <div id="profile_image">
@@ -42,7 +42,6 @@
                 <p> {{user.userinfo.phone_number}} </p>
             </div>
         </div>
-
         <div id="profile_sell">
             <div class="headtitle">
                 <p>Selling</p>

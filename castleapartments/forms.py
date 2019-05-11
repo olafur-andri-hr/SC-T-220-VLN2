@@ -141,7 +141,9 @@ class SearchForm(forms.Form):
 
 
 class SellForm(forms.Form):
-    country = CountryField().formfield()
+    country = CountryField().formfield(attrs={
+        "id": "countryInput"
+    })
     zip_code = forms.CharField(
         label="Postal code", max_length=50, validators=[MinLengthValidator(2)]
     )
@@ -151,7 +153,8 @@ class SellForm(forms.Form):
         max_length=100,
         required=True,
         widget=forms.TextInput(attrs={
-            "placeholder": "Your Address"
+            "placeholder": "Your Address",
+            "id": "addressInput"
         })
     )
     apt_number = forms.CharField(
@@ -159,7 +162,8 @@ class SellForm(forms.Form):
         max_length=20,
         required=False,
         widget=forms.TextInput(attrs={
-            "placeholder": "Your Apt. Number"
+            "placeholder": "Your Apt. Number",
+            "id": "aptNumberInput"
         })
     )
     num_of_rooms = forms.IntegerField(
@@ -197,8 +201,10 @@ class SellForm(forms.Form):
         label="Detailed description:",
         required=True,
         widget=forms.Textarea(attrs={
-            "placeholder": "myballs",
-            "class": ""
+            "placeholder": "Description",
+            "class": "",
+            "rows": "6",
+            "id": "descriptionInput"
         })
     )
     appraisal = forms.IntegerField(
@@ -208,6 +214,23 @@ class SellForm(forms.Form):
             "placeholder": "Appraisal",
             "class": ""
         })
+    )
+    year_built = forms.IntegerField(
+        label="Year built:",
+        required=True,
+        widget=forms.numberInput(attrs={
+            "placeholder": "year",
+            "class": ""
+        })
+    )
+    garage = forms.BooleanField(
+        label="Garage:",
+        required=True,
+        widget=forms.CheckboxInput(attrs={
+            "placeholder": "",
+            "class": ""
+        })
+
     )
 
 
