@@ -80,6 +80,7 @@ def login(request):
 @login_required
 def sell(request):
     context = {
+        "isAdmin": request.user.is_superuser, 
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "form": SellForm()
