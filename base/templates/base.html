@@ -90,7 +90,6 @@
         <div id="sidebar">
             {% if authenticated  %}
             <div id="content-loggedin" class="dropdown-content">
-                <div id="profilepic_big" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'account' %}"> My Account</a>
                 <a class="btn btn-outline-primary box-shadow" href="{% url 'logout' %}"> Log out</a>
             </div>
@@ -101,7 +100,7 @@
             </div>
             {% endif %}
         </div>
-        <div id="hamburger" style='background-image: url("{% static "icons/hamburger.svg" %}")'></div>
+        <div id="hamburger"></div>
     </header>
     <div id="header-filler"></div>
     {% block content %}{% endblock %}

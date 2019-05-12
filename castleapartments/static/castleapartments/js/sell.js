@@ -1,4 +1,20 @@
 document.getElementById('detailnextlink').addEventListener('click', showReview);
+document.addEventListener('DOMContentLoaded', () => {
+  const next = document.querySelectorAll('.next_button');
+  console.log(next);
+  // const form = document.getElementById('sellform');
+  for (button of next) {
+    button.addEventListener('click', ( event ) => {
+      scrollToTop();
+      // form.addEventListener('invalid', function() {
+      //   console.log('invalid');
+      //   event.preventDefault();
+      // }, false);
+      // form.reportValidity();
+      // form.removeEventListener('invalid');
+    });
+  }
+});
 
 /**
  * This is so me
@@ -50,5 +66,22 @@ function showReview() {
     garagetd.textContent = 'Yes';
   } else {
     garagetd.textContent = 'No';
+  }
+}
+
+/**
+ * Scrolls the user to the top of the website in a smoooth manner
+ * @param {Event} e The event object for this function
+ */
+function scrollToTop(e) {
+  try {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    e.preventDefault();
+  } catch (_) {
+    // Do nothing
   }
 }
