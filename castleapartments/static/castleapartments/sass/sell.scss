@@ -159,10 +159,6 @@ main {
     margin-bottom: 2rem;
 }
 
-#reviewform {
-    height: auto;
-}
-
 #id_garage {
     box-shadow: none;
     width: auto;
@@ -185,6 +181,7 @@ main {
     display: flex;
     align-items: center;
     display: none;
+    height: auto;
 }
 
 #reviewform:target {
