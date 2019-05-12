@@ -98,9 +98,13 @@ def account(request):
         "user": request.user,
         "listings": listings,
         "soldlistings": sold_listings,
-        "saleRequests": sale_requests,
-        "buyRequests": buy_reqests
     }
+    if request.user.is_superuser:
+        ifaddmin = {
+            "saleRequests": sale_requests,
+            "buyRequests": buy_reqests
+        }
+        context.update(ifaddmin)
     return render(request, 'castleapartments/account.html', context)
 
 

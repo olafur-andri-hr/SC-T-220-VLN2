@@ -272,6 +272,11 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+
+            @media screen and (max-width: 1000px) {
+                display: none;
+            }
+
         }
 
         .sales_body {
@@ -282,5 +287,81 @@
 
     .sales_card:hover {
         transform: scale(1.03)
+    }
+
+    .requst_card {
+        display: flex;
+        position: relative;
+        margin: 1rem 2rem 1rem 2em;
+        border: 1px solid $main-purple;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+        @media screen and (max-width: 1000px) {
+            flex-direction: column;
+            margin: 0 1rem 1rem 1em;
+        }
+
+        .requst-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .requst_offers {
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.9);
+            color: #212121;
+            margin: 0.1rem 0.1rem;
+            padding: 0.1rem 0.5rem;
+            font-size: 0.8rem;
+            font-family: $heading-font;
+            border-radius: 100rem;
+            transform: translateY(-50%)
+        }
+
+        .requst_img {
+            height: auto;
+            width: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            @media screen and (max-width: 1000px) {
+                height: 10rem;
+                width: 100%
+            }
+        }
+
+        .requst_body {
+            padding: 0.5rem;
+            width: 50%;
+
+            @media screen and (max-width: 1000px) {
+                width: 100%;
+            }
+
+            .card-price {
+                font-family: $heading-font;
+                text-align: center;
+                margin-top: 0.2rem;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                font-size: 1.5rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+                display: block;
+                width: 100%;
+                color: $main-purple;
+                margin: 0;
+                padding: 0.65rem 0 0.5rem 0;
+            }
+        
+        }
+    }
+
+    .requst_card:hover {
+        transform: scale(1.05)
     }
 }
