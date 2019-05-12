@@ -11,6 +11,7 @@ from castleapartments.forms import LoginForm
 from .forms import SellForm
 from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
+from .models import Offer
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults
 from django.forms.models import model_to_dict
@@ -87,14 +88,31 @@ def account(request):
     listings = Listing.objects.filter(
         seller=request.user).reverse().exclude(sold_date__isnull=False)
     sold_listings = Listing.objects.exclude(sold_date__isnull=True)
+    sale_requests = Listing.objects.filter(
+        processed=False)
+    buy_reqests = Offer.objects.filter(
+        accepted=True).filter(processed=False)
     context = {
         "authenticated": request.user.is_authenticated,
         "isAdmin": request.user.is_superuser,
         "user": request.user,
         "listings": listings,
-        "soldlistings": sold_listings
+        "soldlistings": sold_listings,
+        "saleRequests": sale_requests,
+        "buyRequests": buy_reqests
     }
     return render(request, 'castleapartments/account.html', context)
+
+
+def profile(request):
+    listings = Listing.objects.filter(
+        seller=request.user).reverse().exclude(sold_date__isnull=False)
+    sold_listings = Listing.objects.exclude(sold_date__isnull=True)
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/profile.html', context)
 
 
 def listing(request):
