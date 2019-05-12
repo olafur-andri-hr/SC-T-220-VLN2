@@ -98,7 +98,7 @@ class SearchForm(forms.Form):
         validators=[MinValueValidator(0), MaxValueValidator(1000)],
         widget=forms.NumberInput(attrs={
             "placeholder": "Min",
-            "class": "inline-first"
+            "class": "inline-first",
         })
     )
     max_size = forms.IntegerField(
