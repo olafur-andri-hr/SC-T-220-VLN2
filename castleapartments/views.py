@@ -24,7 +24,9 @@ def index(request):
         defaults = get_form_defaults(SearchForm)
         search_form = SearchForm(defaults)
         search_form.full_clean()
-        listings = Listing.objects.all().order_by(
+        listings = Listing.objects.filter(
+            processed=True, sold_date=None
+        ).order_by(
             search_form.cleaned_data['order_by']
         )
         meta = get_page_info(search_form, listings)
