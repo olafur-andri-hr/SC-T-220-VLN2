@@ -62,7 +62,7 @@ class SearchForm(forms.Form):
         })
     )
     min_price = forms.TypedChoiceField(
-        label="Price:",
+        label="Price (ISK):",
         required=False,
         choices=(
             [(i, str(i) + " million") for i in range(0, 101, 5)] +
@@ -112,7 +112,7 @@ class SearchForm(forms.Form):
         })
     )
     per_page = forms.IntegerField(
-        initial=24,
+        initial=3,
         validators=[MinValueValidator(1), MaxValueValidator(50)],
         widget=forms.HiddenInput(),
     )
