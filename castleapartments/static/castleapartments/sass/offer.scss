@@ -1,11 +1,8 @@
 @import '../../../../base/static/sass/definitions';
 
 .forms {
-    h1 {
-        font-family: "Reem Kufi", sans-serif;
-    }
     left: 50%;
-    background-color: white;
+    // background-color: white;
     display: flex;
     flex-direction: column;
     width: 68%;
@@ -15,4 +12,17 @@
     //justify-content: space-between;
     height: 40rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: blue !important;
+
+    h1 {
+        font-family: "Reem Kufi", sans-serif;
+    }
+}
+
+#reviewdiv {
+    background-color: blue;
+}
+
+main {
+    background-color: blue;
 }

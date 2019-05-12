@@ -5,10 +5,14 @@ $carousel-width: 45rem;
 $carousel-i-height: 4rem;
 $carousel-i-width: 5.6rem;
 
+b {
+    font-weight: 600;
+}
+
 #flex_container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
     padding-top: 2rem;
@@ -243,9 +247,9 @@ $carousel-i-width: 5.6rem;
 #offers_container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
-    width: 40%;
+    width: 35%;
     padding: 0 1.5rem;
 
     @media screen and (max-width: 1220px) {
@@ -255,7 +259,6 @@ $carousel-i-width: 5.6rem;
     #address_heading {
         font-family: $text-font;
         font-weight: 300;
-        // border-bottom: 1px solid rgba(33, 33, 33, 0.3);
         padding-bottom: 0.3rem;
         text-align: left;
         width: 100%;
@@ -265,7 +268,6 @@ $carousel-i-width: 5.6rem;
 
     #address_subheading {
         width: 100%;
-        border-bottom: 1px solid rgba(33, 33, 33, 0.3);
         color: #424242;
         padding-bottom: 1rem;
         
@@ -276,8 +278,18 @@ $carousel-i-width: 5.6rem;
         }
     }
 
+    hr {
+        border: none;
+        border-top: 1px solid rgba(33, 33, 33, 0.2);
+        width: 80%;
+        margin: 0.3rem 0;
+    }
+
     #apartment_info_container {
         padding-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
 
         ul {
             padding-left: 0;
