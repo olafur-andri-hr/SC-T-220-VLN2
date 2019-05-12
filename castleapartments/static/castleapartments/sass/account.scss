@@ -253,4 +253,34 @@
     .sold_card:hover {
         transform: scale(1.03)
     }
+
+    .sales_card {
+        display: flex;
+        flex-direction: row;
+        margin: 1rem;
+        border: 1px solid $main-purple;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+        @media screen and (max-width: 1000px) {
+            flex-direction: column;
+        }
+
+        .sales_img {
+            width: 10rem;
+            height: 6rem;
+            margin: 0.5rem;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .sales_body {
+            padding: 0.5rem;
+            width: 100%;
+        }
+    }
+
+    .sales_card:hover {
+        transform: scale(1.03)
+    }
 }

@@ -23,10 +23,14 @@
     <div id="main_content" class="container-full">
         <div id="profile">
             <div id="account_profile">
+                {% if isAdmin %}
+                <div id="jobtitle"> Administrator </div>
+                {% else %}
                 <div id="edit_button">
                     <a href="{% url 'editprofile' %}" class="btn btn-primary box-shadow">Edit profile </a>
                     <img src="{% static 'icons/edit.svg' %}">
                 </div>
+                {% endif %}
                 <div id="profile_image">
                     <div id="profileimg" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
                 </div>
@@ -43,6 +47,40 @@
             </div>
         </div>
         <div id="profile_sell">
+            {% if isAdmin %}
+            <div class="headtitle">
+                    <p>Pending sale requests</p>
+                </div>
+                <div class="content">
+                    {% for listing in listings %}
+                    <div class="selling_card" data-id="{{ listing.uuid }}">
+                        <div class="selling_offers">
+                            Offers
+                        </div>
+                        <div class="selling_img"
+                            style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
+                        </div>
+                        <div class="selling_body">
+                            <h5 class="card-title no-margin">
+                                {{ listing.apartment.address }}
+                            </h5>
+                            <p class="card-text no-margin text-sm">
+                                {{ listing.apartment.postal_code.zip_code }}
+                                <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                                {{ listing.apartment.postal_code.country.name }}<br>
+                            </p>
+                            <h5 class="card-price">
+                                {% localize on %}
+                                <span>ISK</span>
+                                {{ listing.apartment.appraisal|intcomma }}
+                                {% endlocalize %}
+                            </h5>
+                        </div>
+                        <a href="/listings/{{listing.uuid}}" class="card-link"></a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
             <div class="headtitle">
                 <p>Selling</p>
             </div>
@@ -80,9 +118,35 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
 
         <div id="profile_sold">
+            {% if isAdmin %}
+            <div class="headtitle">
+                    <p>Pending buy offers</p>
+            </div>
+            <div class="content">
+                {% for sales in buyRequests %}
+                <div class="sales_card">
+                    <div class="sales_img" style='background-image: url({{sales.buyer.userinfo.profile_img.url}});'>
+                    </div>
+                    <div class="sales_body">
+                        <p class="card-text no-margin text-sm">
+                            <b>{{sales.buyer.userinfo.first_name}} {{sales.buyer.userinfo.last_name}}</b><br>
+                            {{ sales.listing.apartment.address }}
+                            <img src="{{sales.listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                            {{ sales.request_date}}<br>
+                            {% localize on %}
+                            <span>ISK:</span>
+                            <b>{{ sales.request_amount|intcomma}} / {{ sales.listing.apartment.appraisal|intcomma }}</b>
+                            {% endlocalize %}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
             <div class="headtitle">
                 <p>Sold</p>
             </div>
@@ -105,6 +169,7 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
 
