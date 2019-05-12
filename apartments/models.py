@@ -45,10 +45,6 @@ class Apartment(models.Model):
 
 
 class ApartmentImage(models.Model):
-    # image = models.ImageField(
-    #     ("Image"), upload_to="apartments/", height_field=None,
-    #     width_field=None, max_length=None
-    # )
     image = ProcessedImageField(
         verbose_name=("Image"),
         upload_to='apartments/',
@@ -79,7 +75,7 @@ class Listing(models.Model):
     )
     sold_date = models.DateField(
         ("Date sold"), auto_now=False, auto_now_add=False,
-        null=True, blank=True
+        null=True, blank=True, default=None
     )
     processed = models.BooleanField(("Processed by staff"), default=False)
 
