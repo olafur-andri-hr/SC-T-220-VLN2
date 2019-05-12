@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.views import redirect_to_login, LoginView
@@ -178,13 +178,10 @@ def signup(request):
 @login_required
 def editprofile(request):
     if request.method == "POST":
-        user_info_form = UserInfoForm(request.POST, request.FILES)
+        user_form = PasswordChangeForm(request.user, request.POST)
+        user_info_form = UserInfoForm(
+            request.POST, request.FILES, instance=request.user.userinfo)
         postal_code_form = PostalCodeForm(request.POST)
-        user_form = UserCreationForm(request.POST)
-        if user_info_form.is_valid():
-            changed_data = dict(request.POST)
-            changed_data['username'] = user_info_form.cleaned_data["email"]
-            user_form = UserCreationForm(data=changed_data)
 
         if (postal_code_form.is_valid() and user_form.is_valid() and
                 user_info_form.is_valid()):
@@ -194,12 +191,15 @@ def editprofile(request):
 
             new_user_info = user_info_form.save(commit=False)
             new_user_info.postal_code = postal_code
-            new_user_info.user = new_user
             new_user_info.save()
+            if new_user.is_active:
+                request.session.set_expiry(86400)  # time to session expiry
+                django_login(request, new_user)
+
             return redirect(account)
     else:
         user_info_form = UserInfoForm(instance=request.user.userinfo)
-        user_form = UserCreationForm()
+        user_form = PasswordChangeForm(user=request.user)
         postal_code_form = PostalCodeForm(
             data=model_to_dict(request.user.userinfo.postal_code))
 
