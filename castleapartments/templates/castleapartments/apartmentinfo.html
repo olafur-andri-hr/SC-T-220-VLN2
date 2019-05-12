@@ -78,6 +78,7 @@
                 {% endif %}
             </p>
         </div>
+        <hr />
         <div id="apartment_info_container">
             <ul>
                 <li>
@@ -99,10 +100,20 @@
                 </li>
                 <li>
                     <span class="label">Year built:</span>
-                    {{ listing.apartment.year_built }}
+                    {{ listing.apartment.year_build }}
+                </li>
+                <li>
+                    <span class="label">Garage:</span>
+                    {% if listing.apartment.garage_parking_space == True %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
                 </li>
             </ul>
         </div>
+        <hr />
+        <p><b>Seller</b></p>
     </div>
 </div>
 </main>

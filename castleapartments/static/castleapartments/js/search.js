@@ -7,6 +7,9 @@
 
   window.addEventListener('popstate', back);
 
+  document.getElementById('id_order_by')
+      .addEventListener('change', search);
+
   /**
    * Handle page clicks
    * @param {Event} event the event
@@ -29,7 +32,7 @@
       const url = '/listings/api/search/';
       const listingsDiv = document.getElementById('listings_container');
       fetchListings(url + query, listingsDiv);
-      updateSearchNav(Number(target.value));
+      updateSearchNavPage(Number(target.value));
     }
   }
 
@@ -43,7 +46,7 @@
     const url = '/listings/api/search/';
     const listingsDiv = document.getElementById('listings_container');
     fetchListings(url + query, listingsDiv);
-    updateSearchNav(Number(query.page_number));
+    updateSearchNavPage(Number(query.page_number));
   }
 
   /**
@@ -76,7 +79,7 @@
     fetchListings(url + queryString, listingsDiv);
     event.preventDefault();
     scrollToListings(event);
-    updateSearchNav(1);
+    updateSearchNavPage(1);
   }
 
   /**
@@ -94,6 +97,7 @@
     }).then((obj) => {
       console.log(obj);
       clearListings();
+      updateSearchNav(obj.meta);
       for (const listing of obj.listings) {
         createCard(listingsDiv, listing);
       }
@@ -104,7 +108,7 @@
    * Update page nav after search
    * @param {Number} pageNumber the number of the active page
    */
-  function updateSearchNav(pageNumber=1) {
+  function updateSearchNavPage(pageNumber=1) {
     const pageNavList = document.getElementById('page-selection-list');
     const prevPage = pageNavList.firstElementChild.firstElementChild;
     const nextPage = pageNavList.lastElementChild.firstElementChild;
@@ -134,6 +138,46 @@
       nextPage.setAttribute('disabled', '');
       nextPage.parentNode.classList.add('disabled');
     }
+  }
+
+  /**
+   * Update page nav after search
+   * @param {Object} meta metadata for page info
+   */
+  function updateSearchNav(meta) {
+    const listingCount = document.getElementById('listing-count');
+    listingCount.textContent = meta.result_count;
+    const pageNavList = document.getElementById('page-selection-list');
+    const prevPage = pageNavList.firstElementChild;
+    const nextPage = pageNavList.lastElementChild;
+    while (pageNavList.firstElementChild) {
+      pageNavList.removeChild(pageNavList.firstElementChild);
+    }
+    pageNavList.appendChild(prevPage);
+
+
+    for (let index = 1; index <= meta.page_count; index++) {
+      const li = document.createElement('li');
+      li.classList.add('page-item');
+      const link = document.createElement('input');
+      link.className = 'page-link';
+      link.href = '#search-results';
+      link.type = 'submit';
+      link.form = 'search_banner_form';
+      link.value = index;
+      link.name = 'page_number';
+      li.appendChild(link);
+      if (index == meta.page_number) {
+        li.classList.add('active');
+        const span = document.createElement('span');
+        span.className = 'sr-only';
+        span.textContent = '(current)';
+        li.appendChild(span);
+      }
+      pageNavList.appendChild(li);
+    }
+    pageNavList.appendChild(nextPage);
+    updateSearchNavPage(meta.page_number);
   }
 })();
 

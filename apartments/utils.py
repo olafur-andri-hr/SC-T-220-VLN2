@@ -22,13 +22,14 @@ def get_listing_results(search_form: SearchForm):
         "apartment__size__gte": parameters["min_size"],
         "apartment__size__lte": parameters["max_size"],
         "apartment__apartment_type__id__in": types,
-        "processed": True
+        "processed": True,
     }
     for key, value in list(query.items()):
         if value is None or value == '':
             del query[key]
     if not types.exists():
         del query["apartment__apartment_type__id__in"]
+    query["sold_date"] = None
     results = Listing.objects.filter(**query).order_by(
         parameters["order_by"])
     meta = get_page_info(search_form, results)
