@@ -1,7 +1,7 @@
 @import '../../../../base/static/sass/definitions';
 
-#footer{
-    background-color:red;
+main {
+    padding-bottom: 0;
 }
 
 #main_content {
@@ -9,6 +9,7 @@
     width: 100%;
     display: flex;
     font-family: $text-font;
+    min-height: calc(100vh - 7.5rem);
 
     @media screen and (max-width: 700px) {
         position: relative;
@@ -272,6 +273,11 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+
+            @media screen and (max-width: 1000px) {
+                display: none;
+            }
+
         }
 
         .sales_body {
@@ -282,5 +288,62 @@
 
     .sales_card:hover {
         transform: scale(1.03)
+    }
+
+    .requst_card {
+        display: flex;
+        position: relative;
+        margin: 1rem 2rem 1rem 2em;
+        border: 1px solid $main-purple;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+        @media screen and (max-width: 1000px) {
+            flex-direction: column;
+            margin: 0 1rem 1rem 1em;
+        }
+
+        .card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .requst-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .requst_img {
+            height: auto;
+            width: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            @media screen and (max-width: 1000px) {
+                height: 10rem;
+                width: 100%
+            }
+        }
+
+        .requst_body {
+            padding: 0.5rem;
+            width: 50%;
+
+            @media screen and (max-width: 1000px) {
+                width: 100%;
+            }
+        }
+    }
+
+    .requst_card:hover {
+        transform: scale(1.05)
     }
 }

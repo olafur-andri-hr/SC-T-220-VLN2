@@ -1,11 +1,9 @@
 @import '../../../../base/static/sass/definitions';
+$gray: #ddd8d8;
 
 .forms {
-    h1 {
-        font-family: "Reem Kufi", sans-serif;
-    }
     left: 50%;
-    background-color: white;
+    // background-color: white;
     display: flex;
     flex-direction: column;
     width: 68%;
@@ -15,4 +13,86 @@
     //justify-content: space-between;
     height: 40rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+
+    h1 {
+        font-family: "Reem Kufi", sans-serif;
+    }
+}
+
+.forms:target ~ #infoform {
+    display: none;
+}
+
+#infoform {
+    display: flex;
+}
+
+#basicform {
+    display: none;
+}
+
+#paymentform {
+    display: none;
+}
+
+#paymentform:target {
+    display:flex;
+}
+
+#reviewform {
+    display: none;
+}
+
+#reviewform:target {
+    display: flex;
+}
+
+#confirmform {
+    display: none;
+}
+
+#confirmform:target {
+    display: flex
+}
+
+.navdiv {
+    display: flex;
+    position: absolute;
+    top: 4rem;
+    background-color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+}
+
+.arrowdiv {
+    margin-right: 2%;
+    margin-left: 2%;
+    height: 20px;
+    width: 20px;
+    background: cover;
+
+}
+
+.textindiv {
+    margin: 0;
+}
+
+main {
+    background-color: $gray;
+}
+
+#editimg {
+    width: 10%;
+    height: 10%;
+}
+
+.buttonsdiv {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
 }

@@ -1,6 +1,7 @@
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import MinLengthValidator
+from django.core.validators import validate_image_file_extension
 from django.forms import ModelForm, DateInput, Textarea
 from django_countries.fields import CountryField
 from django.contrib.auth.forms import AuthenticationForm
@@ -252,6 +253,10 @@ class SellForm(forms.Form):
         })
 
     )
+    images = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': True}),
+        validators=[validate_image_file_extension],
+    )
 
 
 class LoginForm(AuthenticationForm):
@@ -283,6 +288,12 @@ class PostalCodeForm(forms.Form):
 
 
 class UserInfoForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        old = kwargs.get("old", None)
+        super().__init__(*args, **kwargs)
+        if old is not None:
+            self.fields['profile_img'] = old.profile_img
+
     class Meta:
         model = UserInfo
         exclude = ('user', 'postal_code',)
