@@ -289,10 +289,10 @@ class PostalCodeForm(forms.Form):
 
 class UserInfoForm(ModelForm):
     def __init__(self, *args, **kwargs):
-        instance = kwargs.get("instance", None)
+        old = kwargs.get("old", None)
         super().__init__(*args, **kwargs)
-        if instance is not None:
-            self.fields['profile_img'] = instance.profile_img
+        if old is not None:
+            self.fields['profile_img'] = old.profile_img
 
     class Meta:
         model = UserInfo
