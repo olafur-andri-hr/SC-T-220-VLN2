@@ -38,7 +38,7 @@ class Apartment(models.Model):
     garage_parking_space = models.BooleanField(
         ("Garage parking space"), default=False
     )
-    year_build = models.IntegerField(("Year built"), default=0)
+    year_built = models.IntegerField(("Year built"), default=0)
 
     def __str__(self):
         return (f"{self.address}, {self.postal_code}")
