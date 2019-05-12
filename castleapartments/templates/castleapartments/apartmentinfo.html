@@ -65,7 +65,44 @@
         </div>
     </div>
     <div id="offers_container">
-        <strong>YOUR OFFERS</strong>
+        <h1 id="address_heading">{{ listing.apartment.address }}</h1>
+        <div id="address_subheading">
+            <p>
+                {{ listing.apartment.postal_code.zip_code }},
+                {{ listing.apartment.postal_code.town }}
+            </p>
+            <p>{{ listing.apartment.postal_code.country.name }}</p>
+            <p>
+                {% if listing.apartment.apt_number != Null %}
+                    <p>Apartment {{ listing.apartment.apt_number }}</p>
+                {% endif %}
+            </p>
+        </div>
+        <div id="apartment_info_container">
+            <ul>
+                <li>
+                    <span class="label">Num. of rooms:</span>
+                    {{ listing.apartment.num_rooms }}
+                </li>
+                <li>
+                    <span class="label">Num. of toilets:</span>
+                    {{ listing.apartment.num_bathrooms }}
+                </li>
+                <li>
+                    <span class="label">Size:</span>
+                    {{ listing.apartment.size }}
+                    m<sup>2</sup>
+                </li>
+                <li>
+                    <span class="label">Type:</span>
+                    {{ listing.apartment.apartment_type.name }}
+                </li>
+                <li>
+                    <span class="label">Year built:</span>
+                    {{ listing.apartment.year_built }}
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 </main>
