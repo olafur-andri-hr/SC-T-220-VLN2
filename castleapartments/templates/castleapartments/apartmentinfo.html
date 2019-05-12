@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load sass_tags %}
+{% load humanize %}
+{% load l10n %}
 
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/apartment_info.scss" %}">
@@ -100,7 +102,7 @@
                 </li>
                 <li>
                     <span class="label">Year built:</span>
-                    {{ listing.apartment.year_build }}
+                    {{ listing.apartment.year_built }}
                 </li>
                 <li>
                     <span class="label">Garage:</span>
@@ -113,7 +115,76 @@
             </ul>
         </div>
         <hr />
-        <p><b>Seller</b></p>
+        <p><b>Appraisal:</b></p>
+        <h2 id="appraisal">
+            <span id="appraisal_currency">ISK</span>
+            {% localize on %}
+                {{ listing.apartment.appraisal|intcomma }}
+            {% endlocalize %}
+        </h2>
+        <hr />
+        <div id="seller_profile_container">
+            <p id="seller_label"><b>Seller:</b></p>
+            <a href="/profile/{{ listing.seller.id }}">
+                <div 
+                    id="seller_profile_pic"
+                    style="background-image: url({{ listing.seller.userinfo.profile_img.url }});">
+                </div>
+                <p id="seller_name">{{ listing.seller.userinfo|truncatechars:25 }}</p>
+            </a>
+        </div>
+        <hr />
+        <div id="your_offer_container">
+            <p id="your_offer_label"><b>Your offer:</b></p>
+            {% if offer == None %}
+                <p id="no_offer_text" class="offer-text">
+                    You currently do not have a registered offer for this
+                    particular listing, or your former offer has been declined.
+                </p>
+                <button type="button" id="make_offer_button" class="btn btn-link">
+                    <a href="/listings/{{ listing.uuid }}/offer">Make an offer</a>
+                </button>
+            {% elif offer.accepted == False %}
+                <p id="unaccepted_offer_text" class="offer-text">
+                    Your offer has not been accepted or declined by the seller
+                    of this property. Your offer can be seen below:
+                </p>
+                <button type="button" id="edit_offer_button" class="btn btn-link">
+                    <a href="#">Edit your offer</a>
+                </button>
+            {% else %}
+                <p>
+                    Your offer has been accepted and has been processed by
+                    Castle Apartments. Please contact the seller of this
+                    property regarding the completion of the sale.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="notes">
+        <p><b>Three cases</b></p>
+        <ul>
+            <li>Not logged in</li>
+            <ul>
+                <li>User is prompted to log in</li>
+            </ul>
+            <li>Buyer wants to view offers</li>
+            <ul>
+                <li>Buyer already has an offer</li>
+                <ul>
+                    <li>The offer has not yet been processed</li>
+                    <li>The offer has been processed</li>
+                    <li>The offer has been processed and accepted</li>
+                </ul>
+                <li>Buyer has no offer for this listing</li>
+            </ul>
+            <li>Seller wants to view all offers sent to his listing</li>
+            <ul>
+                <li>Seller has no offers</li>
+                <li>Seller has one or more offers</li>
+            </ul>
+        </ul>
     </div>
 </div>
 </main>

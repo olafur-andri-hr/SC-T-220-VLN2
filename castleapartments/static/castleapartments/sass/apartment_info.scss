@@ -304,4 +304,89 @@ b {
             }
         }
     }
+
+    #appraisal {
+        font-family: $heading-font;
+        width: 100%;
+        text-align: left;
+        padding-left: 1rem;
+        color: $main-purple;
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+
+        #appraisal_currency {
+            font-size: 1rem;
+        }
+    }
+
+    #seller_profile_container {
+        width: 100%;
+        // background-color: rgba(33, 33, 33, 0.1);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
+
+        #seller_label {
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+
+        a {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            color: #212121;
+
+            #seller_profile_pic {
+                height: 3.3rem;
+                width: 3.3rem;
+                border-radius: 50%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-left: 0.5rem;
+                background-color: #424242;
+                box-shadow: inset 0px 2px 4px 0 rgba(0, 0, 0, 0.8);
+            }
+    
+            #seller_name {
+                margin-bottom: 0;
+                padding-left: 1rem;
+                font-family: $heading-font;
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    #your_offer_container {
+        #your_offer_label {
+            margin-bottom: 0.2rem;
+        }
+
+        .offer-text {
+            font-size: 0.95rem;
+            color: #424242;
+            text-align: left;
+            width: 80%;
+            font-style: italic;
+            margin-bottom: 0.3rem;
+        }
+
+        button {
+            transition: background-color 200ms ease;
+            display: block;
+
+            a:hover {
+                color: $main-purple;
+                text-decoration: none !important;
+            }
+        }
+
+        button:hover {
+            background-color: rgba(33, 33, 33, 0.1);
+        }
+    }
 }

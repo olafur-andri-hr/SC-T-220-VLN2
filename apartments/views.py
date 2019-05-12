@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from rest_framework.renderers import JSONRenderer
 from .models import Listing, Apartment, ApartmentImage, ApartmentType
-from castleapartments.models import PostalCode
+from castleapartments.models import PostalCode, Offer
 from castleapartments.forms import SearchForm
 from .serializers import ListingSerializer
 from .utils import get_listing_results
@@ -13,10 +13,19 @@ from castleapartments.utils import get_form_defaults
 
 def listing(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
+    offer = None
+    try:
+        offer = Offer.objects.get(
+            buyer__id=request.user.id,
+            listing__uuid=listing_id
+        )
+    except Exception:
+        pass
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
-        "listing": listing
+        "listing": listing,
+        "offer": offer
     }
     return render(request, 'castleapartments/apartmentinfo.html', context)
 
