@@ -31,19 +31,15 @@ def index(request):
         meta = get_page_info(search_form, listings)
         listings = listings[meta["offset"]:meta["end"]]
     apartment_types = ApartmentType.objects.all()
-    len_listings = 0
     user_full_name = ""
     try:
         user_full_name = request.user.userinfo.first_name + " " + \
             request.user.userinfo.last_name
     except AttributeError:
         user_full_name = ""
-    for listing in listings:
-        if listing.processed:
-            len_listings += 1
     context = {
         "listings": listings,
-        "len_listings": len_listings,
+        "len_listings": meta["result_count"],
         "form": search_form,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
@@ -123,6 +119,14 @@ def listing(request):
         "user": request.user,
     }
     return render(request, 'castleapartments/listing.html', context)
+
+
+def offer(request):
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/offer.html', context)
 
 
 def signup(request):

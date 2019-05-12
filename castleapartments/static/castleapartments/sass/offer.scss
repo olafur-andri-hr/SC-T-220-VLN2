@@ -1,0 +1,18 @@
+@import '../../../../base/static/sass/definitions';
+
+.forms {
+    h1 {
+        font-family: "Reem Kufi", sans-serif;
+    }
+    left: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 4rem;
+    //justify-content: space-between;
+    height: 40rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
