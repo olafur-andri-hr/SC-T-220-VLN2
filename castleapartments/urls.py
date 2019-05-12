@@ -12,4 +12,5 @@ urlpatterns = [
     path('listing/', views.listing, name='listing'),
     # path('listing/', views.listing, name='listing'),
     path('logout/', views.logout, name='logout'),
+    path('listing/offer/', views.offer, name='offer')
 ]

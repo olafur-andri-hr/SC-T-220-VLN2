@@ -107,6 +107,14 @@ def listing(request):
     return render(request, 'castleapartments/listing.html', context)
 
 
+def offer(request):
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+    }
+    return render(request, 'castleapartments/offer.html', context)
+
+
 def signup(request):
     if request.method == "POST":
         user_info_form = UserInfoForm(request.POST, request.FILES)
