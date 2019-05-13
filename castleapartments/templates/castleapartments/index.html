@@ -98,11 +98,12 @@
                             {{ form.max_size }}
                         </li>
 
-                        <li id="checkboxes_container">
+                        <li>
                             <label>Type:</label>
-                            <button type="button" id="checkbox_button" class="btn btn-primary">
-                                <span>Choose type(s)</span>
-
+                            <div id="checkboxes_container" class="d-inline-flex">
+                                <button type="button" id="checkbox_button" class="btn btn-primary">
+                                    <span>Choose type(s)</span>
+                                </button>
                                 <div id="checkboxes">
                                     <ul>
                                         {% for type in apartment_types %}
@@ -120,16 +121,16 @@
                                         {% endfor %}
                                     </ul>
                                 </div>
-                            </button>
+                            </div>
                         </li>
                     </ul>
 
                     <button id="search_button" type="submit">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <polygon points="0,100 100,100 100,0" style="fill: #F5F5F5">
+                            <polygon points="0,100 100,100 100,0" style="fill: #F5F5F5" />
                         </svg>
                         <img src="{% static 'icons/search.svg' %}" alt="Search" />
-                        <p>Search</p>
+                        Search
                     </button>
                 </form>
             </div>
@@ -163,7 +164,7 @@
                         stroke-linejoin="round" />
                 </g>
                 <defs>
-                    <filter id="filter0_d" x="-0.000732422" y="-0.000686646" width="59.0014" height="49.0007"
+                    <filter id="filter1_d" x="-0.000732422" y="-0.000686646" width="59.0014" height="49.0007"
                         filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0" result="BackgroundImageFix" />
                         <feColorMatrix in="SourceAlpha" type="matrix"
@@ -202,25 +203,20 @@
                 </li>
                 <li>
                     <a id="edit_search" href="#frontpage-div">
-                        <img 
-                            id="edit_search_icon"
+                        <img id="edit_search_icon" alt=""
                             src="{% static 'icons/edit.svg' %}">
-                        <p>Edit search</p>
+                        Edit search
                     </a>
                 </li>
             </ul>
         </div>
-        <button 
-            type="button"
-            class="btn"
-            id="history_button"
+        <button type="button" class="btn" id="history_button"
             data-original-text="Recently viewed"
             data-new-text="Back to listings">
-            <img 
-                src="{% static 'icons/history.svg' %}"
+            <img src="{% static 'icons/history.svg' %}"
                 alt="View search history"
                 class="icon" />
-            <p>Recently viewed</p>
+            Recently viewed
         </button>
         <div id="listings_container" class="container-fluid">
             {% for listing in listings %}
@@ -276,7 +272,7 @@
             <nav aria-label="..." id="page-selection-nav">
                 <ul class="pagination d-flex justify-content-center p-4 m-0" id="page-selection-list">
                     <li class="page-item {% if page_number == 1 %}disabled{% endif %}">
-                        <button class="page-link" href="#search-results" type="submit" form="search_banner_form"
+                        <button class="page-link" type="submit" form="search_banner_form"
                             value="{{page_number|add:"-1"}}" name="page_number" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
@@ -297,7 +293,7 @@
                         {% endif %}
                     {% endfor %}
                     <li class="page-item {% if page_number == page_count %}disabled{% endif %}">
-                        <button class="page-link"href="#search-results" type="submit" form="search_banner_form"
+                        <button class="page-link" type="submit" form="search_banner_form"
                             value="{{page_number|add:"1"}}" name="page_number" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>

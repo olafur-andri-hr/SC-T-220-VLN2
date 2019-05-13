@@ -92,7 +92,7 @@
                 border-radius: 0.3rem;
                 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
                 color: #212121;
-                padding: 1rem 0;
+                padding: 1rem;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -101,7 +101,7 @@
                 position: absolute;
                 bottom: 110%;
                 left: -5%;
-                width: 110%;
+                width: 12rem;
                 transition: transform 200ms ease, opacity 200ms ease;
                 transform: translateY(1.5rem);
                 opacity: 0;
@@ -289,7 +289,7 @@ footer {
     justify-content: center;
     align-items: flex-start;
     margin: 1rem auto 0 auto;
-    max-width: 1000px;
+    max-width: 70rem;
     transition: transform 200ms ease, opacity 200ms ease;
 }
 
