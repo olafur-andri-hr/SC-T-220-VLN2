@@ -22,28 +22,23 @@
         <div id="profile">
             <div id="account_profile">
                 <div id="profile_image">
-                    <div id="profileimg" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
+                    <div id="profileimg" style='background-image: url({{profile.userinfo.profile_img.url}});'></div>
                 </div>
                 <div id="profile_name">
-                    <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+                    <p>{{profile.userinfo.first_name}} {{user.userinfo.last_name}}</p>
                 </div>
             </div>
             <div id="profile_bio">
-                <p>{{user.userinfo.bio}}</p>
+                <p>{{profile.userinfo.bio}}</p>
             </div>
             <div id="profile_info">
-                <p> {{user.userinfo.email}} </p>
-                <p> {{user.userinfo.phone_number}} </p>
+                <p> {{profile.userinfo.email}} </p>
+                <p> {{profile.userinfo.phone_number}} </p>
             </div>
         </div>
         <div id="profile_sell">
             <div class="headtitle">
                 <p>Selling</p>
-            </div>
-            <div class="container-full text-center">
-                <a href="{% url 'sell' %}" id="btn_new_apparment" class="btn btn-primary box-shadow">
-                    Sell a new apartment...
-                </a>
             </div>
             <div class="content">
                 {% for listing in listings %}
