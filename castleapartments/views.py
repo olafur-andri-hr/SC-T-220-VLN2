@@ -74,11 +74,19 @@ def login(request):
 
 @login_required
 def sell(request):
+    if request.method == "POST":
+        form = SellForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("VALID")
+        else:
+            print("INVALID")
+    else:
+        form = SellForm()
     context = {
         "isAdmin": request.user.is_superuser,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
-        "form": SellForm()
+        "form": form
     }
     return render(request, 'castleapartments/sell.html', context)
 
