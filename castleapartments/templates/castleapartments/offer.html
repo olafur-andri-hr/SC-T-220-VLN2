@@ -88,15 +88,15 @@
             <h4 id="addressheader"></h4>
             <h4 id="temph2">Your requested house:</h4>
             <h4>Here will be a card of the house</h4>
-            <h4>Your offer for (The house name):</h4>
+            <h4>Your offer for {{ listing.apartment.address }}:</h4>
             <div id="table1div">
             <table id="reviewtable1">
                 <tr>
-                    <th class="tablelabel">{{ offerform.offer_amount.label_tag }}</th>
+                    <th class="tablelabel"></th>
                     <td id="amounttd"></td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">{{ offerform.conveyance_date.label_tag }}</th>
+                    <th class="tablelabel"></th>
                     <td id="conveyancetd"></td>
                 </tr>
             </table>
@@ -106,14 +106,14 @@
             <table id="reviewtable2">
                     <tr>
                         <th class="tablelabel">Name:</th>
-                        <td>{{ user.userinfo.first_name }} {{ user.userinfo.last_name }}</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Address:</th> <td>{{ user.userinfo.address }}</td>
+                        <th class="tablelabel">Address:</th> <td></td>
                     </tr>
                     <tr>
                         <th class="tablelabel"></th>
-                        <td>{{ user.userinfo.postal_code.country }}</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th class="tablelabel">Credit Card:</th>
@@ -226,10 +226,12 @@
             <h3>Your personal information</h3>
             <table id="infotable">
                 <tr>
-                    <th class="tablelabel">Name:</th> <td>{{ user.userinfo.first_name }} {{ user.userinfo.last_name }}</td>
+                    <th class="tablelabel">Name:</th>
+                    <td>{{ user.userinfo.first_name }} {{ user.userinfo.last_name }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Email address:</th> <td>{{ user.userinfo.email }}</td>
+                    <th class="tablelabel">Email address:</th>
+                    <td>{{ user.userinfo.email }}</td>
                 </tr>
                 <tr>
                     <th class="tablelabel">Birthday:</th> <td>{{ user.userinfo.DoB }}</td>

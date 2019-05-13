@@ -65,3 +65,15 @@ def get_many_by_id(request, listing_ids):
 def offer(request, listing_id, offer_id):
     return HttpResponse("Showing offer: '{}' for listing: '{}'"
                         .format(offer_id, listing_id))
+
+
+def newOffer(request, listing_id):
+    listing = Listing.objects.get(uuid=listing_id)
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+        "offerform": OfferForm(),
+        "creditcardform": CreditCardForm(),
+        "listing": listing
+    }
+    return render(request, 'castleapartments/offer.html', context)
