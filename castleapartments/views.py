@@ -153,13 +153,15 @@ def account(request):
 
 
 def profile(request, profile_id):
-    user_profile = User.objects.get(uuid=profile_id)
+    user_profile = User.objects.get(id=profile_id)
     user_listings = Listing.objects.filter(
-        seller=request.user).reverse().exclude(sold_date__isnull=False)
+        seller=user_profile).exclude(sold_date__isnull=False)
     user_sold_listings = Listing.objects.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "profile_selling": user_listings,
+        "profile_sold": user_sold
     }
     return render(request, 'castleapartments/profile.html', context)
 
