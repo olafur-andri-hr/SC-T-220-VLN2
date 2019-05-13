@@ -231,6 +231,7 @@ class SellForm(forms.Form):
     appraisal = forms.IntegerField(
         label="Real estate appraisal amount:",
         required=True,
+        validators=[MinValueValidator(0)],
         widget=forms.NumberInput(attrs={
             "placeholder": "Appraisal",
             "class": ""

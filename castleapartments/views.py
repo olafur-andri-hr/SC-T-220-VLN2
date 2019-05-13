@@ -11,7 +11,7 @@ from castleapartments.forms import LoginForm
 from .forms import SellForm
 from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
-from .models import Offer
+from .models import Offer, Listing, Apartment, ApartmentImage
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults
 from django.forms.models import model_to_dict
@@ -76,19 +76,53 @@ def login(request):
 
 @login_required
 def sell(request):
+    form = SellForm()
+    postal_code_form = PostalCodeForm()
+    listing = None
     if request.method == "POST":
         form = SellForm(request.POST, request.FILES)
-        if form.is_valid():
-            print("VALID")
-        else:
-            print("INVALID")
-    else:
-        form = SellForm()
+        postal_code_form = PostalCodeForm(request.POST)
+        if form.is_valid() and postal_code_form.is_valid():
+            postal_code = postal_code_form.get_postal_code()
+            data = form.cleaned_data
+            apartment = Apartment(
+                postal_code=postal_code,
+                address=data["address"],
+                apt_number=data["apt_number"],
+                appraisal=data["appraisal"],
+                num_rooms=data["num_of_rooms"],
+                num_bathrooms=data["num_of_toilets"],
+                size=data["size"],
+                apartment_type=data["type"],
+                description=data["description"],
+                garage_parking_space=data["garage"],
+                year_built=data["year_built"],
+            )
+            apartment.save()
+            # print(apartment.save())
+            files = request.FILES.getlist('images')
+            apartment_images = list()
+            for image in files:
+                apt_image = ApartmentImage(
+                    apartment=apartment,
+                    image=image
+                )
+                apt_image.full_clean()
+                apartment_images.append(apt_image)
+            for img in apartment_images:
+                img.save()
+            listing = Listing(
+                apartment=apartment,
+                seller=request.user,
+            )
+            listing.save()
     context = {
         "isAdmin": request.user.is_superuser,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
-        "form": form
+        "form": form,
+        "postal_code_form": postal_code_form,
+        "listing": listing
     }
     return render(request, 'castleapartments/sell.html', context)
 

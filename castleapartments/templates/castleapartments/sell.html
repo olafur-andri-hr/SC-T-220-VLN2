@@ -51,30 +51,30 @@
                 <table id="basictable1">
                     <tr>
                         <th class="tablelabel">{{ form.country.label_tag }}</th>
-                        <td>{{ form.country }}</td>
+                        <td>{{ form.country.errors }}{{ form.country }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.zip_code.label_tag }}</th>
-                        <td>{{ form.zip_code }}</td>
+                        <td>{{ form.zip_code.errors }}{{ form.zip_code }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.town.label_tag }}</th>
-                        <td>{{ form.town }}</td>
+                        <td>{{ form.town }}{{ form.town.errors }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.address.label_tag }}</th>
-                        <td>{{ form.address }}</td>
+                        <td>{{ form.address.errors }}{{ form.address }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.apt_number.label_tag }}</th>
-                        <td>{{ form.apt_number }}</td>
+                        <td>{{ form.apt_number.errors }}{{ form.apt_number }}</td>
                     </tr>
                 </table>
                 <h3>Appraisal</h3>
                 <table id="basictable2">
                     <tr>
                         <th class="tablelabel">{{ form.appraisal.label_tag }}</th>
-                        <td>{{ form.appraisal }}</td>
+                        <td>{{ form.appraisal.errors }}{{ form.appraisal }}</td>
                     </tr>
                 </table>
                 <div class="buttonsdiv">
@@ -122,31 +122,32 @@
                 <table id="detailtable1">
                     <tr>
                         <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th>
-                        <td>{{ form.num_of_rooms }}</td>
+                        <td>{{ form.num_of_rooms.errors }}{{ form.num_of_rooms }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th>
-                        <td>{{ form.num_of_toilets }}</td>
+                        <td>{{ form.num_of_toilets.errors }}{{ form.num_of_toilets }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.size.label_tag }}</th>
-                        <td>{{ form.size }}</td>
+                        <td>{{ form.size.errors }}{{ form.size }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.type.label_tag}}</th>
-                        <td>{{ form.type }}</td>
+                        <td>{{ form.type.errors }}{{ form.type }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.images.label_tag }}</th>
-                        <td>{{ form.images }}</td>
+                        <td>{{ form.images.errors }}{{ form.images }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.year_built.label_tag }}</th>
-                        <td>{{ form.year_built }}</td>
+                        <td>{{ form.year_built.errors }}{{ form.year_built }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.garage.label_tag }}</th>
                         <td>
+                            {{ form.garage.errors }}
                             {% for radio in form.garage %}
                             <div class="form-check form-check-inline">
                                 {{radio.tag}}
@@ -158,7 +159,7 @@
                     </tr>
                     <tr>
                         <th class="tablelabel">{{ form.description.label_tag }}</th>
-                        <td>{{ form.description }}</td>
+                        <td>{{ form.description.errors }}{{ form.description }}</td>
                     </tr>
                 </table>
                 <div class="buttonsdiv" id="detailbuttons">
@@ -302,6 +303,7 @@
                     <p class="textindiv">Confirm</p>
                 </div>
             </div>
+            {% if listing %}
             <div class="form-body">
                 <h1>Your new sale listing is now complete!</h1>
                 <p>However, it will not be visible to other users unitl it's validity is confirmed
@@ -313,6 +315,17 @@
                         Return to listing</a>
                 </div>
             </div>
+            {% else %}
+            <div class="form-body">
+                <h1>There was a problem!</h1>
+                <p>Something was not submitted correctly. Please take another look to correct any errors.</p>
+                <div class="prevstep">
+                    <a class="btn btn-outline-secondary box-shadow" href="#basicform" type="button">
+                        Go back to fix errors
+                    </a>
+                </div>
+            </div>
+            {% endif %}
         </div>
         <div id="infoform" class="forms">
             <div class="navdiv">

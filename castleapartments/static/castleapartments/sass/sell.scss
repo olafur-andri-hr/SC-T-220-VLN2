@@ -12,6 +12,10 @@ form {
     padding: 0;
 }
 
+#sellform .errorlist {
+    color: $danger;
+}
+
 #infoform {
     height: auto;
     min-height: calc(100vh - 9.25rem);
