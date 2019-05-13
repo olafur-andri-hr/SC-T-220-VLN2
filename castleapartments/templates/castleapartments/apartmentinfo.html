@@ -19,6 +19,7 @@
 {% block content %}
 <main>
 <div id="flex_container">
+    <div id="carousel_and_description_container">
     <div class="carousel-container">
         <div class="carousel" class="carousel slide">
             <div class="carousel-slides" data-active-slide="0">
@@ -65,6 +66,13 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
+    <div id="apartment_description">
+        <p class="label"><b>Description:</b></p>
+        <p>
+            {{ listing.apartment.description }}
+        </p>
+    </div>
     </div>
     <div id="offers_container">
         <h1 id="address_heading">{{ listing.apartment.address }}</h1>
@@ -123,20 +131,30 @@
             {% endlocalize %}
         </h2>
         <hr />
+        {% if user.id == lising.seller.id %}
         <div id="seller_profile_container">
             <p id="seller_label"><b>Seller:</b></p>
-            <a href="/profile/{{ listing.seller.id }}">
+            <a href="/profiles/{{ listing.seller.id }}">
                 <div 
-                    id="seller_profile_pic"
+                    class="profile-pic"
                     style="background-image: url({{ listing.seller.userinfo.profile_img.url }});">
                 </div>
                 <p id="seller_name">{{ listing.seller.userinfo|truncatechars:25 }}</p>
             </a>
         </div>
         <hr />
+        {% endif %}
         <div id="your_offer_container">
-            <p id="your_offer_label"><b>Your offer:</b></p>
-            {% if offer == None %}
+        {% if listing.seller.id != user.id %}
+            <p id="your_offer_label"><b>Your offer(s):</b></p>
+            {% if authenticated == False %}
+                <p class="offer-text">
+                    Please log in to view your offers for this property.
+                </p>
+                <button type="button" id="log_in_button" class="btn btn-link">
+                    <a href="/login/?next=/listings/{{ listing.uuid }}/">Log in</a>
+                </button>
+            {% elif offer == None %}
                 <p id="no_offer_text" class="offer-text">
                     You currently do not have a registered offer for this
                     particular listing, or your former offer has been declined.
@@ -146,19 +164,100 @@
                 </button>
             {% elif offer.accepted == False %}
                 <p id="unaccepted_offer_text" class="offer-text">
-                    Your offer has not been accepted or declined by the seller
-                    of this property. Your offer can be seen below:
+                    Your offer is awaiting a response from
+                    '{{ listing.seller.userinfo }}'. You can view your offer
+                    below:
                 </p>
+                <div id="your_offer">
+                    <ul>
+                        <li>
+                            <span>Request amount:</span>
+                            {% localize on %}
+                                ISK {{ offer.request_amount|intcomma }}
+                            {% endlocalize %}
+                        </li>
+                        <li>
+                            <span>Request date:</span>
+                            {{ offer.request_date|date:"F" }}
+                            {{ offer.request_date.day }},
+                            {{ offer.request_date.year }}
+                        </li>
+                    </ul>
+                </div>
                 <button type="button" id="edit_offer_button" class="btn btn-link">
                     <a href="#">Edit your offer</a>
                 </button>
-            {% else %}
-                <p>
-                    Your offer has been accepted and has been processed by
-                    Castle Apartments. Please contact the seller of this
-                    property regarding the completion of the sale.
+            {% elif offer.processed == False %}
+                <p class="offer-text">
+                    Your offer has been accepted and is being processed by the
+                    staff at Castle Apartments. You can view your offer below:
                 </p>
+                <div id="your_offer">
+                    <ul>
+                        <li>
+                            <span>Request amount:</span>
+                            {% localize on %}
+                                ISK {{ offer.request_amount|intcomma }}
+                            {% endlocalize %}
+                        </li>
+                        <li>
+                            <span>Request date:</span>
+                            {{ offer.request_date|date:"F" }}
+                            {{ offer.request_date.day }},
+                            {{ offer.request_date.year }}
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+                <p class="offer-text">
+                    Your offer has been accepted by
+                    '{{ listing.seller.userinfo }}' and by the staff at
+                    Castle Apartments, congratulations! INSERT TEXT ABOUT WHAT'S
+                    SUPPOSED TO HAPPEN NOW. You can view your offer below:
+                </p>
+                <div id="your_offer">
+                    <ul>
+                        <li>
+                            <span>Request amount:</span>
+                            {% localize on %}
+                                ISK {{ offer.request_amount|intcomma }}
+                            {% endlocalize %}
+                        </li>
+                        <li>
+                            <span>Request date:</span>
+                            {{ offer.request_date|date:"F" }}
+                            {{ offer.request_date.day }},
+                            {{ offer.request_date.year }}
+                        </li>
+                    </ul>
+                </div>
             {% endif %}
+        {% else %}
+            <p class="offer-text">
+                All offers to your property can be viewed below. Click on one
+                of them in order to view more info about a certain offer.
+            </p>
+            <ul id="offer_list">
+                {% if all_offers|length > 0 %}
+                {% for curr_offer in all_offers %}
+                    <li class="offer">
+                    <a href="offers/{{ curr_offer.id }}">
+                        <div 
+                            class="profile-pic"
+                            style="background-image: url({{ curr_offer.buyer.userinfo.profile_img.url }})">
+                        </div>
+                        <p class="profile-name">{{ curr_offer.buyer.userinfo|truncatechars:25 }}</p>
+                        <p class="offer-price">
+                            (<span class="currency">ISK</span> {{ curr_offer.request_amount }})
+                        </p>
+                    </a>
+                    </li>
+                {% endfor %}
+                {% else %}
+                    <li>You don't seem to have any offers at this moment</li>
+                {% endif %}
+            </ul>
+        {% endif %}
         </div>
     </div>
 
