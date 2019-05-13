@@ -192,8 +192,16 @@ form {
     width: auto;
 }
 
-#tablesdiv {
+.tablesdiv {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    h3 {
+        width: 100%;
+    }
+    th {
+        max-width: 15rem;
+    }
 }
 
 #temph2 {
@@ -244,4 +252,8 @@ form {
 
 h3 {
     text-align: center;
+}
+
+#addressheader {
+    margin-top: 3rem;
 }
