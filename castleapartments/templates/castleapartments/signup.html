@@ -6,6 +6,10 @@
 <link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
 {% endblock styles %}
 
+{% block scripts %}
+<script src="{% static 'castleapartments/js/getTown.js' %}" defer></script>
+{% endblock scripts %}
+
 {% block title %}
 <title> Sign Up </title>
 {% endblock title %}
