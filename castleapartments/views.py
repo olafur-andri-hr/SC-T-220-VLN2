@@ -120,9 +120,9 @@ def account(request):
 
 def profile(request, profile_id):
     user_profile = User.objects.get(uuid=profile_id)
-    listings = Listing.objects.filter(
+    user_listings = Listing.objects.filter(
         seller=request.user).reverse().exclude(sold_date__isnull=False)
-    sold_listings = Listing.objects.exclude(sold_date__isnull=True)
+    user_sold_listings = Listing.objects.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
