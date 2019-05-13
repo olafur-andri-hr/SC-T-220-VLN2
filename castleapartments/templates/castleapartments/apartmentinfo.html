@@ -21,7 +21,7 @@
 <div id="flex_container">
     <div id="carousel_and_description_container">
     <div class="carousel-container">
-        <div class="carousel" class="carousel slide">
+        <div class="carousel slide">
             <div class="carousel-slides" data-active-slide="0">
                 {% for image in listing.apartment.apartmentimage_set.all %}
                 <div 
@@ -40,10 +40,10 @@
             </div>
             <div class="carousel-controls">
                 <button class="carousel-left-control" disabled>
-                    <img src="{% static 'icons/carousel_left.svg' %}" />
+                    <img src="{% static 'icons/carousel_left.svg' %}" alt="previous image" />
                 </button>
                 <button class="carousel-right-control" disabled>
-                    <img src="{% static 'icons/carousel_right.svg' %}" />
+                    <img src="{% static 'icons/carousel_right.svg' %}" alt="next image" />
                 </button>
             </div>
             <noscript>
