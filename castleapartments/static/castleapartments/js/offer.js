@@ -1,4 +1,4 @@
-const theButton = document.getElementById('reviewnextlink');
+const theButton = document.getElementById('paymentnextlink');
 theButton.addEventListener('click', showConfirm);
 
 const offerAmount = document.getElementById('id_offer_amount');
