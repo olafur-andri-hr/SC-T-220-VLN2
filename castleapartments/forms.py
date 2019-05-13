@@ -1,3 +1,4 @@
+import datetime
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import MinLengthValidator
@@ -5,6 +6,7 @@ from django.core.validators import validate_image_file_extension
 from django.forms import ModelForm, DateInput, Textarea
 from django_countries.fields import CountryField
 from django.contrib.auth.forms import AuthenticationForm
+from django.forms.widgets import SelectDateWidget
 
 from .models import User, UserInfo, CreditCard
 from location.models import PostalCode
@@ -300,7 +302,11 @@ class UserInfoForm(ModelForm):
         model = UserInfo
         exclude = ('user', 'postal_code',)
         widgets = {
-            'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
+            # 'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
+            'DoB': SelectDateWidget(
+                attrs={"class": "date-select"},
+                years=[i for i in range(1900, datetime.datetime.now().year)]
+            ),
         }
 
     address = forms.CharField(
@@ -314,6 +320,12 @@ class UserInfoForm(ModelForm):
 
 
 class CreditCardForm(ModelForm):
+
     class Meta:
         model = CreditCard
         exclude = []
+        widgets = {
+            'credit_card_expiration_date': SelectDateWidget(
+                attrs={"class": "date-select"}
+            )
+        }

@@ -10,6 +10,9 @@ main {
 form {
     margin: 0;
     padding: 0;
+    table td{
+        text-align: left;
+    }
 }
 
 #sellform .errorlist {
