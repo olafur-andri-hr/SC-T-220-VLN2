@@ -177,41 +177,9 @@
                     <p class="textindiv">Confirm</p>
                 </div>
             </div>
-            <h1>Sell an apartment</h1>
-            <h3>Property info</h3>
-            <table id="detailtable1">
-                <tr>
-                    <th class="tablelabel"></th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel"></th> 
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel"></th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel"></th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel">Pictures:</th>
-                    <td><input type="file" value= "Choose pictures" name="pictures"></td>
-                </tr>
-                <tr><th class="tablelabel"></th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel"></th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="tablelabel"></th>
-                    <td></td>
-                </tr>
-            </table>
+            {{ offerform.offer_amount.label_tag }} {{ offerform.offer_amount }}
+            {{ offerform.conveyance_date.label_tag }} {{ offerform.conveyance_date }}
+            {{ creditcardform }}
             <div class="buttonsdiv" id="detailbuttons">
                 <a href="#basicform" id="detailprevlink">
                     <div class="prevstep">
@@ -256,34 +224,36 @@
             <h3>Your personal information</h3>
             <table id="infotable">
                 <tr>
-                    <th class="tablelabel">Name:</th> <td></td>
+                    <th class="tablelabel">Name:</th> <td>{{ user.userinfo.first_name }} {{ user.userinfo.last_name }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Email address:</th> <td></td>
+                    <th class="tablelabel">Email address:</th> <td>{{ user.userinfo.email }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Birthday:</th> <td></td>
+                    <th class="tablelabel">Birthday:</th> <td>{{ user.userinfo.DoB }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Phone:</th> <td></td>
+                    <th class="tablelabel">Phone:</th> <td>{{ user.userinfo.phone_number }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">SSN:</th> <td></td>
+                    <th class="tablelabel">SSN:</th> <td>{{ user.userinfo.SSN }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Country:</th> <td></td>
+                    <th class="tablelabel">Country:</th>
+                    <td>{{ user.userinfo.postal_code.country }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Zip code:</th> <td></td>
+                    <th class="tablelabel">Zip code:</th>
+                    <td>{{ user.userinfo.postal_code.zip_code }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Town:</th> <td></td>
+                    <th class="tablelabel">Town:</th> <td>{{ user.userinfo.postal_code.town }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Address:</th> <td></td>
+                    <th class="tablelabel">Address:</th> <td>{{ user.userinfo.address }}</td>
                 </tr>
                 <tr>
-                    <th class="tablelabel">Apt. number:</th> <td></td>
+                    <th class="tablelabel">Apt. number:</th> <td>{{ user.userinfo.apt_number }}</td>
                 </tr>
             </table>
             <div class="buttonsdiv">

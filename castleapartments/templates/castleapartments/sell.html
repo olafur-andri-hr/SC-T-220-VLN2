@@ -52,12 +52,10 @@
                     by our staff.</p>
                 <p>You will recieve a confirmation email once the listing is verified.</p>
                 <p>Thank you for choosing Castle Apartments!</p>
-                <a href='/'>
-                    <div class="next_button">
-                        <button class="btn btn-outline-primary box-shadow" id="button2" type="button">
-                            Return to listing</button>
-                    </div>
-                </a>
+                <div class="next_button">
+                    <a class="btn btn-outline-primary box-shadow" href="/" id="button2" type="button">
+                        Return to listing</a>
+                </div>
             </div>
         </div>
         <div id="reviewform" class="forms">
@@ -151,19 +149,15 @@
                     <p id="descriptiontext"></p>
                 </div>
                 <div class="buttonsdiv" id="reviewbuttondiv">
-                    <a href="#detailform" id="reviewprevlink">
-                        <div class="prevstep">
-                            <button class="btn btn-outline-secondary box-shadow" type="button">
-                                Previous step</button>
-                        </div>
-                    </a>
-                    <a id="reviewnextlink">
-                        <div class="next_button">
-                            <button class="btn btn-outline-success box-shadow" id="button2" type="submit">
-                                Confirm listing
-                            </button>
-                        </div>
-                    </a>
+                    <div class="prevstep">
+                        <a class="btn btn-outline-secondary box-shadow" href="#detailform" type="button">
+                            Previous step</a>
+                    </div>
+                    <div class="next_button">
+                        <button class="btn btn-outline-success box-shadow" id="button2" type="submit">
+                            Confirm listing
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -231,17 +225,15 @@
                     </tr>
                 </table>
                 <div class="buttonsdiv" id="detailbuttons">
-                    <a href="#basicform" id="detailprevlink">
-                        <div class="prevstep">
-                            <button class="btn btn-outline-secondary box-shadow" type="button">Previous step</button>
-                        </div>
-                    </a>
-                    <a href='#reviewform' id="detailnextlink">
-                        <div class="next_button">
-                            <button class="btn btn-outline-primary box-shadow" id="button2" type="button">Next
-                                step</button>
-                        </div>
-                    </a>
+                    <div class="prevstep">
+                        <a class="btn btn-outline-secondary box-shadow" href="#basicform" type="button">Previous
+                            step</a>
+                    </div>
+                    <div class="next_button">
+                        <a href='#reviewform' class="btn btn-outline-primary box-shadow" id="button2"
+                            type="button">Next
+                            step</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -304,17 +296,15 @@
                     </tr>
                 </table>
                 <div class="buttonsdiv">
-                    <a href="#" id="basicprevlink">
-                        <div class="prevstep">
-                            <button class="btn btn-outline-secondary box-shadow" type="button">Previous step</button>
-                        </div>
-                    </a>
-                    <a href='#detailform' id="basicnextlink">
-                        <div class="next_button">
-                            <button class="btn btn-outline-primary box-shadow" id="button2" type="button">Next
-                                step</button>
-                        </div>
-                    </a>
+                    <div class="prevstep">
+                        <a class="btn btn-outline-secondary box-shadow" href="#" type="button">Previous
+                            step</a>
+                    </div>
+                    <div class="next_button">
+                        <a class="btn btn-outline-primary box-shadow" id="button2" type="button"
+                            href='#detailform'>Next
+                            step</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -378,7 +368,7 @@
                     </tr>
                     <tr>
                         <th class="tablelabel">Town:</th>
-                        <td></td>
+                        <td>{{ user.userinfo.postal_code.town }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">Address:</th>
@@ -391,17 +381,16 @@
                 </table>
                 <div class="buttonsdiv">
                     <div id="edit_button">
-                        <button class="btn btn-outline-secondary box-shadow" type="button" href="{% url 'about' %}">
-                            Edit profile 
-                        </button>
-                        <img src="{% static 'icons/edit.svg' %}" id="editimg">
+                        <a class="btn btn-outline-secondary box-shadow" type="button" href="{% url 'editprofile' %}">
+                            Edit profile
+                            <img src="{% static 'icons/edit.svg' %}" id="editimg">
+                        </a>
                     </div>
-                    <a href="#basicform" id="infonextlink">
-                        <div class="next_button">
-                            <button class="btn btn-outline-primary box-shadow" id="button2" type="button">
-                                Next Step</button>
-                        </div>
-                    </a>
+                    <div class="next_button">
+                        <a class="btn btn-outline-primary box-shadow" id="button2" type="button" href="#basicform">
+                            Next Step
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

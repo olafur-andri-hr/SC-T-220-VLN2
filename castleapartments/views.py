@@ -15,6 +15,8 @@ from .models import Offer
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults
 from django.forms.models import model_to_dict
+from .forms import CreditCardForm
+from .forms import OfferForm
 
 
 def index(request):
@@ -131,6 +133,8 @@ def offer(request):
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "offerform": OfferForm(),
+        "creditcardform": CreditCardForm()
     }
     return render(request, 'castleapartments/offer.html', context)
 
