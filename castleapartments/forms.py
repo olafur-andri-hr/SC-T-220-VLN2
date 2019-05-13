@@ -312,3 +312,9 @@ class UserInfoForm(ModelForm):
             "placeholder": "Your Address"
         })
     )
+
+
+class CreditCardForm(ModelForm):
+    class Meta:
+        model = CreditCard
+        exclude = []

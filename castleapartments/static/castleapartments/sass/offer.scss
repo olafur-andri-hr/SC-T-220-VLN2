@@ -65,6 +65,10 @@ $gray: #ddd8d8;
     align-items: center;
     justify-content: center;
     height: 4rem;
+
+    @media screen and (max-width: 700px) {
+        display: none;
+    }
 }
 
 .arrowdiv {
@@ -74,6 +78,14 @@ $gray: #ddd8d8;
     width: 20px;
     background: cover;
 
+}
+
+.navigationdivs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-family: "Reem Kufi", sans-serif;
 }
 
 .textindiv {
@@ -95,4 +107,40 @@ main {
     align-items: center;
     justify-content: space-between;
     margin-top: 3rem;
+}
+
+.finished {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    color: white;
+    border-radius: 5px;
+    font-family: "Reem Kufi", sans-serif;
+}
+
+#reviewform {
+    height: auto;
+}
+
+#reviewbuttondiv {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.textindiv {
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    text-align: center;
+}
+
+.current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: solid 2px $primary;
+    font-family: "Reem Kufi", sans-serif;
 }

@@ -15,6 +15,8 @@ from .models import Offer
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults
 from django.forms.models import model_to_dict
+from .forms import CreditCardForm
+from .forms import OfferForm
 
 
 def index(request):
@@ -116,7 +118,8 @@ def account(request):
     return render(request, 'castleapartments/account.html', context)
 
 
-def profile(request):
+def profile(request, profile_id):
+    user_profile = User.objects.get(uuid=profile_id)
     listings = Listing.objects.filter(
         seller=request.user).reverse().exclude(sold_date__isnull=False)
     sold_listings = Listing.objects.exclude(sold_date__isnull=True)
@@ -127,18 +130,12 @@ def profile(request):
     return render(request, 'castleapartments/profile.html', context)
 
 
-def listing(request):
-    context = {
-        "authenticated": request.user.is_authenticated,
-        "user": request.user,
-    }
-    return render(request, 'castleapartments/listing.html', context)
-
-
 def offer(request):
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "offerform": OfferForm(),
+        "creditcardform": CreditCardForm()
     }
     return render(request, 'castleapartments/offer.html', context)
 

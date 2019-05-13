@@ -251,8 +251,7 @@ form {
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
         cursor: pointer;
         transition: background-color 200ms ease,
-                    transform 100ms ease,
-                    box-shadow 100ms ease;
+                    transform 100ms ease;
 
         * {
             pointer-events: none;
