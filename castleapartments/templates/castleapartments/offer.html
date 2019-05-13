@@ -106,14 +106,11 @@
             <table id="reviewtable2">
                     <tr>
                         <th class="tablelabel">Name:</th>
-                        <td></td>
+                        <td>{{ user.userinfo.first_name }} {{ user.userinfo.last_name }}</td>
                     </tr>
                     <tr>
-                        <th class="tablelabel">Address:</th> <td></td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel"></th>
-                        <td></td>
+                        <th class="tablelabel">Address:</th> 
+                        <td>{{ user.userinfo.address }}</td>
                     </tr>
                     <tr>
                         <th class="tablelabel">Credit Card:</th>

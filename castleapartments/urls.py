@@ -7,7 +7,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
     path('sell/', views.sell, name='sell'),
-    path('<user_id:profile_id>/', views.profile),
+    path('<:profile_id>/', views.profile),
     path('account/', views.account, name='account'),
     path('account/editprofile/', views.editprofile, name='editprofile'),
     # path('listing/', views.listing, name='listing'),
