@@ -131,6 +131,7 @@ def offer(request):
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "form": OfferForm()
     }
     return render(request, 'castleapartments/offer.html', context)
 
