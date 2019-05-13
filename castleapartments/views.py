@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
@@ -152,15 +152,15 @@ def account(request):
     return render(request, 'castleapartments/account.html', context)
 
 
-def profile(request, profile_id):
-    user_profile = User.objects.get(id=profile_id)
-    user_listings = Listing.objects.filter(
-        seller=user_profile).exclude(sold_date__isnull=False)
-    user_sold_listings = Listing.objects.exclude(sold_date__isnull=True)
+def profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user_listings = Listing.objects.filter(seller=user)
+    user_selling = user_listings.exclude(sold_date__isnull=False)
+    user_sold = user_listings.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
-        "profile_selling": user_listings,
+        "profile_selling": user_selling,
         "profile_sold": user_sold
     }
     return render(request, 'castleapartments/profile.html', context)

@@ -24,7 +24,12 @@ function addEventListeners() {
   const cards = document.querySelectorAll('#listings_container .card');
 
   window.addEventListener('scroll', onScroll);
-  editSearchLink.addEventListener('click', scrollToTop);
+  editSearchLink.addEventListener('click', ( event) => {
+    setTimeout(() => {
+      document.getElementById('id_address').focus();
+    }, 1000);
+    scrollToTop(event);
+  });
   listingHint.addEventListener('click', scrollToListings);
   checkboxButton.addEventListener('click', showCheckboxes);
   historyButton.addEventListener('click', showHistory);
