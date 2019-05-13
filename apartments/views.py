@@ -13,6 +13,7 @@ from castleapartments.utils import get_form_defaults
 
 def listing(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
+    all_offers = Offer.objects.filter(listing__uuid=listing_id)
     offer = None
     try:
         offer = Offer.objects.get(
@@ -25,7 +26,8 @@ def listing(request, listing_id):
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "listing": listing,
-        "offer": offer
+        "offer": offer,
+        "all_offers": all_offers
     }
     return render(request, 'castleapartments/apartmentinfo.html', context)
 
@@ -58,3 +60,8 @@ def get_many_by_id(request, listing_ids):
             ).data
         )
     return JsonResponse(data, safe=False)
+
+
+def offer(request, listing_id, offer_id):
+    return HttpResponse("Showing offer: '{}' for listing: '{}'"
+                        .format(offer_id, listing_id))
