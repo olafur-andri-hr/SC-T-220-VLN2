@@ -143,6 +143,7 @@ function hideCheckboxes(e) {
  */
 function showHistory(e) {
   populateHistory();
+  document.getElementById('page-selection-div').classList.add('d-none');
   historyButton.lastElementChild.innerText =
     historyButton.getAttribute('data-new-text');
   listingsContainer.classList.add('hide');
@@ -174,6 +175,7 @@ function hideHistory(e) {
 
     setTimeout(() => {
       listingsContainer.classList.remove('hide');
+      document.getElementById('page-selection-div').classList.remove('d-none');
       historyButton.removeEventListener('click', hideHistory);
       historyButton.addEventListener('click', showHistory);
     }, 200);
