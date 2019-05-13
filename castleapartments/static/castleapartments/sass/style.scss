@@ -21,6 +21,10 @@ form {
         padding: 0.1rem;
     }
 
+    input[type=radio] {
+        width: auto;
+    }
+
     tr {
         max-width: 100%;
         overflow: hidden;
@@ -151,7 +155,7 @@ form {
             font-family: $heading-font;
         }
 
-        input {
+        input:not(input[type=radio]) {
             width: 20rem;
             padding-left: 10px;
         }

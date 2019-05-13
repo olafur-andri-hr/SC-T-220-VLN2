@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'imagekit',
     'storages',
     'rest_framework',
+    'django_extensions',
     'location',
     'castleapartments',
     'apartments',

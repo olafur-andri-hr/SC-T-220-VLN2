@@ -205,10 +205,10 @@ class SellForm(forms.Form):
             "class": ""
         })
     )
-    size = forms.IntegerField(
+    size = forms.FloatField(
         label="Size (m²):",
         required=True,
-        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        validators=[MinValueValidator(0)],
         widget=forms.NumberInput(attrs={
             "placeholder": "Size",
             "class": ""
@@ -240,22 +240,25 @@ class SellForm(forms.Form):
         label="Year built:",
         required=True,
         widget=forms.NumberInput(attrs={
-            "placeholder": "year",
+            "placeholder": "Year",
             "class": ""
         })
     )
-    garage = forms.BooleanField(
-        label="Garage:",
+    garage = forms.TypedChoiceField(
+        label="Garage parking space:",
         required=True,
-        widget=forms.CheckboxInput(attrs={
-            "placeholder": "",
-            "class": ""
-        })
-
+        widget=forms.RadioSelect(attrs={
+            "class": "form-check-input",
+        }),
+        choices=((True, 'Yes'), (False, 'No')),
+        initial=True,
+        empty_value=None,
+        coerce=bool
     )
     images = forms.FileField(
         widget=forms.ClearableFileInput(attrs={'multiple': True}),
         validators=[validate_image_file_extension],
+        required=True
     )
 
 

@@ -1,20 +1,45 @@
 document.getElementById('detailnextlink').addEventListener('click', showReview);
 document.addEventListener('DOMContentLoaded', () => {
   const next = document.querySelectorAll('.next_button');
-  console.log(next);
-  // const form = document.getElementById('sellform');
   for (button of next) {
-    button.addEventListener('click', ( event ) => {
-      scrollToTop();
-      // form.addEventListener('invalid', function() {
-      //   console.log('invalid');
-      //   event.preventDefault();
-      // }, false);
-      // form.reportValidity();
-      // form.removeEventListener('invalid');
-    });
+    button.addEventListener('click', nextStepClick);
   }
 });
+/**
+ * report validity of form if next step button is clicked
+ * @param {Event} event the click event
+ */
+function nextStepClick( event ) {
+  let form = document.getElementById('sellform');
+  if (event.target.id == 'basicnextlink') {
+    const selector = '#detailform input, #detailform select, ' +
+      '#detailform textarea';
+    const detailInputs = document.querySelectorAll(selector);
+    for (input of detailInputs) {
+      input.removeAttribute('required');
+    }
+    form = document.getElementById('sellform');
+    if (!form.reportValidity()) {
+      event.preventDefault();
+    } else {
+      setTimeout(scrollToTop, 10);
+    }
+    setTimeout(() => {
+      for (input of detailInputs) {
+        input.setAttribute('required', '');
+      }
+    }, 10);
+  }
+  console.log(form);
+  console.log(event.target.id);
+  if (['basicnextlink', 'detailnextlink'].includes(event.target.id)
+        && !form.reportValidity()) {
+    event.preventDefault();
+  } else {
+    setTimeout(scrollToTop, 10);
+  }
+}
+
 
 /**
  * This is so me
@@ -29,7 +54,7 @@ function showReview() {
   const sizeInput = document.getElementById('id_size');
   const typeInput = document.getElementById('id_type');
   const yearBuiltInput = document.getElementById('id_year_built');
-  const garageInput = document.getElementById('id_garage');
+  const garageInput = document.getElementById('id_garage_0');
   const appraisalInput = document.getElementById('id_appraisal');
   const descriptionInput = document.getElementById('descriptionInput');
   const addressInput = document.getElementById('addressInput');
@@ -60,7 +85,7 @@ function showReview() {
   appraisaltd.textContent = appraisalInput.value;
   description.textContent = descriptionInput.value;
   addressHeader.textContent = addressInput.value;
-  garagetd.textContent = garageInput.value;
+  garagetd.textContent = garageInput.checked ? 'Yes' : 'No';
 
   if (garageInput.checked === true) {
     garagetd.textContent = 'Yes';

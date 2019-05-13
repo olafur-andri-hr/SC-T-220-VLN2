@@ -76,11 +76,19 @@ def login(request):
 
 @login_required
 def sell(request):
+    if request.method == "POST":
+        form = SellForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("VALID")
+        else:
+            print("INVALID")
+    else:
+        form = SellForm()
     context = {
         "isAdmin": request.user.is_superuser,
         "authenticated": request.user.is_authenticated,
         "user": request.user,
-        "form": SellForm()
+        "form": form
     }
     return render(request, 'castleapartments/sell.html', context)
 
@@ -110,7 +118,8 @@ def account(request):
     return render(request, 'castleapartments/account.html', context)
 
 
-def profile(request):
+def profile(request, profile_id):
+    user_profile = User.objects.get(uuid=profile_id)
     listings = Listing.objects.filter(
         seller=request.user).reverse().exclude(sold_date__isnull=False)
     sold_listings = Listing.objects.exclude(sold_date__isnull=True)
@@ -119,14 +128,6 @@ def profile(request):
         "user": request.user,
     }
     return render(request, 'castleapartments/profile.html', context)
-
-
-def listing(request):
-    context = {
-        "authenticated": request.user.is_authenticated,
-        "user": request.user,
-    }
-    return render(request, 'castleapartments/listing.html', context)
 
 
 def offer(request):

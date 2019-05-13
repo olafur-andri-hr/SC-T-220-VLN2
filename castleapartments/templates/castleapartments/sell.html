@@ -17,226 +17,8 @@
 
 {% block content %}
 <main>
-    <form id="sellform" method="POST" class="" action="#confirmform">
+    <form id="sellform" method="POST" class="" action="#confirmform" enctype="multipart/form-data">
         {% csrf_token %}
-        <div id="confirmform" class="forms">
-            <div class="navdiv">
-                <div id="sellapartmentdiv" class="navigationdivs">
-                    <p class="textindiv">Sell apartm.</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="yourinfodiv" class="navigationdivs finished">
-                    <p class="textindiv">Your Info</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="basicdiv" class="navigationdivs finished">
-                    <p class="textindiv">Basic</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="detaildiv" class="navigationdivs finished">
-                    <p class="textindiv">Detailed</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="reviewdiv" class="navigationdivs finished">
-                    <p class="textindiv">Review</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="confirmdiv" class="navigationdivs current">
-                    <p class="textindiv">Confirm</p>
-                </div>
-            </div>
-            <div class="form-body">
-                {% csrf_token %}
-                <h1>Your new sale listing is now complete!</h1>
-                <p>However, it will not be visible to other users unitl it's validity is confirmed
-                    by our staff.</p>
-                <p>You will recieve a confirmation email once the listing is verified.</p>
-                <p>Thank you for choosing Castle Apartments!</p>
-                <div class="next_button">
-                    <a class="btn btn-outline-primary box-shadow" href="/" id="button2" type="button">
-                        Return to listing</a>
-                </div>
-            </div>
-        </div>
-        <div id="reviewform" class="forms">
-            <div class="navdiv">
-                <div id="sellapartmentdiv" class="navigationdivs">
-                    <p class="textindiv">Sell apartm.</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="yourinfodiv" class="navigationdivs finished">
-                    <p class="textindiv">Your Info</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="basicdiv" class="navigationdivs finished">
-                    <p class="textindiv">Basic</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="detaildiv" class="navigationdivs finished">
-                    <p class="textindiv">Detailed</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="reviewdiv" class="navigationdivs current">
-                    <p class="textindiv">Review</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="confirmdiv" class="navigationdivs">
-                    <p class="textindiv">Confirm</p>
-                </div>
-            </div>
-            <div class="form-body">
-                <h1>Sell an apartment</h1>
-                <h4 id="addressheader"></h4>
-                <h2 id="temph2">Here will come pictures</h2>
-                <div id="tablesdiv">
-                    <div id="table1div">
-                        <h3>Location</h3>
-                        <table id="reviewtable1">
-                            <tr>
-                                <th class="tablelabel">{{ form.country.label_tag }}</th>
-                                <td id="countrytd"></td>
-                            </tr>
-                            <tr>
-                                <th class="tablelabel">{{ form.zip_code.label_tag }}</th>
-                                <td id="zipcodetd"></td>
-                            </tr>
-                            <tr>
-                                <th class="tablelabel">{{ form.town.label_tag }}</th>
-                                <td id="towntd"></td>
-                            </tr>
-                            <tr>
-                                <th class="tablelabel">{{ form.apt_number.label_tag }}</th>
-                                <td id="aptnumbertd"></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div id="table2div">
-                    <h3>Property info</h3>
-                    <table id="reviewtable2">
-                        <tr>
-                            <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th>
-                            <td id="numofroomstd"></td>
-                        </tr>
-                        <tr>
-                            <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th>
-                            <td id="numoftoiletstd"></td>
-                        </tr>
-                        <tr>
-                            <th class="tablelabel">{{ form.size.label_tag }}</th>
-                            <td id="sizetd"></td>
-                        </tr>
-                        <tr>
-                            <th class="tablelabel">{{ form.type.label_tag }}</th>
-                            <td id="typetd"></td>
-                        </tr>
-                        <tr>
-                            <th class="tablelabel">{{ form.year_built.label_tag }}</th>
-                            <td id="yearbuilttd"></td>
-                        </tr>
-                        <tr>
-                            <th class="tablelabel">{{ form.garage.label_tag }}</th>
-                            <td id="garagetd"></td>
-                        </tr>
-                        <tr>
-                            <th class="tablelabel">{{ form.appraisal.label_tag }}</th>
-                            <td id="appraisaltd"></td>
-                        </tr>
-                    </table>
-                </div>
-                <div>
-                    <h4>Description:</h4>
-                    <p id="descriptiontext"></p>
-                </div>
-                <div class="buttonsdiv" id="reviewbuttondiv">
-                    <div class="prevstep">
-                        <a class="btn btn-outline-secondary box-shadow" href="#detailform" type="button">
-                            Previous step</a>
-                    </div>
-                    <div class="next_button">
-                        <button class="btn btn-outline-success box-shadow" id="button2" type="submit">
-                            Confirm listing
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="detailform" class="forms">
-            <div class="navdiv">
-                <div id="sellapartmentdiv" class="navigationdivs">
-                    <p class="textindiv">Sell apartm.</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="yourinfodiv" class="navigationdivs finished">
-                    <p class="textindiv">Your Info</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="basicdiv" class="navigationdivs finished">
-                    <p class="textindiv">Basic</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="detaildiv" class="navigationdivs current">
-                    <p class="textindiv">Detailed</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="reviewdiv" class="navigationdivs">
-                    <p class="textindiv">Review</p>
-                </div>
-                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
-                <div id="confirmdiv" class="navigationdivs">
-                    <p class="textindiv">Confirm</p>
-                </div>
-            </div>
-            <div class="form-body">
-                <h1>Sell an apartment</h1>
-                <h3>Property info</h3>
-                <table id="detailtable1">
-                    <tr>
-                        <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th>
-                        <td>{{ form.num_of_rooms }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th>
-                        <td>{{ form.num_of_toilets }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.size.label_tag }}</th>
-                        <td>{{ form.size }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.type.label_tag}}</th>
-                        <td>{{ form.type }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.images.label_tag }}</th>
-                        <td>{{ form.images }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.year_built.label_tag }}</th>
-                        <td>{{ form.year_built }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.garage.label_tag }}</th>
-                        <td>{{ form.garage }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.description.label_tag }}</th>
-                        <td>{{ form.description }}</td>
-                    </tr>
-                </table>
-                <div class="buttonsdiv" id="detailbuttons">
-                    <div class="prevstep">
-                        <a class="btn btn-outline-secondary box-shadow" href="#basicform" type="button">Previous
-                            step</a>
-                    </div>
-                    <div class="next_button">
-                        <a href='#reviewform' class="btn btn-outline-primary box-shadow" id="button2"
-                            type="button">Next
-                            step</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="basicform" class="forms">
             <div class="navdiv">
                 <div id="sellapartmentdiv" class="navigationdivs">
@@ -301,10 +83,233 @@
                             step</a>
                     </div>
                     <div class="next_button">
-                        <a class="btn btn-outline-primary box-shadow" id="button2" type="button"
+                        <a class="btn btn-outline-primary box-shadow" id="basicnextlink" type="button"
                             href='#detailform'>Next
                             step</a>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="detailform" class="forms">
+            <div class="navdiv">
+                <div id="sellapartmentdiv" class="navigationdivs">
+                    <p class="textindiv">Sell apartm.</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="yourinfodiv" class="navigationdivs finished">
+                    <p class="textindiv">Your Info</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="basicdiv" class="navigationdivs finished">
+                    <p class="textindiv">Basic</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="detaildiv" class="navigationdivs current">
+                    <p class="textindiv">Detailed</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="reviewdiv" class="navigationdivs">
+                    <p class="textindiv">Review</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="confirmdiv" class="navigationdivs">
+                    <p class="textindiv">Confirm</p>
+                </div>
+            </div>
+            <div class="form-body">
+                <h1>Sell an apartment</h1>
+                <h3>Property info</h3>
+                <table id="detailtable1">
+                    <tr>
+                        <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th>
+                        <td>{{ form.num_of_rooms }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th>
+                        <td>{{ form.num_of_toilets }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.size.label_tag }}</th>
+                        <td>{{ form.size }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.type.label_tag}}</th>
+                        <td>{{ form.type }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.images.label_tag }}</th>
+                        <td>{{ form.images }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.year_built.label_tag }}</th>
+                        <td>{{ form.year_built }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.garage.label_tag }}</th>
+                        <td>
+                            {% for radio in form.garage %}
+                            <div class="form-check form-check-inline">
+                                {{radio.tag}}
+                                <label class="form-check-label"
+                                    for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                            </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="tablelabel">{{ form.description.label_tag }}</th>
+                        <td>{{ form.description }}</td>
+                    </tr>
+                </table>
+                <div class="buttonsdiv" id="detailbuttons">
+                    <div class="prevstep">
+                        <a class="btn btn-outline-secondary box-shadow" href="#basicform" type="button">Previous
+                            step</a>
+                    </div>
+                    <div class="next_button">
+                        <a href='#reviewform' class="btn btn-outline-primary box-shadow" id="detailnextlink"
+                            type="button">Next
+                            step</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="reviewform" class="forms">
+            <div class="navdiv">
+                <div id="sellapartmentdiv" class="navigationdivs">
+                    <p class="textindiv">Sell apartm.</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="yourinfodiv" class="navigationdivs finished">
+                    <p class="textindiv">Your Info</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="basicdiv" class="navigationdivs finished">
+                    <p class="textindiv">Basic</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="detaildiv" class="navigationdivs finished">
+                    <p class="textindiv">Detailed</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="reviewdiv" class="navigationdivs current">
+                    <p class="textindiv">Review</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="confirmdiv" class="navigationdivs">
+                    <p class="textindiv">Confirm</p>
+                </div>
+            </div>
+            <div class="form-body">
+                <h1>Sell an apartment - Review</h1>
+                <h2 id="addressheader"></h2>
+                <div class="tablesdiv">
+                    <h3>Location</h3>
+                    <table id="reviewtable1">
+                        <tr>
+                            <th class="tablelabel">{{ form.country.label_tag }}</th>
+                            <td id="countrytd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.zip_code.label_tag }}</th>
+                            <td id="zipcodetd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.town.label_tag }}</th>
+                            <td id="towntd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.apt_number.label_tag }}</th>
+                            <td id="aptnumbertd"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tablesdiv">
+                    <h3>Property info</h3>
+                    <table id="reviewtable2">
+                        <tr>
+                            <th class="tablelabel">{{ form.num_of_rooms.label_tag }}</th>
+                            <td id="numofroomstd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.num_of_toilets.label_tag }}</th>
+                            <td id="numoftoiletstd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.size.label_tag }}</th>
+                            <td id="sizetd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.type.label_tag }}</th>
+                            <td id="typetd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.year_built.label_tag }}</th>
+                            <td id="yearbuilttd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.garage.label_tag }}</th>
+                            <td id="garagetd"></td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.appraisal.label_tag }}</th>
+                            <td id="appraisaltd"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h4>Description:</h4>
+                    <p id="descriptiontext"></p>
+                </div>
+                <div class="buttonsdiv" id="reviewbuttondiv">
+                    <div class="prevstep">
+                        <a class="btn btn-outline-secondary box-shadow" href="#detailform" type="button">
+                            Previous step</a>
+                    </div>
+                    <div class="next_button">
+                        <button class="btn btn-outline-success box-shadow" id="button2" type="submit">
+                            Confirm listing
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="confirmform" class="forms">
+            <div class="navdiv">
+                <div id="sellapartmentdiv" class="navigationdivs">
+                    <p class="textindiv">Sell apartm.</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="yourinfodiv" class="navigationdivs finished">
+                    <p class="textindiv">Your Info</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="basicdiv" class="navigationdivs finished">
+                    <p class="textindiv">Basic</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="detaildiv" class="navigationdivs finished">
+                    <p class="textindiv">Detailed</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="reviewdiv" class="navigationdivs finished">
+                    <p class="textindiv">Review</p>
+                </div>
+                <div class="arrowdiv" style='background-image: url("{% static "icons/arrowright.svg" %}")'></div>
+                <div id="confirmdiv" class="navigationdivs current">
+                    <p class="textindiv">Confirm</p>
+                </div>
+            </div>
+            <div class="form-body">
+                <h1>Your new sale listing is now complete!</h1>
+                <p>However, it will not be visible to other users unitl it's validity is confirmed
+                    by our staff.</p>
+                <p>You will recieve a confirmation email once the listing is verified.</p>
+                <p>Thank you for choosing Castle Apartments!</p>
+                <div class="next_button">
+                    <a class="btn btn-outline-primary box-shadow" href="/" id="button2" type="button">
+                        Return to listing</a>
                 </div>
             </div>
         </div>
@@ -387,7 +392,7 @@
                         </a>
                     </div>
                     <div class="next_button">
-                        <a class="btn btn-outline-primary box-shadow" id="button2" type="button" href="#basicform">
+                        <a class="btn btn-outline-primary box-shadow" type="button" href="#basicform">
                             Next Step
                         </a>
                     </div>
