@@ -31,7 +31,6 @@
             <svg id="search_banner_background" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <polygon points="0,80 100,100 0,100" style="fill: #7E57C2; fill-rule: evenodd" />
                 <polygon points="0,0 100,0 100,50" style="fill: #5E35B1; fill-rule: evenodd" />
-                />
             </svg>
 
             <div id="search_banner_content">
@@ -42,12 +41,12 @@
                 </h5>
                 <form id="search_banner_form" action="#search-results" method="get" class="">
                     {% csrf_token %}
+                    {% for field in form %}
+                    {% if field.is_hidden %}
+                    {{field}}
+                    {% endif %}
+                    {% endfor %}
                     <ul>
-                        {% for field in form %}
-                        {% if field.is_hidden %}
-                        {{ field}}
-                        {% endif %}
-                        {% endfor %}
                         {{ form.address.errors }}
                         <li>
                             {{ form.address.label_tag }}
@@ -100,7 +99,7 @@
                         </li>
 
                         <li id="checkboxes_container">
-                            <label for="">Type:</label>
+                            <label>Type:</label>
                             <button type="button" id="checkbox_button" class="btn btn-primary">
                                 <span>Choose type(s)</span>
 
@@ -278,8 +277,7 @@
                 <ul class="pagination d-flex justify-content-center p-4 m-0" id="page-selection-list">
                     <li class="page-item {% if page_number == 1 %}disabled{% endif %}">
                         <button class="page-link" href="#search-results" type="submit" form="search_banner_form"
-                            value="{{page_number|add:"-1"}}" name="page_number" aria-label="Previous" 
-                            {% if page_number == 1 %}disabled=""{% endif %}>
+                            value="{{page_number|add:"-1"}}" name="page_number" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </button>
@@ -287,21 +285,20 @@
                     {% for a_page in pages %}
                         {% if a_page == page_number %}
                         <li class="page-item active">
-                            <input class="page-link" href="#search-results" type="submit" form="search_banner_form"
+                            <input class="page-link" type="submit" form="search_banner_form"
                                 value="{{a_page}}" name="page_number" />
                             <span class="sr-only">(current)</span>
                         </li>
                         {% else %}
                         <li class="page-item">
-                            <input class="page-link" href="#search-results" type="submit" form="search_banner_form"
+                            <input class="page-link" type="submit" form="search_banner_form"
                                 value="{{a_page}}" name="page_number" />
                         </li>
                         {% endif %}
                     {% endfor %}
                     <li class="page-item {% if page_number == page_count %}disabled{% endif %}">
                         <button class="page-link"href="#search-results" type="submit" form="search_banner_form"
-                            value="{{page_number|add:"1"}}" name="page_number" aria-label="Next"
-                            {% if page_number == page_count %}diabled=""{% endif %}>
+                            value="{{page_number|add:"1"}}" name="page_number" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </button>

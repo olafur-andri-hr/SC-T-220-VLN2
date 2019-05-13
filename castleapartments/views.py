@@ -99,7 +99,6 @@ def sell(request):
                 year_built=data["year_built"],
             )
             apartment.save()
-            # print(apartment.save())
             files = request.FILES.getlist('images')
             apartment_images = list()
             for image in files:

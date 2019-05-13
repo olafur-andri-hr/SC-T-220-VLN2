@@ -72,7 +72,6 @@ class SearchForm(forms.Form):
         ),
         initial=0,
         widget=forms.Select(attrs={
-            "placeholder": "Min",
             "class": "inline-first"
         }),
         coerce=int,
@@ -88,7 +87,6 @@ class SearchForm(forms.Form):
         ),
         initial=1000,
         widget=forms.Select(attrs={
-            "placeholder": "Max",
             "class": "inline-second",
         }),
         coerce=int,

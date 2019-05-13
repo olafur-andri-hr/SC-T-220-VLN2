@@ -30,8 +30,6 @@ function nextStepClick( event ) {
       }
     }, 10);
   }
-  console.log(form);
-  console.log(event.target.id);
   if (['basicnextlink', 'detailnextlink'].includes(event.target.id)
         && !form.reportValidity()) {
     event.preventDefault();

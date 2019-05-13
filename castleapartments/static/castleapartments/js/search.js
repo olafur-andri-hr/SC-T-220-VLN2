@@ -95,7 +95,6 @@
     }).catch(() => {
       return;
     }).then((obj) => {
-      console.log(obj);
       clearListings();
       updateSearchNav(obj.meta);
       for (const listing of obj.listings) {
