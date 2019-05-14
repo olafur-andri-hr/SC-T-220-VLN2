@@ -146,29 +146,41 @@ def offer(request, listing_id, offer_id):
 @login_required
 def newOffer(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
-    offer_form = OfferForm()
-    credit_card_form = CreditCardForm()
-    offer = None
+    try:
+        old_offer = Offer.objects.get(buyer=request.user, listing=listing)
+    except Offer.DoesNotExist:
+        old_offer = None
+    new_offer = None
     if request.method == "POST":
         offer_form = OfferForm(request.POST)
         credit_card_form = CreditCardForm(request.POST)
         if offer_form.is_valid() and credit_card_form.is_valid() and \
                 request.user != listing.seller:
             cc = credit_card_form.save()
-            offer = Offer(
+            new_offer = Offer(
                 buyer=request.user,
                 listing=listing,
-                request_amount=offer_form.changed_data["offer_amount"],
+                request_amount=offer_form.cleaned_data["offer_amount"],
                 credit_card=cc,
             )
-            offer.save()
+            new_offer.save()
+    else:
+        offer_form = OfferForm()
+        credit_card_form = CreditCardForm()
+        if old_offer:
+            offer_form = OfferForm(
+                data={
+                    "offer_amount": old_offer.request_amount,
+                    "conveyance_date": old_offer.request_date
+                }
+            )
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "offerform": offer_form,
         "creditcardform": credit_card_form,
         "listing": listing,
-        "offer": offer
+        "offer": new_offer
     }
     return render(request, 'castleapartments/offer.html', context)
 

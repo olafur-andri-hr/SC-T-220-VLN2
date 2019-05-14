@@ -73,5 +73,8 @@ class Offer(models.Model):
     accepted = models.BooleanField(("Accepted"), default=False)
     processed = models.BooleanField(("Processed by staff"), default=False)
 
+    class Meta:
+        unique_together = (('buyer', 'listing'),)
+
     def __str__(self):
         return f'{self.buyer} offers {self.listing}'
