@@ -10,20 +10,12 @@ td {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    height: 2rem;
-    width: 2rem;
     cursor: pointer;
     font-family: 'Consolas', 'Roboto', sans-serif;
-
-    @media screen and (max-width: 700px) {
-        height: 1.5rem;
-        width: 1.5rem;
-        font-size: 1rem;
-        position: absolute;
-        top: 25%;
-        right: -1.5rem;
-    }
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 1rem;
+    display: none;
 }
 
 .help-text {
@@ -44,6 +36,10 @@ td {
     max-width: 15rem;
     text-align: center;
 
+    @media screen and (max-width: 500px) {
+        width: 100vw;
+    }
+
     ul {
         text-align: left;
         padding: 0 0 0 1rem;
@@ -51,23 +47,29 @@ td {
     }
 }
 
-.help-text-icon:hover ~ .help-text {
+input:focus ~ .help-text {
     transform: translateY(-102%);
     opacity: 1;
 }
 
-.help-text-icon:focus ~ .help-text {
-    transform: translateY(-102%);
-    opacity: 1;
-}
+// .help-text-icon:focus ~ .help-text {
+//     transform: translateY(-102%);
+//     opacity: 1;
+// }
 
 #main_banner {
+    padding-right: 0;
+    padding-left: 0;
     table {
         width: 100%;
     }
 }
 
 form {
+    // input {
+    //     width: 80%;
+    //     display: inline-block;
+    // }
     label {
         @media screen and (max-width: 800px) {
             font-size: 1rem;
