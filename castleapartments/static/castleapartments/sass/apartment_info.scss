@@ -507,3 +507,12 @@ b {
 .offer:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
+
+#button_section {
+    text-align: center;
+    margin-top: 2rem;
+
+    button {
+        margin: 0 5rem;
+    }
+}
