@@ -67,7 +67,7 @@ class Offer(models.Model):
     )
     request_amount = models.IntegerField(("Offer request amount"))
     credit_card = models.OneToOneField(
-        CreditCard, verbose_name=("Credit card"), on_delete=models.DO_NOTHING,
+        CreditCard, verbose_name=("Credit card"), on_delete=models.CASCADE,
         null=True, blank=True
     )
     accepted = models.BooleanField(("Accepted"), default=False)
