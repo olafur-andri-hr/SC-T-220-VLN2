@@ -24,7 +24,7 @@ def listing(request, listing_id):
             buyer__id=request.user.id,
             listing__uuid=listing_id
         )
-    except Exception:
+    except Offer.DoesNotExist:
         pass
     accepted_offer = None
     try:
