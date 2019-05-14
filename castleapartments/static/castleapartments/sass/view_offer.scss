@@ -1,0 +1,42 @@
+@import '../../../../base/static/sass/definitions';
+
+#wrapper {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: calc(100vh - 8rem);
+}
+
+section {
+    text-align: center;
+    color: $black;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-family: $heading-font;
+    font-weight: 400;
+}
+
+b {
+    font-weight: 500;
+}
+
+.profile-pic {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.no-bullets {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}

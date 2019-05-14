@@ -52,16 +52,32 @@ def get_many_by_id(request, listing_ids):
     id_list = listing_ids.split(",")
     data = []
     for listing_id in id_list:
-        listing = Listing.objects.get(uuid=listing_id)
-        data.append(
-            ListingSerializer(
-                listing,
-                context={'request': request}
-            ).data
-        )
+        try:
+            listing = Listing.objects.get(uuid=listing_id)
+            data.append(
+                ListingSerializer(
+                    listing,
+                    context={'request': request}
+                ).data
+            )
+        except Exception:
+            pass
     return JsonResponse(data, safe=False)
 
 
 def offer(request, listing_id, offer_id):
-    return HttpResponse("Showing offer: '{}' for listing: '{}'"
-                        .format(offer_id, listing_id))
+    user = request.user
+    listing = Listing.objects.get(uuid=listing_id)
+    offer = Offer.objects.get(id=offer_id)
+    context = {
+        "user": user,
+        "authenticated": request.user.is_authenticated,
+        "listing": listing,
+        "offer": offer
+    }
+
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif request.user.id != listing.seller.id:
+        return HttpResponseBadRequest()
+    return render(request, 'castleapartments/viewoffer.html', context)

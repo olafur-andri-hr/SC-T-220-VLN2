@@ -131,7 +131,7 @@
             {% endlocalize %}
         </h2>
         <hr />
-        {% if user.id == lising.seller.id %}
+        {% if user.id != listing.seller.id %}
         <div id="seller_profile_container">
             <p id="seller_label"><b>Seller:</b></p>
             <a href="/profiles/{{ listing.seller.id }}">
@@ -259,31 +259,6 @@
             </ul>
         {% endif %}
         </div>
-    </div>
-
-    <div id="notes">
-        <p><b>Three cases</b></p>
-        <ul>
-            <li>Not logged in</li>
-            <ul>
-                <li>User is prompted to log in</li>
-            </ul>
-            <li>Buyer wants to view offers</li>
-            <ul>
-                <li>Buyer already has an offer</li>
-                <ul>
-                    <li>The offer has not yet been processed</li>
-                    <li>The offer has been processed</li>
-                    <li>The offer has been processed and accepted</li>
-                </ul>
-                <li>Buyer has no offer for this listing</li>
-            </ul>
-            <li>Seller wants to view all offers sent to his listing</li>
-            <ul>
-                <li>Seller has no offers</li>
-                <li>Seller has one or more offers</li>
-            </ul>
-        </ul>
     </div>
 </div>
 </main>
