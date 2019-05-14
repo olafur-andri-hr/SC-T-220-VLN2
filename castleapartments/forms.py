@@ -153,10 +153,9 @@ class OfferForm(forms.Form):
     conveyance_date = forms.DateField(
         label="Date of conveyance:",
         required=True,
-        widget=forms.DateInput(attrs={
-            "placeholder": "",
-            "class": ""
-        })
+        widget=SelectDateWidget(
+            attrs={"class": "date-select"}
+        )
     )
     credit_card = CreditCard()
 
