@@ -18,6 +18,16 @@
 
 {% block content %}
 <main>
+{% if user.is_superuser %}
+<section id="button_section">
+    <button type="button" class="btn btn-raised btn-danger">
+        Unlist Property
+    </button>
+    <button type="button" class="btn btn-raised btn-success">
+        List Property
+    </button>
+</section>
+{% endif %}
 <div id="flex_container">
     <div id="carousel_and_description_container">
     <div class="carousel-container">
