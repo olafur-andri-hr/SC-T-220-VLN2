@@ -1,0 +1,26 @@
+#listing_section {
+    margin: 0;
+}
+
+#buyer_section, #seller_section {
+    display: inline-block;
+    margin: 1rem;
+
+    @media screen and (max-width: 700px) {
+        display: block;
+    }
+}
+
+#info_box {
+    flex-direction: row;
+}
+
+.listing-pic {
+    height: 10rem;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
