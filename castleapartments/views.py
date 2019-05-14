@@ -142,7 +142,7 @@ def account(request):
         sale_requests = Listing.objects.filter(
             processed=False)
         buy_reqests = Offer.objects.filter(
-            accepted=True).filter(processed=False)
+            accepted=True, processed=False)
         ifaddmin = {
             "saleRequests": sale_requests,
             "buyRequests": buy_reqests
@@ -179,16 +179,6 @@ def profile(request, user_id):
         "profile_sold": user_sold,
     }
     return render(request, 'castleapartments/profile.html', context)
-
-
-def offer(request):
-    context = {
-        "authenticated": request.user.is_authenticated,
-        "user": request.user,
-        "offerform": OfferForm(),
-        "creditcardform": CreditCardForm()
-    }
-    return render(request, 'castleapartments/offer.html', context)
 
 
 def signup(request):

@@ -137,9 +137,9 @@
                         </a>
                     </div>
                     <div class="next_button">
-                        <a class="btn btn-outline-primary box-shadow" id="reviewnextlink" href='#confirmform'>
-                            Next step
-                        </a>
+                        <button class="btn btn-outline-success box-shadow" id="reviewnextlink" type="submit">
+                            Confirm listing
+                        </button>
                     </div>
                 </div>
             </div>
@@ -167,17 +167,29 @@
                 </div>
             </div>
             <div class="form-body">
-                <h1>Your new sale listing is now complete!</h1>
-                <p>However, it will not be visible to other users unitl it's validity is confirmed
-                    by our staff.</p>
-                <p>You will recieve a confirmation email once the listing is verified.</p>
-                <p>Thank you for choosing Castle Apartments!</p>
-                <a href='/'>
+                {% if offer %}
+                <div class="form-body">
+                    <h1>Your offer has been sent!</h1>
+                    <p>
+                        A reciept along with seller contact information has been sent to your email address.
+                    </p>
+                    <p>You will be notified if your offer is accepted!</p>
                     <div class="next_button">
-                        <button class="btn btn-outline-primary box-shadow" id="button2" type="button">
-                            Return to listing</button>
+                        <a class="btn btn-outline-primary box-shadow" href="{% url 'listing' offer.listing.id %}" id="button2" type="button">
+                            Return to listing</a>
                     </div>
-                </a>
+                </div>
+                {% else %}
+                <div class="form-body">
+                    <h1>There was a problem!</h1>
+                    <p>Something was not submitted correctly. Please take another look to correct any errors.</p>
+                    <div class="prevstep">
+                        <a class="btn btn-outline-secondary box-shadow" href="#basicform" type="button">
+                            Go back to fix errors
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
         <div id="infoform" class="forms">
