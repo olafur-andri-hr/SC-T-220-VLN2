@@ -512,10 +512,16 @@ b {
     text-align: center;
     margin-top: 2rem;
 
-    button {
+    @media screen and (max-width: 800px) {
+        margin: 2rem;
+    }
+
+    a {
         margin: 0 5rem;
     }
-    
+
+}
+
 #make_offer_button {
     width: 100%;
     margin-bottom: 2rem;

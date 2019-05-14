@@ -14,6 +14,14 @@ urlpatterns = [
         '<uuid:listing_id>/offers/<int:offer_id>/decline/',
         views.decline_offer
     ),
+    path(
+        '<uuid:listing_id>/list/',
+        views.list_listing
+    ),
+    path(
+        '<uuid:listing_id>/unlist/',
+        views.unlist_listing
+    ),
     path('api/search/', views.search),
     path('api/search/<str:listing_ids>/', views.get_many_by_id)
 ]

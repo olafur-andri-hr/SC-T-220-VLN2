@@ -1,5 +1,5 @@
 from math import ceil
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from rest_framework.renderers import JSONRenderer
 from .models import Listing, Apartment, ApartmentImage, ApartmentType
@@ -39,6 +39,38 @@ def listing(request, listing_id):
         "accepted_offer": accepted_offer
     }
     return render(request, 'castleapartments/apartmentinfo.html', context)
+
+
+def list_listing(request, listing_id):
+    a_listing = Listing.objects.get(uuid=listing_id)
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif not request.user.is_superuser:
+        return HttpResponseBadRequest()
+    a_listing.processed = True
+    a_listing.save()
+
+    # Return a response
+    context = {
+        "listing": a_listing
+    }
+    return redirect(listing, listing_id=a_listing.uuid)
+
+
+def unlist_listing(request, listing_id):
+    a_listing = Listing.objects.get(uuid=listing_id)
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif not request.user.is_superuser:
+        return HttpResponseBadRequest()
+    a_listing.processed = False
+    a_listing.save()
+
+    # Return a response
+    context = {
+        "listing": a_listing
+    }
+    return redirect(listing, listing_id=a_listing.uuid)
 
 
 def search(request):
