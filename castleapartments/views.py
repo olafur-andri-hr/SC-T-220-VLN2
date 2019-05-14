@@ -160,7 +160,8 @@ def profile(request, user_id):
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "profile_selling": user_selling,
-        "profile_sold": user_sold
+        "profile_sold": user_sold,
+        "profile": user
     }
     return render(request, 'castleapartments/profile.html', context)
 
