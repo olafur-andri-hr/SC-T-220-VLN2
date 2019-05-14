@@ -30,6 +30,8 @@ def listing(request, listing_id):
             Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
     except Exception:
         pass
+    if (not listing.processed) and (request.user.id != listing.seller.id):
+        return HttpResponseBadRequest()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
@@ -62,7 +64,11 @@ def get_many_by_id(request, listing_ids):
     data = []
     for listing_id in id_list:
         try:
-            listing = Listing.objects.get(uuid=listing_id)
+            listing = Listing.objects.get(
+                uuid=listing_id,
+                processed=True,
+                sold_date=None,
+            )
             data.append(
                 ListingSerializer(
                     listing,
@@ -70,7 +76,7 @@ def get_many_by_id(request, listing_ids):
                 ).data
             )
         except Exception:
-            pass
+            continue
     return JsonResponse(data, safe=False)
 
 

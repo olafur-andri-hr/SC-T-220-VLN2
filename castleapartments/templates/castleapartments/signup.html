@@ -72,7 +72,7 @@
                                 <th>{{user_info_form.email.label_tag}}</th>
                                 <td>
                                     {{user_info_form.email.errors}}{{user_info_form.email}}
-                                    <div class="help-text-icon"></div>
+                                    <div class="help-text-icon">?</div>
                                     <div class="help-text">
                                         {{ user_form.username.help_text }}
                                     </div>
@@ -80,12 +80,16 @@
                             </tr>
                             <tr>
                                 <th>{{user_form.password1.label_tag}}</th>
-                                <td>{{user_form.password1.errors}}{{user_form.password1}}<br/>
-                                    {{ user_form.password1.help_text }}</td>
+                                <td>
+                                    {{user_form.password1.errors}}{{user_form.password1}}
+                                    <div class="help-text-icon">?</div>
+                                    <div class="help-text">{{ user_form.password1.help_text }}</div>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{user_form.password2.label_tag}}</th>
-                                <td>{{user_form.password2.errors}}{{user_form.password2}}<br/>
+                                <td>{{user_form.password2.errors}}{{user_form.password2}}
+                                    <div class="help-text-icon"></div>
                                     {{ user_form.password2.help_text }}</td>
                             </tr>
                         </tbody>
