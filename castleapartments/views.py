@@ -161,7 +161,8 @@ def profile(request, user_id):
         "user": request.user,
         "profile": profile_user,
         "profile_selling": user_selling,
-        "profile_sold": user_sold
+        "profile_sold": user_sold,
+        "profile": user
     }
     return render(request, 'castleapartments/profile.html', context)
 
