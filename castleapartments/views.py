@@ -151,6 +151,21 @@ def account(request):
     return render(request, 'castleapartments/account.html', context)
 
 
+def asale(request, offer_id):
+    user = request.user
+    offer = Offer.objects.get(id=offer_id)
+    context = {
+        "user": user,
+        "authenticated": request.user.is_authenticated,
+        "offer": offer
+    }
+    if not request.user.is_superuser:
+        return HttpResponseBadRequest()
+    return render(request, 'castleapartments/asale.html', context)
+    return HttpResponse("Showing offer: '{}'"
+                        .format(offer_id))
+
+
 def profile(request, user_id):
     profile_user = get_object_or_404(User, id=user_id)
     user_listings = Listing.objects.filter(seller=profile_user)
@@ -162,7 +177,6 @@ def profile(request, user_id):
         "profile": profile_user,
         "profile_selling": user_selling,
         "profile_sold": user_sold,
-        "profile": user
     }
     return render(request, 'castleapartments/profile.html', context)
 
