@@ -261,11 +261,12 @@ form {
             position: relative;
         }
 
-        p {
+        span {
             margin: 0.1rem 0.5rem 0 0.5rem;
             font-size: 1.1rem;
             color: #212121;
             position: relative;
+            z-index: 5;
         }
 
         svg {
@@ -274,6 +275,7 @@ form {
             left: 0;
             height: 100%;
             width: 100%;
+            z-index: 4;
         }
     }
 

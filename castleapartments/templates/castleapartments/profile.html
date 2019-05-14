@@ -43,10 +43,10 @@
                 <p>Selling</p>
             </div>
             <div class="content">
-                {% for listing in listings %}
+                {% for listing in profile_selling %}
                 <div class="selling_card" data-id="{{ listing.uuid }}">
                     <div class="selling_offers">
-                        Offers
+                        Offers: {{ listing.offer | length}}
                     </div>
                     <div class="selling_img"
                         style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
@@ -78,7 +78,7 @@
                 <p>Sold</p>
             </div>
             <div class="content">
-                {% for listing in soldlistings %}
+                {% for listing in profile_sold %}
                 <div class="sold_card">
                     <div class="sold_img"
                         style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>

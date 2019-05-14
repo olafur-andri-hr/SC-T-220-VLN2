@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/style.scss' %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/view_offer.scss' %}" />
+{% endblock styles %}
+
+{% block title %}
+<title>View - Castle Apartments</title>
+{% endblock title %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+{% block content %}
+<main>
+<div id="wrapper">
+    <section id="buyer_section">
+        <h2>Buyer</h2>
+        <div 
+            class="profile-pic"
+            style="background-image: url({{ offer.buyer.userinfo.profile_img.url }});">
+        </div>
+        <ul class="no-bullets">
+            <li><b>Name:</b> {{ offer.buyer.userinfo }}</li>
+            <li><b>Email:</b> {{ offer.buyer.userinfo.email }}</li>
+        </ul>
+        <button class="btn btn-link">
+            <a href="/profiles/{{ offer.buyer.id }}">View Profile</a>
+        </button>
+    </section>
+    <section id="offer_section">
+        <h2>Offer</h2>
+        <ul class="no-bullets">
+            <li>
+                <b>Requested conveyance date:</b>
+                {{ offer.request_date|date:"F" }}
+                {{ offer.request_date.day }},
+                {{ offer.request_date.year }}
+            </li>
+            <li>
+                <b>Requested price:</b>
+                <span class="currency">ISK</span>
+                {{ offer.request_amount|intcomma|localize }}
+            </li>
+        </ul>
+    </section>
+
+    <section id="button_section">
+        <button type="button" class="btn btn-raised btn-success">
+            Accept offer
+        </button>
+        <button type="button" class="btn btn-raised btn-danger">
+            Decline offer
+        </button>
+    </section>
+</div>
+</main>
+{% endblock content %}

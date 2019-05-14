@@ -51,6 +51,13 @@
     margin-top: 1rem;    
 }
 
+#jobtitle {
+    border-top: 1px solid #212121;
+    border-bottom: 1px solid #212121;
+    background-color: rgba(255, 0, 0, 0.6);
+    padding: 0.2rem;
+}
+
 #account_profile,#profile_bio,#profile_info {
     word-wrap: break-word;
     display: inline-block;
@@ -148,7 +155,7 @@
     .selling_card {
         display: flex;
         position: relative;
-        margin: 0 2rem 1rem 2em;
+        margin: 1rem 2rem 1rem 2em;
         border: 1px solid $main-purple;
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 

@@ -142,6 +142,7 @@ function hideCheckboxes(e) {
  * @param {Event} e The event object for this click event handler
  */
 function showHistory(e) {
+  const pagination = document.getElementById('page-selection-nav');
   populateHistory();
   document.getElementById('page-selection-div').classList.add('d-none');
   historyButton.lastElementChild.innerText =
@@ -149,6 +150,7 @@ function showHistory(e) {
   listingsContainer.classList.add('hide');
   historyButton.removeEventListener('click', showHistory);
   historyButton.addEventListener('click', hideHistory);
+  pagination.style.display = 'none';
 
   setTimeout(() => {
     listingsContainer.classList.add('remove');
@@ -233,7 +235,7 @@ function registerToHistory(e) {
     window.localStorage.viewed = '[]';
   }
 
-  const MAX_LENGTH = 10;
+  const MAX_LENGTH = 20;
   const id = e.target.parentNode.getAttribute('data-id');
   let arr = JSON.parse(window.localStorage.viewed);
   arr = removeValueFromArray(arr, id);
