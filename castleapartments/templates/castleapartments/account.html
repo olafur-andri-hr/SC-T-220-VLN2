@@ -49,31 +49,31 @@
         <div id="profile_sell">
             {% if isAdmin %}
             <div class="headtitle">
-                    <p>Pending sale requests</p>
-                </div>
-                <div class="content">
-                    {% for listing in saleRequests %}
-                    <div class="requst_card" data-id="{{ listing.uuid }}">
-                        <div class="requst_img"
-                            style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
-                        </div>
-                        <div class="requst_body">
-                            <p class="card-text no-margin text-sm">
-                                {{ listing.seller}} <br>
-                                {{ listing.apartment.address }} <br>
-                                {{ listing.apartment.postal_code.country.name }} |
-                                {{ listing.apartment.postal_code.zip_code }}
-                                <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
-                                {% localize on %}
-                                <span>ISK: </span>
-                                <b>{{ listing.apartment.appraisal|intcomma }}</b>
-                                {% endlocalize %}
-                            </p>
-                        </div>
-                        <a href="/listings/{{listing.uuid}}" class="card-link"></a>
+                <p>Pending sale requests</p>
+            </div>
+            <div class="content">
+                {% for listing in saleRequests %}
+                <div class="requst_card" data-id="{{ listing.uuid }}">
+                    <div class="requst_img"
+                        style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
                     </div>
-                    {% endfor %}
+                    <div class="requst_body">
+                        <p class="card-text no-margin text-sm">
+                            {{ listing.seller}} <br>
+                            {{ listing.apartment.address }} <br>
+                            {{ listing.apartment.postal_code.country.name }} |
+                            {{ listing.apartment.postal_code.zip_code }}
+                            <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                            {% localize on %}
+                            <span>ISK: </span>
+                            <b>{{ listing.apartment.appraisal|intcomma }}</b>
+                            {% endlocalize %}
+                        </p>
+                    </div>
+                    <a href="/listings/{{listing.uuid}}" class="card-link"></a>
                 </div>
+                {% endfor %}
+            </div>
             {% else %}
             <div class="headtitle">
                 <p>Selling</p>
@@ -118,7 +118,7 @@
         <div id="profile_sold">
             {% if isAdmin %}
             <div class="headtitle">
-                    <p>Pending buy offers</p>
+                <p>Pending buy offers</p>
             </div>
             <div class="content">
                 {% for sales in buyRequests %}
@@ -147,7 +147,7 @@
             <div class="content">
                 {% for listing in soldlistings %}
                 <div class="sold_card">
-                    <div class="sold_img" 
+                    <div class="sold_img"
                         style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
                     </div>
                     <div class="sold_body">

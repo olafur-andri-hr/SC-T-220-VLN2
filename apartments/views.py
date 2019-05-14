@@ -8,6 +8,8 @@ from castleapartments.forms import SearchForm
 from .serializers import ListingSerializer
 from .utils import get_listing_results
 from castleapartments.utils import get_form_defaults
+from castleapartments.forms import OfferForm
+from castleapartments.forms import CreditCardForm
 # Create your views here.
 
 
@@ -81,3 +83,17 @@ def offer(request, listing_id, offer_id):
     elif request.user.id != listing.seller.id:
         return HttpResponseBadRequest()
     return render(request, 'castleapartments/viewoffer.html', context)
+    return HttpResponse("Showing offer: '{}' for listing: '{}'"
+                        .format(offer_id, listing_id))
+
+
+def newOffer(request, listing_id):
+    listing = Listing.objects.get(uuid=listing_id)
+    context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
+        "offerform": OfferForm(),
+        "creditcardform": CreditCardForm(),
+        "listing": listing
+    }
+    return render(request, 'castleapartments/offer.html', context)

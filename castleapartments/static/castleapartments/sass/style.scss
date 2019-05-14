@@ -21,6 +21,10 @@ form {
         padding: 0.1rem;
     }
 
+    input[type=radio] {
+        width: auto;
+    }
+
     tr {
         max-width: 100%;
         overflow: hidden;
@@ -63,7 +67,6 @@ form {
         color: $text-light;
     }
 }
-
 #search_banner,
 #main_banner {
     padding-top: 2rem;
@@ -151,7 +154,7 @@ form {
             font-family: $heading-font;
         }
 
-        input {
+        input:not(input[type=radio]) {
             width: 20rem;
             padding-left: 10px;
         }
@@ -258,11 +261,12 @@ form {
             position: relative;
         }
 
-        p {
+        span {
             margin: 0.1rem 0.5rem 0 0.5rem;
             font-size: 1.1rem;
             color: #212121;
             position: relative;
+            z-index: 5;
         }
 
         svg {
@@ -271,6 +275,7 @@ form {
             left: 0;
             height: 100%;
             width: 100%;
+            z-index: 4;
         }
     }
 

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
 
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
@@ -22,27 +24,52 @@
         <div id="profile">
             <div id="account_profile">
                 <div id="profile_image">
-                    <div id="profileimg" style='background-image: url({{user.userinfo.profile_img.url}});'></div>
+                    <div id="profileimg" style='background-image: url({{profile.userinfo.profile_img.url}});'></div>
                 </div>
                 <div id="profile_name">
-                    <p>{{user.userinfo.first_name}} {{user.userinfo.last_name}}</p>
+                    <p>{{profile.userinfo.first_name}} {{profile.userinfo.last_name}}</p>
                 </div>
             </div>
             <div id="profile_bio">
-                <p>{{user.userinfo.bio}}</p>
+                <p>{{profile.userinfo.bio}}</p>
             </div>
             <div id="profile_info">
-                <p> {{user.userinfo.email}} </p>
-                <p> {{user.userinfo.phone_number}} </p>
+                <p> {{profile.userinfo.email}} </p>
+                <p> {{profile.userinfo.phone_number}} </p>
             </div>
         </div>
-
         <div id="profile_sell">
             <div class="headtitle">
                 <p>Selling</p>
             </div>
             <div class="content">
-                
+                {% for listing in listings %}
+                <div class="selling_card" data-id="{{ listing.uuid }}">
+                    <div class="selling_offers">
+                        Offers
+                    </div>
+                    <div class="selling_img"
+                        style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
+                    </div>
+                    <div class="selling_body">
+                        <h5 class="card-title no-margin">
+                            {{ listing.apartment.address }}
+                        </h5>
+                        <p class="card-text no-margin text-sm">
+                            {{ listing.apartment.postal_code.zip_code }}
+                            <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                            {{ listing.apartment.postal_code.country.name }}<br>
+                        </p>
+                        <h5 class="card-price">
+                            {% localize on %}
+                            <span>ISK</span>
+                            {{ listing.apartment.appraisal|intcomma }}
+                            {% endlocalize %}
+                        </h5>
+                    </div>
+                    <a href="/listings/{{listing.uuid}}" class="card-link"></a>
+                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -51,9 +78,26 @@
                 <p>Sold</p>
             </div>
             <div class="content">
-
+                {% for listing in soldlistings %}
+                <div class="sold_card">
+                    <div class="sold_img"
+                        style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
+                    </div>
+                    <div class="sold_body">
+                        <h5 class="card-title no-margin">
+                            {{ listing.apartment.address }}
+                        </h5>
+                        <p class="card-text no-margin text-sm">
+                            {{ listing.apartment.postal_code.zip_code }}
+                            <img src="{{listing.apartment.postal_code.country.flag}}" alt="flag icon"><br>
+                            {{ listing.apartment.postal_code.country.name }}<br>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+
 </main>
 {% endblock content %}

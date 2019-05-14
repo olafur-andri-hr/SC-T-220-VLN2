@@ -1,3 +1,4 @@
+import datetime
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import MinLengthValidator
@@ -5,6 +6,7 @@ from django.core.validators import validate_image_file_extension
 from django.forms import ModelForm, DateInput, Textarea
 from django_countries.fields import CountryField
 from django.contrib.auth.forms import AuthenticationForm
+from django.forms.widgets import SelectDateWidget
 
 from .models import User, UserInfo, CreditCard
 from location.models import PostalCode
@@ -72,7 +74,6 @@ class SearchForm(forms.Form):
         ),
         initial=0,
         widget=forms.Select(attrs={
-            "placeholder": "Min",
             "class": "inline-first"
         }),
         coerce=int,
@@ -88,7 +89,6 @@ class SearchForm(forms.Form):
         ),
         initial=1000,
         widget=forms.Select(attrs={
-            "placeholder": "Max",
             "class": "inline-second",
         }),
         coerce=int,
@@ -153,10 +153,9 @@ class OfferForm(forms.Form):
     conveyance_date = forms.DateField(
         label="Date of conveyance:",
         required=True,
-        widget=forms.DateInput(attrs={
-            "placeholder": "",
-            "class": ""
-        })
+        widget=SelectDateWidget(
+            attrs={"class": "date-select"}
+        )
     )
     credit_card = CreditCard()
 
@@ -205,10 +204,10 @@ class SellForm(forms.Form):
             "class": ""
         })
     )
-    size = forms.IntegerField(
+    size = forms.FloatField(
         label="Size (m²):",
         required=True,
-        validators=[MinValueValidator(0), MaxValueValidator(1000)],
+        validators=[MinValueValidator(0)],
         widget=forms.NumberInput(attrs={
             "placeholder": "Size",
             "class": ""
@@ -231,6 +230,7 @@ class SellForm(forms.Form):
     appraisal = forms.IntegerField(
         label="Real estate appraisal amount:",
         required=True,
+        validators=[MinValueValidator(0)],
         widget=forms.NumberInput(attrs={
             "placeholder": "Appraisal",
             "class": ""
@@ -240,22 +240,25 @@ class SellForm(forms.Form):
         label="Year built:",
         required=True,
         widget=forms.NumberInput(attrs={
-            "placeholder": "year",
+            "placeholder": "Year",
             "class": ""
         })
     )
-    garage = forms.BooleanField(
-        label="Garage:",
+    garage = forms.TypedChoiceField(
+        label="Garage parking space:",
         required=True,
-        widget=forms.CheckboxInput(attrs={
-            "placeholder": "",
-            "class": ""
-        })
-
+        widget=forms.RadioSelect(attrs={
+            "class": "form-check-input",
+        }),
+        choices=((True, 'Yes'), (False, 'No')),
+        initial=True,
+        empty_value=None,
+        coerce=bool
     )
     images = forms.FileField(
         widget=forms.ClearableFileInput(attrs={'multiple': True}),
         validators=[validate_image_file_extension],
+        required=True
     )
 
 
@@ -298,7 +301,11 @@ class UserInfoForm(ModelForm):
         model = UserInfo
         exclude = ('user', 'postal_code',)
         widgets = {
-            'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
+            # 'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
+            'DoB': SelectDateWidget(
+                attrs={"class": "date-select"},
+                years=[i for i in range(1900, datetime.datetime.now().year)]
+            ),
         }
 
     address = forms.CharField(
@@ -312,6 +319,12 @@ class UserInfoForm(ModelForm):
 
 
 class CreditCardForm(ModelForm):
+
     class Meta:
         model = CreditCard
         exclude = []
+        widgets = {
+            'credit_card_expiration_date': SelectDateWidget(
+                attrs={"class": "date-select"}
+            )
+        }

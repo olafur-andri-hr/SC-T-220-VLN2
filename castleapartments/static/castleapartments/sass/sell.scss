@@ -10,18 +10,34 @@ main {
 form {
     margin: 0;
     padding: 0;
+    table td{
+        text-align: left;
+    }
+}
+
+#sellform .errorlist {
+    color: $danger;
 }
 
 #infoform {
     height: auto;
+    min-height: calc(100vh - 9.25rem);
+    .navdiv {
+        position: fixed;
+    }
 }
 
 .forms:target ~ #infoform {
     height: 0;
+    min-height: 0;
+    .navdiv {
+        display: none;
+    }
 }
 
 .forms:target {
     height: auto;
+    min-height: calc(100vh - 9.25rem);
     margin: 0 auto;
 
     .navdiv {
@@ -44,7 +60,6 @@ form {
     margin: 0 auto;
     padding: 2rem;
     margin-top: 6rem;
-    margin-bottom: -2.25rem;
     padding-bottom: 2.25rem;
     // height: 80rem;
     background-color: white;
@@ -70,6 +85,7 @@ form {
 .form-body > *{
     margin: 0 auto;
     width: 100%;
+    text-align: center;
 }
 
 .navdiv {
@@ -183,8 +199,16 @@ form {
     width: auto;
 }
 
-#tablesdiv {
+.tablesdiv {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    h3 {
+        width: 100%;
+    }
+    th {
+        max-width: 15rem;
+    }
 }
 
 #temph2 {
@@ -235,4 +259,11 @@ form {
 
 h3 {
     text-align: center;
+}
+
+#addressheader {
+    width: 80%;
+    padding-top: 1rem;
+    border-top: 1px solid $black;
+    margin-top: 3rem;
 }

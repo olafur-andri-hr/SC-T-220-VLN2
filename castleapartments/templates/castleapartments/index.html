@@ -31,7 +31,6 @@
             <svg id="search_banner_background" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <polygon points="0,80 100,100 0,100" style="fill: #7E57C2; fill-rule: evenodd" />
                 <polygon points="0,0 100,0 100,50" style="fill: #5E35B1; fill-rule: evenodd" />
-                />
             </svg>
 
             <div id="search_banner_content">
@@ -42,12 +41,12 @@
                 </h5>
                 <form id="search_banner_form" action="#search-results" method="get" class="">
                     {% csrf_token %}
+                    {% for field in form %}
+                    {% if field.is_hidden %}
+                    {{field}}
+                    {% endif %}
+                    {% endfor %}
                     <ul>
-                        {% for field in form %}
-                        {% if field.is_hidden %}
-                        {{ field}}
-                        {% endif %}
-                        {% endfor %}
                         {{ form.address.errors }}
                         <li>
                             {{ form.address.label_tag }}
@@ -99,18 +98,19 @@
                             {{ form.max_size }}
                         </li>
 
-                        <li id="checkboxes_container">
-                            <label for="">Type:</label>
-                            <button type="button" id="checkbox_button" class="btn btn-primary">
-                                <span>Choose type(s)</span>
-
+                        <li>
+                            <label>Type:</label>
+                            <div id="checkboxes_container" class="d-inline-flex">
+                                <button type="button" id="checkbox_button" class="btn btn-primary">
+                                    <span>Choose type(s)</span>
+                                </button>
                                 <div id="checkboxes">
                                     <ul>
                                         {% for type in apartment_types %}
                                         <li>
                                             <input
                                                 type="checkbox"
-                                                checked="true"
+                                                checked=""
                                                 name="type"
                                                 value="{{ type.id }}"
                                                 id="checkbox_{{ type.id }}" />
@@ -121,16 +121,16 @@
                                         {% endfor %}
                                     </ul>
                                 </div>
-                            </button>
+                            </div>
                         </li>
                     </ul>
 
                     <button id="search_button" type="submit">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <polygon points="0,100 100,100 100,0" style="fill: #F5F5F5">
+                            <polygon points="0,100 100,100 100,0" style="fill: #F5F5F5" />
                         </svg>
                         <img src="{% static 'icons/search.svg' %}" alt="Search" />
-                        <p>Search</p>
+                        <span id="search-button-text">Search</span>
                     </button>
                 </form>
             </div>
@@ -164,7 +164,7 @@
                         stroke-linejoin="round" />
                 </g>
                 <defs>
-                    <filter id="filter0_d" x="-0.000732422" y="-0.000686646" width="59.0014" height="49.0007"
+                    <filter id="filter1_d" x="-0.000732422" y="-0.000686646" width="59.0014" height="49.0007"
                         filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0" result="BackgroundImageFix" />
                         <feColorMatrix in="SourceAlpha" type="matrix"
@@ -203,25 +203,20 @@
                 </li>
                 <li>
                     <a id="edit_search" href="#frontpage-div">
-                        <img 
-                            id="edit_search_icon"
+                        <img id="edit_search_icon" alt=""
                             src="{% static 'icons/edit.svg' %}">
-                        <p>Edit search</p>
+                        Edit search
                     </a>
                 </li>
             </ul>
         </div>
-        <button 
-            type="button"
-            class="btn"
-            id="history_button"
+        <button type="button" class="btn" id="history_button"
             data-original-text="Recently viewed"
             data-new-text="Back to listings">
-            <img 
-                src="{% static 'icons/history.svg' %}"
+            <img src="{% static 'icons/history.svg' %}"
                 alt="View search history"
                 class="icon" />
-            <p>Recently viewed</p>
+            Recently viewed
         </button>
         <div id="listings_container" class="container-fluid">
             {% for listing in listings %}
@@ -277,9 +272,8 @@
             <nav aria-label="..." id="page-selection-nav">
                 <ul class="pagination d-flex justify-content-center p-4 m-0" id="page-selection-list">
                     <li class="page-item {% if page_number == 1 %}disabled{% endif %}">
-                        <button class="page-link" href="#search-results" type="submit" form="search_banner_form"
-                            value="{{page_number|add:"-1"}}" name="page_number" aria-label="Previous" 
-                            {% if page_number == 1 %}disabled=""{% endif %}>
+                        <button class="page-link" type="submit" form="search_banner_form"
+                            value="{{page_number|add:"-1"}}" name="page_number" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </button>
@@ -287,21 +281,20 @@
                     {% for a_page in pages %}
                         {% if a_page == page_number %}
                         <li class="page-item active">
-                            <input class="page-link" href="#search-results" type="submit" form="search_banner_form"
+                            <input class="page-link" type="submit" form="search_banner_form"
                                 value="{{a_page}}" name="page_number" />
                             <span class="sr-only">(current)</span>
                         </li>
                         {% else %}
                         <li class="page-item">
-                            <input class="page-link" href="#search-results" type="submit" form="search_banner_form"
+                            <input class="page-link" type="submit" form="search_banner_form"
                                 value="{{a_page}}" name="page_number" />
                         </li>
                         {% endif %}
                     {% endfor %}
                     <li class="page-item {% if page_number == page_count %}disabled{% endif %}">
-                        <button class="page-link"href="#search-results" type="submit" form="search_banner_form"
-                            value="{{page_number|add:"1"}}" name="page_number" aria-label="Next"
-                            {% if page_number == page_count %}diabled=""{% endif %}>
+                        <button class="page-link" type="submit" form="search_banner_form"
+                            value="{{page_number|add:"1"}}" name="page_number" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </button>

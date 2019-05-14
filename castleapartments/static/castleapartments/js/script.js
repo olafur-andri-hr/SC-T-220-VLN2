@@ -24,7 +24,12 @@ function addEventListeners() {
   const cards = document.querySelectorAll('#listings_container .card');
 
   window.addEventListener('scroll', onScroll);
-  editSearchLink.addEventListener('click', scrollToTop);
+  editSearchLink.addEventListener('click', ( event) => {
+    setTimeout(() => {
+      document.getElementById('id_address').focus();
+    }, 1000);
+    scrollToTop(event);
+  });
   listingHint.addEventListener('click', scrollToListings);
   checkboxButton.addEventListener('click', showCheckboxes);
   historyButton.addEventListener('click', showHistory);
@@ -139,6 +144,7 @@ function hideCheckboxes(e) {
 function showHistory(e) {
   const pagination = document.getElementById('page-selection-nav');
   populateHistory();
+  document.getElementById('page-selection-div').classList.add('d-none');
   historyButton.lastElementChild.innerText =
     historyButton.getAttribute('data-new-text');
   listingsContainer.classList.add('hide');
@@ -171,6 +177,7 @@ function hideHistory(e) {
 
     setTimeout(() => {
       listingsContainer.classList.remove('hide');
+      document.getElementById('page-selection-div').classList.remove('d-none');
       historyButton.removeEventListener('click', hideHistory);
       historyButton.addEventListener('click', showHistory);
     }, 200);
