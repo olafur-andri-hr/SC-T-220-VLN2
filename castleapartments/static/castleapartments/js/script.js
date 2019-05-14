@@ -6,6 +6,7 @@ const checkboxes = document.getElementById('checkboxes');
 const historyButton = document.getElementById('history_button');
 const listingsContainer = document.getElementById('listings_container');
 const searchHistory = document.getElementById('recently_viewed');
+const pagination = document.getElementById('page-selection-nav');
 let hintIsHidden = false;
 let historyIsLoaded = false;
 
@@ -142,7 +143,6 @@ function hideCheckboxes(e) {
  * @param {Event} e The event object for this click event handler
  */
 function showHistory(e) {
-  const pagination = document.getElementById('page-selection-nav');
   populateHistory();
   document.getElementById('page-selection-div').classList.add('d-none');
   historyButton.lastElementChild.innerText =
@@ -150,7 +150,7 @@ function showHistory(e) {
   listingsContainer.classList.add('hide');
   historyButton.removeEventListener('click', showHistory);
   historyButton.addEventListener('click', hideHistory);
-  pagination.style.display = 'none';
+  pagination.classList.add('hide');
 
   setTimeout(() => {
     listingsContainer.classList.add('remove');
@@ -168,6 +168,7 @@ function showHistory(e) {
  */
 function hideHistory(e) {
   searchHistory.classList.remove('show');
+  pagination.classList.remove('hide');
   historyButton.lastElementChild.innerText =
     historyButton.getAttribute('data-original-text');
 

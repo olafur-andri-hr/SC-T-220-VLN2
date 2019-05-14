@@ -83,8 +83,6 @@ def offer(request, listing_id, offer_id):
     elif request.user.id != listing.seller.id:
         return HttpResponseBadRequest()
     return render(request, 'castleapartments/viewoffer.html', context)
-    return HttpResponse("Showing offer: '{}' for listing: '{}'"
-                        .format(offer_id, listing_id))
 
 
 def newOffer(request, listing_id):
@@ -97,3 +95,39 @@ def newOffer(request, listing_id):
         "listing": listing
     }
     return render(request, 'castleapartments/offer.html', context)
+
+
+def accept_offer(request, listing_id, offer_id):
+    listing = Listing.objects.get(uuid=listing_id)
+    offer = Offer.objects.get(id=offer_id)
+
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif request.user.id != listing.seller.id:
+        return HttpResponseBadRequest()
+    offer.accepted = True
+    offer.save()
+
+    # Return a response
+    context = {
+        "listing": listing
+    }
+    return render(request, 'castleapartments/acceptoffer.html', context)
+
+
+def decline_offer(request, listing_id, offer_id):
+    listing = Listing.objects.get(uuid=listing_id)
+
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif request.user.id != listing.seller.id:
+        return HttpResponseBadRequest()
+
+    # Decline the offer
+    Offer.objects.get(id=offer_id).delete()
+
+    # Return a response
+    context = {
+        "listing": listing
+    }
+    return render(request, 'castleapartments/declineoffer.html', context)

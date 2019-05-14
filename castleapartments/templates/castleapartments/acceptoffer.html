@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/style.scss' %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/view_offer.scss' %}" />
+{% endblock styles %}
+
+{% block title %}
+<title>View - Castle Apartments</title>
+{% endblock title %}
+
+{% block scripts %}
+<script src="{% static 'castleapartments/js/viewOffer.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+<main>
+<div id="wrapper">
+    <section id="buyer_section">
+        <h2>The offer has been accepted!</h2>
+        <p>
+            Now all that's left to complete the transaction is for our staff
+            to review and verify this purchase.
+        </p>
+        <p>Thank you for choosing Castle Apartments!</p>
+        <a href="/listings/{{ listing.uuid }}/" class="btn btn-main">
+            Return to listing
+        </a>
+    </section>
+
+</div>
+</main>
+{% endblock content %}
