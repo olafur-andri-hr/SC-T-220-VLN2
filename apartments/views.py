@@ -156,6 +156,9 @@ def newOffer(request, listing_id):
         credit_card_form = CreditCardForm(request.POST)
         if offer_form.is_valid() and credit_card_form.is_valid() and \
                 request.user != listing.seller:
+            if old_offer:
+                old_offer.credit_card.delete()
+                old_offer.delete()
             cc = credit_card_form.save()
             new_offer = Offer(
                 buyer=request.user,
