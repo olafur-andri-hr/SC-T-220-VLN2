@@ -23,6 +23,9 @@
     <div id="main_content" class="container-full">
         <div id="profile">
             <div id="account_profile">
+                {% if profile.is_superuser %}
+                <div id="jobtitle"> Staff </div>
+                {% endif %}
                 <div id="profile_image">
                     <div id="profileimg" style='background-image: url({{profile.userinfo.profile_img.url}});'></div>
                 </div>
