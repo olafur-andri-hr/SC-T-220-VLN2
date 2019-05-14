@@ -20,12 +20,19 @@
 <main>
 {% if user.is_superuser %}
 <section id="button_section">
-    <button type="button" class="btn btn-raised btn-danger">
+    {% if listing.processed %}
+    <a type="button" class="btn btn-raised btn-danger" 
+        id="unlist_btn"
+        href="unlist/">
         Unlist Property
-    </button>
-    <button type="button" class="btn btn-raised btn-success">
+    </a>
+    {% else %}
+    <a type="button" class="btn btn-raised btn-success" 
+        id="list_btn"
+        href="list/">
         List Property
-    </button>
+    </a>
+    {% endif %}
 </section>
 {% endif %}
 <div id="flex_container">
