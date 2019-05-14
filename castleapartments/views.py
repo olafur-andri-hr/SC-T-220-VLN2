@@ -152,13 +152,14 @@ def account(request):
 
 
 def profile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    user_listings = Listing.objects.filter(seller=user)
+    profile_user = get_object_or_404(User, id=user_id)
+    user_listings = Listing.objects.filter(seller=profile_user)
     user_selling = user_listings.exclude(sold_date__isnull=False)
     user_sold = user_listings.exclude(sold_date__isnull=True)
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
+        "profile": profile_user,
         "profile_selling": user_selling,
         "profile_sold": user_sold
     }
