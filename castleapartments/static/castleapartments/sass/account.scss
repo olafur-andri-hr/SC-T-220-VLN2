@@ -52,6 +52,7 @@
 }
 
 #jobtitle {
+    width: 100%;
     border-top: 1px solid #212121;
     border-bottom: 1px solid #212121;
     background-color: rgba(255, 0, 0, 0.6);
@@ -267,6 +268,15 @@
 
         @media screen and (max-width: 1000px) {
             flex-direction: column;
+        }
+
+        .card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 5;
         }
 
         .sales_img {
