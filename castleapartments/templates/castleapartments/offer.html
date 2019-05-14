@@ -174,7 +174,7 @@
                 </p>
                 <p>You will be notified if your offer is accepted!</p>
                 <div class="next_button">
-                    <a class="btn btn-outline-primary box-shadow" href="{% url 'listing' offer.listing.id %}"
+                    <a class="btn btn-outline-primary box-shadow" href="{% url 'listing' offer.listing.uuid %}"
                         id="button2" type="button">
                         Return to listing</a>
                 </div>
@@ -184,7 +184,7 @@
                 <h1>There was a problem!</h1>
                 <p>Something was not submitted correctly. Please take another look to correct any errors.</p>
                 <div class="prevstep">
-                    <a class="btn btn-outline-secondary box-shadow" href="#basicform" type="button">
+                    <a class="btn btn-outline-secondary box-shadow" href="#paymentform" type="button">
                         Go back to fix errors
                     </a>
                 </div>
