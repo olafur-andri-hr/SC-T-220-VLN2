@@ -15,6 +15,15 @@ td {
     width: 2rem;
     cursor: pointer;
     font-family: 'Consolas', 'Roboto', sans-serif;
+
+    @media screen and (max-width: 700px) {
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: 1rem;
+        position: absolute;
+        top: 25%;
+        right: -1.5rem;
+    }
 }
 
 .help-text {
@@ -34,9 +43,34 @@ td {
     pointer-events: none;
     max-width: 15rem;
     text-align: center;
+
+    ul {
+        text-align: left;
+        padding: 0 0 0 1rem;
+        list-style-type: circle;
+    }
 }
 
 .help-text-icon:hover ~ .help-text {
     transform: translateY(-102%);
     opacity: 1;
+}
+
+.help-text-icon:focus ~ .help-text {
+    transform: translateY(-102%);
+    opacity: 1;
+}
+
+#main_banner {
+    table {
+        width: 100%;
+    }
+}
+
+form {
+    label {
+        @media screen and (max-width: 800px) {
+            font-size: 1rem;
+        }
+    }
 }

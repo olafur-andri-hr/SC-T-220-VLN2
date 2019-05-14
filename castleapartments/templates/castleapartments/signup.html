@@ -89,8 +89,9 @@
                             <tr>
                                 <th>{{user_form.password2.label_tag}}</th>
                                 <td>{{user_form.password2.errors}}{{user_form.password2}}
-                                    <div class="help-text-icon"></div>
-                                    {{ user_form.password2.help_text }}</td>
+                                    <div class="help-text-icon">?</div>
+                                    <div class="help-text">{{ user_form.password2.help_text }}</div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
