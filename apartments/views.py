@@ -1,5 +1,5 @@
 from math import ceil
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from rest_framework.renderers import JSONRenderer
@@ -31,6 +31,8 @@ def listing(request, listing_id):
             Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
     except Exception:
         pass
+    if (not listing.processed) and (request.user.id != listing.seller.id):
+        return HttpResponseBadRequest()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
@@ -40,6 +42,38 @@ def listing(request, listing_id):
         "accepted_offer": accepted_offer
     }
     return render(request, 'castleapartments/apartmentinfo.html', context)
+
+
+def list_listing(request, listing_id):
+    a_listing = Listing.objects.get(uuid=listing_id)
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif not request.user.is_superuser:
+        return HttpResponseBadRequest()
+    a_listing.processed = True
+    a_listing.save()
+
+    # Return a response
+    context = {
+        "listing": a_listing
+    }
+    return redirect(listing, listing_id=a_listing.uuid)
+
+
+def unlist_listing(request, listing_id):
+    a_listing = Listing.objects.get(uuid=listing_id)
+    if not request.user.is_authenticated:
+        return HttpResponseBadRequest()
+    elif not request.user.is_superuser:
+        return HttpResponseBadRequest()
+    a_listing.processed = False
+    a_listing.save()
+
+    # Return a response
+    context = {
+        "listing": a_listing
+    }
+    return redirect(listing, listing_id=a_listing.uuid)
 
 
 def search(request):
@@ -63,7 +97,11 @@ def get_many_by_id(request, listing_ids):
     data = []
     for listing_id in id_list:
         try:
-            listing = Listing.objects.get(uuid=listing_id)
+            listing = Listing.objects.get(
+                uuid=listing_id,
+                processed=True,
+                sold_date=None,
+            )
             data.append(
                 ListingSerializer(
                     listing,
@@ -71,7 +109,7 @@ def get_many_by_id(request, listing_ids):
                 ).data
             )
         except Exception:
-            pass
+            continue
     return JsonResponse(data, safe=False)
 
 

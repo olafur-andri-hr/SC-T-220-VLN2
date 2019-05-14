@@ -1,3 +1,42 @@
-#main_banner {
-    height: 100%;
+td {
+    position: relative;
+}
+
+.help-text-icon {
+    background-color: #1E88E5;
+    border: 0.1rem solid #FFFFFF;
+    border-radius: 50%;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    font-family: 'Consolas', 'Roboto', sans-serif;
+}
+
+.help-text {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+    font-family: 'Reem Kufi', sans-serif;
+    transition: transform 200ms ease, opacity 200ms ease;
+    opacity: 0;
+    transform: translateY(-98%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    pointer-events: none;
+    max-width: 15rem;
+    text-align: center;
+}
+
+.help-text-icon:hover ~ .help-text {
+    transform: translateY(-102%);
+    opacity: 1;
 }
