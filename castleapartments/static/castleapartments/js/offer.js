@@ -1,3 +1,4 @@
+const form = document.getElementById('sellform');
 const theButton = document.getElementById('paymentnextlink');
 theButton.addEventListener('click', showConfirm);
 
@@ -15,9 +16,16 @@ const expiryYear = document.getElementById(
 
 /**
  * This is a useless comment because I'm too lazy to do something with it
+ * @param {Event} event the click event
  */
-function showConfirm() {
-  console.log('You absolute wanker!');
+function showConfirm(event) {
+  if (!form.reportValidity()) {
+    event.preventDefault();
+  } else {
+    setTimeout(scrollToTop, 10);
+  }
+
+
   const amounttd = document.getElementById('amounttd');
   const conveyancetd = document.getElementById('conveyancetd');
   const creditCardtd = document.getElementById('creditcardtd');
@@ -29,4 +37,21 @@ function showConfirm() {
   creditCardtd.textContent = creditCardNumber.value;
   ccExpirytd.textContent = expiryMonth.value.toString() + '/' +
     expiryDay.value.toString() + '/' + expiryYear.value.toString();
+}
+
+/**
+ * Scrolls the user to the top of the website in a smoooth manner
+ * @param {Event} e The event object for this function
+ */
+function scrollToTop(e) {
+  try {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    e.preventDefault();
+  } catch (_) {
+    // Do nothing
+  }
 }

@@ -1,6 +1,7 @@
 from math import ceil
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
+from django.contrib.auth.decorators import login_required
 from rest_framework.renderers import JSONRenderer
 from .models import Listing, Apartment, ApartmentImage, ApartmentType
 from castleapartments.models import PostalCode, Offer
@@ -74,6 +75,7 @@ def get_many_by_id(request, listing_ids):
     return JsonResponse(data, safe=False)
 
 
+@login_required
 def offer(request, listing_id, offer_id):
     user = request.user
     listing = Listing.objects.get(uuid=listing_id)
@@ -100,18 +102,37 @@ def offer(request, listing_id, offer_id):
     return render(request, 'castleapartments/viewoffer.html', context)
 
 
+@login_required
 def newOffer(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
+    offer_form = OfferForm()
+    credit_card_form = CreditCardForm()
+    offer = None
+    if request.method == "POST":
+        offer_form = OfferForm(request.POST)
+        credit_card_form = CreditCardForm(request.POST)
+        if offer_form.is_valid() and credit_card_form.is_valid() and \
+                request.user != listing.seller:
+            cc = credit_card_form.save()
+            offer = Offer(
+                buyer=request.user,
+                listing=listing,
+                request_amount=offer_form.changed_data["offer_amount"],
+                credit_card=cc,
+            )
+            offer.save()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
-        "offerform": OfferForm(),
-        "creditcardform": CreditCardForm(),
-        "listing": listing
+        "offerform": offer_form,
+        "creditcardform": credit_card_form,
+        "listing": listing,
+        "offer": offer
     }
     return render(request, 'castleapartments/offer.html', context)
 
 
+@login_required
 def accept_offer(request, listing_id, offer_id):
     listing = Listing.objects.get(uuid=listing_id)
     offer = Offer.objects.get(id=offer_id)
@@ -138,6 +159,7 @@ def accept_offer(request, listing_id, offer_id):
     return render(request, 'castleapartments/acceptoffer.html', context)
 
 
+@login_required
 def decline_offer(request, listing_id, offer_id):
     listing = Listing.objects.get(uuid=listing_id)
     accepted_offer = None

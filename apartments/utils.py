@@ -14,7 +14,7 @@ def get_listing_results(search_form: SearchForm):
         "apartment__address__icontains": parameters["address"],
         "apartment__postal_code__zip_code": parameters["zip_code"],
         "apartment__postal_code__country": parameters["country"],
-        "apartment__postal_code__town": parameters["town"],
+        "apartment__postal_code__town__icontains": parameters["town"],
         "apartment__num_rooms__gte": parameters["min_rooms"],
         "apartment__num_rooms__lte": parameters["max_rooms"],
         "apartment__appraisal__gte": parameters["min_price"] * 1000000,

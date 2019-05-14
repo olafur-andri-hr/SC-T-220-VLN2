@@ -11,7 +11,5 @@ urlpatterns = [
     path('account/', views.account, name='account'),
     path('account/editprofile/', views.editprofile, name='editprofile'),
     path('buyrequest/<int:offer_id>/', views.asale, name="buyrequest"),
-    # path('listing/', views.listing, name='listing'),
-    # path('listing/', views.listing, name='listing'),
     path('logout/', views.logout, name='logout')
 ]
