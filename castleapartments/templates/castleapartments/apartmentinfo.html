@@ -241,7 +241,7 @@
                 {% if all_offers|length > 0 %}
                 {% for curr_offer in all_offers %}
                     <li class="offer">
-                    <a href="offers/{{ curr_offer.id }}">
+                    <a href="offers/{{ curr_offer.id }}/">
                         <div 
                             class="profile-pic"
                             style="background-image: url({{ curr_offer.buyer.userinfo.profile_img.url }})">

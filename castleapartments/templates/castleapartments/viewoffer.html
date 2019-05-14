@@ -14,7 +14,7 @@
 {% endblock title %}
 
 {% block scripts %}
-
+<script src="{% static 'castleapartments/js/viewOffer.js' %}" defer></script>
 {% endblock scripts %}
 
 {% block content %}
@@ -31,7 +31,7 @@
             <li><b>Email:</b> {{ offer.buyer.userinfo.email }}</li>
         </ul>
         <button class="btn btn-link">
-            <a href="/profiles/{{ offer.buyer.id }}">View Profile</a>
+            <a href="/profiles/{{ offer.buyer.id }}" class="btn btn-link">View Profile</a>
         </button>
     </section>
     <section id="offer_section">
@@ -52,13 +52,30 @@
     </section>
 
     <section id="button_section">
-        <button type="button" class="btn btn-raised btn-success">
+        <button type="button" class="btn btn-raised btn-success" id="accept_offer_button">
             Accept offer
         </button>
-        <button type="button" class="btn btn-raised btn-danger">
+        <button type="button" class="btn btn-raised btn-danger" id="decline_offer_button">
             Decline offer
         </button>
     </section>
+
+    <div class="pop-up" id="accept_pop_up">
+        <div class="pop-up-background">
+            <p>Are you sure you wish to accept this offer?</p>
+            <a class="btn btn-success" href="accept/">Absolutely!</a>
+            <button class="btn btn-danger cancel">Cancel</button>
+        </div>
+    </div>
+
+    <div class="pop-up" id="decline_pop_up">
+        <div class="pop-up-background">
+            <p>Are you sure you wish to decline this offer?</p>
+            <a class="btn btn-success" href="decline/">Absolutely</a>
+            <button class="btn btn-danger cancel">Cancel</button>
+        </div>
+    </div>
+
 </div>
 </main>
 {% endblock content %}
