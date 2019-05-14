@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from rest_framework.renderers import JSONRenderer
 from .models import Listing, Apartment, ApartmentImage, ApartmentType
 from castleapartments.models import PostalCode, Offer
+from django.contrib.auth.decorators import login_required
 from castleapartments.forms import SearchForm
 from .serializers import ListingSerializer
 from .utils import get_listing_results
@@ -135,11 +136,16 @@ def offer(request, listing_id, offer_id):
         return HttpResponseBadRequest()
     elif accepted_offer:
         return HttpResponseBadRequest()
+    elif not listing.processed:
+        return HttpResponseBadRequest()
     return render(request, 'castleapartments/viewoffer.html', context)
 
 
+@login_required
 def newOffer(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
+    if request.user.id == listing.seller.id:
+        return HttpResponseBadRequest()
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
@@ -166,6 +172,8 @@ def accept_offer(request, listing_id, offer_id):
         return HttpResponseBadRequest()
     elif accepted_offer:
         return HttpResponseBadRequest()
+    elif not listing.processed:
+        return HttpResponseBadRequest()
     offer.accepted = True
     offer.save()
 
@@ -190,6 +198,8 @@ def decline_offer(request, listing_id, offer_id):
     elif request.user.id != listing.seller.id:
         return HttpResponseBadRequest()
     elif accepted_offer:
+        return HttpResponseBadRequest()
+    elif not listing.processed:
         return HttpResponseBadRequest()
 
     # Decline the offer
