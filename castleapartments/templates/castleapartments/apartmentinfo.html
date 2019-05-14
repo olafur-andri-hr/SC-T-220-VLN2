@@ -145,7 +145,12 @@
         <hr />
         {% endif %}
         <div id="your_offer_container">
-        {% if listing.seller.id != user.id %}
+        {% if accepted_offer != None %}
+            <p class="offer-text">
+                An offer for this apartment has already been accepted. The offer
+                is awaiting verification from the staff at Castle Apartments.
+            </p>
+        {% elif listing.seller.id != user.id %}
             <p id="your_offer_label"><b>Your offer(s):</b></p>
             {% if authenticated == False %}
                 <p class="offer-text">
@@ -159,9 +164,12 @@
                     You currently do not have a registered offer for this
                     particular listing, or your former offer has been declined.
                 </p>
-                <button type="button" id="make_offer_button" class="btn btn-link">
-                    <a href="/listings/{{ listing.uuid }}/offer">Make an offer</a>
-                </button>
+                <a 
+                    href="/listings/{{ listing.uuid }}/offer"
+                    class="btn btn-primary"
+                    id="make_offer_button">
+                    Make an offer
+                </a>
             {% elif offer.accepted == False %}
                 <p id="unaccepted_offer_text" class="offer-text">
                     Your offer is awaiting a response from
@@ -241,7 +249,7 @@
                 {% if all_offers|length > 0 %}
                 {% for curr_offer in all_offers %}
                     <li class="offer">
-                    <a href="offers/{{ curr_offer.id }}">
+                    <a href="offers/{{ curr_offer.id }}/">
                         <div 
                             class="profile-pic"
                             style="background-image: url({{ curr_offer.buyer.userinfo.profile_img.url }})">

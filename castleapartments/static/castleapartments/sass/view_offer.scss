@@ -13,6 +13,12 @@ section {
     text-align: center;
     color: $black;
     margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(33, 33, 33, 0.3);
+    padding-bottom: 1rem;
+}
+
+#button_section {
+    border: none;
 }
 
 h2 {
@@ -39,4 +45,45 @@ b {
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 0;
+}
+
+.pop-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: opacity 200ms ease;
+    pointer-events: none;
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .pop-up-background {
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        background-color: #FFFFFF;
+        text-align: center;
+        padding: 1rem;
+    }
+}
+
+.pop-up.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+button {
+    a {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
 }

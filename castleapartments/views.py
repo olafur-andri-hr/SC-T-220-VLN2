@@ -128,21 +128,21 @@ def sell(request):
 
 @login_required
 def account(request):
-    listings = Listing.objects.filter(
-        seller=request.user).reverse().exclude(sold_date__isnull=False)
-    sold_listings = Listing.objects.exclude(sold_date__isnull=True)
-    sale_requests = Listing.objects.filter(
-        processed=False)
-    buy_reqests = Offer.objects.filter(
-        accepted=True).filter(processed=False)
+    listings = Listing.objects.filter(seller=request.user).reverse()
+    selling_listings = listings.filter(sold_date__isnull=True)
+    sold_listings = listings.filter(sold_date__isnull=False)
     context = {
         "authenticated": request.user.is_authenticated,
         "isAdmin": request.user.is_superuser,
         "user": request.user,
-        "listings": listings,
+        "listings": selling_listings,
         "soldlistings": sold_listings,
     }
     if request.user.is_superuser:
+        sale_requests = Listing.objects.filter(
+            processed=False)
+        buy_reqests = Offer.objects.filter(
+            accepted=True).filter(processed=False)
         ifaddmin = {
             "saleRequests": sale_requests,
             "buyRequests": buy_reqests
