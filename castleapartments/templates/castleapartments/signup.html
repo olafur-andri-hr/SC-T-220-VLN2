@@ -3,7 +3,8 @@
 {% load sass_tags %}
 
 {% block styles %}
-<link rel="stylesheet" type="text/css" href="{% sass_src "castleapartments/sass/style.scss" %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/style.scss' %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/signup.scss' %}">
 {% endblock styles %}
 
 {% block scripts %}
@@ -50,7 +51,14 @@
                             </tr>
                             <tr>
                                 <th>{{user_info_form.phone_number.label_tag}}</th>
-                                <td>{{user_info_form.phone_number.errors}}{{user_info_form.phone_number}}</td>
+                                <td>
+                                    {{user_info_form.phone_number.errors}}{{user_info_form.phone_number}}
+                                    <div class="help-text-icon">?</div>
+                                    <div class="help-text">
+                                        Must include the international
+                                        prefix, "+###". Defaults to "+354".
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{user_info_form.SSN.label_tag}}</th>
@@ -62,8 +70,13 @@
                             </tr>
                             <tr>
                                 <th>{{user_info_form.email.label_tag}}</th>
-                                <td>{{user_info_form.email.errors}}{{user_info_form.email}}<br/>
-                                    {{ user_form.username.help_text }}</td>
+                                <td>
+                                    {{user_info_form.email.errors}}{{user_info_form.email}}
+                                    <div class="help-text-icon"></div>
+                                    <div class="help-text">
+                                        {{ user_form.username.help_text }}
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{user_form.password1.label_tag}}</th>
