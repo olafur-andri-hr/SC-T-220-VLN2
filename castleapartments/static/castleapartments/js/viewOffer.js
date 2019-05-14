@@ -27,6 +27,7 @@ function addEventListeners() {
 function showAcceptConfirmMessage(e) {
   const cancelButton = acceptConfirmMessage.querySelector('.cancel');
 
+  e.preventDefault();
   acceptConfirmMessage.classList.add('show');
   cancelButton.addEventListener('click', closeAcceptConfirmMessage);
 }
@@ -47,6 +48,7 @@ function closeAcceptConfirmMessage(e) {
 function showDeclineConfirmMessage(e) {
   const cancelButton = declineConfirmMessage.querySelector('.cancel');
 
+  e.preventDefault();
   declineConfirmMessage.classList.add('show');
   cancelButton.addEventListener('click', closeDeclineConfirmMessage);
 }

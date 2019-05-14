@@ -145,7 +145,12 @@
         <hr />
         {% endif %}
         <div id="your_offer_container">
-        {% if listing.seller.id != user.id %}
+        {% if accepted_offer != None %}
+            <p class="offer-text">
+                An offer for this apartment has already been accepted. The offer
+                is awaiting verification from the staff at Castle Apartments.
+            </p>
+        {% elif listing.seller.id != user.id %}
             <p id="your_offer_label"><b>Your offer(s):</b></p>
             {% if authenticated == False %}
                 <p class="offer-text">

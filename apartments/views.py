@@ -24,12 +24,19 @@ def listing(request, listing_id):
         )
     except Exception:
         pass
+    accepted_offer = None
+    try:
+        accepted_offer = \
+            Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
+    except Exception:
+        pass
     context = {
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "listing": listing,
         "offer": offer,
-        "all_offers": all_offers
+        "all_offers": all_offers,
+        "accepted_offer": accepted_offer
     }
     return render(request, 'castleapartments/apartmentinfo.html', context)
 
@@ -71,6 +78,12 @@ def offer(request, listing_id, offer_id):
     user = request.user
     listing = Listing.objects.get(uuid=listing_id)
     offer = Offer.objects.get(id=offer_id)
+    accepted_offer = None
+    try:
+        accepted_offer = \
+            Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
+    except Exception:
+        pass
     context = {
         "user": user,
         "authenticated": request.user.is_authenticated,
@@ -81,6 +94,8 @@ def offer(request, listing_id, offer_id):
     if not request.user.is_authenticated:
         return HttpResponseBadRequest()
     elif request.user.id != listing.seller.id:
+        return HttpResponseBadRequest()
+    elif accepted_offer:
         return HttpResponseBadRequest()
     return render(request, 'castleapartments/viewoffer.html', context)
 
@@ -100,10 +115,18 @@ def newOffer(request, listing_id):
 def accept_offer(request, listing_id, offer_id):
     listing = Listing.objects.get(uuid=listing_id)
     offer = Offer.objects.get(id=offer_id)
+    accepted_offer = None
+    try:
+        accepted_offer = \
+            Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
+    except Exception:
+        pass
 
     if not request.user.is_authenticated:
         return HttpResponseBadRequest()
     elif request.user.id != listing.seller.id:
+        return HttpResponseBadRequest()
+    elif accepted_offer:
         return HttpResponseBadRequest()
     offer.accepted = True
     offer.save()
@@ -117,10 +140,18 @@ def accept_offer(request, listing_id, offer_id):
 
 def decline_offer(request, listing_id, offer_id):
     listing = Listing.objects.get(uuid=listing_id)
+    accepted_offer = None
+    try:
+        accepted_offer = \
+            Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
+    except Exception:
+        pass
 
     if not request.user.is_authenticated:
         return HttpResponseBadRequest()
     elif request.user.id != listing.seller.id:
+        return HttpResponseBadRequest()
+    elif accepted_offer:
         return HttpResponseBadRequest()
 
     # Decline the offer
