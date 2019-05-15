@@ -262,12 +262,15 @@ def decline_offer(request, listing_id, offer_id):
     return render(request, 'castleapartments/declineoffer.html', context)
 
 
-@staff_member_required
+@login_required
 def delete_listing(request, listing_id):
     success = True
     listing = None
     try:
         listing = Listing.objects.get(uuid=listing_id)
+        if (not request.user == listing.seller
+                and not request.user.is_superuser):
+            return HttpResponseBadRequest()
         listing.delete()
         send_mail(
             "Your listing '{}' has been deleted"
