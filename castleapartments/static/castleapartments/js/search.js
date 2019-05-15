@@ -80,6 +80,7 @@
     event.preventDefault();
     scrollToListings(event);
     updateSearchNavPage(1);
+    hideHistory();
   }
 
   /**
