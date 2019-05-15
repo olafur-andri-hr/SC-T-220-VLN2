@@ -164,6 +164,13 @@ STATICFILES_FINDERS = [
     'sass_processor.finders.CssFinder',
 ]
 
+# Email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'castleapartments.vln2@gmail.com'
+EMAIL_HOST_PASSWORD = 'vlxygumdptfvmnoj'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 

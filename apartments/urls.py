@@ -7,6 +7,11 @@ urlpatterns = [
     path('<uuid:listing_id>/offer/', views.newOffer, name='newOffer'),
     path('<uuid:listing_id>/offers/<int:offer_id>/', views.offer),
     path(
+        '<uuid:listing_id>/delete/',
+        views.delete_listing,
+        name='delete_listing'
+    ),
+    path(
         '<uuid:listing_id>/offers/<int:offer_id>/accept/',
         views.accept_offer
     ),
