@@ -132,10 +132,12 @@ class SearchForm(forms.Form):
         label="Order by: ",
         choices=[("-listing_date", "Newest first"),
                  ("listing_date", "Oldest"),
+                 ("apartment__address", "Address A-Z"),
+                 ("-apartment__address", "Address Z-A"),
                  ("apartment__appraisal", "Least expensive"),
                  ("-apartment__appraisal", "Most expensive"),
                  ("apartment__postal_code__zip_code", "Postal code"),
-                 ("apartment__address", "Address"),
+                 ("apartment__size", "Size")
                  ],
         required=True,
         widget=forms.Select(attrs={"form": "search_banner_form"}),

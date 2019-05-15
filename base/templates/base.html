@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="{% sass_src "sass/base_style.scss" %}">
     <script src="{% static 'js/script.js' %}" defer></script>
     {% block styles %}{% endblock %}
-    {% block title %}{% endblock %}
+    {% block title %}
+    <title>{{request.resolver_match.view_name|title}} - Castle Apartments</title>
+    {% endblock %}
     {% block scripts %}{% endblock %}
 </head>
 
