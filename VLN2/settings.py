@@ -29,6 +29,8 @@ SECRET_KEY = 'q3z-whmpgbl8p5_$7%ve_9ug!m9$ihoybcjlouw1o_ea4vye^x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+USE_L10N = True
+
 ALLOWED_HOSTS = ["still-stream-97107.herokuapp.com",
                  "vln2.gng.is", "127.0.0.1", "localhost", "*"]
 
@@ -197,3 +199,10 @@ if 'ON_HEROKU' in os.environ:
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 django_heroku.settings(locals())
+
+HTMLVALIDATOR_ENABLED = True
+# HTMLVALIDATOR_FAILFAST = True
+
+if HTMLVALIDATOR_ENABLED:
+    MIDDLEWARE += ("htmlvalidator.middleware.HTMLValidator",)
+
