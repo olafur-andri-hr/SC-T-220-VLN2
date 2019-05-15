@@ -15,7 +15,7 @@ from .forms import UserInfoForm, PostalCodeForm
 from .models import PostalCode, Listing, ApartmentType
 from .models import Offer, Listing, Apartment, ApartmentImage
 from apartments.utils import get_listing_results, get_page_info
-from .utils import get_form_defaults
+from .utils import get_form_defaults, ListingWithOfferCount
 from django.forms.models import model_to_dict
 from .forms import CreditCardForm
 from .forms import OfferForm
@@ -146,25 +146,20 @@ def account(request):
     listings = Listing.objects.filter(seller=request.user).reverse()
     selling_listings = listings.filter(sold_date__isnull=True)
     sold_listings = listings.filter(sold_date__isnull=False)
+    lwocs = []
 
-    class SellingListings(object):
-        def __init__(self, listing, num):
-            self.listing = listing
-            self.num = num
-
-    selling = []
     for listing in selling_listings:
-        new_instance = SellingListings(
+        new_instance = ListingWithOfferCount(
             listing,
             Offer.objects.filter(listing__uuid=listing.uuid).count()
         )
-        selling.append(new_instance)
+        lwocs.append(new_instance)
 
     context = {
         "authenticated": request.user.is_authenticated,
         "isAdmin": request.user.is_superuser,
         "user": request.user,
-        "listings": selling,
+        "listings": lwocs,
         "soldlistings": sold_listings
     }
     if request.user.is_superuser:

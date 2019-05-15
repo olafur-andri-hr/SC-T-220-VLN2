@@ -8,3 +8,9 @@ def get_form_defaults(Form: BaseForm):
         if field.initial:
             defaults[name] = field.initial
     return defaults
+
+
+class ListingWithOfferCount(object):
+    def __init__(self, listing, num):
+        self.listing = listing
+        self.num = num
