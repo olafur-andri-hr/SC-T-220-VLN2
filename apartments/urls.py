@@ -3,10 +3,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<uuid:listing_id>/', views.listing, name="Listing"),
+    path('<uuid:listing_id>/', views.listing, name="listing"),
     path('<uuid:listing_id>/offer/', views.newOffer, name='New offer'),
     path('<uuid:listing_id>/offers/<int:offer_id>/',
-         views.offer, name="Offer"),
+         views.offer, name="offer"),
     path(
         '<uuid:listing_id>/delete/',
         views.delete_listing,
@@ -32,7 +32,7 @@ urlpatterns = [
         views.unlist_listing,
         name='Delete listing'
     ),
-    path('api/search/', views.search, name='Search'),
+    path('api/search/', views.search, name='search'),
     path('api/search/<str:listing_ids>/',
-         views.get_many_by_id, name="Search by")
+         views.get_many_by_id, name="search by")
 ]
