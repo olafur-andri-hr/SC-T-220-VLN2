@@ -13,5 +13,7 @@ urlpatterns = [
     path('account/editprofile/password',
          views.password_change, name='update password'),
     path('buyrequest/<int:offer_id>/', views.asale, name="buyrequest"),
+    path('buyrequest/<int:offer_id>/complete/', views.complete_buyrequest),
+    path('buyrequest/<int:offer_id>/decline/', views.decline_buyrequest),
     path('logout/', views.logout, name='logout')
 ]
