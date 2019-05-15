@@ -52,6 +52,9 @@
                 <p>Pending sale requests</p>
             </div>
             <div class="content">
+            {% if saleRequests|length == 0 %}
+                <p class="center em">You currently have no pending sale requests.</p>
+            {% else %}
                 {% for listing in saleRequests %}
                 <div class="requst_card" data-id="{{ listing.uuid }}">
                     <div class="requst_img"
@@ -73,6 +76,7 @@
                     <a href="/listings/{{listing.uuid}}" class="card-link"></a>
                 </div>
                 {% endfor %}
+            {% endif %}
             </div>
             {% else %}
             <div class="headtitle">
@@ -87,7 +91,7 @@
                 {% for listing in listings %}
                 <div class="selling_card" data-id="{{ listing.uuid }}">
                     <div class="selling_offers">
-                        Offers: 
+                        Offers: {{listing | length}}
                     </div>
                     <div class="selling_img"
                         style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
@@ -121,6 +125,12 @@
                 <p>Pending buy offers</p>
             </div>
             <div class="content">
+            {% if buyRequests|length == 0 %}
+                <br />
+                <p class="center em">
+                    You currently have no pending buy offers.
+                </p>
+            {% else %}
                 {% for sales in buyRequests %}
                 <div class="sales_card">
                     <div class="sales_img" style='background-image: url({{sales.buyer.userinfo.profile_img.url}});'>
@@ -140,6 +150,7 @@
                     <a href="/buyrequest/{{sales.id}}" class="card-link"></a>
                 </div>
                 {% endfor %}
+            {% endif %}
             </div>
             {% else %}
             <div class="headtitle">

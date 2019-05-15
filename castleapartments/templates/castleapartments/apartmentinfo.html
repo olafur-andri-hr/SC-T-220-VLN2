@@ -169,7 +169,13 @@
             </p>
         {% elif listing.seller.id != user.id %}
             <p id="your_offer_label"><b>Your offer(s):</b></p>
-            {% if authenticated == False %}
+            {% if not listing.processed %}
+                <p class="offer-text">
+                    This property has yet to be processed by the staff at
+                    Castle Apartments. Therefore, making an offer to this
+                    particular property is not available.
+                </p>
+            {% elif authenticated == False %}
                 <p class="offer-text">
                     Please log in to view your offers for this property.
                 </p>
@@ -210,7 +216,7 @@
                     </ul>
                 </div>
                 <button type="button" id="edit_offer_button" class="btn btn-link">
-                    <a href="#">Edit your offer</a>
+                    <a href="/listings/{{ listing.uuid }}/offer">Edit your offer</a>
                 </button>
             {% elif offer.processed == False %}
                 <p class="offer-text">
