@@ -40,6 +40,15 @@
         Delete Property
     </a>
 </section>
+{% elif user == listing.seller %}
+<section id="button_section">
+        <a 
+            class="btn btn-raised btn-danger"
+            id="delete_listing_btn"
+            href="delete/">
+            Delete Property
+        </a>
+</section>    
 {% endif %}
 <div id="flex_container">
     <div id="carousel_and_description_container">
