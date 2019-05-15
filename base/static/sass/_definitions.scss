@@ -1,27 +1,27 @@
 $primary: purple;
 $danger: red;
 
-
-$light-purple: #673AB7;
-$main-purple: #5503A7;
-$dark-purple: #4A0292;
+$light-purple: #673ab7;
+$main-purple: #5503a7;
+$dark-purple: #4a0292;
 $primary-background: rgb(227, 220, 241);
-$heading-font: 'Reem Kufi', sans-serif;
-$text-font: 'Roboto', sans-serif;
+$heading-font: "Reem Kufi", sans-serif;
+$text-font: "Roboto", sans-serif;
 $black: #212121;
-$white: #FFFFFF;
+$white: #ffffff;
 $translucent: rgba(255, 255, 255, 0.6);
-$text-light: #EFEFEF;
-$success-light: #E8F5E9;
+$text-light: #efefef;
+$success-light: #e8f5e9;
 $error-light: rgb(255, 164, 164);
+$yellow: #ffc107;
 
 //Change bootstrap colors here
-$primary:       $main-purple;
+$primary: $main-purple;
 
 // $secondary:     $gray-600;
 // $success:       $green;
 // $info:          $cyan;
-// $warning:       $yellow;
+$warning: $yellow;
 // $danger:        $red;
 // $light:         $gray-100;
 // $dark:          $gray-800;

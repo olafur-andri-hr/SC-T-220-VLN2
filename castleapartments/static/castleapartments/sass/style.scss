@@ -1,307 +1,307 @@
-@import '../../../../base/static/sass/definitions';
+@import "../../../../base/static/sass/definitions";
 
 form {
-    padding: 1rem;
+  padding: 1rem;
 
-    section {
-        max-width: 40rem;
-    }
+  section {
+    max-width: 40rem;
+  }
 
-    input,
-    textarea,
-    select {
-        width: 20rem;
-        max-width: 50vw;
-        border: none;
-        border-radius: 0.1rem;
-        color: #212121;
-        font-family: $text-font;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-        background-color: $white;
-        padding: 0.1rem;
-    }
+  input,
+  textarea,
+  select {
+    width: 20rem;
+    max-width: 50vw;
+    border: none;
+    border-radius: 0.1rem;
+    color: #212121;
+    font-family: $text-font;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: $white;
+    padding: 0.1rem;
+  }
 
-    input[type=radio] {
-        width: auto;
-    }
+  input[type="radio"] {
+    width: auto;
+  }
 
-    tr {
-        max-width: 100%;
-        overflow: hidden;
-    }
+  tr {
+    max-width: 100%;
+    overflow: hidden;
+  }
 
-    th {
-        text-align: right;
-    }
+  th {
+    text-align: right;
+  }
 
-    th,
-    td {
-        padding-bottom: 0.3rem;
-    }
+  th,
+  td {
+    padding-bottom: 0.3rem;
+  }
 
-    input[type=file] {
-        background-color: $translucent;
-    }
+  input[type="file"] {
+    background-color: $translucent;
+  }
 
-    input[type=submit] {
-        width: 100%;
-        background-color: $white;
-        padding: 0.5rem;
-        font-weight: bold;
-        font-size: 1.25rem;
-    }
+  input[type="submit"] {
+    width: 100%;
+    background-color: $white;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
 
-    label {
-        font-weight: 400;
-        text-align: right;
-        font-size: 1.2rem;
-        font-family: $text-font;
-        margin-right: 2rem;
-    }
+  label {
+    font-weight: 400;
+    text-align: right;
+    font-size: 1rem;
+    font-family: $text-font;
+    margin-right: 2rem;
+  }
 
-    .errorlist {
-        color: $error-light;
-    }
+  .errorlist {
+    color: $error-light;
+  }
 
-    .helpertext {
-        color: $text-light;
-    }
+  .helpertext {
+    color: $text-light;
+  }
 }
 #search_banner,
 #main_banner {
-    padding-top: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    position: relative;
-    width: 100%;
-    background-color: #673AB7;
-    color: #FFFFFF;
-    font-family: $text-font;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+  width: 100%;
+  background-color: #673ab7;
+  color: #ffffff;
+  font-family: $text-font;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
-    #search_banner_background,
-    #main_banner_background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-    }
-
-    #main_banner_content,
-    #search_banner_content {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 100rem;
-    }
-
-    #search_banner_content {
-        h1 {
-            font-family: $heading-font;
-        }
-
-        h5 {
-            font-family: $text-font;
-            font-weight: 200;
-        }
-
-        a {
-            font-weight: 400;
-            text-decoration: underline;
-            color: #FFFFFF;
-        }
-
-        ul {
-            margin-top: 2rem;
-            list-style-type: none;
-            margin-left: 0;
-            padding-left: 0;
-        }
-
-        li.inline-first,
-        li.inline-second {
-            display: inline;
-            margin: 0;
-        }
-
-        li.multiple-inputs {
-            input, select {
-                width: 9rem;
-
-                @media screen and (max-width: 400px) and (min-width: 340px) {
-                    width: 7rem;
-                }
-
-                @media screen and (max-width: 340px) {
-                    width: 6rem;
-                }
-            }
-
-            label:not(:first-child) {
-                display: inline;
-                margin: 0;
-                padding: 0;
-            }
-        }
-
-        label {
-            width: 5.5rem;
-            font-family: $heading-font;
-        }
-
-        input:not(input[type=radio]) {
-            width: 20rem;
-            padding-left: 10px;
-        }
-
-        select {
-            padding-left: 8px;
-            cursor: pointer;
-        }
-
-        input::placeholder {
-            color: rgba(0, 0, 0, 0.5);
-            font-size: 0.9rem;
-            font-family: $text-font;
-            font-weight: 400;
-        }
-
-        input[type="range"] {
-            appearance: none;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
-        // RANGE TRACK
-        input[type="range"]::-ms-track {
-            width: 100%;
-            cursor: pointer;
-            background: transparent;
-            border-color: transparent;
-            color: transparent;
-        }
-
-        input[type="range"]::-webkit-slider-runnable-track {
-            height: 0.2rem;
-            border-radius: 1rem;
-            width: 100%;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
-            background-color: rgba(255, 255, 255, 0.9);
-            cursor: pointer;
-        }
-
-        input[type="range"]::-moz-range-track {
-            height: 0.2rem;
-            border-radius: 1rem;
-            width: 100%;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
-            background-color: rgba(255, 255, 255, 0.9);
-            cursor: pointer;
-        }
-
-        input[type="range"]::-ms-track {
-            height: 0.2rem;
-            border-radius: 1rem;
-            width: 100%;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
-            background-color: rgba(255, 255, 255, 0.9);
-            cursor: pointer;
-        }
-
-        // RANGE THUMB
-        input[type="range"]::-webkit-slider-thumb {
-            appearance: none;
-            border-radius: 50%;
-            background-color: $light-purple;
-            border: 0.15rem solid #FFFFFF;
-            height: 1.5rem;
-            width: 1.5rem;
-            margin-top: -0.7rem;
-            cursor: pointer;
-            transition: background-color 200ms ease;
-        }
-
-        input[type="range"]:focus::-webkit-slider-thumb {
-            background-color: #FFFFFF;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
-            outline: hidden;
-        }
-    }
-
-    #search_button {
-        appearance: none;
-        border: none;
-        background-color: #FFFFFF;
-        color: #212121;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        font-family: $heading-font;
-        margin: auto;
-        padding: 0.5rem;
-        position: relative;
-        overflow: hidden;
-        border-radius: 0.2rem;
-        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        transition: background-color 200ms ease,
-                    transform 100ms ease;
-
-        * {
-            pointer-events: none;
-        }
-
-        img {
-            margin: 0 0 0 0;
-            position: relative;
-        }
-
-        span {
-            margin: 0.1rem 0.5rem 0 0.5rem;
-            font-size: 1.1rem;
-            color: #212121;
-            position: relative;
-            z-index: 5;
-        }
-
-        svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: 4;
-        }
-    }
-
-    #search_button:hover {
-        background-color: #F5F5F5;
-    }
-
-    #search_button:active {
-        transform: translateY(0.2rem);
-        box-shadow: none;
-    }
-
-    #search_button:focus {
-        outline: none;
-    }
-}
-
-#background_image {
-    z-index: -1;
-    position: fixed;
+  #search_banner_background,
+  #main_banner_background {
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    filter: blur(0.5rem);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    z-index: 1;
+  }
+
+  #main_banner_content,
+  #search_banner_content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100rem;
+  }
+
+  #search_banner_content {
+    h1 {
+      font-family: $heading-font;
+    }
+
+    h5 {
+      font-family: $text-font;
+      font-weight: 200;
+    }
+
+    a {
+      font-weight: 400;
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    ul {
+      margin-top: 2rem;
+      list-style-type: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    li.inline-first,
+    li.inline-second {
+      display: inline;
+      margin: 0;
+    }
+
+    li.multiple-inputs {
+      input,
+      select {
+        width: 9rem;
+
+        @media screen and (max-width: 400px) and (min-width: 340px) {
+          width: 7rem;
+        }
+
+        @media screen and (max-width: 340px) {
+          width: 6rem;
+        }
+      }
+
+      label:not(:first-child) {
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    label {
+      width: 5.5rem;
+      font-family: $heading-font;
+    }
+
+    input:not(input[type="radio"]) {
+      width: 20rem;
+      padding-left: 10px;
+    }
+
+    select {
+      padding-left: 8px;
+      cursor: pointer;
+    }
+
+    input::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 0.9rem;
+      font-family: $text-font;
+      font-weight: 400;
+    }
+
+    input[type="range"] {
+      appearance: none;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    // RANGE TRACK
+    input[type="range"]::-ms-track {
+      width: 100%;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 0.2rem;
+      border-radius: 1rem;
+      width: 100%;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+      background-color: rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-track {
+      height: 0.2rem;
+      border-radius: 1rem;
+      width: 100%;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+      background-color: rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+    }
+
+    input[type="range"]::-ms-track {
+      height: 0.2rem;
+      border-radius: 1rem;
+      width: 100%;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+      background-color: rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+    }
+
+    // RANGE THUMB
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      border-radius: 50%;
+      background-color: $light-purple;
+      border: 0.15rem solid #ffffff;
+      height: 1.5rem;
+      width: 1.5rem;
+      margin-top: -0.7rem;
+      cursor: pointer;
+      transition: background-color 200ms ease;
+    }
+
+    input[type="range"]:focus::-webkit-slider-thumb {
+      background-color: #ffffff;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+      outline: hidden;
+    }
+  }
+
+  #search_button {
+    appearance: none;
+    border: none;
+    background-color: #ffffff;
+    color: #212121;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: $heading-font;
+    margin: auto;
+    padding: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.2rem;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 200ms ease, transform 100ms ease;
+
+    * {
+      pointer-events: none;
+    }
+
+    img {
+      margin: 0 0 0 0;
+      position: relative;
+    }
+
+    span {
+      margin: 0.1rem 0.5rem 0 0.5rem;
+      font-size: 1.1rem;
+      color: #212121;
+      position: relative;
+      z-index: 5;
+    }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 4;
+    }
+  }
+
+  #search_button:hover {
+    background-color: #f5f5f5;
+  }
+
+  #search_button:active {
+    transform: translateY(0.2rem);
+    box-shadow: none;
+  }
+
+  #search_button:focus {
+    outline: none;
+  }
+}
+
+#background_image {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  filter: blur(0.5rem);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

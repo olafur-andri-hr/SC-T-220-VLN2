@@ -11,6 +11,7 @@ from django.forms.widgets import SelectDateWidget
 from .models import User, UserInfo, CreditCard
 from location.models import PostalCode
 from apartments.models import ApartmentType
+from .widgets import FixedSelectDateWidget
 
 
 class SearchForm(forms.Form):
@@ -153,8 +154,9 @@ class OfferForm(forms.Form):
     conveyance_date = forms.DateField(
         label="Date of conveyance:",
         required=True,
-        widget=SelectDateWidget(
-            attrs={"class": "date-select"}
+        widget=FixedSelectDateWidget(
+            attrs={"class": "date-select"},
+            empty_label=("-year-", "-month-", "-day-")
         )
     )
     credit_card = CreditCard()
@@ -302,9 +304,10 @@ class UserInfoForm(ModelForm):
         exclude = ('user', 'postal_code',)
         widgets = {
             # 'DoB': forms.DateInput(attrs={'placeholder': 'mm/dd/YYYY'}),
-            'DoB': SelectDateWidget(
-                attrs={"class": "date-select"},
-                years=[i for i in range(1900, datetime.datetime.now().year)]
+            'DoB': FixedSelectDateWidget(
+                attrs={"class": "date-select", "required": ""},
+                years=[i for i in range(1900, datetime.datetime.now().year)],
+                empty_label=("-year-", "-month-", "-day-"),
             ),
         }
 
@@ -324,7 +327,8 @@ class CreditCardForm(ModelForm):
         model = CreditCard
         exclude = []
         widgets = {
-            'credit_card_expiration_date': SelectDateWidget(
-                attrs={"class": "date-select"}
+            'credit_card_expiration_date': FixedSelectDateWidget(
+                attrs={"class": "date-select"},
+                empty_label=("-year-", "-month-", "-day-")
             )
         }

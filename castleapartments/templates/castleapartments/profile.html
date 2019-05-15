@@ -48,9 +48,6 @@
             <div class="content">
                 {% for listing in profile_selling %}
                 <div class="selling_card" data-id="{{ listing.uuid }}">
-                    <div class="selling_offers">
-                        Offers:
-                    </div>
                     <div class="selling_img"
                         style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
                     </div>
