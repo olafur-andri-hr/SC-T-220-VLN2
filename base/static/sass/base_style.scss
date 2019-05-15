@@ -593,3 +593,11 @@ main {
     padding: 0.5rem 0.5rem;
   }
 }
+#main_banner_content {
+  a:not(.btn),
+  a:visited:not(.btn),
+  a:target:not(.btn),
+  a:focus:not(.btn) {
+    color: $warning;
+  }
+}
