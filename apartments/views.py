@@ -275,9 +275,9 @@ def delete_listing(request, listing_id):
         send_mail(
             "Your listing '{}' has been deleted"
             .format(listing.apartment.address),
-            "We are terribly sorry to inform you that your listing '{}' has "
+            "We must inform you that your listing '{}' has "
             .format(listing.apartment.address) +
-            "been deleted by the staff at Castle Apartments. For more info, " +
+            "been from the Castle Apartments website. For more info, " +
             "feel free to contact us. Phone: +354 123 4567, email: " +
             "castleapartments.vln2@gmail.com",
             "castleapartments.vln2@gmail.com",
