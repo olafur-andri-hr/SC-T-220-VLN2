@@ -35,6 +35,21 @@
             </svg>
 
             <div id="search_banner_content">
+                    <noscript>
+                        <nav id="noscript_nav">
+                            {% if authenticated == False %}
+                                <a href="{% url 'signup' %}">Sign Up</a> |
+                                <a href="{% url 'login' %}">Log In</a> |
+                            {% else %}
+                                <a href="{% url 'account' %}">My Account</a> |
+                                <a href="{% url 'logout' %}">Log Out</a> |
+                            {% endif %}
+                            <a href="{% url 'index' %}">All Listings</a> |
+                            <a href="{% url 'sell' %}">Sell Apartment</a> |
+                            <a href="{% url 'about' %}">About Us</a>
+                        </nav>
+                    </noscript>
+
                 <h1>Buy and sell properties. Online.</h1>
                 <h5>
                     Use the form below to search for your dreamhouse or

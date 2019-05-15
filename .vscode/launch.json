@@ -64,7 +64,15 @@
             ],
             "django": true
         },
-
-
+        {
+            "name": "Compile SCSS",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "compilescss"
+            ],
+            "django": true
+        }
     ]
 }
