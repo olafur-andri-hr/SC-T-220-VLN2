@@ -215,4 +215,3 @@ HTMLVALIDATOR_ENABLED = True
 
 if HTMLVALIDATOR_ENABLED:
     MIDDLEWARE += ("htmlvalidator.middleware.HTMLValidator",)
-
