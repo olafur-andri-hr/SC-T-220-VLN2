@@ -14,10 +14,10 @@
 {% endblock title %}
 
 {% block content %}
-<div id="background_image" style='
+<div id="background_image" style="
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
-                    url("{% static "background.jpg" %}")'>
+                    url('{% static 'background.jpg' %}')">
 </div>
 <main>
     <div id="main_content" class="container-full">
@@ -27,7 +27,7 @@
                 <div id="jobtitle"> Staff </div>
                 {% endif %}
                 <div id="profile_image">
-                    <div id="profileimg" style='background-image: url({{profile.userinfo.profile_img.url}});'></div>
+                    <div id="profileimg" style="background-image: url({{profile.userinfo.profile_img.url}});"></div>
                 </div>
                 <div id="profile_name">
                     <p>{{profile.userinfo.first_name}} {{profile.userinfo.last_name}}</p>
@@ -49,7 +49,7 @@
                 {% for listing in profile_selling %}
                 <div class="selling_card" data-id="{{ listing.uuid }}">
                     <div class="selling_img"
-                        style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
+                        style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});">
                     </div>
                     <div class="selling_body">
                         <h5 class="card-title no-margin">
@@ -81,7 +81,7 @@
                 {% for listing in profile_sold %}
                 <div class="sold_card">
                     <div class="sold_img"
-                        style='background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});'>
+                        style="background-image: url({{listing.apartment.apartmentimage_set.first.image.url}});">
                     </div>
                     <div class="sold_body">
                         <h5 class="card-title no-margin">
