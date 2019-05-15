@@ -33,5 +33,6 @@ urlpatterns = [
         name='Delete listing'
     ),
     path('api/search/', views.search, name='Search'),
-    path('api/search/<str:listing_ids>/', views.get_many_by_id, name="Search by")
+    path('api/search/<str:listing_ids>/',
+         views.get_many_by_id, name="Search by")
 ]
