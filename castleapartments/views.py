@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.views import redirect_to_login, LoginView
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -66,6 +67,17 @@ def about(request):
 def login(request):
     return LoginView.as_view(
         form_class=LoginForm,
+        template_name='castleapartments/login.html',
+        extra_context={
+            "authenticated": request.user.is_authenticated,
+            "user": request.user,
+        }
+    )(request)
+
+
+def password_change(request):
+    return PasswordChangeView.as_view(
+        form_class=PasswordChangeForm,
         template_name='castleapartments/login.html',
         extra_context={
             "authenticated": request.user.is_authenticated,
