@@ -188,9 +188,9 @@ def signup(request):
         user_form = UserCreationForm(request.POST)
 
         if user_info_form.is_valid():
-            changed_data = dict(request.POST)
-            changed_data['username'] = user_info_form.cleaned_data["email"]
-            user_form = UserCreationForm(data=changed_data)
+            changed = {key: value for key, value in request.POST.items()}
+            changed['username'] = user_info_form.cleaned_data["email"]
+            user_form = UserCreationForm(data=changed)
 
         if (postal_code_form.is_valid() and user_form.is_valid() and
                 user_info_form.is_valid()):
