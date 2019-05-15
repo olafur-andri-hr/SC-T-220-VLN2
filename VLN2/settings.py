@@ -208,6 +208,7 @@ AWS_QUERYSTRING_AUTH = False
 if 'ON_HEROKU' in os.environ:
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    HTMLVALIDATOR_ENABLED = False
 else:
     HTMLVALIDATOR_ENABLED = True
 django_heroku.settings(locals())
