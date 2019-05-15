@@ -1,4 +1,5 @@
 document.getElementById('hamburger').addEventListener('click', hamburger);
+document.getElementById('closeicon').addEventListener('click', hamburger);
 // document.getElementById('accountdiv')
 //     .addEventListener('click', sidebardropdown);
 
@@ -14,11 +15,16 @@ document.getElementById('hamburger').addEventListener('click', hamburger);
  */
 function hamburger() {
   const navbar = document.getElementById('dropdownnav');
+  const ham = document.getElementById('hamburger');
+  const close = document.getElementById('closeicon');
   if (navbar.className === 'active') {
     navbar.className = 'notActive';
+    close.style.display = 'none';
   } else {
     navbar.className = 'active';
+    close.style.display = 'flex';
   }
+  ham.classList.toggle('humbergur90');
 }
 
 window.addEventListener('click', function(event) {

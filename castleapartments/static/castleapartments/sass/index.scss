@@ -55,6 +55,25 @@
 
     #search_banner_content {
         margin: 0 auto;
+
+        #noscript_nav {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        
+            a {
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-family: $heading-font;
+                margin-right: 0.25rem;
+                margin-left: 0.25rem;
+            }
+
+            a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                text-decoration: underline;
+            }
+        }
+
         form {
             padding-top: 0;
 

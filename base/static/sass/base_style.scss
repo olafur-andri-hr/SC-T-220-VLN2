@@ -313,7 +313,7 @@ header {
     #sidebar {
       display: none;
     }
-    #hamburger {
+    #hamburger, #closeicon{
       width: 2rem;
       height: 2rem;
       z-index: 11;
@@ -327,6 +327,16 @@ header {
       border: none;
       cursor: pointer;
       outline: none;
+      transition: transform 200ms 200ms ease;
+    }
+    
+    #closeicon {
+      display: none;
+    }
+
+    #hamburger.humbergur90 {
+      transform: rotate(90deg);
+      display: none;
     }
 
     #dropdownnav {
