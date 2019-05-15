@@ -37,9 +37,9 @@
                         {% endlocalize %}
                     </b></li>
             </ul>
-            <button class="btn btn-link">
-                <a href="/listings/{{ offer.listing.uuid }}">View Listing</a>
-            </button>
+            <a
+                href="/listings/{{ offer.listing.uuid }}"
+                class="btn btn-link">View Listing</a>
         </section>
         <div id="info_box">
             <section id="buyer_section">
@@ -50,9 +50,9 @@
                     <li><b>Name:</b> {{ offer.buyer.userinfo }}</li>
                     <li><b>Email:</b> {{ offer.buyer.userinfo.email }}</li>
                 </ul>
-                <button class="btn btn-link">
-                    <a href="/profiles/{{ offer.buyer.id }}">View Profile</a>
-                </button>
+                <a 
+                    href="/profiles/{{ offer.buyer.id }}"
+                    class="btn btn-link">View Profile</a>
             </section>
             <section id="seller_section">
                 <h2>Seller</h2>
@@ -63,9 +63,9 @@
                     <li><b>Name:</b> {{ offer.listing.seller.userinfo }}</li>
                     <li><b>Email:</b> {{ offer.listing.seller.userinfo.email }}</li>
                 </ul>
-                <button class="btn btn-link">
-                    <a href="/profiles/{{ offer.listing.seller.id }}">View Profile</a>
-                </button>
+                <a 
+                    href="/profiles/{{ offer.listing.seller.id }}"
+                    class="btn btn-link">View Profile</a>
             </section>
             <section id="offer_section">
                 <h2>Offer</h2>

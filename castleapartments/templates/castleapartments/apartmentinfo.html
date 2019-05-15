@@ -169,7 +169,13 @@
             </p>
         {% elif listing.seller.id != user.id %}
             <p id="your_offer_label"><b>Your offer(s):</b></p>
-            {% if authenticated == False %}
+            {% if not listing.processed %}
+                <p class="offer-text">
+                    This property has yet to be processed by the staff at
+                    Castle Apartments. Therefore, making an offer to this
+                    particular property is not available.
+                </p>
+            {% elif authenticated == False %}
                 <p class="offer-text">
                     Please log in to view your offers for this property.
                 </p>

@@ -32,7 +32,9 @@ def listing(request, listing_id):
             Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
     except Exception:
         pass
-    if (not listing.processed) and (request.user.id != listing.seller.id):
+    if (not listing.processed) \
+        and (request.user.id != listing.seller.id) \
+            and (not request.user.is_superuser):
         return HttpResponseBadRequest()
     context = {
         "authenticated": request.user.is_authenticated,
@@ -146,6 +148,18 @@ def offer(request, listing_id, offer_id):
 @login_required
 def newOffer(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
+    accepted_offer = None
+    try:
+        accepted_offer = \
+            Offer.objects.get(listing__uuid=listing.uuid, accepted=True)
+    except Exception:
+        pass
+
+    if accepted_offer:
+        return HttpResponseBadRequest()
+    elif not listing.processed:
+        return HttpResponseBadRequest()
+
     try:
         old_offer = Offer.objects.get(buyer=request.user, listing=listing)
     except Offer.DoesNotExist:
