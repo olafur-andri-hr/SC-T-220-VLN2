@@ -62,7 +62,11 @@
                                 <th>{{user_info_form.email.label_tag}}</th>
                                 <td>{{user_info_form.email.errors}}{{user_info_form.email}}</td>
                             </tr>
-                            {{ user_form }}
+                            
+                            <tr>
+                                <th><label>Update your password</label></th>
+                                <td><a href="{% url 'update password' %}">Use this form</a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
