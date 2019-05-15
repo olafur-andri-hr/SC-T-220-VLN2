@@ -1,7 +1,9 @@
 from math import ceil
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from rest_framework.renderers import JSONRenderer
 from .models import Listing, Apartment, ApartmentImage, ApartmentType
 from castleapartments.models import PostalCode, Offer
@@ -258,3 +260,33 @@ def decline_offer(request, listing_id, offer_id):
         "listing": listing
     }
     return render(request, 'castleapartments/declineoffer.html', context)
+
+
+@staff_member_required
+def delete_listing(request, listing_id):
+    success = True
+    listing = None
+    try:
+        listing = Listing.objects.get(uuid=listing_id)
+        listing.delete()
+        send_mail(
+            "Your listing '{}' has been deleted"
+            .format(listing.apartment.address),
+            "We are terribly sorry to inform you that your listing '{}' has "
+            .format(listing.apartment.address) +
+            "been deleted by the staff at Castle Apartments. For more info, " +
+            "feel free to contact us. Phone: +354 123 4567, email: " +
+            "castleapartments.vln2@gmail.com",
+            "castleapartments.vln2@gmail.com",
+            [listing.seller.userinfo.email],
+            fail_silently=True
+        )
+    except Listing.DoesNotExist:
+        success = False
+    context = {
+        "listing": listing,
+        "success": success,
+        "authenticated": request.user.is_authenticated,
+        "user": request.user
+    }
+    return render(request, 'castleapartments/deletelisting.html', context)

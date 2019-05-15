@@ -24,24 +24,32 @@
             <polygon points="0,0 100,0 100,50" style="fill: #5E35B1; fill-rule: evenodd" />
         </svg>
         <div id="main_banner_content" class="container-full">
+            {% if request.resolver_match.view_name == "login" %}
             <div class="container text-center">
                 <h1>Enter your credentials.</h1>
             </div>
+            {% elif request.resolver_match.view_name == "update password" %}
+            <div class="container text-center">
+                <h1>Update your password.</h1>
+            </div>    
+            {% endif %}
             <form action="#" method="post" class="d-flex flex-wrap justify-content-around container-full">
                 {% csrf_token %}
                 <section>
                     <table>
-                        {{ form }}
+                        {{ form.as_table }}
                     </table>
                 </section>
                 <div class="container-full text-center">
-                    <input type="submit" value="Login" class="btn btn-outline-primary box-shadow">
+                    <input type="submit" value="{{request.resolver_match.view_name|title}}" class="btn btn-outline-primary box-shadow">
                 </div>
             </form>
+            {% if request.resolver_match.view_name == "login" %}
             <div id="signup_btn" class="container-full text-center">
                 <p> Don’t have an account yet? </p>
                 <a href="/signup/" class="btn btn-primary box-shadow">Sign Up</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </main>

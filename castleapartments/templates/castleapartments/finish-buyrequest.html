@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/style.scss' %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/view_offer.scss' %}" />
+{% endblock styles %}
+
+{% block title %}
+<title>Finish buy request - Castle Apartments</title>
+{% endblock title %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+{% block content %}
+<main>
+<div id="wrapper">
+    <section id="buyer_section">
+    {% if completed == True %}
+        {% if success == False %}
+        <h2>Something went wrong!</h2>
+        <p>
+            Something came up while trying to complete the requested offer.
+        </p>
+        {% else %}
+        <h2>The buy request has been completed!</h2>
+        <p>
+            A mail has been sent to both parties notifying them of the
+            completion of the sale.
+        </p>
+        {% endif %}
+    {% else %}
+        {% if success == False %}
+        <h2>Something went wrong!</h2>
+        <p>
+            Something came up while trying to decline the requested offer.
+        </p>
+        {% else %}
+        <h2>The buy request has been declined!</h2>
+        <p>
+            A mail has been sent to both parties notifying them of the
+            cancellation of the sale.
+        </p>
+        {% endif %}
+    {% endif %}
+        <a href="/account/" class="btn btn-main">
+            Return to profile page
+        </a>
+    </section>
+
+</div>
+</main>
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/style.scss' %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/view_offer.scss' %}" />
+{% endblock styles %}
+
+{% block title %}
+<title>Listing deleted - Castle Apartments</title>
+{% endblock title %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+{% block content %}
+<main>
+<div id="wrapper">
+    <section id="buyer_section">
+    {% if success == True %}
+        <h2>The listing has been deleted!</h2>
+        <p>
+            The listing will no longer be available.
+        </p>
+    {% else %}
+        <h2>Something went wrong!</h2>
+        <p>
+            Something came up while trying to delete the requested listing.
+        </p>
+    {% endif %}
+        <a href="/account/" class="btn btn-main">
+            Return to profile page
+        </a>
+    </section>
+
+</div>
+</main>
+{% endblock content %}

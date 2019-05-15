@@ -114,7 +114,7 @@ class SearchForm(forms.Form):
         })
     )
     per_page = forms.IntegerField(
-        initial=3,
+        initial=12,
         validators=[MinValueValidator(1), MaxValueValidator(50)],
         widget=forms.HiddenInput(),
     )

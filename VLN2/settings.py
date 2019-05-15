@@ -166,6 +166,13 @@ STATICFILES_FINDERS = [
     'sass_processor.finders.CssFinder',
 ]
 
+# Email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'castleapartments.vln2@gmail.com'
+EMAIL_HOST_PASSWORD = 'vlxygumdptfvmnoj'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 
@@ -201,11 +208,12 @@ AWS_QUERYSTRING_AUTH = False
 if 'ON_HEROKU' in os.environ:
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    HTMLVALIDATOR_ENABLED = False
+else:
+    HTMLVALIDATOR_ENABLED = True
 django_heroku.settings(locals())
 
-HTMLVALIDATOR_ENABLED = True
 # HTMLVALIDATOR_FAILFAST = True
 
 if HTMLVALIDATOR_ENABLED:
     MIDDLEWARE += ("htmlvalidator.middleware.HTMLValidator",)
-

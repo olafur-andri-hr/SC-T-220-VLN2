@@ -3,9 +3,11 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.views import redirect_to_login, LoginView
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from .forms import SearchForm
 from castleapartments.forms import LoginForm
 from .forms import SellForm
@@ -17,6 +19,7 @@ from .utils import get_form_defaults
 from django.forms.models import model_to_dict
 from .forms import CreditCardForm
 from .forms import OfferForm
+from datetime import datetime
 
 
 def index(request):
@@ -66,6 +69,17 @@ def about(request):
 def login(request):
     return LoginView.as_view(
         form_class=LoginForm,
+        template_name='castleapartments/login.html',
+        extra_context={
+            "authenticated": request.user.is_authenticated,
+            "user": request.user,
+        }
+    )(request)
+
+
+def password_change(request):
+    return PasswordChangeView.as_view(
+        form_class=PasswordChangeForm,
         template_name='castleapartments/login.html',
         extra_context={
             "authenticated": request.user.is_authenticated,
@@ -188,9 +202,9 @@ def signup(request):
         user_form = UserCreationForm(request.POST)
 
         if user_info_form.is_valid():
-            changed_data = dict(request.POST)
-            changed_data['username'] = user_info_form.cleaned_data["email"]
-            user_form = UserCreationForm(data=changed_data)
+            changed = {key: value for key, value in request.POST.items()}
+            changed['username'] = user_info_form.cleaned_data["email"]
+            user_form = UserCreationForm(data=changed)
 
         if (postal_code_form.is_valid() and user_form.is_valid() and
                 user_info_form.is_valid()):
@@ -262,3 +276,145 @@ def editprofile(request):
 def logout(request):
     django_logout(request)
     return redirect(index)
+
+
+def complete_buyrequest(request, offer_id):
+    success = True
+    try:
+        offer = Offer.objects.get(id=offer_id)
+        listing = offer.listing
+        send_mail(
+            "Your sale is complete!",
+            "",
+            "castleapartments.vln2@gmail.com",
+            [offer.buyer.userinfo.email, offer.listing.seller.userinfo.email],
+            html_message="" +
+            "<p>We are incredibly happy to inform you that you are now the " +
+            "proud owner of '{}'.".format(listing.apartment.address) + "</p>" +
+            "<p>Please review the information shown below. " +
+            "Contact the staff at Castle Apartments for the next steps.</p>" +
+            "<h2>Seller</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Name:</strong> {}".format(offer.listing.seller.userinfo) +
+            "<br />" +
+            "<strong>Email:</strong> {}"
+            .format(offer.listing.seller.userinfo.email) +
+            "<br />" +
+            "<strong>Phone:</strong> {}"
+            .format(offer.listing.seller.userinfo.phone_number) +
+            "</p>" +
+            "<h2>Buyer</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Name:</strong> {}".format(offer.buyer.userinfo) +
+            "<br />" +
+            "<strong>Email:</strong> {}"
+            .format(offer.buyer.userinfo.email) +
+            "<br />" +
+            "<strong>Phone:</strong> {}"
+            .format(offer.buyer.userinfo.phone_number) +
+            "</p>" +
+            "<h2>Offer</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Property:</strong> {}".format(listing.apartment.address) +
+            "<br />" +
+            "<strong>Offer amount:</strong> ISK {}"
+            .format(offer.request_amount) +
+            "<br />" +
+            "<strong>Conveyance date:</strong> {}-{}-{}"
+            .format(
+                offer.request_date.year,
+                offer.request_date.month,
+                offer.request_date.day
+            ) +
+            "</p>" +
+            "<h2>Contact Us</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Email:</strong> castleapartments.vln2@gmail.com" +
+            "<br />" +
+            "<strong>Phone:</strong> +354 123 4567"
+            "</p>",
+            fail_silently=True
+        )
+        offer.processed = True
+        offer.save()
+        listing.sold_date = datetime.now().date()
+        listing.save()
+    except Offer.DoesNotExist:
+        success = False
+    context = {
+        "completed": True,
+        "success": success,
+        "offer": offer,
+        "authenticated": request.user.is_authenticated,
+        "user": request.user
+    }
+    return render(request, 'castleapartments/finish-buyrequest.html', context)
+
+
+def decline_buyrequest(request, offer_id):
+    success = True
+    try:
+        offer = Offer.objects.get(id=offer_id)
+        listing = offer.listing
+        send_mail(
+            "Your sale was cancelled",
+            "",
+            "castleapartments.vln2@gmail.com",
+            [offer.buyer.userinfo.email, offer.listing.seller.userinfo.email],
+            html_message="" +
+            "<p>We are sad to inform you that you're sale for " +
+            "'{}' ".format(listing.apartment.address) +
+            "has been cancelled</p>" +
+            "<h2>Seller</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Name:</strong> {}".format(offer.listing.seller.userinfo) +
+            "<br />" +
+            "<strong>Email:</strong> {}"
+            .format(offer.listing.seller.userinfo.email) +
+            "<br />" +
+            "<strong>Phone:</strong> {}"
+            .format(offer.listing.seller.userinfo.phone_number) +
+            "</p>" +
+            "<h2>Buyer</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Name:</strong> {}".format(offer.buyer.userinfo) +
+            "<br />" +
+            "<strong>Email:</strong> {}"
+            .format(offer.buyer.userinfo.email) +
+            "<br />" +
+            "<strong>Phone:</strong> {}"
+            .format(offer.buyer.userinfo.phone_number) +
+            "</p>" +
+            "<h2>Offer</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Property:</strong> {}".format(listing.apartment.address) +
+            "<br />" +
+            "<strong>Offer amount:</strong> ISK {}"
+            .format(offer.request_amount) +
+            "<br />" +
+            "<strong>Conveyance date:</strong> {}-{}-{}"
+            .format(
+                offer.request_date.year,
+                offer.request_date.month,
+                offer.request_date.day
+            ) +
+            "</p>" +
+            "<h2>Contact Us</h2>" +
+            "<p style='padding-left: 1rem;'>" +
+            "<strong>Email:</strong> castleapartments.vln2@gmail.com" +
+            "<br />" +
+            "<strong>Phone:</strong> +354 123 4567"
+            "</p>",
+            fail_silently=True
+        )
+        offer.delete()
+    except Offer.DoesNotExist:
+        success = False
+    context = {
+        "completed": False,
+        "success": success,
+        "offer": offer,
+        "authenticated": request.user.is_authenticated,
+        "user": request.user
+    }
+    return render(request, 'castleapartments/finish-buyrequest.html', context)
