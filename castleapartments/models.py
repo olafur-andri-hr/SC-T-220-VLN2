@@ -14,7 +14,7 @@ class UserInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(("First name"), max_length=20)
     last_name = models.CharField(("Last name"), max_length=20)
-    email = models.EmailField(("Email"), max_length=254)
+    email = models.EmailField(("Email"), max_length=254, unique=True)
     profile_img = ProcessedImageField(
         verbose_name=("Image"),
         upload_to='images/',
