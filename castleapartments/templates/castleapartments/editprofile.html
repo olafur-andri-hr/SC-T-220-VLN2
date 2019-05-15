@@ -8,7 +8,7 @@
 {% endblock styles %}
 
 {% block title %}
-<title> Edit Profile </title>
+<title> Edit Profile - Castle Apartments </title>
 {% endblock title %}
 
 {% block content %}
@@ -61,20 +61,10 @@
                                 <th>{{user_info_form.email.label_tag}}</th>
                                 <td>{{user_info_form.email.errors}}{{user_info_form.email}}</td>
                             </tr>
+                            
                             <tr>
-                                <th>{{ user_form.old_password.label_tag }}</th>
-                                <td>{{user_form.old_password.errors}}{{user_form.old_password}}{{user_form.old_password.help_text}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>{{ user_form.new_password1.label_tag }}</th>
-                                <td>{{user_form.new_password1.errors}}{{user_form.new_password1}}{{user_form.new_password1.help_text}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>{{ user_form.new_password2.label_tag }}</th>
-                                <td>{{user_form.new_password2.errors}}{{user_form.new_password2}}{{user_form.new_password2.help_text}}
-                                </td>
+                                <th><label>Update your password</label></th>
+                                <td><a href="{% url 'update password' %}">Use this form</a></td>
                             </tr>
                         </tbody>
                     </table>

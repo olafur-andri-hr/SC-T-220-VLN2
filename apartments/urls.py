@@ -5,7 +5,8 @@ from . import views
 urlpatterns = [
     path('<uuid:listing_id>/', views.listing, name="Listing"),
     path('<uuid:listing_id>/offer/', views.newOffer, name='New offer'),
-    path('<uuid:listing_id>/offers/<int:offer_id>/', views.offer, name='Offer'),
+    path('<uuid:listing_id>/offers/<int:offer_id>/',
+         views.offer, name="Offer"),
     path(
         '<uuid:listing_id>/delete/',
         views.delete_listing,
