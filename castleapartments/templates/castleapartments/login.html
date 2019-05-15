@@ -37,7 +37,7 @@
                 {% csrf_token %}
                 <section>
                     <table>
-                        {{ form }}
+                        {{ form.as_table }}
                     </table>
                 </section>
                 <div class="container-full text-center">
