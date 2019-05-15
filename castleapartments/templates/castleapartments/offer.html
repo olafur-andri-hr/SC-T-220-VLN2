@@ -151,15 +151,15 @@
                 </div>
                 <div class="arrowdiv" style="background-image: url('{% static 'icons/arrowright.svg' %}')"></div>
                 <div class="navigationdivs">
-                    <span>Payment</span>
+                    <a href="#paymentform" class="btn btn-primary">Payment</a>
                 </div>
                 <div class="arrowdiv" style="background-image: url('{% static 'icons/arrowright.svg' %}')"></div>
-                <div class="navigationdivs current reviewdiv">
-                    <span>Review</span>
+                <div class="navigationdivs">
+                    <a href="#reviewform" class="btn btn-primary">Review</a>
                 </div>
                 <div class="arrowdiv" style="background-image: url('{% static 'icons/arrowright.svg' %}')"></div>
-                <div class="navigationdivs confirmdiv">
-                    <span>Confirm</span>
+                <div class="navigationdivs current">
+                    <span class="btn">Confirm</span>
                 </div>
             </div>
             {% if offer %}
