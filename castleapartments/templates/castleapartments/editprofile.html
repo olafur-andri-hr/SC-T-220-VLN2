@@ -8,22 +8,21 @@
 {% endblock styles %}
 
 {% block title %}
-<title> Edit Profile </title>
+<title> Edit Profile - Castle Apartments </title>
 {% endblock title %}
 
 {% block content %}
 
-<div id="background_image" style='
+<div id="background_image" style="
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
-                    url("{% static "background.jpg" %}")'>
+                    url('{% static 'background.jpg' %}')">
 </div>
 <main>
     <div id="main_banner">
         <svg id="main_banner_background" viewBox="0 0 100 100" preserveAspectRatio="none">
             <polygon points="0,80 100,100 0,100" style="fill: #7E57C2; fill-rule: evenodd" />
             <polygon points="0,0 100,0 100,50" style="fill: #5E35B1; fill-rule: evenodd" />
-            />
         </svg>
 
         <div id="main_banner_content" class="container-full">
@@ -55,14 +54,18 @@
                                 <td>{{user_info_form.SSN.errors}}{{user_info_form.SSN}}</td>
                             </tr>
                             <tr>
-                                    <th>{{user_info_form.DoB.label_tag}}</th>
-                                    <td>{{user_info_form.DoB.errors}}{{user_info_form.DoB}}</td>
-                                </tr>
+                                <th>{{user_info_form.DoB.label_tag}}</th>
+                                <td>{{user_info_form.DoB.errors}}{{user_info_form.DoB}}</td>
+                            </tr>
                             <tr>
                                 <th>{{user_info_form.email.label_tag}}</th>
                                 <td>{{user_info_form.email.errors}}{{user_info_form.email}}</td>
                             </tr>
-                            {{ user_form }}
+                            
+                            <tr>
+                                <th><label>Update your password</label></th>
+                                <td><a href="{% url 'update password' %}">Use this form</a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -97,7 +100,7 @@
                 </div>
             </form>
             <div id="cancel_button">
-                    <a href="javascript:history.back()" class="btn btn-primary box-shadow">Cancel</a>
+                <a href="javascript:history.back()" class="btn btn-primary box-shadow">Cancel</a>
             </div>
         </div>
     </div>

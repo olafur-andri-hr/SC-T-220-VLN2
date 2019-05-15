@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.views import redirect_to_login, LoginView
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -73,6 +74,18 @@ def login(request):
             "authenticated": request.user.is_authenticated,
             "user": request.user,
         }
+    )(request)
+
+
+def password_change(request):
+    return PasswordChangeView.as_view(
+        form_class=PasswordChangeForm,
+        template_name='castleapartments/login.html',
+        extra_context={
+            "authenticated": request.user.is_authenticated,
+            "user": request.user,
+        },
+        success_url=reverse(account)
     )(request)
 
 
@@ -226,33 +239,24 @@ def signup(request):
 @login_required
 def editprofile(request):
     if request.method == "POST":
-        user_form = PasswordChangeForm(request.user, request.POST)
         user_info_form = UserInfoForm(
             request.POST, request.FILES, instance=request.user.userinfo)
         postal_code_form = PostalCodeForm(request.POST)
 
-        if (postal_code_form.is_valid() and user_form.is_valid() and
-                user_info_form.is_valid()):
-            new_user = user_form.save()
-
+        if (postal_code_form.is_valid() and user_info_form.is_valid()):
             postal_code = postal_code_form.get_postal_code()
 
             new_user_info = user_info_form.save(commit=False)
             new_user_info.postal_code = postal_code
             new_user_info.save()
-            if new_user.is_active:
-                request.session.set_expiry(86400)  # time to session expiry
-                django_login(request, new_user)
 
             return redirect(account)
     else:
         user_info_form = UserInfoForm(instance=request.user.userinfo)
-        user_form = PasswordChangeForm(user=request.user)
         postal_code_form = PostalCodeForm(
             data=model_to_dict(request.user.userinfo.postal_code))
 
     context = {
-        "user_form": user_form,
         "user_info_form": user_info_form,
         "postal_code_form": postal_code_form,
         "authenticated": request.user.is_authenticated,

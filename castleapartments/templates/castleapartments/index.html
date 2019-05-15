@@ -21,10 +21,10 @@
 {% endblock scripts %}
 
 {% block content %}
-<div id="background_image" style='
+<div id="background_image" style="
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.4),
                     rgba(255, 255, 255, 0.4)),
-                    url("{% static "background.jpg" %}")'>
+                    url('{% static 'background.jpg' %}')">
 </div>
 <main>
     <div id="frontpage-div">
@@ -284,7 +284,7 @@
             {% endif %}
             {% endfor %}
         </div>
-        <div id='page-selection-div' class="container-fluid text-center">
+        <div id="page-selection-div" class="container-fluid text-center">
             <nav aria-label="..." id="page-selection-nav">
                 <ul class="pagination d-flex justify-content-center p-4 m-0" id="page-selection-list">
                     <li class="page-item {% if page_number == 1 %}disabled{% endif %}">
