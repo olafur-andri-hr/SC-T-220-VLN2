@@ -22,7 +22,6 @@ function main() {
  */
 function addEventListeners() {
   const editSearchLink = document.getElementById('edit_search');
-  const cards = document.querySelectorAll('#listings_container .card');
 
   window.addEventListener('scroll', onScroll);
   editSearchLink.addEventListener('click', ( event) => {
@@ -34,19 +33,6 @@ function addEventListeners() {
   listingHint.addEventListener('click', scrollToListings);
   checkboxButton.addEventListener('click', showCheckboxes);
   historyButton.addEventListener('click', showHistory);
-  listEventListeners(cards, 'click', registerToHistory);
-}
-
-/**
- * Adds event listeners to a NodeList (a list of HTML elements)
- * @param {NodeList} list A list of nodes to add the event listener to
- * @param {String} event The event to listen to
- * @param {function} func The event handler for the event listener
- */
-function listEventListeners(list, event, func) {
-  for (let i = 0; i < list.length; i++) {
-    list[i].addEventListener(event, func);
-  }
 }
 
 /**
@@ -225,40 +211,6 @@ function populateHistory() {
   const IDString = arr.join(',');
   xhr.open('GET', '/listings/api/search/' + IDString);
   xhr.send();
-}
-
-/**
- * Registers a click on a card to the localStorage API
- * @param {Event} e The event object for this event handler
- */
-function registerToHistory(e) {
-  if (!window.localStorage.viewed) {
-    window.localStorage.viewed = '[]';
-  }
-
-  const MAX_LENGTH = 20;
-  const id = e.target.parentNode.getAttribute('data-id');
-  let arr = JSON.parse(window.localStorage.viewed);
-  arr = removeValueFromArray(arr, id);
-  arr.unshift(id);
-  arr = arr.slice(0, MAX_LENGTH);
-  window.localStorage.viewed = JSON.stringify(arr);
-}
-
-/**
- * Removes all occurrences of a specific value from an array
- * @param {Array} array The array to remove the value from
- * @param {*} value The value which you want to remove
- * @return {Array} The new array
- */
-function removeValueFromArray(array, value) {
-  newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] !== value) {
-      newArray.push(array[i]);
-    }
-  }
-  return newArray;
 }
 
 main();

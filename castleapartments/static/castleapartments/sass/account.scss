@@ -59,6 +59,10 @@
     padding: 0.2rem;
 }
 
+.btn.btn-small {
+    font-size: 0.9rem;
+}
+
 #account_profile,#profile_bio,#profile_info {
     word-wrap: break-word;
     display: inline-block;
@@ -70,8 +74,8 @@
         position: relative;
         margin: 1rem;
         display: block;
-        width: 250px;
-        height: 250px;
+        width: 15rem;
+        height: 15rem;
         border: 5px solid rgb(238, 238, 238);;
         border-radius: 1000rem;
 

@@ -31,6 +31,9 @@
                     <img src="{% static 'icons/edit.svg' %}" alt="Edit profile">
                 </div>
                 {% endif %}
+                <a class="btn btn-link btn-small" href="/profiles/{{ user.id }}">
+                    See how other users view your profile
+                </a>
                 <div id="profile_image">
                     <div id="profileimg" style="background-image: url({{user.userinfo.profile_img.url}});"></div>
                 </div>

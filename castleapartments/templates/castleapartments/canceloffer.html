@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+{% load l10n %}
+{% load humanize %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/style.scss' %}" />
+<link rel="stylesheet" type="text/css" href="{% sass_src 'castleapartments/sass/view_offer.scss' %}" />
+{% endblock styles %}
+
+{% block title %}
+<title>View - Castle Apartments</title>
+{% endblock title %}
+
+{% block scripts %}
+<script src="{% static 'castleapartments/js/viewOffer.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+<main>
+<div id="wrapper">
+    <section id="buyer_section">
+        <h2>Are you sure you wish to cancel your offer?</h2>
+        <p>
+            The offer will be deleted forever.
+        </p>
+    </section>
+
+    <section id="buttons_section">
+        <a class="btn btn-danger" href="yes/">Yes, I'm sure</a>
+        <a class="btn btn-info" href="/listings/{{ listing.uuid }}">No, I'm not</a>
+    </section>
+
+</div>
+</main>
+{% endblock content %}

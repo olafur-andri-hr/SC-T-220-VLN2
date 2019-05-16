@@ -508,6 +508,15 @@ b {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+#listing_id {
+    display: none;
+}
+
+.btn.btn-center {
+    display: block;
+    margin: auto;
+}
+
 #button_section {
     text-align: center;
     margin-top: 2rem;

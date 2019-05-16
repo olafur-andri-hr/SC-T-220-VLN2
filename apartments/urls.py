@@ -23,6 +23,16 @@ urlpatterns = [
         name='Decline offer'
     ),
     path(
+        '<uuid:listing_id>/offers/<int:offer_id>/cancel/',
+        views.cancel_offer_prompt,
+        name='Cancel offer prompt'
+    ),
+    path(
+        '<uuid:listing_id>/offers/<int:offer_id>/cancel/yes/',
+        views.cancel_offer,
+        name='Cancel offer'
+    ),
+    path(
         '<uuid:listing_id>/list/',
         views.list_listing,
         name='New listing'

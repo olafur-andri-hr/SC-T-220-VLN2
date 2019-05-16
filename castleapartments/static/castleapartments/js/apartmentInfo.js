@@ -2,6 +2,7 @@
  * The function that is always run when the file is loaded
  */
 function main() {
+  registerToHistory();
   addEventListeners();
   enableAppropriateCarouselControls();
   activateFirstCarouselIndicator();
@@ -213,6 +214,40 @@ function indicatorExpand(e) {
  */
 function indicatorShrink(e) {
   e.target.parentNode.classList.remove('hover');
+}
+
+/**
+ * Registers a click on a card to the localStorage API
+ * @param {Event} e The event object for this event handler
+ */
+function registerToHistory() {
+  if (!window.localStorage.viewed) {
+    window.localStorage.viewed = '[]';
+  }
+
+  const MAX_LENGTH = 20;
+  const id = document.getElementById('listing_id').innerText;
+  let arr = JSON.parse(window.localStorage.viewed);
+  arr = removeValueFromArray(arr, id);
+  arr.unshift(id);
+  arr = arr.slice(0, MAX_LENGTH);
+  window.localStorage.viewed = JSON.stringify(arr);
+}
+
+/**
+ * Removes all occurrences of a specific value from an array
+ * @param {Array} array The array to remove the value from
+ * @param {*} value The value which you want to remove
+ * @return {Array} The new array
+ */
+function removeValueFromArray(array, value) {
+  newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] !== value) {
+      newArray.push(array[i]);
+    }
+  }
+  return newArray;
 }
 
 main();

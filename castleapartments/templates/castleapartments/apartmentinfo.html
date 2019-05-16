@@ -17,6 +17,7 @@
 {% endblock scripts %}
 
 {% block content %}
+<span id="listing_id">{{ listing.uuid }}</span>
 <main>
 {% if user.is_superuser %}
 <section id="button_section">
@@ -230,8 +231,11 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" id="edit_offer_button" class="btn btn-link">
+                <button type="button" id="edit_offer_button" class="btn btn-link btn-center">
                     <a href="/listings/{{ listing.uuid }}/offer">Edit your offer</a>
+                </button>
+                <button type="button" class="btn btn-link btn-center">
+                    <a href="/listings/{{ listing.uuid }}/offers/{{ offer.id }}/cancel/">Cancel your offer</a>
                 </button>
             {% elif offer.processed == False %}
                 <p class="offer-text">

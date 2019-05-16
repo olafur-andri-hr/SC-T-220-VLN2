@@ -293,3 +293,25 @@ def delete_listing(request, listing_id):
         "user": request.user
     }
     return render(request, 'castleapartments/deletelisting.html', context)
+
+
+def cancel_offer_prompt(request, listing_id, offer_id):
+    listing = Listing.objects.get(uuid=listing_id)
+    offer = Offer.objects.get(id=offer_id)
+    if request.user.id != offer.buyer.id:
+        return HttpResponseBadRequest()
+    context = {
+        "user": request.user,
+        "authenticated": request.user.is_authenticated,
+        "listing": listing,
+        "offer": offer
+    }
+    return render(request, 'castleapartments/canceloffer.html', context)
+
+
+def cancel_offer(request, listing_id, offer_id):
+    offer = Offer.objects.get(id=offer_id)
+    if request.user.id != offer.buyer.id:
+        return redirect(listing, listing_id=listing_id)
+    offer.delete()    
+    return redirect(listing, listing_id=listing_id)
