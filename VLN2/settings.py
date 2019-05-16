@@ -157,9 +157,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "base/static"),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-WHITENOISE_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'root')
-
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -209,8 +206,10 @@ if 'ON_HEROKU' in os.environ:
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     HTMLVALIDATOR_ENABLED = False
+    DEBUG = False  # debug is not enabled on heroku
 else:
     HTMLVALIDATOR_ENABLED = True
+
 django_heroku.settings(locals())
 
 # HTMLVALIDATOR_FAILFAST = True
