@@ -10,8 +10,8 @@ from castleapartments.models import PostalCode, Offer
 from django.contrib.auth.decorators import login_required
 from castleapartments.forms import SearchForm
 from .serializers import ListingSerializer
-from .utils import get_listing_results, send_offer_email
-from castleapartments.utils import get_form_defaults
+from .utils import get_listing_results
+from castleapartments.utils import get_form_defaults, EmailUtil
 from castleapartments.forms import OfferForm
 from castleapartments.forms import CreditCardForm
 # Create your views here.
@@ -186,7 +186,7 @@ def newOffer(request, listing_id):
                 credit_card=cc,
             )
             new_offer.save()
-            send_offer_email(new_offer)
+            EmailUtil.send_offer_email(new_offer)
     else:
         offer_form = OfferForm()
         credit_card_form = CreditCardForm()

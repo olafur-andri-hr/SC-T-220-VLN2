@@ -16,6 +16,7 @@ from .models import PostalCode, Listing, ApartmentType
 from .models import Offer, Listing, Apartment, ApartmentImage
 from apartments.utils import get_listing_results, get_page_info
 from .utils import get_form_defaults, ListingWithOfferCount
+from .utils import EmailUtil
 from django.forms.models import model_to_dict
 from .forms import CreditCardForm
 from .forms import OfferForm
@@ -284,58 +285,7 @@ def complete_buyrequest(request, offer_id):
     try:
         offer = Offer.objects.get(id=offer_id)
         listing = offer.listing
-        send_mail(
-            "Your sale is complete!",
-            "",
-            "castleapartments.vln2@gmail.com",
-            [offer.buyer.userinfo.email, offer.listing.seller.userinfo.email],
-            html_message="" +
-            "<p>We are incredibly happy to inform you that you are now the " +
-            "proud owner of '{}'.".format(listing.apartment.address) + "</p>" +
-            "<p>Please review the information shown below. " +
-            "Contact the staff at Castle Apartments for the next steps.</p>" +
-            "<h2>Seller</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Name:</strong> {}".format(offer.listing.seller.userinfo) +
-            "<br />" +
-            "<strong>Email:</strong> {}"
-            .format(offer.listing.seller.userinfo.email) +
-            "<br />" +
-            "<strong>Phone:</strong> {}"
-            .format(offer.listing.seller.userinfo.phone_number) +
-            "</p>" +
-            "<h2>Buyer</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Name:</strong> {}".format(offer.buyer.userinfo) +
-            "<br />" +
-            "<strong>Email:</strong> {}"
-            .format(offer.buyer.userinfo.email) +
-            "<br />" +
-            "<strong>Phone:</strong> {}"
-            .format(offer.buyer.userinfo.phone_number) +
-            "</p>" +
-            "<h2>Offer</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Property:</strong> {}".format(listing.apartment.address) +
-            "<br />" +
-            "<strong>Offer amount:</strong> ISK {}"
-            .format(offer.request_amount) +
-            "<br />" +
-            "<strong>Conveyance date:</strong> {}-{}-{}"
-            .format(
-                offer.request_date.year,
-                offer.request_date.month,
-                offer.request_date.day
-            ) +
-            "</p>" +
-            "<h2>Contact Us</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Email:</strong> castleapartments.vln2@gmail.com" +
-            "<br />" +
-            "<strong>Phone:</strong> +354 123 4567"
-            "</p>",
-            fail_silently=True
-        )
+        EmailUtil.send_sale_complete_email(offer)
         offer.processed = True
         offer.save()
         listing.sold_date = datetime.now().date()
@@ -356,58 +306,7 @@ def decline_buyrequest(request, offer_id):
     success = True
     try:
         offer = Offer.objects.get(id=offer_id)
-        listing = offer.listing
-        send_mail(
-            "Your sale was cancelled",
-            "",
-            "castleapartments.vln2@gmail.com",
-            [offer.buyer.userinfo.email, offer.listing.seller.userinfo.email],
-            html_message="" +
-            "<p>We are sad to inform you that you're sale for " +
-            "'{}' ".format(listing.apartment.address) +
-            "has been cancelled</p>" +
-            "<h2>Seller</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Name:</strong> {}".format(offer.listing.seller.userinfo) +
-            "<br />" +
-            "<strong>Email:</strong> {}"
-            .format(offer.listing.seller.userinfo.email) +
-            "<br />" +
-            "<strong>Phone:</strong> {}"
-            .format(offer.listing.seller.userinfo.phone_number) +
-            "</p>" +
-            "<h2>Buyer</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Name:</strong> {}".format(offer.buyer.userinfo) +
-            "<br />" +
-            "<strong>Email:</strong> {}"
-            .format(offer.buyer.userinfo.email) +
-            "<br />" +
-            "<strong>Phone:</strong> {}"
-            .format(offer.buyer.userinfo.phone_number) +
-            "</p>" +
-            "<h2>Offer</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Property:</strong> {}".format(listing.apartment.address) +
-            "<br />" +
-            "<strong>Offer amount:</strong> ISK {}"
-            .format(offer.request_amount) +
-            "<br />" +
-            "<strong>Conveyance date:</strong> {}-{}-{}"
-            .format(
-                offer.request_date.year,
-                offer.request_date.month,
-                offer.request_date.day
-            ) +
-            "</p>" +
-            "<h2>Contact Us</h2>" +
-            "<p style='padding-left: 1rem;'>" +
-            "<strong>Email:</strong> castleapartments.vln2@gmail.com" +
-            "<br />" +
-            "<strong>Phone:</strong> +354 123 4567"
-            "</p>",
-            fail_silently=True
-        )
+        EmailUtil.send_sale_decline_email(offer)
         offer.delete()
     except Offer.DoesNotExist:
         success = False
