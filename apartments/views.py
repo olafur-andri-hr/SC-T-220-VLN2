@@ -316,5 +316,5 @@ def cancel_offer(request, listing_id, offer_id):
     offer = Offer.objects.get(id=offer_id)
     if request.user.id != offer.buyer.id:
         return redirect(listing, listing_id=listing_id)
-    offer.delete()    
+    offer.delete()
     return redirect(listing, listing_id=listing_id)
