@@ -535,3 +535,30 @@ b {
     width: 100%;
     margin-bottom: 2rem;
 }
+
+#map_preview {
+    overflow: hidden;
+    resize: none;
+    max-width: 100%;
+    width: 100%;
+    height: 20rem;
+
+    #gmapdisplay {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+
+        img {
+            max-width: none !important;
+            background: none !important;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    }
+
+    iframe {
+        height: 100%;
+        width: 100%;
+        border: 0;
+    }
+}

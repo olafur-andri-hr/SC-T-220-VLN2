@@ -19,6 +19,7 @@ from castleapartments.forms import CreditCardForm
 
 def listing(request, listing_id):
     listing = Listing.objects.get(uuid=listing_id)
+    plus_address = listing.apartment.address.replace(' ', '+')
     all_offers = Offer.objects.filter(listing__uuid=listing_id)
     offer = None
     try:
@@ -42,6 +43,7 @@ def listing(request, listing_id):
         "authenticated": request.user.is_authenticated,
         "user": request.user,
         "listing": listing,
+        "address_without_spaces": plus_address,
         "offer": offer,
         "all_offers": all_offers,
         "accepted_offer": accepted_offer
