@@ -146,7 +146,7 @@ class SearchForm(forms.Form):
 
 class OfferForm(forms.Form):
     offer_amount = forms.IntegerField(
-        label="Offer amount:",
+        label="Offer amount (ISK):",
         required=True,
         widget=forms.NumberInput(attrs={
             "placeholder": "Appraisal",
@@ -161,7 +161,6 @@ class OfferForm(forms.Form):
             empty_label=("-year-", "-month-", "-day-")
         )
     )
-    credit_card = CreditCard()
 
 
 class SellForm(forms.Form):

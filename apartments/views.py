@@ -182,6 +182,7 @@ def newOffer(request, listing_id):
                 buyer=request.user,
                 listing=listing,
                 request_amount=offer_form.cleaned_data["offer_amount"],
+                request_date=offer_form.cleaned_data["conveyance_date"],
                 credit_card=cc,
             )
             new_offer.save()
