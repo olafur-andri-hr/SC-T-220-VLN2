@@ -27,7 +27,8 @@ class EmailUtil(object):
             f"Castle Apartments: New offer for {apartment}",
             "Hi there from Castle Apartments!, \n\n" +
             "We must inform you that an offer has been made for " +
-            f"{apartment} by {seller} for a sum of {offer.request_amount} ISK " +
+            f"{apartment} by {seller} for a sum of " +
+            f"{offer.request_amount} ISK " +
             f"and the date of conveyance: {offer.request_date}.\n\n" +
             "Have a great day!\n\n For more info, " +
             "feel free to contact us. Phone: +354 123 4567, email: " +
