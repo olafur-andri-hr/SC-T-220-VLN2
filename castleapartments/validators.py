@@ -19,6 +19,8 @@ class SSNValidator():
 
 def credit_card_validator(ccn):
     ccn = ccn.strip().replace("-", "").replace(" ", "")
+    if len(ccn) < 8:
+        raise ValidationError("Invalid credit card number.")
     # Uses modified https://en.wikipedia.org/wiki/Luhn_algorithm
     # to check credit card validity
     LUHN_ODD_LOOKUP = (0, 2, 4, 6, 8,
