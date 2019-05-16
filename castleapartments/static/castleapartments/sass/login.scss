@@ -1,7 +1,5 @@
-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+main {
+    min-height: calc(100vh - 8rem);
 }
 
 #signup_btn {

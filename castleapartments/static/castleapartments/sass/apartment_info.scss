@@ -427,7 +427,11 @@ b {
         }
 
         #edit_offer_button {
-            margin: auto;
+            margin: 0 auto 0.2rem auto;
+        }
+
+        #cancel_offer_button {
+            margin: 0 auto 1rem 0;
         }
     }
 }

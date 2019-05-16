@@ -166,7 +166,7 @@
         <hr />
         {% if user.id != listing.seller.id %}
         <div id="seller_profile_container">
-            <p id="seller_label"><b>Seller:</b></p>
+            <p id="seller_label"><b>Seller</b> (click to view info):</p>
             <a href="/profiles/{{ listing.seller.id }}">
                 <div 
                     class="profile-pic"
@@ -231,12 +231,18 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" id="edit_offer_button" class="btn btn-link btn-center">
-                    <a href="/listings/{{ listing.uuid }}/offer">Edit your offer</a>
-                </button>
-                <button type="button" class="btn btn-link btn-center">
-                    <a href="/listings/{{ listing.uuid }}/offers/{{ offer.id }}/cancel/">Cancel your offer</a>
-                </button>
+                <a 
+                    href="/listings/{{ listing.uuid }}/offer"
+                    class="btn btn-info btn-center"
+                    id="edit_offer_button">
+                        Edit your offer
+                </a>
+                <a 
+                    href="/listings/{{ listing.uuid }}/offers/{{ offer.id }}/cancel/"
+                    class="btn btn-danger btn-center"
+                    id="cancel_offer_button">
+                    Cancel your offer
+                </a>
             {% elif offer.processed == False %}
                 <p class="offer-text">
                     Your offer has been accepted and is being processed by the
