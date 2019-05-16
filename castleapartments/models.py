@@ -63,7 +63,7 @@ class Offer(models.Model):
         on_delete=models.CASCADE
     )
     request_date = models.DateTimeField(
-        ("Offer request date"), auto_now=True, auto_now_add=False
+        ("Offer request date"), auto_now=False, auto_now_add=False
     )
     request_amount = models.IntegerField(("Offer request amount"))
     credit_card = models.OneToOneField(
