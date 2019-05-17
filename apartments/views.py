@@ -1,6 +1,6 @@
 from math import ceil
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -18,7 +18,7 @@ from castleapartments.forms import CreditCardForm
 
 
 def listing(request, listing_id):
-    listing = Listing.objects.get(uuid=listing_id)
+    listing = get_object_or_404(Listing, uuid=listing_id)
     plus_address = listing.apartment.address.replace(' ', '+')
     all_offers = Offer.objects.filter(listing__uuid=listing_id)
     offer = None
@@ -52,7 +52,7 @@ def listing(request, listing_id):
 
 
 def list_listing(request, listing_id):
-    a_listing = Listing.objects.get(uuid=listing_id)
+    a_listing = get_object_or_404(Listing, uuid=listing_id)
     if not request.user.is_authenticated:
         return HttpResponseBadRequest()
     elif not request.user.is_superuser:
@@ -68,7 +68,7 @@ def list_listing(request, listing_id):
 
 
 def unlist_listing(request, listing_id):
-    a_listing = Listing.objects.get(uuid=listing_id)
+    a_listing = get_object_or_404(Listing, uuid=listing_id)
     if not request.user.is_authenticated:
         return HttpResponseBadRequest()
     elif not request.user.is_superuser:
@@ -123,7 +123,7 @@ def get_many_by_id(request, listing_ids):
 @login_required
 def offer(request, listing_id, offer_id):
     user = request.user
-    listing = Listing.objects.get(uuid=listing_id)
+    listing = get_object_or_404(Listing, uuid=listing_id)
     offer = Offer.objects.get(id=offer_id)
     accepted_offer = None
     try:
@@ -151,7 +151,7 @@ def offer(request, listing_id, offer_id):
 
 @login_required
 def newOffer(request, listing_id):
-    listing = Listing.objects.get(uuid=listing_id)
+    listing = get_object_or_404(Listing, uuid=listing_id)
     accepted_offer = None
     try:
         accepted_offer = \
@@ -210,7 +210,7 @@ def newOffer(request, listing_id):
 
 @login_required
 def accept_offer(request, listing_id, offer_id):
-    listing = Listing.objects.get(uuid=listing_id)
+    listing = get_object_or_404(Listing, uuid=listing_id)
     offer = Offer.objects.get(id=offer_id)
     accepted_offer = None
     try:
@@ -241,7 +241,7 @@ def accept_offer(request, listing_id, offer_id):
 
 @login_required
 def decline_offer(request, listing_id, offer_id):
-    listing = Listing.objects.get(uuid=listing_id)
+    listing = get_object_or_404(Listing, uuid=listing_id)
     accepted_offer = None
     try:
         accepted_offer = \
@@ -275,7 +275,7 @@ def delete_listing(request, listing_id):
     success = True
     listing = None
     try:
-        listing = Listing.objects.get(uuid=listing_id)
+        listing = get_object_or_404(Listing, uuid=listing_id)
         if (not request.user == listing.seller
                 and not request.user.is_superuser):
             return HttpResponseBadRequest()
@@ -304,7 +304,7 @@ def delete_listing(request, listing_id):
 
 
 def cancel_offer_prompt(request, listing_id, offer_id):
-    listing = Listing.objects.get(uuid=listing_id)
+    listing = get_object_or_404(Listing, uuid=listing_id)
     offer = Offer.objects.get(id=offer_id)
     if request.user.id != offer.buyer.id:
         return HttpResponseBadRequest()
@@ -318,7 +318,7 @@ def cancel_offer_prompt(request, listing_id, offer_id):
 
 
 def cancel_offer(request, listing_id, offer_id):
-    offer = Offer.objects.get(id=offer_id)
+    offer = get_object_or_404(Offer, id=offer_id)
     if request.user.id != offer.buyer.id:
         return redirect(listing, listing_id=listing_id)
     offer.delete()
