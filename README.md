@@ -38,4 +38,4 @@ Pálmi Chanachai Rúnarsson
 Þór Breki Davíðsson
 
 ## License
-MIT License
+[MIT License](https://github.com/GudniNatan/SC-T-220-VLN2/blob/master/LICENSE)
