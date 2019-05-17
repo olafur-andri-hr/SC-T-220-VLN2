@@ -38,6 +38,11 @@ function createCard(listingsDiv, listing) {
   const countryFlag = document.createElement('img');
   countryFlag.src = postalCode.country.flag;
   countryPara.insertBefore(countryFlag, countryPara.firstChild);
+  let aptStr = 'Apartment ' + listing.apartment.apt_number;
+  if (!listing.apartment.apt_number) {
+    aptStr = '';
+  }
+  makeParagraph(aptStr, cardBody, ['card-text', 'no-margin', 'text-sm']);
 
   makeParagraph(
       listing.apartment.apartment_type.name + ', ' +
