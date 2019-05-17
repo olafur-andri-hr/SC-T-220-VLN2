@@ -45,28 +45,30 @@
             <div class="form-body">
                 <h1>Sell an apartment</h1>
                 <h3>Location</h3>
-                <table id="basictable1">
-                    <tr>
-                        <th class="tablelabel">{{ form.country.label_tag }}</th>
-                        <td>{{ form.country.errors }}{{ form.country }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.zip_code.label_tag }}</th>
-                        <td>{{ form.zip_code.errors }}{{ form.zip_code }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.town.label_tag }}</th>
-                        <td>{{ form.town }}{{ form.town.errors }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.address.label_tag }}</th>
-                        <td>{{ form.address.errors }}{{ form.address }}</td>
-                    </tr>
-                    <tr>
-                        <th class="tablelabel">{{ form.apt_number.label_tag }}</th>
-                        <td>{{ form.apt_number.errors }}{{ form.apt_number }}</td>
-                    </tr>
-                </table>
+                <div class="container-fluid d-flex justify-content-center">
+                    <table id="basictable1">
+                        <tr>
+                            <th class="tablelabel">{{ form.country.label_tag }}</th>
+                            <td>{{ form.country.errors }}{{ form.country }}</td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.zip_code.label_tag }}</th>
+                            <td>{{ form.zip_code.errors }}{{ form.zip_code }}</td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.town.label_tag }}</th>
+                            <td>{{ form.town }}{{ form.town.errors }}</td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.address.label_tag }}</th>
+                            <td>{{ form.address.errors }}{{ form.address }}</td>
+                        </tr>
+                        <tr>
+                            <th class="tablelabel">{{ form.apt_number.label_tag }}</th>
+                            <td>{{ form.apt_number.errors }}{{ form.apt_number }}</td>
+                        </tr>
+                    </table>
+                </div>
                 <h3>Appraisal</h3>
                 <table id="basictable2">
                     <tr>
