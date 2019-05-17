@@ -17,6 +17,8 @@ Kerfið er hannað til að virka hvar sem er í heiminum og að það sé eins �
 Python 3.7 er krafist fyrir þetta verkefni. Til að keyra þetta þarf fyrst að installa öllum nauðsynlegum pökkum.  
 ```pip install -r requirements.txt```
 
+Það gæti tekið smá tíma að installa, svo þú getur fengið þér kaffibolla meðan þú býður...
+
 Síðan á að virka að keyra serverinn með:  
 ```python manage.py runserver```
 
