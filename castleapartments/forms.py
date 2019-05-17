@@ -317,7 +317,7 @@ class UserInfoForm(ModelForm):
         max_length=100,
         required=True,
         widget=forms.TextInput(attrs={
-            "placeholder": "Your Address"
+            "placeholder": ""
         })
     )
 
