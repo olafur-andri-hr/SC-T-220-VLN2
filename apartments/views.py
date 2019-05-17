@@ -232,6 +232,8 @@ def accept_offer(request, listing_id, offer_id):
 
     # Return a response
     context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
         "listing": listing
     }
     return render(request, 'castleapartments/acceptoffer.html', context)
@@ -261,6 +263,8 @@ def decline_offer(request, listing_id, offer_id):
 
     # Return a response
     context = {
+        "authenticated": request.user.is_authenticated,
+        "user": request.user,
         "listing": listing
     }
     return render(request, 'castleapartments/declineoffer.html', context)
