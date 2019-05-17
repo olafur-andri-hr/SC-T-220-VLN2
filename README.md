@@ -24,10 +24,12 @@ Síðan á að virka að keyra serverinn með:
 
 ### Troubleshooting
 Ef ske kynni að það kemur villa við að láta inn öll requirements þá biðjumst við forláts.  
-- Ef þessi villa kemur upp:  ```error: Microsoft Visual C++ 14.0 is required.``` Þá er lausnin að fara hingað: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019  og sækja Build Tools for Visual Studio 2019.
 
-- Ef það kemur upp villa við að setja upp psycopg2 þá virkaði fyrir okkur að láta hann inn manually: ```pip install psycopg2-binary``` og svo ```pip install psycopg2```
+- Fyrir alla pakka sem við höfum prófað hefur það virkað að láta hann inn manually með pip install.
 
+- Það virðist líka virka að nota PyCharm til að installa pökkunum.
+
+- Ef þessi villa kemur upp:  ```error: Microsoft Visual C++ 14.0 is required.``` Þá er lausnin að fara hingað: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019  og sækja Build Tools for Visual Studio 2019. Það gæti líka virkað að installa pakkanum manually með pip.
 
 
 ## Gert af
