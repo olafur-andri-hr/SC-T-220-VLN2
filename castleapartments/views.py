@@ -259,6 +259,9 @@ def editprofile(request):
             new_user_info = user_info_form.save(commit=False)
             new_user_info.postal_code = postal_code
             new_user_info.save()
+            user = new_user_info.user
+            user.username = new_user_info.email
+            user.save()
 
             return redirect(account)
     else:
